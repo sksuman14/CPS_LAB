@@ -258,13 +258,16 @@ void _showDownloadDialog(String url) {
                   : Colors.white.withOpacity(0.95),
               title: Row(
                 children: [
-                  Icon(Icons.sensors, color: dark ? Colors.yellow : Colors.deepPurple),
+                  Icon(Icons.sensors,
+                      color: dark ? Colors.yellow : Colors.deepPurple),
                   const SizedBox(width: 10),
-                  Text(
-                    "CPS Serial Monitor App",
-                    style: TextStyle(
-                      color: dark ? Colors.yellow[200] : Colors.deepPurple,
-                      fontWeight: FontWeight.bold,
+                  Expanded( // <-- THE FIX IS HERE
+                    child: Text(
+                      "CPS Serial Monitor App",
+                      style: TextStyle(
+                        color: dark ? Colors.yellow[200] : Colors.deepPurple,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ],
@@ -312,29 +315,38 @@ void _showDownloadDialog(String url) {
                     Navigator.of(context).pop();
                     Uri uri = Uri.parse(url);
                     if (await canLaunchUrl(uri)) {
-                      await launchUrl(uri);
+                      await launchUrl(uri,
+                        mode: LaunchMode.platformDefault,
+                        webOnlyWindowName: '_self');
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
-                          content: const Text("Downloading CPS Serial Monitor App..."),
-                          backgroundColor: dark ? Colors.yellow[700] : Colors.deepPurple,
+                          content: const Text(
+                              "Downloading CPS Serial Monitor App..."),
+                          backgroundColor:
+                              dark ? Colors.yellow[700] : Colors.deepPurple,
                           behavior: SnackBarBehavior.floating,
                         ),
                       );
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text("Failed to start download")),
+                        const SnackBar(
+                            content: Text("Failed to start download")),
                       );
                     }
                   },
                   style: TextButton.styleFrom(
-                    backgroundColor: dark ? Colors.yellow[700] : Colors.deepPurple,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                    backgroundColor:
+                        dark ? Colors.yellow[700] : Colors.deepPurple,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
                   ),
                   child: const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                     child: Text(
                       "Download Now",
-                      style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
