@@ -10,7 +10,6 @@ import 'package:amplify_flutter/amplify_flutter.dart';
 import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'config/amplify_configuration.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -25,11 +24,9 @@ void main() async {
   runApp(CpsLabApp(key: appKey));
 }
 
-
 //  global key to reset the app on logout
 final GlobalKey<_CpsLabState> appKey = GlobalKey<_CpsLabState>();
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
-
 
 class CpsLabApp extends StatefulWidget {
   const CpsLabApp({super.key});
@@ -39,7 +36,7 @@ class CpsLabApp extends StatefulWidget {
 }
 
 class _CpsLabState extends State<CpsLabApp> {
-  Key _appKey = UniqueKey(); 
+  Key _appKey = UniqueKey();
 
   void resetApp() {
     setState(() {
@@ -66,37 +63,37 @@ class CpsLab extends StatefulWidget {
   @override
   CpsLabState createState() => CpsLabState();
 }
+
 class CpsLabState extends State<CpsLab> {
   Widget _selectedPage = const HomePage();
   bool _isDarkTheme = false;
   String _currentPageName = "Home";
-  String? loggedInEmail; 
-  bool _isCheckingUser = true; 
+  String? loggedInEmail;
+  bool _isCheckingUser = true;
 
   @override
   void initState() {
     super.initState();
     _checkUser();
   }
-  
-void _checkUser() async {
-  try {
-    final user = await Amplify.Auth.getCurrentUser();
 
-    setState(() {
-      loggedInEmail = user.username;
-    });
-  } catch (e) {
-    setState(() {
-      loggedInEmail = null;
-    });
-  } finally {
-    setState(() {
-      _isCheckingUser = false;
-    });
+  void _checkUser() async {
+    try {
+      final user = await Amplify.Auth.getCurrentUser();
+
+      setState(() {
+        loggedInEmail = user.username;
+      });
+    } catch (e) {
+      setState(() {
+        loggedInEmail = null;
+      });
+    } finally {
+      setState(() {
+        _isCheckingUser = false;
+      });
+    }
   }
-}
-
 
   void _onPageSelected(String page) {
     setState(() {
@@ -138,12 +135,9 @@ void _checkUser() async {
   @override
   Widget build(BuildContext context) {
     if (_isCheckingUser) {
-    
       return const MaterialApp(
-         debugShowCheckedModeBanner: false,
-        home: Scaffold(
-          body: Center(child: CircularProgressIndicator()),
-        ),
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(body: Center(child: CircularProgressIndicator())),
       );
     }
 
@@ -156,60 +150,64 @@ void _checkUser() async {
               builder: (context, constraints) {
                 bool isMobile = constraints.maxWidth < 900;
                 return Scaffold(
-              appBar: isMobile
-    ? AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        iconTheme: IconThemeData(
-          color: _isDarkTheme ? Colors.white : Colors.black,
-        ),
-        title: Text(
-          loggedInEmail != null
-              ? "Hi, ${loggedInEmail!.split('@')[0]}"
-              : "Guest",
-          style: TextStyle(
-            color: _isDarkTheme ? Colors.white : Colors.black,
-            fontSize: 16,
-          ),
-        ),
-        actions: [
-        
-          IconButton(
-            icon: Icon(
-              _isDarkTheme ? Icons.light_mode : Icons.dark_mode,
-              color: _isDarkTheme ? Colors.white : Colors.black,
-            ),
-            onPressed: _toggleTheme,
-          ),
-          const SizedBox(width: 8),
+                  appBar: isMobile
+                      ? AppBar(
+                          backgroundColor: Colors.transparent,
+                          elevation: 0,
+                          iconTheme: IconThemeData(
+                            color: _isDarkTheme ? Colors.white : Colors.black,
+                          ),
+                          title: Text(
+                            loggedInEmail != null
+                                ? "Hi, ${loggedInEmail!.split('@')[0]}"
+                                : "Guest",
+                            style: TextStyle(
+                              color: _isDarkTheme ? Colors.white : Colors.black,
+                              fontSize: 16,
+                            ),
+                          ),
+                          actions: [
+                            IconButton(
+                              icon: Icon(
+                                _isDarkTheme
+                                    ? Icons.light_mode
+                                    : Icons.dark_mode,
+                                color: _isDarkTheme
+                                    ? Colors.white
+                                    : Colors.black,
+                              ),
+                              onPressed: _toggleTheme,
+                            ),
+                            const SizedBox(width: 8),
 
-        
-          TextButton.icon(
-            onPressed: () {
-              if (loggedInEmail != null) {
-                _logoutAndReset();
-              } else {
-                setState(() {
-                  _selectedPage = LoginPage(onLogin: _setUser);
-                  _currentPageName = "Login";
-                });
-              }
-            },
-            style: TextButton.styleFrom(
-              foregroundColor: _isDarkTheme ? Colors.white : Colors.black,
-            ),
-           
-            label: Text(
-              loggedInEmail == "Guest" ? "Login" : "Logout",
-              style: const TextStyle(fontSize: 14),
-            ),
-          ),
-          const SizedBox(width: 8),
-        ],
-      )
-    : null,
+                            TextButton.icon(
+                              onPressed: () {
+                                if (loggedInEmail != null) {
+                                  _logoutAndReset();
+                                } else {
+                                  setState(() {
+                                    _selectedPage = LoginPage(
+                                      onLogin: _setUser,
+                                    );
+                                    _currentPageName = "Login";
+                                  });
+                                }
+                              },
+                              style: TextButton.styleFrom(
+                                foregroundColor: _isDarkTheme
+                                    ? Colors.white
+                                    : Colors.black,
+                              ),
 
-
+                              label: Text(
+                                loggedInEmail == "Guest" ? "Login" : "Logout",
+                                style: const TextStyle(fontSize: 14),
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                          ],
+                        )
+                      : null,
 
                   drawer: isMobile
                       ? SizedBox(
