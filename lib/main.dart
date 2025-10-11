@@ -78,32 +78,25 @@ class CpsLabState extends State<CpsLab> {
     super.initState();
     _checkUser();
   }
+  
+void _checkUser() async {
+  try {
+    final user = await Amplify.Auth.getCurrentUser();
 
-  void _checkUser() async {
-    try {
-      final user = await Amplify.Auth.getCurrentUser();
-      final attributes = await Amplify.Auth.fetchUserAttributes();
-      final emailAttr = attributes.firstWhere(
-        (attr) => attr.userAttributeKey.key == 'email',
-        orElse: () => const AuthUserAttribute(
-          userAttributeKey: CognitoUserAttributeKey.email,
-          value: 'Unknown',
-        ),
-      );
-
-      setState(() {
-        loggedInEmail = emailAttr.value;
-      });
-    } catch (e) {
-      setState(() {
-        loggedInEmail = null;
-      });
-    } finally {
-      setState(() {
-        _isCheckingUser = false; 
-      });
-    }
+    setState(() {
+      loggedInEmail = user.username;
+    });
+  } catch (e) {
+    setState(() {
+      loggedInEmail = null;
+    });
+  } finally {
+    setState(() {
+      _isCheckingUser = false;
+    });
   }
+}
+
 
   void _onPageSelected(String page) {
     setState(() {
