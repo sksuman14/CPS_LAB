@@ -119,7 +119,7 @@ final List<Map<String, dynamic>> allSensors = [
     "email": "krishnanpallavi63@gmail.com",
     "datasheetKey": "STTS751",
     "nreCodeLink":
-        "https://github.com/sksuman14/nRF_All_Sensors_Codes/blob/main/All_Temperature_Sensors/STTS751_Sensor/src/main.c",
+        "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/All_Temperature_Sensors/STTS751_Sensor",
     "quecCodeLink":
         "https://github.com/sksuman14/QuecPython_All_Sensors_Codes/tree/main/STTS751_Temperature_Sensor/STTS751",
   },
@@ -204,7 +204,7 @@ final List<Map<String, dynamic>> allSensors = [
     "email": "krishnanpallavi63@gmail.com",
     "datasheetKey": "W25QXX",
     "nreCodeLink":
-        "https://github.com/sksuman14/nRF_All_Sensors_Codes/blob/main/MX25r6435_and_W25q16dv_SPI_FLash/src/main.c",
+        "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/MX25r6435_and_W25q16dv_SPI_FLash",
   },
   {
     "title": "Buzzer",
@@ -331,7 +331,9 @@ final List<Map<String, dynamic>> allSensors = [
     "imagePath": "assets/images/ble_dev_kit.jpg",
     "email": "krishnanpallavi63@gmail.com",
     "datasheetKey": "BLEKIT",
-  },
+      "nreCodeLink":
+        "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/Blink_Led/Led_Blink",
+     },
   {
     "title": "BLE",
     "highlightText": "Node",
@@ -449,13 +451,13 @@ final List<Map<String, dynamic>> allSensors = [
     "email": "krishnanpallavi63@gmail.com",
     "datasheetKey": "BME680",
     "nreCodeLink":
-        "https://github.com/sksuman14/nRF_All_Sensors_Codes/blob/main/BME680_Sensor/src/main.c",
+        "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/BME680_Sensor",
     "quecCodeLink":
         "https://github.com/sksuman14/QuecPython_All_Sensors_Codes/tree/main/BME680",
   },
   {
     "title": "Activity/Vibration",
-    "highlightText": "Mobitor Kit",
+    "highlightText": "Monitor Kit",
     "subtitle":
         "Real-time motion and environmental data tracker for STEM and IoT projects",
     "bannerPoints": [
@@ -490,6 +492,9 @@ final List<Map<String, dynamic>> allSensors = [
     "imagePath": "assets/images/Actitvity.png",
     "email": "krishnanpallavi63@gmail.com",
     "datasheetKey": "ACTIVITY",
+        "nreCodeLink":
+        "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/LIS3DH_Data_OnMobileApp",
+
   },
   {
     "title": "Lux ",
@@ -529,7 +534,7 @@ final List<Map<String, dynamic>> allSensors = [
     "email": "krishnanpallavi63@gmail.com",
     "datasheetKey": "LUX",
     "nreCodeLink":
-        "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/GY485_RS485_Lux_Sensor",
+        "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/VCNL4040_LuxSensor",
     "quecCodeLink":
         "https://github.com/sksuman14/QuecPython_All_Sensors_Codes/tree/main/VEML7700",
   },
@@ -607,7 +612,7 @@ final List<Map<String, dynamic>> allSensors = [
     "email": "krishnanpallavi63@gmail.com",
     "datasheetKey": "TLV",
     "nreCodeLink":
-        "https://github.com/sksuman14/nRF_All_Sensors_Codes/blob/main/Tlv493d_Magnetometer/src/main.c",
+        "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/Tlv493d_Magnetometer",
   },
   {
     "title": "TOF VL53L0X",
@@ -644,7 +649,7 @@ final List<Map<String, dynamic>> allSensors = [
     "email": "krishnanpallavi63@gmail.com",
     "datasheetKey": "VL",
     "nreCodeLink":
-        "https://github.com/sksuman14/nRF_All_Sensors_Codes/blob/main/TOFVl53l0x_Sensor/src/main.c",
+        "https://github.com/sksuman14/nRF_All_Sensors_Codes/blob/main/TOFVl53l0x_Sensor",
   },
   {
     "title": "UV LTR-390 ",
@@ -682,7 +687,7 @@ final List<Map<String, dynamic>> allSensors = [
     "email": "krishnanpallavi63@gmail.com",
     "datasheetKey": "UVLTR",
     "nreCodeLink":
-        "https://github.com/sksuman14/nRF_All_Sensors_Codes/blob/main/UVLtr390_Sensor/src/main.c",
+        "https://github.com/sksuman14/nRF_All_Sensors_Codes/blob/main/UVLtr390_Sensor",
   },
   {
     "title": "Linear Magnetic Hall",
