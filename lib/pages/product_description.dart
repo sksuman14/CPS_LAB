@@ -5,6 +5,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'dart:convert';
+
+import 'package:http/http.dart' as http;
+
+import 'dart:html' as html;
+import 'package:archive/archive.dart';
+
 
 final List<Map<String, dynamic>> allSensors = [
   {
@@ -1274,7 +1281,7 @@ Widget _buildHeroText(
                       ),
                     ),
                     icon: const Icon(Icons.folder_zip, color: Colors.white),
-                    onPressed: () => _downloadGitHubFolder(sensor["nreCodeLink"]),
+                    onPressed: () => downloadFolder(context,sensor["nreCodeLink"],sensor["title"]),
                   ),
                 )
               else
@@ -1320,7 +1327,7 @@ Widget _buildHeroText(
                       Icons.developer_mode,
                       color: Colors.white,
                     ),
-                      onPressed: () => _downloadGitHubFolder(sensor["quecCodeLink"]),
+                      onPressed: () => downloadFolder(context,sensor["quecCodeLink"],sensor["title"]),
                   ),
                 )
               else
@@ -1358,21 +1365,81 @@ Widget _buildHeroText(
   );
 }
 
-// ---- Folder Download Function ----
-Future<void> _downloadGitHubFolder(String folderUrl) async {
-  // Convert GitHub folder URL into downloadable ZIP URL
-  final encodedUrl =
-      "https://download-directory.github.io/?url=$folderUrl";
+Future<void> downloadFolder(BuildContext context, String folderUrl, String zipFileName) async {
+  final archive = Archive();
 
-  final Uri uri = Uri.parse(encodedUrl);
-  if (await canLaunchUrl(uri)) {
-    await launchUrl(uri, mode: LaunchMode.externalApplication);
-    debugPrint("Downloading folder from: $encodedUrl");
-  } else {
-    debugPrint("Could not launch $encodedUrl");
+  // Show downloading snackbar
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Text("Downloading $zipFileName..."),
+      duration: const Duration(seconds: 2),
+    ),
+  );
+
+  try {
+    // Recursive function to fetch files and add to archive
+    Future<void> fetchFiles(String apiUrl, String pathInZip) async {
+      final response = await http.get(Uri.parse(apiUrl));
+      if (response.statusCode != 200) {
+        throw Exception("GitHub API error: ${response.statusCode}");
+      }
+
+      final List<dynamic> contents = jsonDecode(response.body);
+
+      for (var item in contents) {
+        final type = item['type'];
+        final name = item['name'];
+
+        if (type == 'file') {
+          final downloadUrl = item['download_url'];
+          if (downloadUrl != null) {
+            final fileResponse = await http.get(Uri.parse(downloadUrl));
+            final filePath = pathInZip.isEmpty ? name : '$pathInZip/$name';
+            archive.addFile(
+              ArchiveFile(filePath, fileResponse.bodyBytes.length, fileResponse.bodyBytes),
+            );
+          }
+        } else if (type == 'dir') {
+          final dirApiUrl = item['url']; // API URL for subdirectory
+          final subPathInZip = pathInZip.isEmpty ? name : '$pathInZip/$name';
+          await fetchFiles(dirApiUrl, subPathInZip);
+        }
+      }
+    }
+
+    // Convert GitHub folder URL to API URL
+    final uriParts = folderUrl.split('/');
+    if (uriParts.length < 7) throw Exception("Invalid GitHub folder URL");
+
+    final username = uriParts[3];
+    final repo = uriParts[4];
+    final branch = uriParts[6];
+    final path = uriParts.sublist(7).join('/');
+    final apiUrl =
+        "https://api.github.com/repos/$username/$repo/contents/$path?ref=$branch";
+
+    await fetchFiles(apiUrl, '');
+
+    final zipData = ZipEncoder().encode(archive);
+    final blob = html.Blob([zipData]);
+    final url = html.Url.createObjectUrlFromBlob(blob);
+    final anchor = html.AnchorElement(href: url)
+      ..setAttribute("download", "$zipFileName.zip")
+      ..click();
+    html.Url.revokeObjectUrl(url);
+
+    // Success snackbar
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text("$zipFileName downloaded successfully!")),
+    );
+
+  } catch (e) {
+    debugPrint("Error downloading folder: $e");
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text("Error downloading folder: $e")),
+    );
   }
 }
-
 
   Future<void> _sendEmail(BuildContext context, String email) async {
     final subject = Uri.encodeComponent("Product Enquiry");

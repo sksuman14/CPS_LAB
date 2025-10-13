@@ -50,6 +50,7 @@ dependencies:
   carousel_slider: ^5.1.1
   amplify_flutter: ^1.4.0
   amplify_auth_cognito: ^1.4.0
+  archive: ^4.0.7
 
 dev_dependencies:
   flutter_test:
