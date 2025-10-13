@@ -165,7 +165,7 @@ final List<Map<String, dynamic>> allSensors = [
     "email": "krishnanpallavi63@gmail.com",
     "datasheetKey": "LIS3DH",
     "nreCodeLink":
-        "https://raw.githubusercontent.com/sksuman14/nRF_All_Sensors_Codes/refs/heads/main/LIS3DH_Sensor/lis3dhSensor/src/main.c",
+        "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/LIS3DH_Sensor/lis3dhSensor",
   },
   {
     "title": "W25Q16 / W25Q32",
@@ -242,7 +242,7 @@ final List<Map<String, dynamic>> allSensors = [
     "email": "krishnanpallavi63@gmail.com",
     "datasheetKey": "BUZZER",
     "nreCodeLink":
-        "https://raw.githubusercontent.com/sksuman14/nRF_All_Sensors_Codes/refs/heads/main/Buzzer/src/main.c",
+        "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/Buzzer",
   },
   {
     "title": "Relay",
@@ -280,7 +280,7 @@ final List<Map<String, dynamic>> allSensors = [
     "email": "krishnanpallavi63@gmail.com",
     "datasheetKey": "RELAY",
     "nreCodeLink":
-        "https://raw.githubusercontent.com/sksuman14/nRF_All_Sensors_Codes/refs/heads/main/Relay/Relay_Codes/relay/src/main.c",
+        "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/Relay",
   },
   {
     "title": "Bluetooth Low Energyt",
@@ -529,7 +529,7 @@ final List<Map<String, dynamic>> allSensors = [
     "email": "krishnanpallavi63@gmail.com",
     "datasheetKey": "LUX",
     "nreCodeLink":
-        "https://raw.githubusercontent.com/sksuman14/nRF_All_Sensors_Codes/refs/heads/main/GY485_RS485_Lux_Sensor/src/main.c",
+        "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/GY485_RS485_Lux_Sensor",
     "quecCodeLink":
         "https://github.com/sksuman14/QuecPython_All_Sensors_Codes/tree/main/VEML7700",
   },
@@ -571,7 +571,7 @@ final List<Map<String, dynamic>> allSensors = [
     "email": "krishnanpallavi63@gmail.com",
     "datasheetKey": "GROOVE",
     "nreCodeLink":
-        "https://raw.githubusercontent.com/sksuman14/nRF_All_Sensors_Codes/refs/heads/main/Grove_16x2Lcd/src/main.c",
+        "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/Grove_16x2Lcd",
   },
   {
     "title": "TLV493D",
@@ -1146,7 +1146,7 @@ class ProductDescriptionPage extends StatelessWidget {
     );
   }
 
- Widget _buildHeroText(
+Widget _buildHeroText(
   double headlineSize,
   double bannerTextSize,
   double bannerPointSize,
@@ -1155,8 +1155,7 @@ class ProductDescriptionPage extends StatelessWidget {
   Map sensor,
 ) {
   debugPrint(
-    "buildHeroText called with email: $userEmail, imagePath: ${sensor["imagePath"]}",
-  );
+      "buildHeroText called with email: $userEmail, imagePath: ${sensor["imagePath"]}");
 
   // Check if user has access to code links for this sensor
   final email = userEmail?.toLowerCase() ?? "";
@@ -1226,7 +1225,10 @@ class ProductDescriptionPage extends StatelessWidget {
               .animate()
               .fadeIn(duration: 1400.ms)
               .slideY(begin: 0.2, duration: 1400.ms),
+
           const SizedBox(height: 16),
+
+          // ---- Banner Points ----
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: (sensor["bannerPoints"] as List<dynamic>)
@@ -1238,7 +1240,10 @@ class ProductDescriptionPage extends StatelessWidget {
                 )
                 .toList(),
           ),
+
           const SizedBox(height: 20),
+
+          // ---- Buttons Row ----
           Row(
             children: [
               _buildBannerButton(
@@ -1246,13 +1251,14 @@ class ProductDescriptionPage extends StatelessWidget {
                 Colors.deepPurple,
                 () => _sendEmail(context, sensor["email"]),
               ).animate().scale(duration: 1400.ms, curve: Curves.easeOutBack),
+
               const SizedBox(width: 16),
 
-              // nRF Code button (raw/download link)
+              // ---- nRF Folder Download Button ----
               if (sensor.containsKey("nreCodeLink") &&
                   sensor["nreCodeLink"] != null)
                 Tooltip(
-                  message: "nRF Codes",
+                  message: "Download nRF Folder (ZIP)",
                   waitDuration: const Duration(milliseconds: 400),
                   child: IconButton(
                     style: IconButton.styleFrom(
@@ -1262,13 +1268,13 @@ class ProductDescriptionPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
-                    icon: const Icon(Icons.code, color: Colors.white),
-                    onPressed: () => _launchRawURL(sensor["nreCodeLink"]),
+                    icon: const Icon(Icons.folder_zip, color: Colors.white),
+                    onPressed: () => _downloadGitHubFolder(sensor["nreCodeLink"]),
                   ),
                 )
               else
                 Tooltip(
-                  message: "nRF Codes not available",
+                  message: "nRF Folder not available",
                   waitDuration: const Duration(milliseconds: 400),
                   child: IconButton(
                     style: IconButton.styleFrom(
@@ -1278,25 +1284,24 @@ class ProductDescriptionPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
-                    icon: const Icon(Icons.code, color: Colors.white),
+                    icon: const Icon(Icons.folder_off, color: Colors.white),
                     onPressed: () {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
                           content:
-                              Text("Updating code soon, not available now"),
+                              Text("Updating folder soon, not available now"),
                         ),
                       );
                     },
                   ),
                 ),
-
-              const SizedBox(width: 12),
+                     const SizedBox(width: 12),
 
               // QuecPython Code button (raw/download link)
               if (sensor.containsKey("quecCodeLink") &&
                   sensor["quecCodeLink"] != null)
                 Tooltip(
-                  message: "QuecPython Codes",
+                  message: "Download QuecPython Codes",
                   waitDuration: const Duration(milliseconds: 400),
                   child: IconButton(
                     style: IconButton.styleFrom(
@@ -1310,12 +1315,12 @@ class ProductDescriptionPage extends StatelessWidget {
                       Icons.developer_mode,
                       color: Colors.white,
                     ),
-                    onPressed: () => _launchRawURL(sensor["quecCodeLink"]),
+                      onPressed: () => _downloadGitHubFolder(sensor["quecCodeLink"]),
                   ),
                 )
               else
                 Tooltip(
-                  message: "QuecPython Codes not available",
+                  message: "QuecPython folder not available",
                   waitDuration: const Duration(milliseconds: 400),
                   child: IconButton(
                     style: IconButton.styleFrom(
@@ -1333,7 +1338,7 @@ class ProductDescriptionPage extends StatelessWidget {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
                           content:
-                              Text("Updating code soon, not available now"),
+                              Text("Updating folder soon, not available now"),
                         ),
                       );
                     },
@@ -1341,19 +1346,25 @@ class ProductDescriptionPage extends StatelessWidget {
                 ),
             ],
           ),
+                   
         ],
       ),
     ],
   );
 }
 
-// Launch raw/download link safely
-Future<void> _launchRawURL(String url) async {
-  final Uri uri = Uri.parse(url);
+// ---- Folder Download Function ----
+Future<void> _downloadGitHubFolder(String folderUrl) async {
+  // Convert GitHub folder URL into downloadable ZIP URL
+  final encodedUrl =
+      "https://download-directory.github.io/?url=$folderUrl";
+
+  final Uri uri = Uri.parse(encodedUrl);
   if (await canLaunchUrl(uri)) {
     await launchUrl(uri, mode: LaunchMode.externalApplication);
+    debugPrint("Downloading folder from: $encodedUrl");
   } else {
-    debugPrint("Could not launch $url");
+    debugPrint("Could not launch $encodedUrl");
   }
 }
 
