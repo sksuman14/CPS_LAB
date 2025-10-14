@@ -162,7 +162,9 @@ class CpsLabState extends State<CpsLab> {
                                 ? "Hi, ${loggedInEmail!.split('@')[0]}"
                                 : "Guest",
                             style: TextStyle(
-                              color: _isDarkTheme ? Colors.white : Colors.black,
+                                                                                color: _isDarkTheme
+                          ? Colors.yellow.shade300
+                          : Colors.deepPurple,
                               fontSize: 16,
                             ),
                           ),
@@ -172,9 +174,9 @@ class CpsLabState extends State<CpsLab> {
                                 _isDarkTheme
                                     ? Icons.light_mode
                                     : Icons.dark_mode,
-                                color: _isDarkTheme
-                                    ? Colors.white
-                                    : Colors.black,
+                                                                                  color: _isDarkTheme
+                          ? Colors.yellow.shade300
+                          : Colors.deepPurple,
                               ),
                               onPressed: _toggleTheme,
                             ),
@@ -194,14 +196,14 @@ class CpsLabState extends State<CpsLab> {
                                 }
                               },
                               style: TextButton.styleFrom(
-                                foregroundColor: _isDarkTheme
-                                    ? Colors.white
-                                    : Colors.black,
+                                foregroundColor:                                                    _isDarkTheme
+                          ?Colors.green
+                          : Colors.red,
                               ),
 
                               label: Text(
                                 loggedInEmail == "Guest" ? "Login" : "Logout",
-                                style: const TextStyle(fontSize: 14),
+                                style: const TextStyle(fontSize: 14,),
                               ),
                             ),
                             const SizedBox(width: 8),

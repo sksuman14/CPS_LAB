@@ -1172,7 +1172,7 @@ Widget _buildHeroText(
   // Check if user has access to code links for this sensor
   final email = userEmail?.toLowerCase() ?? "";
   bool hasCodeAccess = false;
-  if (email == "guest" || email.isEmpty) {
+  if (email == "Guest" || email.isEmpty) {
     hasCodeAccess = false;
     debugPrint("No access: Email is 'guest' or empty");
   } else {
@@ -1267,95 +1267,77 @@ Widget _buildHeroText(
               const SizedBox(width: 16),
 
               // ---- nRF Folder Download Button ----
-              if (sensor.containsKey("nreCodeLink") &&
-                  sensor["nreCodeLink"] != null)
-                Tooltip(
-                  message: "Download nRF Folder (ZIP)",
-                  waitDuration: const Duration(milliseconds: 400),
-                  child: IconButton(
-                    style: IconButton.styleFrom(
-                      backgroundColor: Colors.amber.shade700,
-                      padding: const EdgeInsets.all(10),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                    icon: const Icon(Icons.folder_zip, color: Colors.white),
-                    onPressed: () => downloadFolder(context,sensor["nreCodeLink"],sensor["title"]),
-                  ),
-                )
-              else
-                Tooltip(
-                  message: "nRF Folder not available",
-                  waitDuration: const Duration(milliseconds: 400),
-                  child: IconButton(
-                    style: IconButton.styleFrom(
-                      backgroundColor: Colors.grey.shade600,
-                      padding: const EdgeInsets.all(10),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                    icon: const Icon(Icons.folder_off, color: Colors.white),
-                    onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content:
-                              Text("Updating folder soon, not available now"),
-                        ),
-                      );
-                    },
-                  ),
-                ),
-                     const SizedBox(width: 12),
+             // ---- Show code buttons only if user has access ----
+if (hasCodeAccess) ...[
+  // ---- nRF Folder Download Button ----
+  if (sensor.containsKey("nreCodeLink") &&
+      sensor["nreCodeLink"] != null)
+    Tooltip(
+      message: "Download nRF Folder (ZIP)",
+      waitDuration: const Duration(milliseconds: 400),
+      child: IconButton(
+        style: IconButton.styleFrom(
+          backgroundColor: Colors.amber.shade700,
+          padding: const EdgeInsets.all(10),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
+        icon: const Icon(Icons.folder_zip, color: Colors.white),
+        onPressed: () => downloadFolder(
+          context,
+          sensor["nreCodeLink"],
+          sensor["title"],
+        ),
+      ),
+    ),
+  const SizedBox(width: 12),
 
-              // QuecPython Code button (raw/download link)
-              if (sensor.containsKey("quecCodeLink") &&
-                  sensor["quecCodeLink"] != null)
-                Tooltip(
-                  message: "Download QuecPython Codes",
-                  waitDuration: const Duration(milliseconds: 400),
-                  child: IconButton(
-                    style: IconButton.styleFrom(
-                      backgroundColor: Colors.blueAccent,
-                      padding: const EdgeInsets.all(10),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                    icon: const Icon(
-                      Icons.developer_mode,
-                      color: Colors.white,
-                    ),
-                      onPressed: () => downloadFolder(context,sensor["quecCodeLink"],sensor["title"]),
-                  ),
-                )
-              else
-                Tooltip(
-                  message: "QuecPython folder not available",
-                  waitDuration: const Duration(milliseconds: 400),
-                  child: IconButton(
-                    style: IconButton.styleFrom(
-                      backgroundColor: Colors.grey.shade600,
-                      padding: const EdgeInsets.all(10),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                    icon: const Icon(
-                      Icons.developer_mode,
-                      color: Colors.white,
-                    ),
-                    onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content:
-                              Text("Updating folder soon, not available now"),
-                        ),
-                      );
-                    },
-                  ),
-                ),
+  // ---- QuecPython Code button ----
+  if (sensor.containsKey("quecCodeLink") &&
+      sensor["quecCodeLink"] != null)
+    Tooltip(
+      message: "Download QuecPython Codes",
+      waitDuration: const Duration(milliseconds: 400),
+      child: IconButton(
+        style: IconButton.styleFrom(
+          backgroundColor: Colors.blueAccent,
+          padding: const EdgeInsets.all(10),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
+        icon: const Icon(Icons.developer_mode, color: Colors.white),
+        onPressed: () => downloadFolder(
+          context,
+          sensor["quecCodeLink"],
+          sensor["title"],
+        ),
+      ),
+    ),
+] else
+  Tooltip(
+    message: "Code access restricted",
+    waitDuration: const Duration(milliseconds: 400),
+    child: IconButton(
+      style: IconButton.styleFrom(
+        backgroundColor: Colors.grey.shade700,
+        padding: const EdgeInsets.all(10),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+      ),
+      icon: const Icon(Icons.lock, color: Colors.white),
+      onPressed: () {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text("You don't have access to download these codes."),
+          ),
+        );
+      },
+    ),
+  ),
+
             ],
           ),
                    
