@@ -254,16 +254,42 @@ class DeploymentPage extends StatelessWidget {
                                   : MediaQuery.of(context).size.height * 0.6,
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(12),
-                                child: InteractiveViewer(
-                                  panEnabled: true,
-                                  minScale: 1.0,
-                                  maxScale: 4.0,
-                                  child: Image.asset(
-                                    deployment["image"]!,
-                                    fit: BoxFit.contain,
-                                    width: double.infinity,
-                                  ),
+                                // <<< START OF CHANGE
+                                child: Stack(
+                                  alignment: Alignment.center,
+                                  children: [
+                                    InteractiveViewer(
+                                      panEnabled: true,
+                                      minScale: 1.0,
+                                      maxScale: 4.0,
+                                      child: Image.asset(
+                                        deployment["image"]!,
+                                        fit: BoxFit.contain,
+                                        width: double.infinity,
+                                      ),
+                                    ),
+                                    Positioned(
+                                      bottom: 10,
+                                      child: Container(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 12, vertical: 6),
+                                        decoration: BoxDecoration(
+                                          color: Colors.black.withOpacity(0.6),
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                        ),
+                                        child: const Text(
+                                          "Pinch to Zoom Image",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
+                                // <<< END OF CHANGE
                               ),
                             ),
 
@@ -295,7 +321,7 @@ class DeploymentPage extends StatelessWidget {
                                   ? Container(
                                       height:
                                           MediaQuery.of(context).size.height *
-                                          0.3,
+                                              0.3,
                                       padding: const EdgeInsets.symmetric(
                                         horizontal: 8,
                                       ),
