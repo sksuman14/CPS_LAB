@@ -11,60 +11,79 @@ class DownloadManager {
     "DataLogger": {
 
       "datasheet": "assets/pdfs/Data_logger_datasheet.pdf",
+      "manual":"",
     },
     "ACTIVITY": {
   "datasheet": "assets/pdfs/ACTIVITY.pdf",
+   "manual":"assets/pdfs/MonitoringKit_manual.pdf",
 },
 "STTS751": {
   "datasheet": "assets/pdfs/STTS751.pdf",
+   "manual":"assets/pdfs/STTS751_manual.pdf",
 },
 "BME680": {
   "datasheet": "assets/pdfs/BME680.pdf",
+   "manual":"assets/pdfs/MBE680_manual.pdf",
 },
 "LIS3DH": {
   "datasheet": "assets/pdfs/LIS3DH.pdf",
+   "manual":"assets/pdfs/LIS3DH_manual.pdf",
 },
 "W25QXX": {
   "datasheet": "assets/pdfs/W25QXX.pdf",
+   "manual":"assets/pdfs/Memory_manual.pdf",
 },
 "BUZZER": {
   "datasheet": "assets/pdfs/BUZZER.pdf",
+   "manual":"assets/pdfs/Buzzer_manual.pdf",
 },
 "RELAY": {
   "datasheet": "assets/pdfs/RELAY.pdf",
+   "manual":"assets/pdfs/realay_manual.pdf",
 },
 "BLEKIT": {
   "datasheet": "assets/pdfs/BLEKIT.pdf",
+   "manual":"assets/pdfs/DevelopmentKit_manual.pdf",
 },
 "BLENODE": {
   "datasheet": "assets/pdfs/BLENODE.pdf",
+   "manual":"",
 },
 "FLASHTOOL": {
   "datasheet": "assets/pdfs/FLASHTOOL.pdf",
+   "manual":"",
 },
 "LUX": {
   "datasheet": "assets/pdfs/LUX.pdf",
+   "manual":"assets/pdfs/Lux_manual.pdf",
 },
 "HALL": {
   "datasheet": "assets/pdfs/HALL.pdf",
+   "manual":"",
 },
 "IR": {
   "datasheet": "assets/pdfs/IR.pdf",
+   "manual":"",
 },
 "TLV": {
   "datasheet": "assets/pdfs/TLV.pdf",
+   "manual":"assets/pdfs/TLV493_manual.pdf",
 },
 "VL": {
   "datasheet": "assets/pdfs/VL.pdf",
+   "manual":"assets/pdfs/TOFVL53LOX_manual.pdf",
 },
 "UVLTR": {
   "datasheet": "assets/pdfs/UVLTR.pdf",
+   "manual":"assets/pdfs/LTR-390_manual.pdf",
 },
 "GROOVE": {
   "datasheet": "assets/pdfs/GROOVE.pdf",
+   "manual":"",
 },
 "Gateway": {
   "datasheet": "assets/pdfs/BLE_GATEWAY_Datasheet.pdf",
+   "manual":"",
 },
 
 

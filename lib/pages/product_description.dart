@@ -1637,19 +1637,38 @@ Future<void> downloadFolder(BuildContext context, String folderUrl, String zipFi
                     .toList(),
               ),
             const SizedBox(height: 40),
-            Center(
-              child: _buildBannerButton(
-                "Download Datasheet",
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                
+                   _buildBannerButton(
+                    "Datasheet",
+                    Colors.deepPurple,
+                    () {
+                      DownloadManager.downloadFile(
+                        context: context,
+                        sensorKey: sensor["datasheetKey"],
+                        fileType: "datasheet",
+                      );
+                    },
+                  ).animate().scale(duration: 1400.ms, curve: Curves.easeOutBack),
+               SizedBox(width: 16),
+               
+              _buildBannerButton(
+                "Manual",
                 Colors.deepPurple,
                 () {
                   DownloadManager.downloadFile(
                     context: context,
                     sensorKey: sensor["datasheetKey"],
-                    fileType: "datasheet",
+                    fileType: "manual",
                   );
                 },
               ).animate().scale(duration: 1400.ms, curve: Curves.easeOutBack),
+          
+              ],
             ),
+              
           ],
         ),
       ),
@@ -1675,7 +1694,7 @@ Future<void> downloadFolder(BuildContext context, String folderUrl, String zipFi
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
           ),
           onPressed: onPressed,
-          icon: const Icon(Icons.arrow_forward, color: Colors.white),
+          icon: const Icon(Icons.arrow_downward, color: Colors.white),
           label: Text(
             label,
             style: const TextStyle(

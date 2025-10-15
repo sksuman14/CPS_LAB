@@ -136,6 +136,19 @@ flutter:
     - assets/pdfs/GROOVE.pdf
     - assets/pdfs/BLE_GATEWAY_Datasheet.pdf
     - assets/pdfs/Data_logger_datasheet.pdf
+    - assets/pdfs/MonitoringKit_manual.pdf
+    - assets/pdfs/STTS751_manual.pdf
+    - assets/pdfs/MBE680_manual.pdf
+    - assets/pdfs/LIS3DH_manual.pdf
+    - assets/pdfs/Memory_manual.pdf
+    - assets/pdfs/Buzzer_manual.pdf 
+    - assets/pdfs/realay_manual.pdf
+    - assets/pdfs/DevelopmentKit_manual.pdf
+    - assets/pdfs/Lux_manual.pdf
+    - assets/pdfs/TLV493_manual.pdf
+    - assets/pdfs/TOFVL53LOX_manual.pdf
+    - assets/pdfs/LTR-390_manual.pdf
+
    
     
 
