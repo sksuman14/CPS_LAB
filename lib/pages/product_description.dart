@@ -90,6 +90,122 @@ final List<Map<String, dynamic>> allSensors = [
     "email": "krishnanpallavi63@gmail.com",
     "datasheetKey": "Gateway",
   },
+   // wind
+  {
+    "title": "Ultrasonic ",
+    "highlightText": "Anemometer",
+    "subtitle":
+        "Ultrasonic Anemometer for precise wind speed and wind direction",
+    "bannerPoints": [
+      "Accurate wind monitoring",
+      "Real time speed and direction measurement",
+      "Robust and compact design"
+    ],
+    "features": [
+      "High Quality measurement up to 60m/s (216km/h)",
+      "High accuracy with fast response time",
+      "0°-360° wind direction coverage with 1° resolution",
+      "Low Maintenance, ensuring low cost of ownership",
+      "Robust design for all weather conditions"
+    ],
+    "applications": [
+      "Weather monitoring stations",
+      "Smart agriculture and precision farming",
+      "Ports and harbours",
+      "Runways and helipads",
+      "Wind turbine performance monitoring"
+    ],
+    "specifications": [
+      "Input Supply voltage: 2V - 16V",
+      "Measure wind speed and wind direction via Δ ToF",
+      "Communication protocols: RS232 or RS485 (Modbus)",
+      "Ultra low power sleep mode",
+      "Weight : 0.6kg",
+      "Heating option (-40℃ to +70℃)",
+    ],
+    "imagePath": "assets/images/ultrasonic.png",
+    "email": "krishnanpallavi63@gmail.com",
+    "datasheetKey": "WindSensor",
+  },
+  // rain
+  {
+    "title": "Rain",
+    "highlightText": "Gauge",
+    "subtitle": "Tipping Bucket Rain Gauge",
+    "bannerPoints": [
+      "Measure rain via Tipping Bucket Mechanism",
+      "Accurate and Low Maintenance",
+      "Robust design for all weather conditions"
+    ],
+    "features": [
+      "Balanced tipping bucket mechanism ensures high accuracy",
+      "Minimal moving parts → long-term reliability with low maintenance",
+      "Reed switch / magnetic sensor for precise detection",
+      "Durable ABS body with weather resistance",
+      "Easy integration with data loggers and weather stations for automated rainfall recording"
+    ],
+    "applications": [
+      "Meteorological stations for rainfall monitoring",
+      "Agriculture & irrigation planning",
+      "Environmental monitoring & climate research",
+      "Suitable for precise/general purpose rain monitoring",
+      "Urban drainage & stormwater management"
+    ],
+    "specifications": [
+      "Made of ABS material, offering durability and weather resistance",
+      "Available in two diameter options: 159.5 mm and 200 mm",
+      "Collection areas: 200 cm² and 314 cm²",
+      "Resolution: 0.2 mm or 0.5 mm depending on the model",
+      "Equipped with reed switch or magnetic sensor for tip detection",
+      "Data Output: Number of tips × Resolution = Total Rainfall",
+    ],
+    "imagePath": "assets/images/gauge.png",
+    "email": "krishnanpallavi63@gmail.com",
+    "datasheetKey": "RainGauge",
+  },
+
+ {
+    "title": "Temperature Humidity Light Intensity and Pressure",
+    "highlightText": "Sensor",
+    "subtitle": "Compact environmental sensing unit for precise measurements",
+    "bannerPoints": [
+      "High-precision measurements with cutting-edge sensor",
+      "Robust design for long-term reliability",
+      "Flexible model to diverse applications",
+    ],
+    "features": [
+      "Accurate Wide Environmental Measurement Range",
+      "Maintenance-free for long-term field deployment",
+      "Low power consumption, suitable for remote station",
+      "Robust, IP66 Compact design",
+      "All-weather protection",
+      "Compact & lightweight, easy to install with radiation shield",
+    ],
+    "applications": [
+      "Agriculture and smart irrigation system",
+      "Environmental monitoring",
+      "Healthcare & Medical Facilities",
+      "Greenhouses and Indoor Farming",
+      "Industrial Process monitoring (HVAC, Food processing)",
+      "Safety and Security",
+    ],
+    "specifications": [
+      "Supply Voltage : 3.3 V DC",
+      "Range of Temperature : -40 to +85 °C",
+      "Range of Humidity : 0-100%",
+      "Range of Pressure : 300-1100 hPa",
+      "Range of Light Intensity: 0-140000 Lux",
+      "Communications Protocol : I2C",
+      "Temperature Accuracy : ±1°C",
+      "Humidity Accuracy:±3.0% RH",
+      "Pressure Accuracy:±1hPa",
+      "LUX Accuracy:±3%"
+    ],
+    "imagePath": "assets/images/luxpressure.png",
+    "email": "krishnanpallavi63@gmail.com",
+    "datasheetKey": "ARTH",
+  },
+
   {
     "title": "STTS751",
     "highlightText": "Temperature Sensor",

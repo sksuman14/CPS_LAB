@@ -115,7 +115,10 @@ flutter:
     - assets/images/deploy.png
     - assets/images/deployment_bg.png
     - assets/images/product_bg.png
+    - assets/images/ultrasonic.png
+    - assets/images/gauge.png
     - assets/images/contact_bg.png
+    - assets/images/luxpressure.png
     - assets/images/home_bg.jpg
     - assets/pdfs/ACTIVITY.pdf
     - assets/pdfs/STTS751.pdf
@@ -127,6 +130,9 @@ flutter:
     - assets/pdfs/BLEKIT.pdf
     - assets/pdfs/BLENODE.pdf
     - assets/pdfs/FLASHTOOL.pdf
+    - assets/pdfs/RADIATION_SHIELD_DATASHEET.pdf
+    - assets/pdfs/RAIN_GAUGE_DATASHEET.pdf
+    - assets/pdfs/ULTRASONIC_DATASHEET.pdf
     - assets/pdfs/LUX.pdf
     - assets/pdfs/HALL.pdf
     - assets/pdfs/IR.pdf
@@ -145,6 +151,7 @@ flutter:
     - assets/pdfs/realay_manual.pdf
     - assets/pdfs/DevelopmentKit_manual.pdf
     - assets/pdfs/Lux_manual.pdf
+    - assets/pdfs/Hall_manual.pdf
     - assets/pdfs/TLV493_manual.pdf
     - assets/pdfs/TOFVL53LOX_manual.pdf
     - assets/pdfs/LTR-390_manual.pdf

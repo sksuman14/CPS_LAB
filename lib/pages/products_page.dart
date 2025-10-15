@@ -156,6 +156,23 @@ class _ProductsPageState extends State<ProductsPage> {
       "title": "BLE Gateway",
       "desc": "For industrial IoT applications and connectivity.",
     },
+     {
+      "image": "assets/images/ultrasonic.png",
+      "title": "Ultrasonic Anemometer",
+      "desc":
+          "Ultrasonic Anemometer for precise wind speed and wind direction",
+    },
+     {
+      "image": "assets/images/gauge.png",
+      "title": " Rain Gauge ",
+      "desc":
+          "Tipping Bucket Rain Gauge", },
+     {
+      "image":  "assets/images/luxpressure.png",
+      "title": "Temperature Humidity Light Intensity and Pressure Sensor",
+      "desc":
+          "Compact environmental sensing unit for precise measurements",
+     },
     {
       "image": "assets/images/groove.png",
       "title": "Groove Shield",
