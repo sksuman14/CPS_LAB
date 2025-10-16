@@ -194,8 +194,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
 }
 
 
-  // ---------- SIGNUP ----------
- Future<void> signUp() async {
+Future<void> signUp() async {
   if (!validateUsername() ||
       !validateEmail() ||
       !validatePhone() ||
@@ -205,14 +204,16 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
   }
 
   setState(() => _isLoading = true);
+
   try {
     final result = await Amplify.Auth.signUp(
-      username: usernameController.text.trim(), 
+      username: usernameController.text.trim(),
       password: passwordController.text.trim(),
       options: CognitoSignUpOptions(userAttributes: {
         CognitoUserAttributeKey.email: emailController.text.trim(),
         CognitoUserAttributeKey.phoneNumber: phoneController.text.trim(),
-        CognitoUserAttributeKey.preferredUsername: usernameController.text.trim(),
+        CognitoUserAttributeKey.preferredUsername:
+            usernameController.text.trim(),
       }),
     );
 
@@ -227,20 +228,41 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
     } else {
       setState(() => showConfirmCodeField = true);
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Verification code sent to your email.")),
+        const SnackBar(
+            content: Text("Verification code sent to your email.")),
       );
     }
   } on AuthException catch (e) {
-  
-    if (e.message.contains("already exists")) {
-      setState(() => showConfirmCodeField = true);
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text(
-            "Account already exists. Please enter code or resend verification email.",
-          ),
-        ),
-      );
+    if (e.message.toLowerCase().contains("exists")) {
+      // Try signing in to check if user is confirmed
+      try {
+        final signInResult = await Amplify.Auth.signIn(
+          username: usernameController.text.trim(),
+          password: passwordController.text.trim(),
+        );
+
+        if (signInResult.isSignedIn) {
+          // Already confirmed → go directly to login
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text("Account already exists. Logging in.")),
+          );
+          widget.onLogin(usernameController.text.trim());
+        } else {
+          // User exists but not confirmed → show verification code
+          setState(() => showConfirmCodeField = true);
+        }
+      } on UserNotConfirmedException {
+        setState(() => showConfirmCodeField = true);
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+              content: Text(
+                  "Account exists but not verified. Please enter code to verify.")),
+        );
+      } on AuthException catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Error: ${e.message}")),
+        );
+      }
     } else {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text("Signup failed: ${e.message}")));
@@ -249,6 +271,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
     setState(() => _isLoading = false);
   }
 }
+
 
   // ---------- CONFIRM CODE ----------
   Future<void> confirmCode() async {
