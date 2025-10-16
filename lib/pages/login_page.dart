@@ -237,7 +237,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text(
-            "Account exists but not verified. Please enter code or resend verification email.",
+            "Account already exists. Please enter code or resend verification email.",
           ),
         ),
       );

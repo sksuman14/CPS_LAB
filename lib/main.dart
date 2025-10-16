@@ -195,11 +195,7 @@ class CpsLabState extends State<CpsLab> {
                                   });
                                 }
                               },
-                              style: TextButton.styleFrom(
-                                foregroundColor:                                                    _isDarkTheme
-                          ?Colors.green
-                          : Colors.red,
-                              ),
+                           
 
                               label: Text(
                                 loggedInEmail == "Guest" ? "Login" : "Logout",

@@ -42,13 +42,10 @@ class TopBar extends StatelessWidget {
                 onPressed: onLogout,
                 child: Text(
                   userEmail == 'Guest' ? 'Login' : 'Logout',
-                  style: TextStyle(
-                    color: userEmail == 'Guest'
-                        ? Colors.blueAccent
-                        : Colors.redAccent,
+                 
                   ),
                 ),
-              ),
+              
             ],
           ),
         ],
