@@ -149,8 +149,8 @@ class _ProductsPageState extends State<ProductsPage> {
     {
       "image": "assets/images/dataloggerrender.png",
       "title": "Data Logger",
-      "desc": "Reliable data logging & seamless connectivity.",
-    },
+      "desc":  "High-Performance LTE IoT Board with Built-in GPS & Solar Power",
+  },
     {
       "image": "assets/images/blegateway.png",
       "title": "BLE Gateway",
@@ -266,6 +266,50 @@ class _ProductsPageState extends State<ProductsPage> {
       "desc":
           "Detects infrared radiation emitted by objects, supporting motion detection, temperature measurement, and control systems",
     },
+     {
+      "image": "assets/images/ir_sensor.png",
+      "title": "InfraRed Sensor",
+      "desc":
+          "Detects infrared radiation emitted by objects, supporting motion detection, temperature measurement, and control systems",
+    },
+     {
+      "image":  "assets/images/sht40render.png",
+      "title": "Temperature and Humidity Sensor(SHT-40)",
+      "desc":
+         "High-accuracy digital humidity and temperature sensor with ultra-low power operation ",
+   },
+     {
+      "image": "assets/images/robotickitrender.png",
+      "title": "Arduino Based Robotic Kit",
+      "desc":"Versatile Arduino Nano-based kit with motor drivers, Bluetooth, and sensor interfaces",
+  },
+     {
+      "image": "assets/images/nrf52832_robotickit.png",
+      "title": "nRF52832-Based Robotic Kit ",
+      "desc": "High-performance Bluetooth 5.0 robotic kit with motor drivers, OLED display, and sensor support",
+
+},
+     {
+      "image": "assets/images/sts30_dis.png",
+      "title": "Temperature Sensor(STS30-DIS)",
+      "desc":
+         "Compact, low-power sensor with I²C/SPI interface",
+   },
+   {
+      "image": "assets/images/modview_nrf52833.png",
+      "title": "ModView nRF52833 BLE + RS485 Data Logger", 
+      "desc":"Low-power embedded board for IoT communication, data logging, telemetry applications",
+ 
+         },
+   {
+      "image": "assets/images/audio_node.png",
+      "title": "Audio Node",
+      "desc":
+         "Dual-core Bluetooth 5.x SoC with integrated DSP/Codec",
+   },
+  
+
+    
   ];
 }
 

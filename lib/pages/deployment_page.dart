@@ -254,7 +254,7 @@ class DeploymentPage extends StatelessWidget {
                                   : MediaQuery.of(context).size.height * 0.6,
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(12),
-                                // <<< START OF CHANGE
+                          
                                 child: Stack(
                                   alignment: Alignment.center,
                                   children: [
@@ -268,28 +268,10 @@ class DeploymentPage extends StatelessWidget {
                                         width: double.infinity,
                                       ),
                                     ),
-                                    Positioned(
-                                      bottom: 10,
-                                      child: Container(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 12, vertical: 6),
-                                        decoration: BoxDecoration(
-                                          color: Colors.black.withOpacity(0.6),
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                        ),
-                                        child: const Text(
-                                          "Pinch to Zoom Image",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 12,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
+                                  
                                   ],
                                 ),
-                                // <<< END OF CHANGE
+                          
                               ),
                             ),
 

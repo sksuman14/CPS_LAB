@@ -127,6 +127,12 @@ flutter:
     - assets/images/gauge.png
     - assets/images/contact_bg.png
     - assets/images/luxpressure.png
+    - assets/images/robotickitrender.png
+    - assets/images/nrf52832_robotickit.png
+    - assets/images/sts30_dis.png
+    - assets/images/modview_nrf52833.png
+    - assets/images/audio_node.png
+    - assets/images/luxpressure.png
     - assets/images/home_bg.jpg
     - assets/pdfs/ACTIVITY.pdf
     - assets/pdfs/STTS751.pdf

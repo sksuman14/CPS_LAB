@@ -14,43 +14,43 @@ import 'package:archive/archive.dart';
 
 
 final List<Map<String, dynamic>> allSensors = [
-  {
-    "title": "Data ",
-    "highlightText": "Logger",
-    "subtitle": "Reliable Data Logging & seamless Connectivity",
-    "bannerPoints": [
-      "4G Dual sim With multi protocol Support",
-      "Advance power management with solar charging",
-      "Robust Design with IP66 Rating.",
-    ],
-    "features": [
-      "4G Dual sim connectivity",
-      "25-30 Days Data Backup",
-      "Support Multi protocol communication Interfaces",
-      "Robust IP66 Enclosure for harsh weather condition",
-      "Solar and Battery Powered option for remote site.",
-    ],
-    "applications": [
-      "Remote weather monitoring stations",
-      "Smart agriculture and irrigation management",
-      "Industrial and environmental monitoring",
-      "Smart cities and IoT projects",
-      "Cold storage management",
-    ],
-    "specifications": [
-      "Input Supply voltage: 5V - 16",
-      "Communication interfaces: ADC, UART, I2C, SPI, RS232, RS485",
-      "Data Support: HTTP, HTTPS, MQTT, FTP",
-      "Flexible Power input options : USB Type C or LiIon Battery",
-      "Support SD card",
-      "Built in LTE and GPS Antennas",
-      "Inbuild Real Time clock",
-      "Ultra low power sleep mode",
-    ],
-    "imagePath": "assets/images/dataloggerrender.png",
-    "email": "krishnanpallavi63@gmail.com",
-    "datasheetKey": "DataLogger",
-  },
+ {
+  "title": "Data",
+  "highlightText": "Logger",
+  "subtitle": "High-Performance LTE IoT Board with Built-in GPS & Solar Power",
+  "bannerPoints": [
+    "Powered by Quectel EC200U LTE Cat 1 Module",
+    "Integrated LTE and GPS Antennas for Cloud Connectivity",
+    "Supports MPPT Solar Charging and Dual SIM Network Redundancy"
+  ],
+  "features": [
+    "OpenCPU architecture with Quectel EC200U LTE Cat 1 module",
+    "Built-in LTE and GPS antennas for connectivity and tracking",
+    "Dual SIM switching for reliable network redundancy",
+    "Supports QuecPython for rapid IoT application development",
+    "Multi-protocol interfaces: UART, I²C, SPI, RS232, and RS485"
+  ],
+  "applications": [
+    "Smart agriculture: real-time monitoring of soil, weather, and irrigation",
+    "Industrial automation: remote control and predictive maintenance",
+    "Environmental monitoring with onboard sensors and GPS tracking",
+    "Asset tracking using LTE and GPS for reliable data transmission",
+    "Weather stations and IoT gateways for cloud-based data logging"
+  ],
+  "specifications": [
+    "Processor Module: Quectel EC200U LTE Cat 1",
+    "Input Voltage Range: 5V – 12V DC",
+    "Operating Temperature: -30°C to +75°C",
+    "Communication Interfaces: 3× UART, 2× I²C, 1× SPI",
+    "Industrial Interfaces: RS232 and RS485",
+    "Wireless Connectivity: LTE (4G), GPS",
+    "Storage Support: microSD card slot (up to 32GB)",
+    "Power Management: MPPT solar charging via CN3791, Li-ion battery, and USB-C input"
+  ],
+  "imagePath": "assets/images/dataloggerrender.png",
+  "email": "krishnanpallavi63@gmail.com",
+  "datasheetKey": "DataLogger"
+},
   // gATEWAY
   {
     "title": "BLE",
@@ -891,7 +891,235 @@ final List<Map<String, dynamic>> allSensors = [
     "imagePath": "assets/images/ir_sensor.png",
     "email": "krishnanpallavi63@gmail.com",
     "datasheetKey": "IR",
-  },
+  },{
+  "title": "SHT-40",
+  "highlightText": "Temperature and Humidity Sensor",
+  "subtitle": "High-accuracy digital humidity and temperature sensor with ultra-low power operation ",
+  "bannerPoints": [
+    "Measures humidity (±1.8 %RH) and temperature (±0.2 °C) via I²C interface",
+    "Operates from 0–100 %RH and –40 °C to +125 °C range",
+    "Consumes only 0.4 µA average current at 1 Hz measurement rate"
+  ],
+  "features": [
+    "High-accuracy digital humidity and temperature sensing using I²C interface",
+    "Ultra-low power operation ideal for IoT and portable applications",
+    "Reliable performance in condensing and harsh environments",
+    "Integrated variable power heater for effective moisture management"
+  ],
+  "applications": [
+    "Weather monitoring and climate sensing systems",
+    "HVAC and air quality management in buildings",
+    "Smart agriculture and greenhouse control",
+    "IoT and industrial environmental monitoring devices"
+  ],
+  "specifications": [
+    "Relative Humidity Accuracy: ±1.8 %RH (typical)",
+    "Temperature Accuracy: ±0.2 °C (typical)",
+    "Supply Voltage: 3.3 V to 5 V",
+    "Average Current Consumption: 0.4 µA (1 Hz measurement rate)",
+    "Idle Current: 80 nA",
+    "Communication Interface: I²C (Fast Mode Plus, CRC checksum)",
+    "Operating Range: 0–100 %RH, –40 °C to +125 °C",
+    "Default I²C Address: 0x44"
+  ],
+  "imagePath": "assets/images/sht40render.png",
+  "email": "krishnanpallavi63@gmail.com",
+  "datasheetKey": "SHT40"
+},{
+  "title": "Arduino Based ",
+  "highlightText": "Robotic Kit",
+  "subtitle": "Versatile Arduino Nano-based kit with motor drivers, Bluetooth, and sensor interfaces",
+  "bannerPoints": [
+    "Built-in Arduino Nano (ATmega328P) with L293D motor driver",
+    "Supports multiple communication interfaces: Bluetooth, I²C, and UART",
+    "Integrated OLED display and sensor sockets for rapid prototyping"
+  ],
+  "features": [
+    "Pre-integrated Arduino Nano with L293D motor driver for DC/stepper motors",
+    "Dedicated sockets for Bluetooth, OLED, and MQ-series sensors",
+    "Onboard buzzer and protection circuitry for reliable operation",
+    "Multiple GPIO and expansion headers for sensors, servos, and add-on modules"
+  ],
+  "applications": [
+    "Bluetooth-controlled robotic cars and smart vehicles",
+    "IoT-based environmental and automation projects",
+    "Educational robotics and embedded system training",
+    "Prototyping of mobile robots, alert systems, and automation devices"
+  ],
+  "specifications": [
+    "Microcontroller: ATmega328P (Arduino Nano compatible)",
+    "Operating Voltage: 5V DC; Input: 7–12V DC (Barrel/USB-C)",
+    "Motor Driver: L293D Dual H-Bridge, 2 channels (DC/stepper), 4.5–36V, 600mA per channel",
+    "Communication Interfaces: HC-05 Bluetooth, I²C, UART, SPI (optional)",
+    "Display: 0.96″ OLED (I²C interface)",
+    "Supported Sensors: MQ-series gas, ultrasonic, potentiometer",
+    "Power Supply: 5V regulated, DC barrel jack, USB-C, onboard regulator",
+    "Protection: Reverse-polarity (SS34 diode) and overcurrent protection"
+  ],
+  "imagePath": "assets/images/robotickitrender.png",
+  "email": "krishnanpallavi63@gmail.com",
+  "datasheetKey": "ArduinoRoboticKit"
+},
+{
+  "title": "nRF52832-Based ",
+  "highlightText": "Robotic Kit",
+  "subtitle":  "High-performance Bluetooth 5.0 robotic kit with motor drivers, OLED display, and sensor support",
+ "bannerPoints": [
+    "Powered by ARM Cortex-M4F MCU (nRF52832) with Bluetooth 5.0",
+    "Integrated L293D motor driver for smooth motor control",
+    "Supports OLED display and multiple sensor interfaces"
+  ],
+  "features": [
+    "High-performance ARM Cortex-M4F processor for fast and smooth robot control",
+    "Bluetooth 5.0 connectivity for reliable real-time IoT communication",
+    "Onboard OLED interface for live data visualization and feedback",
+    "Expandable sensor support for gas, ultrasonic, and analog sensors",
+    "Modular design with USB-C power and multiple I/O & PWM expansion pins",
+    "Ideal for learning, prototyping, and smart robotics development"
+  ],
+  "applications": [
+    "Smart robotic projects such as line followers and obstacle-avoiding robots",
+    "IoT and mobile robots integrating wireless sensors and control systems",
+    "STEM learning platform for embedded systems and programming education",
+    "Sensor-based experiments for gas detection and environmental monitoring",
+    "Prototyping and innovation in smart automation systems",
+    "Educational competitions and lab-based robotics workshops"
+  ],
+  "specifications": [
+    "Microcontroller: Nordic nRF52832 (ARM Cortex-M4F, 64 MHz, 512 KB Flash, 64 KB SRAM)",
+    "Wireless Connectivity: Integrated BLE 5.0 for reliable communication",
+    "Motor Driver: L293D Dual H-Bridge, 2 DC motors or 1 stepper, 4.5–36V, 600mA/channel",
+    "Display: 0.96″ OLED (I²C interface) for live data and feedback",
+    "Sensors: MQ gas sensor header, ultrasonic interface, potentiometer calibration",
+    "Power: USB Type-C and 7–12V DC input with onboard 3.3V/5V regulators",
+    "Expansion: Multiple GPIO, PWM, and ADC pins for motors and peripherals",
+    "Extras: Onboard buzzer, reset button, and LEDs for real-time feedback"
+  ],
+  "imagePath": "assets/images/nrf52832_robotickit.png",
+  "email": "krishnanpallavi63@gmail.com",
+  "datasheetKey": "nRF52832RoboticKit"
+},
+{
+  "title": "STS30-DIS ",
+  "highlightText": "Temperature Sensor",
+  "subtitle": "Compact, low-power sensor with I²C/SPI interface",
+  "bannerPoints": [
+    "High-accuracy digital sensor for temperature and humidity",
+    "Supports I²C and SPI communication interfaces",
+    "Ideal for embedded and IoT-based monitoring applications"
+  ],
+  "features": [
+    "Fully calibrated and linearized digital output for precision measurement",
+    "High accuracy and repeatability across wide temperature range",
+    "Low power consumption suitable for battery-powered systems",
+    "Fast response time under 5 seconds for real-time monitoring",
+    "Compact DFN package ensures easy hardware integration",
+    "Simple I²C/SPI interface for effortless system connection"
+  ],
+  "applications": [
+    "Precision temperature and humidity control in industrial environments",
+    "HVAC systems for energy-efficient climate optimization",
+    "Smart agriculture, greenhouse, and soil monitoring solutions",
+    "IoT-enabled home automation and environmental sensing",
+    "Weather and data logging stations for continuous monitoring",
+    "Laboratory and research-grade environmental measurements"
+  ],
+  "specifications": [
+    "Measurement Parameters: Temperature and Humidity",
+    "Temperature Range: -40°C to +85°C (industrial grade)",
+    "Humidity Range: 0% to 100% RH (non-condensing)",
+    "Accuracy: ±0.2°C (temperature), ±2% RH (humidity)",
+    "Resolution: 0.01°C (temperature), 0.01% RH (humidity)",
+    "Response Time: <5 seconds (typical)",
+    "Output Interface: Digital (I²C / SPI)",
+    "Supply Voltage: 3.3V – 5.5V DC",
+    "Operating Temperature: -40°C to +85°C",
+    "Power Consumption: <1mA (typical, ultra-low power)"
+  ],
+  "imagePath": "assets/images/sts30_dis.png",
+  "email": "krishnanpallavi63@gmail.com",
+  "datasheetKey": "STS30DIS"
+},
+{
+  "title": "ModView nRF52833 BLE ",
+  "highlightText": "+ RS485 Data Logger",
+  "subtitle": "Low-power embedded board for IoT communication, data logging, telemetry applications",
+  "bannerPoints": [
+    "Features Nordic nRF52833 SoC with BLE 5.1 and RS485/422 communication",
+    "Supports SD card storage, USB-C, and Li-ion battery management",
+    "Compact design ideal for IoT, telemetry, and solar-powered systems"
+  ],
+  "features": [
+    "High-performance Nordic nRF52833-QDAA MCU with BLE 5.1 and 2.4 GHz protocols",
+    "RS485/422 connectivity via MAX13487EESA with automatic direction control",
+    "Li-ion and solar power management with CN3791 MPPT charger support",
+    "Flexible power input options: USB-C, VIN (2–16 V), or battery",
+    "Expandable storage with microSD and W25Q16 SPI Flash for data logging",
+    "Robust protection with ESD, TVS diodes, and reverse-polarity safeguards"
+  ],
+  "applications": [
+    "Industrial RS485 Modbus communication with BLE monitoring",
+    "Solar-powered IoT data logging and environmental monitoring",
+    "Remote telemetry and condition monitoring systems",
+    "Battery-operated BLE sensors or gateways",
+    "Wireless configuration of RS485-based devices",
+    "Energy and environmental monitoring platforms"
+  ],
+  "specifications": [
+    "Microcontroller: nRF52833-QDAA (ARM Cortex-M4F, 64 MHz, 512 KB Flash, 128 KB RAM)",
+    "Wireless Connectivity: BLE 5.1 and 2.4 GHz proprietary protocols",
+    "Communication Interfaces: RS485 (MAX13487EESA), UART, SPI, I²C, GPIO",
+    "Memory: 16 Mbit W25Q16 SPI Flash and optional microSD card (SPI)",
+    "Battery Charging: CN3791, 4 A Li-ion charger with MPPT",
+    "Voltage Regulation: TPS63070 (Buck-Boost), TLV75533 LDO 3.3V, 500 mA",
+    "Indicators: Power, BLE status (green), fault/error (red)",
+    "Connectors: UFL antenna, SD card, USB-C, RS485 screw terminal, JST headers",
+    "Protection: ESD, TVS diodes, reverse polarity via MOSFET",
+    "Operating Temperature: -40°C to +85°C"
+  ],
+  "imagePath": "assets/images/modview_nrf52833.png",
+  "email": "krishnanpallavi63@gmail.com",
+  "datasheetKey": "MODVIEWNRF52833"
+},
+{
+  "title": "Audio ",
+  "highlightText": "Node",
+  "subtitle": "Dual-core Bluetooth 5.x SoC with integrated DSP/Codec",
+  "bannerPoints": [
+    "Nordic nRF5340 dual-core SoC with BLE 5.x and advanced audio DSP",
+    "Supports local media playback via microSD and multiple audio outputs",
+    "Ideal for prototyping wireless, voice-controlled, and portable audio devices"
+  ],
+  "features": [
+    "Dual-core ARM Cortex-M33 processor for application and BLE tasks",
+    "Low-power Cirrus Logic CS47L63 DSP/Codec with headphone and speaker output",
+    "Wireless connectivity with BLE, IEEE 802.15.4, ANT, and 2.4 GHz protocols",
+    "Audio output includes 5W Class-D amplifier, 3.5mm stereo jack, and MEMS mic input",
+    "Flexible power via USB-C or Li-ion/Li-Polymer battery with integrated charging",
+    "Expansion support through SWD, GPIO, and I²C headers for peripheral integration"
+  ],
+  "applications": [
+    "Portable Bluetooth speakers for high-quality wireless streaming",
+    "Standalone music players with microSD-based audio playback",
+    "Voice-controlled smart devices and assistants with onboard DSP",
+    "Wireless intercoms or two-way audio communication systems",
+    "Assistive listening and educational audio devices",
+    "Public address or field recording systems using microSD storage"
+  ],
+  "specifications": [
+    "Processor: Nordic nRF5340 ARM Cortex-M33 dual-core SoC with BLE 5.x, IEEE 802.15.4, ANT",
+    "Audio Codec: Cirrus Logic CS47L63 DSP/Codec with MEMS microphone",
+    "Audio Output: 5W Class-D amplifier, 3.5mm headphone jack, microSD playback",
+    "Power Options: USB-C or 3.7V Li-ion battery with PM1300 PMIC and XCL210 converters",
+    "User Interface: PLAY/PAUSE, VOL+, VOL–, RESET buttons; RGB status LEDs",
+    "Expansion: SWD/debug, GPIO, I²C headers for peripheral connection",
+    "Wireless Interface: UFL connector for external high-gain antenna",
+    "Protection: Onboard power and signal protection for stable operation"
+  ],
+  "imagePath": "assets/images/audio_node.png",
+  "email": "krishnanpallavi63@gmail.com",
+  "datasheetKey": "AUDIONODE"
+},
 ];
 
 class SimpleListItem extends StatelessWidget {
