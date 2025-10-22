@@ -289,6 +289,9 @@ final List<Map<String, dynamic>> allSensors = [
     "datasheetKey": "LIS3DH",
     "nreCodeLink":
         "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/LIS3DH_Sensor/lis3dhSensor",
+    "quecCodeLink":
+        "https://github.com/sksuman14/QuecPython_All_Sensors_Codes/tree/main/LIS3DH_Sensor",
+  
   },
   {
     "title": "W25Q16 / W25Q32",
@@ -736,6 +739,8 @@ final List<Map<String, dynamic>> allSensors = [
     "datasheetKey": "TLV",
     "nreCodeLink":
         "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/Tlv493d_Magnetometer",
+ "quecCodeLink":
+        "https://github.com/sksuman14/QuecPython_All_Sensors_Codes/tree/main/Tlv493d_Magnetometer",
   },
   {
     "title": "TOF VL53L0X",
@@ -773,6 +778,9 @@ final List<Map<String, dynamic>> allSensors = [
     "datasheetKey": "VL",
     "nreCodeLink":
         "https://github.com/sksuman14/nRF_All_Sensors_Codes/blob/main/TOFVl53l0x_Sensor",
+         "quecCodeLink":
+        "https://github.com/sksuman14/QuecPython_All_Sensors_Codes/tree/main/TOFVl53l0x_Sensor",
+  
   },
   {
     "title": "UV LTR-390 ",
@@ -811,6 +819,10 @@ final List<Map<String, dynamic>> allSensors = [
     "datasheetKey": "UVLTR",
     "nreCodeLink":
         "https://github.com/sksuman14/nRF_All_Sensors_Codes/blob/main/UVLtr390_Sensor",
+            "quecCodeLink":
+        "https://github.com/sksuman14/QuecPython_All_Sensors_Codes/tree/main/UVLtr390_Sensor",
+  
+  
   },
   {
     "title": "Linear Magnetic Hall",
@@ -922,6 +934,12 @@ final List<Map<String, dynamic>> allSensors = [
     "Operating Range: 0–100 %RH, –40 °C to +125 °C",
     "Default I²C Address: 0x44"
   ],
+    "nreCodeLink":
+        "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/All_Temperature_Sensors/SHT40",
+            "quecCodeLink":
+        "https://github.com/sksuman14/QuecPython_All_Sensors_Codes/tree/main/SHT40",
+  
+  
   "imagePath": "assets/images/sht40render.png",
   "email": "krishnanpallavi63@gmail.com",
   "datasheetKey": "SHT40"
@@ -1036,6 +1054,12 @@ final List<Map<String, dynamic>> allSensors = [
     "Operating Temperature: -40°C to +85°C",
     "Power Consumption: <1mA (typical, ultra-low power)"
   ],
+   "nreCodeLink":
+        "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/All_Temperature_Sensors/STS30",
+            "quecCodeLink":
+        "https://github.com/sksuman14/QuecPython_All_Sensors_Codes/tree/main/STS30_Temperature_Sensor/STS30",
+  
+  
   "imagePath": "assets/images/sts30_dis.png",
   "email": "krishnanpallavi63@gmail.com",
   "datasheetKey": "STS30DIS"

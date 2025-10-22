@@ -266,12 +266,7 @@ class _ProductsPageState extends State<ProductsPage> {
       "desc":
           "Detects infrared radiation emitted by objects, supporting motion detection, temperature measurement, and control systems",
     },
-     {
-      "image": "assets/images/ir_sensor.png",
-      "title": "InfraRed Sensor",
-      "desc":
-          "Detects infrared radiation emitted by objects, supporting motion detection, temperature measurement, and control systems",
-    },
+    
      {
       "image":  "assets/images/sht40render.png",
       "title": "Temperature and Humidity Sensor(SHT-40)",
