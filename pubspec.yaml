@@ -141,6 +141,12 @@ flutter:
     - assets/pdfs/W25QXX.pdf
     - assets/pdfs/BUZZER.pdf
     - assets/pdfs/RELAY.pdf
+    - assets/pdfs/Sht40.pdf
+    - assets/pdfs/ARDUINO.pdf
+    - assets/pdfs/nRFrobotic.pdf
+    - assets/pdfs/STS30.pdf
+    - assets/pdfs/modview.pdf
+    - assets/pdfs/AUDIO.pdf
     - assets/pdfs/BLEKIT.pdf
     - assets/pdfs/BLENODE.pdf
     - assets/pdfs/FLASHTOOL.pdf

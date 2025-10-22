@@ -82,27 +82,24 @@ class DownloadManager {
       "manual": "",
     },
       "SHT40": {
-      "datasheet": "assets/pdfs/BLE_GATEWAY_Datasheet.pdf",
+      "datasheet": "assets/pdfs/Sht40.pdf",
       "manual": "",
     },"ArduinoRoboticKit" : {
-      "datasheet": "assets/pdfs/BLE_GATEWAY_Datasheet.pdf",
+      "datasheet": "assets/pdfs/ARDUINO.pdf",
       "manual": "",
     }, "nRF52832RoboticKit": {
-      "datasheet": "assets/pdfs/BLE_GATEWAY_Datasheet.pdf",
+      "datasheet": "assets/pdfs/nRFrobotic.pdf",
       "manual": "",
     }, "STS30DIS": {
-      "datasheet": "assets/pdfs/BLE_GATEWAY_Datasheet.pdf",
+      "datasheet": "assets/pdfs/STS30.pdf",
       "manual": "",
     },  "MODVIEWNRF52833": {
-      "datasheet": "assets/pdfs/BLE_GATEWAY_Datasheet.pdf",
+      "datasheet": "assets/pdfs/modview.pdf",
       "manual": "",
     }, "AUDIONODE":{
-      "datasheet": "assets/pdfs/BLE_GATEWAY_Datasheet.pdf",
+      "datasheet": "assets/pdfs/AUDIO.pdf",
       "manual": "",
-    }, "ArduinoRoboticKit": {
-      "datasheet": "assets/pdfs/BLE_GATEWAY_Datasheet.pdf",
-      "manual": "",
-    },
+    }, 
   };
 
   static Future<void> downloadFile({
