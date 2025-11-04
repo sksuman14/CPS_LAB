@@ -1,6 +1,9 @@
+import 'dart:ui';
+
 import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 
 class LoginPage extends StatefulWidget {
   final Function(String?) onLogin;
@@ -11,90 +14,109 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
+  // ────────────────────── STATE ──────────────────────
   bool isLogin = true;
   bool _isPasswordObscured = true;
   bool _isConfirmPasswordObscured = true;
   bool _isLoading = false;
   bool _isDarkMode = false;
   bool showConfirmCodeField = false;
-  bool showResetPasswordField = false;
 
-  late AnimationController _formController;
-  late AnimationController _pageLoadController;
-  late Animation<double> _pageFadeAnimation;
-  late Animation<Offset> _pageSlideAnimation;
+  late final AnimationController _formCtrl;
+  late final AnimationController _pageCtrl;
+  late final AnimationController _pulseCtrl;
+  late final AnimationController _neonCtrl;
+  late final Animation<double> _pageFade;
+  late final Animation<Offset> _pageSlide;
 
-  final usernameController = TextEditingController();
-  final emailController = TextEditingController();
-  final phoneController = TextEditingController();
-  final passwordController = TextEditingController();
-  final confirmPasswordController = TextEditingController();
-  final confirmCodeController = TextEditingController();
-  final newPasswordController = TextEditingController();
+  // Controllers
+  final usernameCtrl = TextEditingController();
+  final emailCtrl = TextEditingController();
+  final phoneCtrl = TextEditingController();
+  final passwordCtrl = TextEditingController();
+  final confirmPasswordCtrl = TextEditingController();
+  final confirmCodeCtrl = TextEditingController();
 
-  String? usernameError;
-  String? emailError;
-  String? phoneError;
-  String? passwordError;
-  String? confirmPasswordError;
+  // Errors
+  String? usernameError,
+      emailError,
+      phoneError,
+      passwordError,
+      confirmPasswordError;
 
+  // ────────────────────── INIT / DISPOSE ──────────────────────
   @override
   void initState() {
     super.initState();
-    _formController =
-        AnimationController(vsync: this, duration: const Duration(milliseconds: 400));
-    _pageLoadController =
-        AnimationController(vsync: this, duration: const Duration(milliseconds: 800));
 
-    _pageFadeAnimation = Tween<double>(begin: 0.0, end: 1.0)
-        .animate(CurvedAnimation(parent: _pageLoadController, curve: Curves.easeOut));
-    _pageSlideAnimation = Tween<Offset>(begin: const Offset(0, 0.5), end: Offset.zero)
-        .animate(CurvedAnimation(parent: _pageLoadController, curve: Curves.easeOutCubic));
+    _formCtrl = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 400),
+    );
+    _pageCtrl = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 800),
+    );
+    _pulseCtrl = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1200),
+    )..repeat(reverse: true);
+    _neonCtrl = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 2000),
+    )..repeat(reverse: true);
 
-    _pageLoadController.forward();
+    _pageFade = Tween<double>(
+      begin: 0,
+      end: 1,
+    ).animate(CurvedAnimation(parent: _pageCtrl, curve: Curves.easeOut));
+    _pageSlide = Tween<Offset>(
+      begin: const Offset(0, 0.4),
+      end: Offset.zero,
+    ).animate(CurvedAnimation(parent: _pageCtrl, curve: Curves.easeOutCubic));
+
+    _pageCtrl.forward();
   }
 
   @override
   void dispose() {
-    _formController.dispose();
-    _pageLoadController.dispose();
-    usernameController.dispose();
-    emailController.dispose();
-    phoneController.dispose();
-    passwordController.dispose();
-    confirmPasswordController.dispose();
-    confirmCodeController.dispose();
-    newPasswordController.dispose();
+    _formCtrl.dispose();
+    _pageCtrl.dispose();
+    _pulseCtrl.dispose();
+    _neonCtrl.dispose();
+    usernameCtrl.dispose();
+    emailCtrl.dispose();
+    phoneCtrl.dispose();
+    passwordCtrl.dispose();
+    confirmPasswordCtrl.dispose();
+    confirmCodeCtrl.dispose();
     super.dispose();
   }
 
+  // ────────────────────── TOGGLE ──────────────────────
   void toggleMode() {
     setState(() {
       isLogin = !isLogin;
       showConfirmCodeField = false;
-      showResetPasswordField = false;
-      usernameError = null;
-      emailError = null;
-      phoneError = null;
-      passwordError = null;
-      confirmPasswordError = null;
-      if (isLogin) {
-        _formController.reverse();
-      } else {
-        _formController.forward();
-      }
+      _clearErrors();
+      isLogin ? _formCtrl.reverse() : _formCtrl.forward();
     });
   }
 
-  // ---------- VALIDATION ----------
+  void _clearErrors() {
+    usernameError = emailError = phoneError = passwordError =
+        confirmPasswordError = null;
+  }
+
+  // ────────────────────── VALIDATION ──────────────────────
   bool validateUsername() {
-    final username = usernameController.text.trim();
-    if (username.isEmpty) {
+    final v = usernameCtrl.text.trim();
+    if (v.isEmpty) {
       usernameError = "Username cannot be empty";
       return false;
     }
-    if (username.contains('@')) {
-      usernameError = "Username cannot be an email format";
+    if (v.contains('@')) {
+      usernameError = "Username cannot be an email";
       return false;
     }
     usernameError = null;
@@ -102,13 +124,12 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
   }
 
   bool validateEmail() {
-    final email = emailController.text.trim();
-    if (email.isEmpty) {
+    final v = emailCtrl.text.trim();
+    if (v.isEmpty) {
       emailError = "Email cannot be empty";
       return false;
     }
-    final regex = RegExp(r"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
-    if (!regex.hasMatch(email)) {
+    if (!RegExp(r"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$").hasMatch(v)) {
       emailError = "Invalid email format";
       return false;
     }
@@ -117,14 +138,13 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
   }
 
   bool validatePhone() {
-    final phone = phoneController.text.trim();
-    if (phone.isEmpty) {
-      phoneError = "Phone number cannot be empty";
+    final v = phoneCtrl.text.trim();
+    if (v.isEmpty) {
+      phoneError = "Phone cannot be empty";
       return false;
     }
-    final regex = RegExp(r'^\+?[0-9]{10,15}$');
-    if (!regex.hasMatch(phone)) {
-      phoneError = "Enter valid phone number (e.g. +919876543210)";
+    if (!RegExp(r'^\+?[0-9]{10,15}$').hasMatch(v)) {
+      phoneError = "Valid phone (e.g. +919876543210)";
       return false;
     }
     phoneError = null;
@@ -132,524 +152,243 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
   }
 
   bool validatePassword({bool checkConfirm = false}) {
-    final password = passwordController.text.trim();
-    if (password.isEmpty) {
+    final p = passwordCtrl.text.trim();
+    if (p.isEmpty) {
       passwordError = "Password cannot be empty";
       return false;
     }
-    final regex =
-        RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#\$&*~]).{8,}$');
-    if (!regex.hasMatch(password)) {
-      passwordError =
-          "Password must be 8+ chars, include uppercase, lowercase, number & special char";
+    if (!RegExp(
+      r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#\$&*~]).{8,}$',
+    ).hasMatch(p)) {
+      passwordError = "8+ chars, upper, lower, number & special char";
       return false;
     }
     passwordError = null;
-    if (checkConfirm && password != confirmPasswordController.text.trim()) {
+    if (checkConfirm && p != confirmPasswordCtrl.text.trim()) {
       confirmPasswordError = "Passwords do not match";
       return false;
     }
-
     confirmPasswordError = null;
     return true;
   }
-// ........................LOGIN..................
- Future<void> login() async {
-  if (!validateUsername() || !validatePassword()) {
-    setState(() {});
-    return;
-  }
 
-  setState(() => _isLoading = true);
-  try {
-   final result = await Amplify.Auth.signIn(
-  username: usernameController.text.trim(),
-  password: passwordController.text.trim(),
-);
-
-
-    if (result.isSignedIn) {
-      widget.onLogin(usernameController.text.trim());
-      ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text("Login successful!")));
-    } else {
-      setState(() => showConfirmCodeField = true);
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Please verify your account first.")),
-      );
+  // ────────────────────── AUTH LOGIC ──────────────────────
+  Future<void> login() async {
+    if (!validateUsername() || !validatePassword()) {
+      setState(() {});
+      return;
     }
-  } on AuthException catch (e) {
-    if (e.message.contains('not confirmed')) {
-      setState(() => showConfirmCodeField = true);
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("User not verified. Please enter code to verify.")),
+    setState(() => _isLoading = true);
+    try {
+      final res = await Amplify.Auth.signIn(
+        username: usernameCtrl.text.trim(),
+        password: passwordCtrl.text.trim(),
       );
-    } else {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text("Login failed: ${e.message}")));
-    }
-  } finally {
-    setState(() => _isLoading = false);
-  }
-}
-
-
-Future<void> signUp() async {
-  if (!validateUsername() ||
-      !validateEmail() ||
-      !validatePhone() ||
-      !validatePassword(checkConfirm: true)) {
-    setState(() {});
-    return;
-  }
-
-  setState(() => _isLoading = true);
-
-  try {
-    final result = await Amplify.Auth.signUp(
-      username: usernameController.text.trim(),
-      password: passwordController.text.trim(),
-      options: CognitoSignUpOptions(userAttributes: {
-        CognitoUserAttributeKey.email: emailController.text.trim(),
-        CognitoUserAttributeKey.phoneNumber: phoneController.text.trim(),
-        CognitoUserAttributeKey.preferredUsername:
-            usernameController.text.trim(),
-      }),
-    );
-
-    if (result.isSignUpComplete) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Signup successful! Please login.")),
-      );
-      setState(() {
-        isLogin = true;
-        showConfirmCodeField = false;
-      });
-    } else {
-      setState(() => showConfirmCodeField = true);
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-            content: Text("Verification code sent to your email.")),
-      );
-    }
-  } on AuthException catch (e) {
-    if (e.message.toLowerCase().contains("exists")) {
-      // Try signing in to check if user is confirmed
-      try {
-        final signInResult = await Amplify.Auth.signIn(
-          username: usernameController.text.trim(),
-          password: passwordController.text.trim(),
-        );
-
-        if (signInResult.isSignedIn) {
-          // Already confirmed → go directly to login
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text("Account already exists. Logging in.")),
-          );
-          widget.onLogin(usernameController.text.trim());
-        } else {
-          // User exists but not confirmed → show verification code
-          setState(() => showConfirmCodeField = true);
-        }
-      } on UserNotConfirmedException {
+      if (res.isSignedIn) {
+        widget.onLogin(usernameCtrl.text.trim());
+        _showSnack("Login successful!");
+      } else {
         setState(() => showConfirmCodeField = true);
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-              content: Text(
-                  "Account exists but not verified. Please enter code to verify.")),
-        );
-      } on AuthException catch (e) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Error: ${e.message}")),
-        );
+        _showSnack("Verify your account first.");
       }
-    } else {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text("Signup failed: ${e.message}")));
+    } on AuthException catch (e) {
+      if (e.message.contains('not confirmed')) {
+        setState(() => showConfirmCodeField = true);
+        _showSnack("Enter verification code.");
+      } else {
+        _showSnack("Login failed: ${e.message}");
+      }
+    } finally {
+      setState(() => _isLoading = false);
     }
-  } finally {
-    setState(() => _isLoading = false);
   }
-}
 
-
-  // ---------- CONFIRM CODE ----------
-  Future<void> confirmCode() async {
-  setState(() => _isLoading = true);
-  try {
-    final res = await Amplify.Auth.confirmSignUp(
-      username: usernameController.text.trim(),
-      confirmationCode: confirmCodeController.text.trim(),
-    );
-
-    if (res.isSignUpComplete) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Verification successful! Please login.")),
+  Future<void> signUp() async {
+    if (!validateUsername() ||
+        !validateEmail() ||
+        !validatePhone() ||
+        !validatePassword(checkConfirm: true)) {
+      setState(() {});
+      return;
+    }
+    setState(() => _isLoading = true);
+    try {
+      final res = await Amplify.Auth.signUp(
+        username: usernameCtrl.text.trim(),
+        password: passwordCtrl.text.trim(),
+        options: CognitoSignUpOptions(
+          userAttributes: {
+            CognitoUserAttributeKey.email: emailCtrl.text.trim(),
+            CognitoUserAttributeKey.phoneNumber: phoneCtrl.text.trim(),
+            CognitoUserAttributeKey.preferredUsername: usernameCtrl.text.trim(),
+          },
+        ),
       );
 
-      setState(() {
-        showConfirmCodeField = false;
-        isLogin = true; 
-      });
+      if (res.isSignUpComplete) {
+        _showSnack("Signup successful! Please login.");
+        setState(() {
+          isLogin = true;
+          showConfirmCodeField = false;
+        });
+      } else {
+        setState(() => showConfirmCodeField = true);
+        _showSnack("Verification code sent.");
+      }
+    } on AuthException catch (e) {
+      if (e.message.toLowerCase().contains("exists")) {
+        try {
+          final si = await Amplify.Auth.signIn(
+            username: usernameCtrl.text.trim(),
+            password: passwordCtrl.text.trim(),
+          );
+          if (si.isSignedIn) {
+            widget.onLogin(usernameCtrl.text.trim());
+            _showSnack("Account exists – logging in.");
+          } else {
+            setState(() => showConfirmCodeField = true);
+          }
+        } on UserNotConfirmedException {
+          setState(() => showConfirmCodeField = true);
+          _showSnack("Account not verified – enter code.");
+        }
+      } else {
+        _showSnack("Signup failed: ${e.message}");
+      }
+    } finally {
+      setState(() => _isLoading = false);
     }
-  } on AuthException catch (e) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text("Verification failed: ${e.message}")),
-    );
-  } finally {
-    setState(() => _isLoading = false);
   }
-}
+
+  Future<void> confirmCode() async {
+    setState(() => _isLoading = true);
+    try {
+      final res = await Amplify.Auth.confirmSignUp(
+        username: usernameCtrl.text.trim(),
+        confirmationCode: confirmCodeCtrl.text.trim(),
+      );
+      if (res.isSignUpComplete) {
+        _showSnack("Verification successful! Login now.");
+        setState(() {
+          showConfirmCodeField = false;
+          isLogin = true;
+        });
+      }
+    } on AuthException catch (e) {
+      _showSnack("Verification failed: ${e.message}");
+    } finally {
+      setState(() => _isLoading = false);
+    }
+  }
 
   Future<void> resendCode() async {
     try {
-      await Amplify.Auth.resendSignUpCode(username: usernameController.text.trim());
-      ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("Verification code resent successfully.")));
+      await Amplify.Auth.resendSignUpCode(username: usernameCtrl.text.trim());
+      _showSnack("Code resent.");
     } on AuthException catch (e) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text("Resend failed: ${e.message}")));
+      _showSnack("Resend failed: ${e.message}");
     }
   }
 
-  // ---------- FORGOT PASSWORD ----------
-    Future<void> showForgotPasswordDialog() async {
+  void _showSnack(String msg) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg)));
+  }
+
+  // ────────────────────── FORGOT PASSWORD DIALOG ──────────────────────
+  Future<void> showForgotPasswordDialog() async {
     final emailCtrl = TextEditingController();
     final codeCtrl = TextEditingController();
     final newPassCtrl = TextEditingController();
 
     bool codeSent = false;
-    bool isLoading = false;
-
-    final rootContext = context;
+    bool loading = false;
 
     await showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (ctx) {
-        return StatefulBuilder(
-          builder: (context, setState) {
-            return AlertDialog(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-              ),
-              title: Text(
-                codeSent ? "Reset Your Password" : "Forgot Password",
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
-              content: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  TextField(
-                    controller: emailCtrl,
-                    readOnly: codeSent,
-                    decoration: const InputDecoration(
-                      labelText: "Registered Email",
-                      prefixIcon: Icon(Icons.email_outlined),
-                    ),
-                  ),
-                  if (codeSent) ...[
-                    const SizedBox(height: 10),
-                    TextField(
-                      controller: codeCtrl,
-                      decoration: const InputDecoration(
-                        labelText: "Verification Code",
-                        prefixIcon: Icon(Icons.verified_outlined),
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    TextField(
-                      controller: newPassCtrl,
-                      obscureText: true,
-                      decoration: const InputDecoration(
-                        labelText: "New Password",
-                        prefixIcon: Icon(Icons.lock_reset_outlined),
-                      ),
-                    ),
-                  ],
-                ],
-              ),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(context),
-                  child: const Text("Cancel"),
+      builder: (_) => StatefulBuilder(
+        builder: (ctx, setState) => AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          title: Text(
+            codeSent ? "Reset Password" : "Forgot Password",
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                controller: emailCtrl,
+                readOnly: codeSent,
+                decoration: const InputDecoration(
+                  labelText: "Registered Email",
+                  prefixIcon: Icon(Icons.email_outlined),
                 ),
-                ElevatedButton(
-                  onPressed: isLoading
-                      ? null
-                      : () async {
-                          setState(() => isLoading = true);
-                          try {
-                            if (!codeSent) {
-                              await Amplify.Auth.resetPassword(
-                                username: emailCtrl.text.trim(),
-                              );
-                              setState(() => codeSent = true);
-
-                              ScaffoldMessenger.of(
-                                rootContext,
-                              ).hideCurrentSnackBar();
-
-                              ScaffoldMessenger.of(rootContext).showSnackBar(
-                                const SnackBar(
-                                  content: Text(
-                                    "Reset code sent to your email.",
-                                  ),
-                                ),
-                              );
-                            } else {
-                              await Amplify.Auth.confirmResetPassword(
-                                username: emailCtrl.text.trim(),
-                                newPassword: newPassCtrl.text.trim(),
-                                confirmationCode: codeCtrl.text.trim(),
-                              );
-
-                              Navigator.pop(context);
-
-                              ScaffoldMessenger.of(
-                                rootContext,
-                              ).hideCurrentSnackBar();
-
-                              ScaffoldMessenger.of(rootContext).showSnackBar(
-                                const SnackBar(
-                                  content: Text(
-                                    "Password reset successful! Please login again.",
-                                  ),
-                                ),
-                              );
-                            }
-                          } on AuthException catch (e) {
-                            String errorMsg;
-
-                            if (e.recoverySuggestion != null &&
-                                e.recoverySuggestion!.toLowerCase().contains(
-                                  'code',
-                                )) {
-                              errorMsg =
-                                  "Wrong verification code. Please check your email.";
-                            } else if (e.recoverySuggestion != null &&
-                                e.recoverySuggestion!.toLowerCase().contains(
-                                  'expired',
-                                )) {
-                              errorMsg =
-                                  "Your code has expired. Please request a new one.";
-                            } else if (e.message.toLowerCase().contains(
-                              'password',
-                            )) {
-                              errorMsg =
-                                  "Password doesn’t meet security rules.";
-                            } else {
-                              errorMsg = e.message;
-                            }
-
-                            // hide previous snackbar if any
-                            ScaffoldMessenger.of(
-                              rootContext,
-                            ).hideCurrentSnackBar();
-
-                            ScaffoldMessenger.of(
-                              rootContext,
-                            ).showSnackBar(SnackBar(content: Text(errorMsg)));
-                          } finally {
-                            setState(() => isLoading = false);
-                          }
-                        },
-
-                  child: isLoading
-                      ? const SizedBox(
-                          height: 20,
-                          width: 20,
-                          child: CircularProgressIndicator(
-                            strokeWidth: 2,
-                            color: Colors.white,
-                          ),
-                        )
-                      : Text(codeSent ? "Reset Password" : "Send Code"),
+              ),
+              if (codeSent) ...[
+                const SizedBox(height: 12),
+                TextField(
+                  controller: codeCtrl,
+                  decoration: const InputDecoration(
+                    labelText: "Verification Code",
+                    prefixIcon: Icon(Icons.verified_outlined),
+                  ),
+                ),
+                const SizedBox(height: 12),
+                TextField(
+                  controller: newPassCtrl,
+                  obscureText: true,
+                  decoration: const InputDecoration(
+                    labelText: "New Password",
+                    prefixIcon: Icon(Icons.lock_reset_outlined),
+                  ),
                 ),
               ],
-            );
-          },
-        );
-      },
-    );
-  }
-  void continueAsGuest() => widget.onLogin("Guest");
-
-  // ---------- UI ----------
-  @override
-  Widget build(BuildContext context) {
-    final theme = _isDarkMode
-        ? ThemeData.from(
-            colorScheme:
-                ColorScheme.fromSeed(seedColor: Colors.deepPurple, brightness: Brightness.dark))
-        : ThemeData.from(
-            colorScheme:
-                ColorScheme.fromSeed(seedColor: Colors.blue, brightness: Brightness.light));
-    final colorScheme = theme.colorScheme;
-
-    return AnimatedTheme(
-      data: theme,
-      duration: const Duration(milliseconds: 400),
-      child: Scaffold(
-        backgroundColor: theme.scaffoldBackgroundColor,
-        body: Stack(
-          children: [
-            Center(
-              child: FadeTransition(
-                opacity: _pageFadeAnimation,
-                child: SlideTransition(
-                  position: _pageSlideAnimation,
-                  child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 500),
-                    width: 350,
-                    padding: const EdgeInsets.all(24),
-                    decoration: BoxDecoration(
-                      color: theme.cardColor,
-                      borderRadius: BorderRadius.circular(25),
-                      boxShadow: [
-                        BoxShadow(
-                          color: _isDarkMode
-                              ? Colors.black.withOpacity(0.5)
-                              : Colors.grey.withOpacity(0.2),
-                          blurRadius: 20,
-                          spreadRadius: 5,
-                        ),
-                      ],
-                    ),
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          Text(isLogin ? "Welcome Back!" : "Create Your Account",
-                              style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                  color: colorScheme.primary)),
-                          const SizedBox(height: 25),
-                         
-                            _buildTextField(
-                                controller: usernameController,
-                                labelText: "Username",
-                                icon: Icons.person_outline,
-                                errorText: usernameError),
-                          const SizedBox(height: 15),
-                           if (!isLogin)
-                          _buildTextField(
-                              controller: emailController,
-                              labelText: "Email",
-                              icon: Icons.email_outlined,
-                              errorText: emailError),
-                          const SizedBox(height: 15),
-                          if (!isLogin)
-                            _buildTextField(
-                                controller: phoneController,
-                                labelText: "Phone (+91...)",
-                                icon: Icons.phone_android,
-                                errorText: phoneError),
-                          const SizedBox(height: 15),
-                          _buildTextField(
-                              controller: passwordController,
-                              labelText: "Password",
-                              icon: Icons.lock_outline,
-                              obscureText: _isPasswordObscured,
-                              isPassword: true,
-                              onVisibilityToggle: () {
-                                setState(() =>
-                                    _isPasswordObscured = !_isPasswordObscured);
-                              },
-                              errorText: passwordError),
-                          if (!isLogin)
-                            SizeTransition(
-                              sizeFactor: _formController,
-                              axisAlignment: -1.0,
-                              child: FadeTransition(
-                                opacity: _formController,
-                                child: Column(children: [
-                                  const SizedBox(height: 15),
-                                  _buildTextField(
-                                      controller: confirmPasswordController,
-                                      labelText: "Confirm Password",
-                                      icon: Icons.lock_person_outlined,
-                                      obscureText: _isConfirmPasswordObscured,
-                                      isPassword: true,
-                                      onVisibilityToggle: () {
-                                        setState(() => _isConfirmPasswordObscured =
-                                            !_isConfirmPasswordObscured);
-                                      },
-                                      errorText: confirmPasswordError),
-                                ]),
-                              ),
-                            ),
-                          if (showConfirmCodeField) ...[
-                            const SizedBox(height: 15),
-                            _buildTextField(
-                                controller: confirmCodeController,
-                                labelText: "Enter Verification Code",
-                                icon: Icons.verified_outlined),
-                            const SizedBox(height: 10),
-                            ElevatedButton(
-                                onPressed: _isLoading ? null : confirmCode,
-                                child: const Text("Verify Account")),
-                            TextButton(
-                                onPressed: resendCode,
-                                child: const Text("Resend Code")),
-                          ],
-                          const SizedBox(height: 20),
-                          if (isLogin && !showConfirmCodeField)
-                            TextButton(
-                                onPressed: showForgotPasswordDialog,
-                                child: const Text("Forgot Password?")),
-                          const SizedBox(height: 20),
-                          ElevatedButton(
-                            onPressed: _isLoading ? null : (isLogin ? login : signUp),
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: colorScheme.primary,
-                                foregroundColor: colorScheme.onPrimary,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15)),
-                                minimumSize: const Size(double.infinity, 50)),
-                            child: _isLoading
-                                ? const SizedBox(
-                                    height: 24,
-                                    width: 24,
-                                    child: CircularProgressIndicator(
-                                        color: Colors.white, strokeWidth: 2.5))
-                                : Text(isLogin ? "Login" : "Sign Up",
-                                    style: const TextStyle(
-                                        fontSize: 16, fontWeight: FontWeight.bold)),
-                          ),
-                          TextButton(
-                              onPressed: toggleMode,
-                              child: Text(
-                                  isLogin
-                                      ? "Don't have an account? Sign Up"
-                                      : "Already have an account? Log In",
-                                  style: TextStyle(color: colorScheme.primary))),
-                          TextButton(
-                              onPressed: continueAsGuest,
-                              child: Text("Continue as Guest",
-                                  style: TextStyle(
-                                      color: theme.textTheme.bodySmall?.color))),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(ctx),
+              child: const Text("Cancel"),
             ),
-            Positioned(
-              top: 30,
-              right: 20,
-              child: IconButton(
-                  icon: Icon(
-                      _isDarkMode
-                          ? Icons.wb_sunny_rounded
-                          : Icons.nights_stay_rounded,
-                      color: _isDarkMode
-                          ? Colors.amberAccent
-                          : Colors.deepPurpleAccent,
-                      size: 28),
-                  onPressed: () =>
-                      setState(() => _isDarkMode = !_isDarkMode)),
+            ElevatedButton(
+              onPressed: loading
+                  ? null
+                  : () async {
+                      setState(() => loading = true);
+                      try {
+                        if (!codeSent) {
+                          await Amplify.Auth.resetPassword(
+                            username: emailCtrl.text.trim(),
+                          );
+                          setState(() => codeSent = true);
+                          _showSnack("Code sent to email.");
+                        } else {
+                          await Amplify.Auth.confirmResetPassword(
+                            username: emailCtrl.text.trim(),
+                            newPassword: newPassCtrl.text.trim(),
+                            confirmationCode: codeCtrl.text.trim(),
+                          );
+                          Navigator.pop(ctx);
+                          _showSnack("Password reset! Login again.");
+                        }
+                      } on AuthException catch (e) {
+                        _showSnack(e.message);
+                      } finally {
+                        setState(() => loading = false);
+                      }
+                    },
+              child: loading
+                  ? const SizedBox(
+                      width: 20,
+                      height: 20,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                        color: Colors.white,
+                      ),
+                    )
+                  : Text(codeSent ? "Reset" : "Send Code"),
             ),
           ],
         ),
@@ -657,60 +396,397 @@ Future<void> signUp() async {
     );
   }
 
+  void continueAsGuest() => widget.onLogin("Guest");
 
+  // ────────────────────── UI ──────────────────────
+  @override
+  @override
+  Widget build(BuildContext context) {
+    final bool dark = _isDarkMode;
+    final Color primary = dark ? Colors.yellow[300]! : Colors.deepPurple;
 
+    // DARK MODE: Soft neon
+    final List<Color> neonColors = dark
+        ? [
+            Colors.yellow[200]!.withOpacity(0.7),
+            Colors.cyan[300]!.withOpacity(0.6),
+          ]
+        : [Colors.deepPurple, const Color.fromARGB(255, 3, 100, 226)!];
 
-  Widget _buildTextField({
-    required TextEditingController controller,
-    required String labelText,
-    required IconData icon,
-    bool obscureText = false,
-    bool isPassword = false,
-    VoidCallback? onVisibilityToggle,
-    String? errorText,
+    final Color leftBg = dark
+        ? const Color(0xFF1A1A2E)
+        : const Color.fromARGB(255, 175, 202, 243);
+    final Color rightBg = dark
+        ? const Color(0xFF0F0F1B)
+        : const Color.fromARGB(255, 204, 218, 240);
+    final Color cardBg = dark
+        ? Colors.black.withOpacity(0.4)
+        : Colors.white.withOpacity(0.8);
+
+    return AnimatedTheme(
+      data: ThemeData.from(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: primary,
+          brightness: dark ? Brightness.dark : Brightness.light,
+        ),
+      ),
+      duration: const Duration(milliseconds: 400),
+      child: Scaffold(
+        body: Stack(
+          children: [
+            _DiagonalBackground(left: leftBg, right: rightBg),
+
+            Center(
+              child: FadeTransition(
+                opacity: _pageFade,
+                child: SlideTransition(
+                  position: _pageSlide,
+                  child: AnimatedBuilder(
+                    animation: _neonCtrl,
+                    builder: (_, __) {
+                      final neonOpacity = (0.4 + _neonCtrl.value * 0.3);
+
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 40,
+                        ),
+                        child: Container(
+                          constraints: const BoxConstraints(maxWidth: 400),
+                          padding: const EdgeInsets.all(3),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(34),
+                            gradient: LinearGradient(
+                              colors: [
+                                neonColors[0].withOpacity(neonOpacity),
+                                neonColors[1].withOpacity(neonOpacity),
+                              ],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
+                          ),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: cardBg,
+                              borderRadius: BorderRadius.circular(31),
+                              // NO SHADOW HERE
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(31),
+                              child: BackdropFilter(
+                                filter: ImageFilter.blur(
+                                  sigmaX: 12,
+                                  sigmaY: 12,
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(26),
+                                  child: _cardContent(
+                                    primary,
+                                    dark,
+                                    neonColors,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+            ),
+
+            // Dark-mode toggle
+            Positioned(
+              top: 40,
+              right: 20,
+              child: IconButton(
+                icon: Icon(
+                  dark ? Icons.wb_sunny_rounded : Icons.nights_stay_rounded,
+                  color: primary,
+                  size: 30,
+                ),
+                onPressed: () => setState(() => _isDarkMode = !_isDarkMode),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  // ── CARD CONTENT ──
+  Widget _cardContent(Color primary, bool dark, List<Color> neonColors) {
+    return SingleChildScrollView(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+      child: Column(
+        children: [
+          Shimmer.fromColors(
+            baseColor: primary,
+            highlightColor: Colors.white,
+            period: const Duration(milliseconds: 1400),
+            child: Text(
+              isLogin ? "Welcome Back!" : "Create Account",
+              style: const TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+            ),
+          ),
+          const SizedBox(height: 24),
+
+          _field(
+            usernameCtrl,
+            "Username",
+            Icons.person_outline,
+            usernameError,
+            neonColors,
+          ),
+          const SizedBox(height: 14),
+
+          if (!isLogin) ...[
+            _field(
+              emailCtrl,
+              "Email",
+              Icons.email_outlined,
+              emailError,
+              neonColors,
+            ),
+            const SizedBox(height: 14),
+            _field(
+              phoneCtrl,
+              "Phone (+91...)",
+              Icons.phone_android,
+              phoneError,
+              neonColors,
+            ),
+            const SizedBox(height: 14),
+          ],
+
+          _field(
+            passwordCtrl,
+            "Password",
+            Icons.lock_outline,
+            passwordError,
+            neonColors,
+            obscure: _isPasswordObscured,
+            isPass: true,
+            onToggle: () =>
+                setState(() => _isPasswordObscured = !_isPasswordObscured),
+          ),
+          const SizedBox(height: 14),
+
+          if (!isLogin)
+            SizeTransition(
+              sizeFactor: _formCtrl,
+              child: FadeTransition(
+                opacity: _formCtrl,
+                child: _field(
+                  confirmPasswordCtrl,
+                  "Confirm Password",
+                  Icons.lock_person_outlined,
+                  confirmPasswordError,
+                  neonColors,
+                  obscure: _isConfirmPasswordObscured,
+                  isPass: true,
+                  onToggle: () => setState(
+                    () => _isConfirmPasswordObscured =
+                        !_isConfirmPasswordObscured,
+                  ),
+                ),
+              ),
+            ),
+
+          if (showConfirmCodeField) ...[
+            const SizedBox(height: 14),
+            _field(
+              confirmCodeCtrl,
+              "Verification Code",
+              Icons.verified_outlined,
+              null,
+              neonColors,
+            ),
+            const SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: _isLoading ? null : confirmCode,
+              child: const Text("Verify"),
+            ),
+            TextButton(onPressed: resendCode, child: const Text("Resend Code")),
+          ],
+
+          const SizedBox(height: 16),
+
+          if (isLogin && !showConfirmCodeField)
+            TextButton(
+              onPressed: showForgotPasswordDialog,
+              child: const Text("Forgot Password?"),
+            ),
+
+          const SizedBox(height: 20),
+
+          Center(
+            child: AnimatedBuilder(
+              animation: _pulseCtrl,
+              builder: (_, __) => Transform.scale(
+                scale: 1 + _pulseCtrl.value * 0.06,
+                child: SizedBox(
+                  width: 180,
+                  height: 44,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: primary,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(22),
+                      ),
+                      elevation: 12,
+                      shadowColor: primary.withOpacity(0.6),
+                    ),
+                    onPressed: _isLoading ? null : (isLogin ? login : signUp),
+                    child: _isLoading
+                        ? const SizedBox(
+                            width: 20,
+                            height: 20,
+                            child: CircularProgressIndicator(
+                              color: Colors.white,
+                              strokeWidth: 2,
+                            ),
+                          )
+                        : Text(
+                            isLogin ? "Login" : "Sign Up",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: dark ? Colors.black87 : Colors.white,
+                              shadows: [
+                                Shadow(
+                                  offset: const Offset(0, 1.5),
+                                  blurRadius: 6,
+                                  color: dark ? Colors.black45 : Colors.black38,
+                                ),
+                              ],
+                            ),
+                          ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+
+          const SizedBox(height: 16),
+
+          TextButton(
+            onPressed: toggleMode,
+            child: Text(
+              isLogin ? "No account? Sign Up" : "Have account? Log In",
+              style: TextStyle(color: primary),
+            ),
+          ),
+
+          TextButton(
+            onPressed: continueAsGuest,
+            child: Text(
+              "Continue as Guest",
+              style: TextStyle(
+                color: dark ? Colors.white70 : Colors.grey[800]!,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // ── REUSABLE TEXT FIELD ──
+  Widget _field(
+    TextEditingController ctrl,
+    String label,
+    IconData icon,
+    String? err,
+    List<Color> neonColors, {
+    bool obscure = false,
+    bool isPass = false,
+    VoidCallback? onToggle,
   }) {
-    final theme = Theme.of(context);
+    final Color iconColor = _isDarkMode ? neonColors[0] : neonColors[0];
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         TextField(
-          controller: controller,
-          obscureText: obscureText,
+          controller: ctrl,
+          obscureText: obscure,
           decoration: InputDecoration(
-            labelText: labelText,
-            prefixIcon: Icon(icon, color: theme.colorScheme.primary),
-            suffixIcon: isPassword
+            labelText: label,
+            prefixIcon: Icon(icon, color: iconColor),
+            suffixIcon: isPass
                 ? IconButton(
                     icon: Icon(
-                      obscureText ? Icons.visibility_off : Icons.visibility,
-                      color: theme.colorScheme.primary,
+                      obscure ? Icons.visibility_off : Icons.visibility,
+                      color: iconColor,
                     ),
-                    onPressed: onVisibilityToggle,
+                    onPressed: onToggle,
                   )
                 : null,
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(16)),
             focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15),
-              borderSide: BorderSide(
-                color: theme.colorScheme.primary,
-                width: 2,
-              ),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15),
-              borderSide: BorderSide(color: theme.dividerColor),
+              borderRadius: BorderRadius.circular(16),
+              borderSide: BorderSide(color: iconColor, width: 2.5),
             ),
           ),
         ),
-        if (errorText != null)
+        if (err != null)
           Padding(
-            padding: const EdgeInsets.only(top: 4.0, left: 8.0),
+            padding: const EdgeInsets.only(top: 4, left: 8),
             child: Text(
-              errorText,
+              err,
               style: const TextStyle(color: Colors.red, fontSize: 12),
             ),
           ),
       ],
     );
   }
+}
+
+// ────────────────────── DIAGONAL BACKGROUND ──────────────────────
+class _DiagonalBackground extends StatelessWidget {
+  final Color left, right;
+  const _DiagonalBackground({required this.left, required this.right});
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomPaint(
+      size: MediaQuery.of(context).size,
+      painter: _DiagonalPainter(left, right),
+    );
+  }
+}
+
+class _DiagonalPainter extends CustomPainter {
+  final Color left, right;
+  _DiagonalPainter(this.left, this.right);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint();
+    final path = Path();
+
+    paint.color = left;
+    path.moveTo(0, 0);
+    path.lineTo(size.width * 0.55, 0);
+    path.lineTo(size.width * 0.45, size.height);
+    path.lineTo(0, size.height);
+    path.close();
+    canvas.drawPath(path, paint);
+
+    paint.color = right;
+    path.reset();
+    path.moveTo(size.width * 0.55, 0);
+    path.lineTo(size.width, 0);
+    path.lineTo(size.width, size.height);
+    path.lineTo(size.width * 0.45, size.height);
+    path.close();
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter old) => false;
 }

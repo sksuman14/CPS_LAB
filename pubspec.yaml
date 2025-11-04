@@ -51,6 +51,7 @@ dependencies:
   amplify_flutter: ^1.4.0
   amplify_auth_cognito: ^1.4.0
   archive: ^4.0.7
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_test:
