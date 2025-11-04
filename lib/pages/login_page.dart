@@ -4,6 +4,8 @@ import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:provider/provider.dart'; 
+import '../providers/theme_provider.dart';  
 
 class LoginPage extends StatefulWidget {
   final Function(String?) onLogin;
@@ -19,7 +21,6 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
   bool _isPasswordObscured = true;
   bool _isConfirmPasswordObscured = true;
   bool _isLoading = false;
-  bool _isDarkMode = false;
   bool showConfirmCodeField = false;
 
   late final AnimationController _formCtrl;
@@ -400,12 +401,12 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
 
   // ────────────────────── UI ──────────────────────
   @override
-  @override
   Widget build(BuildContext context) {
-    final bool dark = _isDarkMode;
-    final Color primary = dark ? Colors.yellow[300]! : Colors.deepPurple;
+    final themeProvider = Provider.of<ThemeProvider>(context); 
+    final bool dark = themeProvider.isDark;  
+    final Color primary = dark ? Colors.yellow[200]! : Colors.deepPurple;
 
-    // DARK MODE: Soft neon
+
     final List<Color> neonColors = dark
         ? [
             Colors.yellow[200]!.withOpacity(0.7),
@@ -420,16 +421,11 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
         ? const Color(0xFF0F0F1B)
         : const Color.fromARGB(255, 204, 218, 240);
     final Color cardBg = dark
-        ? Colors.black.withOpacity(0.4)
+        ? Colors.black.withOpacity(0.6)
         : Colors.white.withOpacity(0.8);
 
     return AnimatedTheme(
-      data: ThemeData.from(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: primary,
-          brightness: dark ? Brightness.dark : Brightness.light,
-        ),
-      ),
+      data: themeProvider.themeData,  
       duration: const Duration(milliseconds: 400),
       child: Scaffold(
         body: Stack(
@@ -469,7 +465,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                             decoration: BoxDecoration(
                               color: cardBg,
                               borderRadius: BorderRadius.circular(31),
-                              // NO SHADOW HERE
+                           
                             ),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(31),
@@ -507,7 +503,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                   color: primary,
                   size: 30,
                 ),
-                onPressed: () => setState(() => _isDarkMode = !_isDarkMode),
+                onPressed: () => themeProvider.toggleTheme(), 
               ),
             ),
           ],
@@ -695,55 +691,56 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
     );
   }
 
-  // ── REUSABLE TEXT FIELD ──
-  Widget _field(
-    TextEditingController ctrl,
-    String label,
-    IconData icon,
-    String? err,
-    List<Color> neonColors, {
-    bool obscure = false,
-    bool isPass = false,
-    VoidCallback? onToggle,
-  }) {
-    final Color iconColor = _isDarkMode ? neonColors[0] : neonColors[0];
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        TextField(
-          controller: ctrl,
-          obscureText: obscure,
-          decoration: InputDecoration(
-            labelText: label,
-            prefixIcon: Icon(icon, color: iconColor),
-            suffixIcon: isPass
-                ? IconButton(
-                    icon: Icon(
-                      obscure ? Icons.visibility_off : Icons.visibility,
-                      color: iconColor,
-                    ),
-                    onPressed: onToggle,
-                  )
-                : null,
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(16)),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(16),
-              borderSide: BorderSide(color: iconColor, width: 2.5),
-            ),
+Widget _field(
+  TextEditingController ctrl,
+  String label,
+  IconData icon,
+  String? err,
+  List<Color> neonColors, {
+  bool obscure = false,
+  bool isPass = false,
+  VoidCallback? onToggle,
+  bool dark = false, 
+}) {
+  final Color iconColor = dark ? neonColors[0] : neonColors[0];  
+
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      TextField(
+        controller: ctrl,
+        obscureText: obscure,
+        decoration: InputDecoration(
+          labelText: label,
+          prefixIcon: Icon(icon, color: iconColor),
+          suffixIcon: isPass
+              ? IconButton(
+                  icon: Icon(
+                    obscure ? Icons.visibility_off : Icons.visibility,
+                    color: iconColor,
+                  ),
+                  onPressed: onToggle,
+                )
+              : null,
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(16)),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: BorderSide(color: iconColor, width: 2.5),
           ),
         ),
-        if (err != null)
-          Padding(
-            padding: const EdgeInsets.only(top: 4, left: 8),
-            child: Text(
-              err,
-              style: const TextStyle(color: Colors.red, fontSize: 12),
-            ),
+      ),
+      if (err != null)
+        Padding(
+          padding: const EdgeInsets.only(top: 4, left: 8),
+          child: Text(
+            err,
+            style: const TextStyle(color: Colors.red, fontSize: 12),
           ),
-      ],
-    );
-  }
+        ),
+    ],
+  );
+}
 }
 
 // ────────────────────── DIAGONAL BACKGROUND ──────────────────────

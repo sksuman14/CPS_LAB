@@ -9,6 +9,8 @@ import 'pages/contact_page.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
 import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'config/amplify_configuration.dart';
+import 'package:provider/provider.dart';  
+import 'providers/theme_provider.dart';  
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,10 +23,15 @@ void main() async {
     print("Amplify already configured or error: $e");
   }
 
-  runApp(CpsLabApp(key: appKey));
+  runApp(
+    ChangeNotifierProvider( 
+      create: (_) => ThemeProvider(),
+      child: CpsLabApp(key: appKey),
+    ),
+  );
 }
 
-//  global key to reset the app on logout
+// Global key to reset the app on logout
 final GlobalKey<_CpsLabState> appKey = GlobalKey<_CpsLabState>();
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -49,7 +56,6 @@ class _CpsLabState extends State<CpsLabApp> {
     return MaterialApp(
       key: _appKey,
       navigatorKey: navigatorKey,
-
       debugShowCheckedModeBanner: false,
       home: const CpsLab(),
     );
@@ -66,7 +72,6 @@ class CpsLab extends StatefulWidget {
 
 class CpsLabState extends State<CpsLab> {
   Widget _selectedPage = const HomePage();
-  bool _isDarkTheme = false;
   String _currentPageName = "Home";
   String? loggedInEmail;
   bool _isCheckingUser = true;
@@ -80,7 +85,6 @@ class CpsLabState extends State<CpsLab> {
   void _checkUser() async {
     try {
       final user = await Amplify.Auth.getCurrentUser();
-
       setState(() {
         loggedInEmail = user.username;
       });
@@ -115,7 +119,6 @@ class CpsLabState extends State<CpsLab> {
     });
   }
 
-  void _toggleTheme() => setState(() => _isDarkTheme = !_isDarkTheme);
   void _setUser(String? email) => setState(() => loggedInEmail = email);
 
   void _logoutAndReset() async {
@@ -134,16 +137,20 @@ class CpsLabState extends State<CpsLab> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final bool isDark = themeProvider.isDark; 
+
     if (_isCheckingUser) {
-      return const MaterialApp(
+      return MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: Scaffold(body: Center(child: CircularProgressIndicator())),
+        theme: themeProvider.themeData,  
+        home: const Scaffold(body: Center(child: CircularProgressIndicator())),
       );
     }
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: _isDarkTheme ? ThemeData.dark() : ThemeData.light(),
+      theme: themeProvider.themeData,
       home: loggedInEmail == null
           ? LoginPage(onLogin: _setUser)
           : LayoutBuilder(
@@ -155,33 +162,26 @@ class CpsLabState extends State<CpsLab> {
                           backgroundColor: Colors.transparent,
                           elevation: 0,
                           iconTheme: IconThemeData(
-                            color: _isDarkTheme ? Colors.white : Colors.black,
+                            color: isDark ? Colors.white : Colors.black,
                           ),
                           title: Text(
                             loggedInEmail != null
                                 ? "Hi, ${loggedInEmail!.split('@')[0]}"
                                 : "Guest",
                             style: TextStyle(
-                                                                                color: _isDarkTheme
-                          ? Colors.yellow.shade300
-                          : Colors.deepPurple,
+                              color: isDark ? Colors.yellow.shade300 : Colors.deepPurple,
                               fontSize: 16,
                             ),
                           ),
                           actions: [
                             IconButton(
                               icon: Icon(
-                                _isDarkTheme
-                                    ? Icons.light_mode
-                                    : Icons.dark_mode,
-                                                                                  color: _isDarkTheme
-                          ? Colors.yellow.shade300
-                          : Colors.deepPurple,
+                                isDark ? Icons.light_mode : Icons.dark_mode, 
+                                color: isDark ? Colors.yellow.shade300 : Colors.deepPurple,
                               ),
-                              onPressed: _toggleTheme,
+                              onPressed: () => themeProvider.toggleTheme(), 
                             ),
                             const SizedBox(width: 8),
-
                             TextButton.icon(
                               onPressed: () {
                                 if (loggedInEmail != null) {
@@ -195,18 +195,15 @@ class CpsLabState extends State<CpsLab> {
                                   });
                                 }
                               },
-                           
-
                               label: Text(
                                 loggedInEmail == "Guest" ? "Login" : "Logout",
-                                style: const TextStyle(fontSize: 14,),
+                                style: const TextStyle(fontSize: 14),
                               ),
                             ),
                             const SizedBox(width: 8),
                           ],
                         )
                       : null,
-
                   drawer: isMobile
                       ? SizedBox(
                           width: MediaQuery.of(context).size.width * 0.75 > 300
@@ -215,7 +212,7 @@ class CpsLabState extends State<CpsLab> {
                           child: Sidebar(
                             onPageSelected: _onPageSelected,
                             selectedPage: _currentPageName,
-                            isDarkTheme: _isDarkTheme,
+                            isDarkTheme: isDark, 
                           ),
                         )
                       : null,
@@ -225,18 +222,16 @@ class CpsLabState extends State<CpsLab> {
                         Sidebar(
                           onPageSelected: _onPageSelected,
                           selectedPage: _currentPageName,
-                          isDarkTheme: _isDarkTheme,
+                          isDarkTheme: isDark,  
                         ),
                       Expanded(
                         child: Column(
                           children: [
                             if (!isMobile)
                               TopBar(
-                                onToggleTheme: _toggleTheme,
-                                isDarkTheme: _isDarkTheme,
                                 userEmail: loggedInEmail ?? "Guest",
                                 onLogout: _logoutAndReset,
-                              ),
+                              ), 
                             Expanded(child: _selectedPage),
                           ],
                         ),

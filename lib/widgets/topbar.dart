@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';  
+import '../providers/theme_provider.dart';  
 
 class TopBar extends StatelessWidget {
-  final VoidCallback onToggleTheme;
-  final bool isDarkTheme;
   final String userEmail;
   final VoidCallback onLogout;
 
   const TopBar({
     super.key,
-    required this.onToggleTheme,
-    required this.isDarkTheme,
     required this.userEmail,
     required this.onLogout,
   });
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context); 
+    final bool isDark = themeProvider.isDark;  
+
     return Container(
       height: 60,
       padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -25,7 +26,7 @@ class TopBar extends StatelessWidget {
           Text(
             "Hi: $userEmail",
             style: TextStyle(
-              color: isDarkTheme ? Colors.yellow.shade200 : Colors.deepPurple,
+              color: isDark ? Colors.yellow.shade200 : Colors.deepPurple,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -33,19 +34,17 @@ class TopBar extends StatelessWidget {
             children: [
               IconButton(
                 icon: Icon(
-                  isDarkTheme ? Icons.dark_mode : Icons.light_mode,
-                  color: isDarkTheme ? Colors.white : Colors.black,
+                  isDark ? Icons.dark_mode : Icons.light_mode,  
+                  color: isDark ? Colors.white : Colors.black,
                 ),
-                onPressed: onToggleTheme,
+                onPressed: () => themeProvider.toggleTheme(),  
               ),
               TextButton(
                 onPressed: onLogout,
                 child: Text(
                   userEmail == 'Guest' ? 'Login' : 'Logout',
-                 
-                  ),
                 ),
-              
+              ),
             ],
           ),
         ],
