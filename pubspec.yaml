@@ -86,6 +86,7 @@ flutter:
     - assets/images/github.png
     - assets/images/dataloggerrender.png
     - assets/images/blegateway.png
+    - assets/images/sht40render.png
     - assets/images/stts751.png
     - assets/images/lis3dh.png
     - assets/images/memory.png
