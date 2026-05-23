@@ -173,6 +173,12 @@ const deployments = [
     "title": "Deployment 28",
     "description": "AWaDH CPS Lab launched at Government ITI, Ropar",
     "longDescription": "Indian Institute of Technology, Ropar strengthens Punjab's innovation ecosystem with its 28th CPS Lab at Government ITI, Ropar, advancing deep-tech skilling, innovation-driven R&D, and entrepreneurship."
+  },
+  {
+    "image": `${BASE_URL}/images/29.jpeg`,
+    "title": "Deployment 29",
+    "description": "AWaDH CPS Lab launched at Chandigarh University",
+    "longDescription": "Indian Institute of Technology, Ropar Expands Deep-Tech Footprint with 29th CPS Lab at Chandigarh University."
   }
 ];
 

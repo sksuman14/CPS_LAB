@@ -268,23 +268,7 @@ export default function LoginPage() {
                     {isLogin ? "Welcome back! Please login to continue." : "Join us in shaping the future of CPS."}
                   </p>
 
-                  {/* ── Google Sign-In ── */}
-                  <button
-                    type="button"
-                    onClick={handleGoogleLogin}
-                    style={{ backgroundColor: '#ffffff', color: '#1f2937' }}
-                    className="w-full flex items-center justify-center gap-3 font-semibold text-base py-4 rounded-2xl shadow-lg active:scale-[0.98] mb-4"
-                  >
-                    <GoogleIcon />
-                    <span>Continue with Google</span>
-                  </button>
 
-                  {/* ── Divider ── */}
-                  <div className="flex items-center gap-3 mb-5">
-                    <div className="h-px bg-white/15 flex-grow"></div>
-                    <span className="font-label text-xs uppercase text-on-surface-variant tracking-widest whitespace-nowrap">or use credentials</span>
-                    <div className="h-px bg-white/15 flex-grow"></div>
-                  </div>
 
                   {error && (
                     <div className="mb-6 p-4 bg-error/10 border border-error/20 rounded-2xl flex items-start gap-3 transition-all">
@@ -402,13 +386,24 @@ export default function LoginPage() {
                   <div className="mt-8 flex flex-col items-center gap-4">
                     <button
                       onClick={toggleMode}
-                      className="font-body text-on-surface-variant hover:text-white transition-colors text-sm"
+                      className="font-body text-on-surface-variant hover:text-white transition-colors text-sm mb-2"
                     >
                       {isLogin ? "Don't have an account? " : "Already have an account? "}
                       <span className="text-primary font-bold">{isLogin ? "Sign up" : "Sign in"}</span>
                     </button>
 
-                    <div className="w-full flex items-center gap-4 my-2 opacity-50">
+                    {/* ── Google Sign-In ── */}
+                    <button
+                      type="button"
+                      onClick={handleGoogleLogin}
+                      style={{ backgroundColor: '#ffffff', color: '#1f2937' }}
+                      className="w-full flex items-center justify-center gap-3 font-semibold text-base py-4 rounded-2xl shadow-lg active:scale-[0.98]"
+                    >
+                      <GoogleIcon />
+                      <span>Continue with Google</span>
+                    </button>
+
+                    <div className="w-full flex items-center gap-4 opacity-50">
                       <div className="h-px bg-white/20 flex-grow"></div>
                       <span className="font-label text-xs uppercase text-white tracking-widest">OR</span>
                       <div className="h-px bg-white/20 flex-grow"></div>
