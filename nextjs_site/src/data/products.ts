@@ -35,6 +35,7 @@ export const allSensors = [
       "512KB RAM +1MB Flash",
     ],
     "imagePath": "assets/images/blegateway.png",
+    "modelPath": "https://cpslabhub-assets.s3.ap-south-1.amazonaws.com/models/data_logger.glb",
     "email": "Vikash.hardwareengineer@ihub-awadh.in",
     "datasheetKey": "Gateway",
   },
@@ -72,6 +73,7 @@ export const allSensors = [
       "Heating option (-40℃ to +70℃)",
     ],
     "imagePath": "assets/images/ultrasonic.png",
+    "modelPath": "https://cpslabhub-assets.s3.ap-south-1.amazonaws.com/models/ultrasonic.glb",
     "email": "Vikash.hardwareengineer@ihub-awadh.in",
     "datasheetKey": "WindSensor",
     "quecCodeLink":
@@ -110,6 +112,7 @@ export const allSensors = [
       "Data Output: Number of tips × Resolution = Total Rainfall",
     ],
     "imagePath": "assets/images/gauge.png",
+    "modelPath": "https://cpslabhub-assets.s3.ap-south-1.amazonaws.com/models/raingauge.glb",
     "email": "Vikash.hardwareengineer@ihub-awadh.in",
     "datasheetKey": "RainGauge",
     "nreCodeLink":
@@ -156,6 +159,7 @@ export const allSensors = [
       "LUX Accuracy:±3%",
     ],
     "imagePath": "assets/images/luxpressure.png",
+    "modelPath": "https://cpslabhub-assets.s3.ap-south-1.amazonaws.com/models/radiation_shield.glb",
     "email": "Vikash.hardwareengineer@ihub-awadh.in",
     "datasheetKey": "ARTH",
     "quecCodeLink":
@@ -246,6 +250,7 @@ export const allSensors = [
       "Use Case: Suitable for STEM education, wearable projects, and IoT applications",
     ],
     "imagePath": "assets/images/Actitvity.png",
+    "modelPath": "https://cpslabhub-assets.s3.ap-south-1.amazonaws.com/models/cattle+logger+.glb",
     "email": "Vikash.hardwareengineer@ihub-awadh.in",
     "datasheetKey": "ACTIVITY",
   },

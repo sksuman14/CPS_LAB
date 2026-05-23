@@ -2,13 +2,13 @@
 
 import React, { Suspense, useEffect, useMemo } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { 
-  useGLTF, 
-  OrbitControls, 
-  Bounds, 
-  Center, 
-  ContactShadows, 
-  Environment, 
+import {
+  useGLTF,
+  OrbitControls,
+  Bounds,
+  Center,
+  ContactShadows,
+  Environment,
   useAnimations,
   Float,
   AdaptiveDpr,
@@ -35,21 +35,23 @@ function Model({ url }: { url: string }) {
   return <primitive object={scene} castShadow receiveShadow />;
 }
 
-export default function ModelViewer({ 
-  modelPath, 
-  className = "", 
+export default function ModelViewer({
+  modelPath,
+  className = "",
   scale = 1,
-  autoRotate = true 
-}: { 
-  modelPath: string; 
+  autoRotate = true
+}: {
+  modelPath: string;
   className?: string;
   scale?: number;
   autoRotate?: boolean;
 }) {
-  const formattedPath = useMemo(() => 
-    modelPath.startsWith('/') ? modelPath : `/${modelPath}`, 
-    [modelPath]
-  );
+  const formattedPath = useMemo(() => {
+    if (modelPath.startsWith('http://') || modelPath.startsWith('https://')) {
+      return modelPath;
+    }
+    return modelPath.startsWith('/') ? modelPath : `/${modelPath}`;
+  }, [modelPath]);
 
   return (
     <div className={`relative w-full h-full overflow-hidden ${className}`}>
@@ -61,12 +63,12 @@ export default function ModelViewer({
           </div>
         </div>
       }>
-        <Canvas 
-          shadows 
+        <Canvas
+          shadows
           dpr={[1, 1.5]} // Adaptive resolution for high-performance rendering
           camera={{ position: [0, 0, 5], fov: 40 }}
-          gl={{ 
-            antialias: true, 
+          gl={{
+            antialias: true,
             powerPreference: "high-performance",
             alpha: true,
             stencil: false,
@@ -84,7 +86,7 @@ export default function ModelViewer({
           <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1.5} castShadow />
           <pointLight position={[-10, -5, -10]} intensity={0.5} color="#4c1d95" />
           <directionalLight position={[0, 5, 5]} intensity={1.2} />
-          
+
           <Environment preset="city" />
 
           <Bounds fit clip observe margin={1.2}>
@@ -96,9 +98,9 @@ export default function ModelViewer({
           </Bounds>
 
           <ContactShadows position={[0, -1, 0]} opacity={0.4} scale={10} blur={2.2} far={4} />
-          
-          <OrbitControls 
-            makeDefault 
+
+          <OrbitControls
+            makeDefault
             autoRotate={autoRotate}
             autoRotateSpeed={6.5} // Faster, more cinematic auto-rotation
             rotateSpeed={2.4} // Highly responsive manual interaction
@@ -113,5 +115,8 @@ export default function ModelViewer({
 
 // Global preload helper
 ModelViewer.preload = (url: string) => {
-  useGLTF.preload(url, DRACO_URL);
+  const formattedUrl = (url.startsWith('http://') || url.startsWith('https://')) 
+    ? url 
+    : (url.startsWith('/') ? url : `/${url}`);
+  useGLTF.preload(formattedUrl, DRACO_URL);
 };

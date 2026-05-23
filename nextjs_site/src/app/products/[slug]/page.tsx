@@ -16,6 +16,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
   const [userAccess, setUserAccess] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isChecking, setIsChecking] = useState(true);
+  const [show3D, setShow3D] = useState(false);
 
   const sensor = allSensors.find((s) => {
     const fullTitle = `${s.title.trim()} ${s.highlightText.trim()}`.replace(/\s+/g, ' ');
@@ -323,17 +324,33 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
         <div className="flex flex-col lg:flex-row gap-16 items-start mb-24">
           <div className="w-full lg:w-1/2 bg-gradient-to-br from-gray-400 to-gray-500 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 relative group min-h-[700px] flex items-center justify-center overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-3xl pointer-events-none"></div>
-            {sensor.imagePath.toLowerCase().endsWith('.glb') || sensor.imagePath.toLowerCase().endsWith('.gltf') ? (
-              <div className="absolute inset-0">   
-                <ModelViewer modelPath={sensor.imagePath} autoRotate={true} />
+            
+            {((sensor as any).modelPath || sensor.imagePath.toLowerCase().endsWith('.glb') || sensor.imagePath.toLowerCase().endsWith('.gltf')) && show3D ? (
+              <div className="absolute inset-0 z-10">   
+                <ModelViewer modelPath={(sensor as any).modelPath || sensor.imagePath} autoRotate={true} />
               </div>
-             ) : (
-               <img 
-                 src={`/${sensor.imagePath}`} 
-                 alt={productDisplayName}
-                 className="w-full h-auto object-contain max-h-[500px] transform group-hover:scale-105 transition-transform duration-700"
-               />
-             )}
+            ) : (
+              <>
+                <img 
+                  src={`/${sensor.imagePath}`} 
+                  alt={productDisplayName}
+                  className="w-full h-auto object-contain max-h-[500px] transform group-hover:scale-105 transition-transform duration-700"
+                />
+                
+                {/* 3D Overlay Button if modelPath exists */}
+                {((sensor as any).modelPath || sensor.imagePath.toLowerCase().endsWith('.glb')) && !show3D && (
+                  <button 
+                    onClick={() => setShow3D(true)}
+                    className="absolute inset-0 m-auto w-40 h-16 bg-surface-container/80 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center gap-3 shadow-[0_0_40px_rgba(37,99,235,0.4)] hover:scale-105 transition-all group/btn z-20"
+                  >
+                    <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+                      <span className="material-symbols-outlined text-white text-xl">3d_rotation</span>
+                    </div>
+                    <span className="font-label font-bold text-white uppercase tracking-wider text-sm pr-2">View 3D</span>
+                  </button>
+                )}
+              </>
+            )}
           </div>
           
           <div className="w-full lg:w-1/2 flex flex-col justify-center">
