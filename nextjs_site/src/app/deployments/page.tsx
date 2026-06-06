@@ -121,64 +121,58 @@ const deployments = [
     "longDescription": "Located at EPIC (Entrepreneurship Promotion and Incubation Council) within the Ambala College of Engineering & Applied Research, this facility represents the first NM-ICPS-powered lab in Haryana.",
   },
   {
-    "image": `${BASE_URL}/images/20.jpeg`,
-    "title": "Deployment 20",
-    "description": "AWaDH CPS Lab launched at Chandigarh University.",
-    "longDescription": "The Indian Institute of Technology Ropar (IIT Ropar) has achieved another major milestone in its mission to bolster India's technological landscape.",
-  },
-  {
     "image": `${BASE_URL}/images/21.jpeg`,
-    "title": "Deployment 21",
+    "title": "Deployment 20",
     "description": "AWaDH CPS Lab launched at Government Polytechnic College Bhikhiwind.",
-    "longDescription": "Under the National Mission on Interdisciplinary Cyber-Physical Systems (NM-ICPS), officially inaugurated its 21st Cyber-Physical Systems (CPS) Lab.",
+    "longDescription": "Under the National Mission on Interdisciplinary Cyber-Physical Systems (NM-ICPS), officially inaugurated its 20th Cyber-Physical Systems (CPS) Lab.",
   },
   {
     "image": `${BASE_URL}/images/22.jpeg`,
-    "title": "Deployment 22",
+    "title": "Deployment 21",
     "description": "AWaDH CPS Lab launched at SBAS Government Polytechnic College Badbar, Barnala.",
-    "longDescription": "Officially inaugurated its 22nd Cyber-Physical Systems (CPS) Lab at SBAS Government Polytechnic College in Badbar (Barnala), Punjab.",
+    "longDescription": "Officially inaugurated its 21st Cyber-Physical Systems (CPS) Lab at SBAS Government Polytechnic College in Badbar (Barnala), Punjab.",
   },
   {
     "image": `${BASE_URL}/images/23.jpeg`,
-    "title": "Deployment 23",
+    "title": "Deployment 22",
     "description": "AWaDH CPS Lab launched at MIT WPU Pune.",
-    "longDescription": "Officially inaugurated its 23rd Cyber-Physical Systems (CPS) Lab at MIT WPU Pune.",
+    "longDescription": "Officially inaugurated its 22nd Cyber-Physical Systems (CPS) Lab at MIT WPU Pune.",
   },
   {
     "image": `${BASE_URL}/images/24.jpeg`,
-    "title": "Deployment 24",
+    "title": "Deployment 23",
     "description": "AWaDH CPS Lab launched at Government Polytechnic College, Batala",
-    "longDescription": "Indian Institute of Technology, Ropar Expands CPS Lab Network With 24th Lab Under NMICPS. Officially inaugurated its 24th Cyber-Physical Systems (CPS) Lab at at Government Polytechnic College Batala Punjab.",
+    "longDescription": "Indian Institute of Technology, Ropar Expands CPS Lab Network With 23rd Lab Under NMICPS. Officially inaugurated its 23rd Cyber-Physical Systems (CPS) Lab at at Government Polytechnic College Batala Punjab.",
   },
   {
     "image": `${BASE_URL}/images/25.jpeg`,
-    "title": "Deployment 25",
+    "title": "Deployment 24",
     "description": "AWaDH CPS Lab launched at  Government Polytechnic College, Amritsar.",
-    "longDescription": "Indian Institute of Technology, Ropar Expands Deep-Tech Footprint with 25th CPS Lab at Government Polytechnic College, Amritsar, Punjab.",
+    "longDescription": "Indian Institute of Technology, Ropar Expands Deep-Tech Footprint with 24th CPS Lab at Government Polytechnic College, Amritsar, Punjab.",
   },
   {
     "image": `${BASE_URL}/images/26.jpeg`,
-    "title": "Deployment 26",
+    "title": "Deployment 25",
     "description": "AWaDH CPS Lab launched at NIT Sikkim",
-    "longDescription": "Indian Institute of Technology, Ropar Expands Deep-Tech Footprint with 26th CPS Lab at NIT Sikkim",
+    "longDescription": "Indian Institute of Technology, Ropar Expands Deep-Tech Footprint with 25th CPS Lab at NIT Sikkim",
   },
   {
     "image": `${BASE_URL}/images/27.jpeg`,
-    "title": "Deployment 27",
+    "title": "Deployment 26",
     "description": "AWaDH CPS Lab launched at GPC KOTKAPURA",
-    "longDescription": "Indian Institute of Technology, Ropar Expands Deep-Tech Footprint with 27th CPS Lab at GPC KOTKAPURA",
+    "longDescription": "Indian Institute of Technology, Ropar Expands Deep-Tech Footprint with 26th CPS Lab at GPC KOTKAPURA",
   },
   {
     "image": `${BASE_URL}/images/28.jpeg`,
-    "title": "Deployment 28",
+    "title": "Deployment 27",
     "description": "AWaDH CPS Lab launched at Government ITI, Ropar",
-    "longDescription": "Indian Institute of Technology, Ropar strengthens Punjab's innovation ecosystem with its 28th CPS Lab at Government ITI, Ropar, advancing deep-tech skilling, innovation-driven R&D, and entrepreneurship."
+    "longDescription": "Indian Institute of Technology, Ropar strengthens Punjab's innovation ecosystem with its 27th CPS Lab at Government ITI, Ropar, advancing deep-tech skilling, innovation-driven R&D, and entrepreneurship."
   },
   {
     "image": `${BASE_URL}/images/29.jpeg`,
-    "title": "Deployment 29",
+    "title": "Deployment 28",
     "description": "AWaDH CPS Lab launched at Chandigarh University",
-    "longDescription": "Indian Institute of Technology, Ropar Expands Deep-Tech Footprint with 29th CPS Lab at Chandigarh University."
+    "longDescription": "Indian Institute of Technology, Ropar Expands Deep-Tech Footprint with 28th CPS Lab at Chandigarh University."
   }
 ];
 

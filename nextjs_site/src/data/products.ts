@@ -504,7 +504,7 @@ export const allSensors = [
       "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/relay_UI",
   },
   {
-    "title": "Bluetooth Low Energyt",
+    "title": "Bluetooth Low Energy",
     "highlightText": "Development Kit",
     "subtitle":
       "Multi-protocol wireless prototyping kit for IoT and smart devices",

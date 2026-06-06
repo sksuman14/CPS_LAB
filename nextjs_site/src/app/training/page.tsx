@@ -187,8 +187,8 @@ const workshops = [
     participants: " ",
   },
   {
-    title: "Inauguration of 29th CPS Lab at Chandigarh University",
-    description: "iHub - AWaDH successfully inaugurated its 29th CPS Lab, establishing a dynamic hub for innovation and advanced learning to empower students in Cyber-Physical Systems.",
+    title: "Hands-on Cyber-Physical Systems (CPS) training at Chandigarh University.",
+    description: "iHub - AWaDH established a dynamic hub for innovation and advanced learning to empower students through hands-on Cyber-Physical Systems training.",
     image: `${BASE_URL}/images/ChandigarhUniversity.jpeg`,
     location: "Chandigarh University",
     date: " ",
@@ -257,27 +257,32 @@ export default function TrainingAndWorkshopPage() {
               </p>
             </motion.div>
 
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, margin: "-100px" }}
-              className="bg-surface-container/60 backdrop-blur-2xl border border-white/10 rounded-[40px] p-8 md:p-16 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)]"
-            >
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 text-center">
-                {stats.map((stat, i) => (
-                  <motion.div key={i} variants={itemVariants} className="flex flex-col items-center justify-center group">
-                    <div className="w-20 h-20 rounded-3xl bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500 shadow-inner border border-primary/20">
-                      <span className="material-symbols-outlined text-primary text-4xl drop-shadow-md">{stat.icon}</span>
-                    </div>
-                    <h3 className="font-headline text-5xl md:text-6xl font-black text-white mb-2 drop-shadow-sm flex items-center justify-center gap-1">
-                      <AnimatedCounter to={stat.count} suffix={stat.suffix} />
-                    </h3>
-                    <p className="font-label text-on-surface-variant uppercase tracking-widest text-sm font-bold group-hover:text-white transition-colors">{stat.label}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+            <div className="relative">
+              {/* Ambient Glow immediately behind the container */}
+              <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-[40px] pointer-events-none"></div>
+
+              <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, margin: "-100px" }}
+                className="relative bg-surface-container/40 backdrop-blur-3xl border border-white/20 rounded-[40px] p-8 md:p-16 shadow-[0_0_40px_rgba(37,99,235,0.15)] ring-1 ring-white/10"
+              >
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 text-center">
+                  {stats.map((stat, i) => (
+                    <motion.div key={i} variants={itemVariants} className="flex flex-col items-center justify-center group relative z-10">
+                      <div className="w-20 h-20 rounded-3xl bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500 shadow-inner border border-primary/30 group-hover:border-primary/60 group-hover:shadow-[0_0_20px_rgba(37,99,235,0.4)]">
+                        <span className="material-symbols-outlined text-primary text-4xl drop-shadow-[0_0_10px_rgba(37,99,235,0.8)]">{stat.icon}</span>
+                      </div>
+                      <h3 className="font-headline text-4xl md:text-5xl font-black bg-gradient-to-b from-white via-blue-100 to-primary bg-clip-text text-transparent mb-2 drop-shadow-lg flex items-center justify-center gap-1">
+                        <AnimatedCounter to={stat.count} suffix={stat.suffix} />
+                      </h3>
+                      <p className="font-label text-on-surface-variant uppercase tracking-widest text-sm font-bold group-hover:text-white transition-colors">{stat.label}</p>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
           </div>
         </section>
 

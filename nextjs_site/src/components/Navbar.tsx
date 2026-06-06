@@ -9,6 +9,7 @@ import { usePathname, useRouter } from 'next/navigation';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   const { user, isAdmin, logout, googleUser, isLoading } = useAuth();
   const router = useRouter();
   const pathname = usePathname();
@@ -66,34 +67,54 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
         {/* LEFT: Logo */}
         <div className="flex-shrink-0 flex items-center gap-3">
-          <Link href="/home" className="flex items-center gap-2">
-            <Image
-              src="/images/app_logo.png"
-              alt="CPS Lab Logo"
-              width={32}
-              height={32}
-              className="object-contain"
-            />
-            <span className="font-headline text-2xl font-bold text-white tracking-tighter whitespace-nowrap">
+          <Link href="/home" className="group flex items-center gap-2">
+            <div className="relative w-8 h-8 transition-transform duration-300 group-hover:scale-110">
+              <Image
+                src="/images/app_logo.png"
+                alt="CPS Lab Logo"
+                fill
+                className="object-contain"
+              />
+            </div>
+            <span className="font-headline text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-primary/80 tracking-tighter whitespace-nowrap">
               CPS Lab
             </span>
           </Link>
         </div>
 
         {/* CENTER: Navigation Links - Desktop */}
-        <div className="hidden lg:flex items-center justify-center flex-1 px-4 gap-2 xl:gap-4 text-xs xl:text-sm font-medium">
+        <div 
+          className="hidden lg:flex items-center justify-center flex-1 px-4 gap-2 xl:gap-4 text-xs xl:text-sm font-medium"
+          onMouseLeave={() => setHoveredLink(null)}
+        >
           {navLinks.map((link) => {
             const isActive = pathname === link.path;
+            const isHovered = hoveredLink === link.name;
             return (
               <Link
                 key={link.name}
                 href={link.path}
-                className={`transition-all rounded-full px-3 xl:px-4 py-2 font-bold uppercase tracking-wide whitespace-nowrap ${isActive
-                  ? 'text-primary bg-primary/10'
-                  : 'text-white/70 hover:text-white hover:bg-white/5'
+                onMouseEnter={() => setHoveredLink(link.name)}
+                className={`relative px-4 py-2 font-bold uppercase tracking-wide whitespace-nowrap transition-colors duration-300 ${isActive
+                  ? 'text-primary'
+                  : 'text-white/60 hover:text-white'
                   }`}
               >
-                {link.name}
+                {/* Static Active Pill */}
+                {isActive && (
+                  <div className="absolute inset-0 bg-primary/20 rounded-full border border-primary/30 shadow-[0_0_10px_rgba(59,130,246,0.3)]" />
+                )}
+                
+                {/* Fluid Sliding Hover Pill */}
+                {isHovered && !isActive && (
+                  <motion.div
+                    layoutId="sliding-hover-pill"
+                    className="absolute inset-0 bg-white/10 rounded-full border border-white/20"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
+
+                <span className="relative z-10">{link.name}</span>
               </Link>
             );
           })}
@@ -115,7 +136,7 @@ export default function Navbar() {
             {isLoading ? (
               <div className="w-24 h-10 bg-white/10 animate-pulse rounded-full" />
             ) : isLoggedIn ? (
-              <div className="flex items-center gap-3 bg-white/5 pl-2 pr-1 py-1 rounded-full border border-white/10">
+              <div className="group/profile flex items-center gap-3 bg-white/5 hover:bg-white/10 pl-2 pr-1 py-1 rounded-full border border-white/10 hover:border-white/20 transition-all duration-300 shadow-[0_0_15px_rgba(255,255,255,0.02)]">
                 {/* Avatar: Google profile picture or initials */}
                 {displayPicture ? (
                   <img
@@ -123,10 +144,10 @@ export default function Navbar() {
                     alt={displayName || 'User'}
                     width={32}
                     height={32}
-                    className="w-8 h-8 rounded-full object-cover border border-primary/30"
+                    className="w-8 h-8 rounded-full object-cover border border-primary/30 group-hover/profile:border-primary/60 transition-colors"
                   />
                 ) : (
-                  <div className="w-8 h-8 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-full bg-primary/20 border border-primary/30 group-hover/profile:border-primary/60 transition-colors flex items-center justify-center">
                     <span className="text-primary font-bold text-xs uppercase">
                       {displayName?.[0] || 'U'}
                     </span>
@@ -137,12 +158,12 @@ export default function Navbar() {
                     {displayName}
                   </p>
                   {displayEmail && (
-                    <p className="text-white/40 text-[10px] truncate">{displayEmail}</p>
+                    <p className="text-white/40 group-hover/profile:text-white/60 transition-colors text-[10px] truncate">{displayEmail}</p>
                   )}
                 </div>
                 <button
                   onClick={handleLogout}
-                  className="bg-red-500/10 hover:bg-red-500/20 text-red-500 text-xs font-bold px-4 py-2 rounded-full transition-all duration-200 border border-red-500/20 whitespace-nowrap ml-1"
+                  className="px-4 py-1.5 rounded-full border border-red-500/30 bg-red-500/10 transition-all duration-300 hover:border-red-500 hover:shadow-[0_0_10px_rgba(239,68,68,0.3)] text-[10px] font-bold uppercase tracking-wider text-red-500 ml-1"
                 >
                   Logout
                 </button>
@@ -150,7 +171,7 @@ export default function Navbar() {
             ) : (
               <Link
                 href="/login"
-                className="bg-primary hover:bg-primary/90 px-6 py-2 rounded-full font-bold text-sm transition-all shadow-md"
+                className="px-7 py-2 rounded-full border border-primary/50 bg-primary/10 transition-all duration-300 hover:border-primary hover:shadow-[0_0_15px_rgba(59,130,246,0.4)] text-xs font-bold uppercase tracking-widest text-primary"
               >
                 Login
               </Link>
