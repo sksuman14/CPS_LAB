@@ -1,31 +1,29 @@
 import { SENSOR_FILES } from '@/data/downloads';
 
-/**
- * Transforms a GitHub folder/repo URL into a direct ZIP download URL for the entire repository.
- * Also handles GitHub blob links by converting them to raw content links.
- * e.g., https://github.com/user/repo/tree/main/folder -> https://github.com/user/repo/archive/refs/heads/main.zip
- * e.g., https://github.com/user/repo/blob/main/file.txt -> https://raw.githubusercontent.com/user/repo/main/file.txt
- */
-function transformGithubUrl(url: string): string {
-  // Pattern for GitHub tree URLs: https://github.com/{user}/{repo}/tree/{branch}/{path}
-  const githubTreeRegex = /https:\/\/github\.com\/([^/]+)\/([^/]+)\/tree\/([^/]+)(\/.*)?/;
-  const treeMatch = url.match(githubTreeRegex);
-  
-  if (treeMatch) {
-    const [_, user, repo, branch] = treeMatch;
-    return `https://github.com/${user}/${repo}/archive/refs/heads/${branch}.zip`;
-  }
+declare module 'jszip';
+import JSZip from 'jszip';
 
-  // Pattern for GitHub blob URLs (single file UI): https://github.com/{user}/{repo}/blob/{branch}/{path}
-  const githubBlobRegex = /https:\/\/github\.com\/([^/]+)\/([^/]+)\/blob\/([^/]+)\/(.*)/;
-  const blobMatch = url.match(githubBlobRegex);
-  
-  if (blobMatch) {
-    const [_, user, repo, branch, path] = blobMatch;
-    return `https://raw.githubusercontent.com/${user}/${repo}/${branch}/${path}`;
+async function fetchGithubDir(owner: string, repo: string, branch: string, path: string, zip: JSZip, folderPath: string = '') {
+  const url = `https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${branch}`;
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Failed to fetch github contents for ${path}: ${response.statusText}`);
   }
+  const contents = await response.json();
   
-  return url;
+  const promises = contents.map(async (item: any) => {
+    if (item.type === 'file' && item.download_url) {
+      const fileRes = await fetch(item.download_url);
+      if (!fileRes.ok) throw new Error(`Failed to fetch file: ${item.name}`);
+      const arrayBuffer = await fileRes.arrayBuffer();
+      zip.file(folderPath + item.name, arrayBuffer);
+    } else if (item.type === 'dir') {
+      zip.folder(folderPath + item.name);
+      await fetchGithubDir(owner, repo, branch, item.path, zip, folderPath + item.name + '/');
+    }
+  });
+  
+  await Promise.all(promises);
 }
 
 /**
@@ -36,40 +34,70 @@ function transformGithubUrl(url: string): string {
 export async function downloadFileFromUrl(url: string, filename: string) {
   // Special handling for GitHub links
   if (url.includes('github.com') && !url.includes('raw.githubusercontent.com')) {
-    const transformedUrl = transformGithubUrl(url);
-    if (transformedUrl !== url) {
-      if (transformedUrl.endsWith('.zip')) {
-        // Use a hidden anchor tag instead of window.open to avoid the white screen/empty tab
+    
+    // Pattern for GitHub tree URLs (directories)
+    const githubTreeRegex = /https:\/\/github\.com\/([^/]+)\/([^/]+)\/tree\/([^/]+)\/(.*)/;
+    const treeMatch = url.match(githubTreeRegex);
+    
+    if (treeMatch) {
+      const [_, owner, repo, branch, path] = treeMatch;
+      
+      try {
+        const zip = new JSZip();
+        await fetchGithubDir(owner, repo, branch, path, zip, '');
+        const blob = await zip.generateAsync({ type: 'blob' });
+        
+        const blobUrl = window.URL.createObjectURL(blob);
         const link = document.createElement('a');
-        link.href = transformedUrl;
-        link.style.display = 'none';
+        link.href = blobUrl;
+        // Append .zip if not present
+        const downloadName = filename.endsWith('.zip') ? filename : `${filename}.zip`;
+        link.download = downloadName;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
+        window.URL.revokeObjectURL(blobUrl);
         return { success: true };
+      } catch (err) {
+        console.error('Failed to download github directory zip:', err);
+        return { success: false, message: 'Failed to download directory' };
       }
-      // If it transformed to a raw link, proceed to fetch it so it downloads with the proper filename!
-      url = transformedUrl;
+    }
+
+    // Pattern for GitHub blob URLs (single files)
+    const githubBlobRegex = /https:\/\/github\.com\/([^/]+)\/([^/]+)\/blob\/([^/]+)\/(.*)/;
+    const blobMatch = url.match(githubBlobRegex);
+    
+    if (blobMatch) {
+      const [_, user, repo, branch, path] = blobMatch;
+      url = `https://raw.githubusercontent.com/${user}/${repo}/${branch}/${path}`;
+    } else {
+       // If it's the root of a repo (no tree/blob)
+       const repoMatch = url.match(/https:\/\/github\.com\/([^/]+)\/([^/]+)\/?$/);
+       if (repoMatch) {
+          const [_, user, repo] = repoMatch;
+          url = `https://github.com/${user}/${repo}/archive/refs/heads/main.zip`; // fallback
+       }
     }
   }
 
   try {
     const response = await fetch(url);
     if (!response.ok) throw new Error('Network response was not ok');
-    
+
     const blob = await response.blob();
     const blobUrl = window.URL.createObjectURL(blob);
-    
+
     const link = document.createElement('a');
     link.href = blobUrl;
     link.download = filename;
     document.body.appendChild(link);
     link.click();
-    
+
     // Cleanup
     document.body.removeChild(link);
     window.URL.revokeObjectURL(blobUrl);
-    
+
     return { success: true };
   } catch (error) {
     console.error('Download failed:', error);
@@ -81,14 +109,14 @@ export async function downloadFileFromUrl(url: string, filename: string) {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    
+
     return { success: false, message: 'Initiated fallback download.' };
   }
 }
 
 export async function downloadDocument(sensorKey: string, fileType: string = 'datasheet') {
   const filePath = SENSOR_FILES[sensorKey]?.[fileType];
-  
+
   if (!filePath) {
     console.error(`Document not found for ${sensorKey} [${fileType}]`);
     return { success: false, message: 'Document link not available.' };

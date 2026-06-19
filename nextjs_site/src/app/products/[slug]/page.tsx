@@ -11,12 +11,13 @@ import { AccessRequest } from '@/types/admin';
 import ModelViewer from '@/components/ModelViewer';
 
 export default function ProductDetailsPage({ params }: { params: { slug: string } }) {
-  const { user } = useAuth();
+  const { user, googleUser } = useAuth();
   const [requestStatus, setRequestStatus] = useState<AccessRequest | null>(null);
   const [userAccess, setUserAccess] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isChecking, setIsChecking] = useState(true);
   const [show3D, setShow3D] = useState(false);
+  const [downloadingKey, setDownloadingKey] = useState<string | null>(null);
 
   const sensor = allSensors.find((s) => {
     const fullTitle = `${s.title.trim()} ${s.highlightText.trim()}`.replace(/\s+/g, ' ');
@@ -34,22 +35,25 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
       setUserAccess([]);
       setIsChecking(true);
 
-      if (user && datasheetKey) {
+      const currentUserEmail = user?.attributes?.email || googleUser?.email;
+      const currentUserId = user?.userId || googleUser?.email;
+
+      if (currentUserEmail && datasheetKey) {
         try {
           // fetch all requests for this email to find pending/status
-          const requests = await fetchAllRequests(user.attributes.email);
+          const requests = await fetchAllRequests(currentUserEmail);
           // CRITICAL FIX: Ensure request belongs to the current user
-          const existing = requests.find(r => r.documentName === datasheetKey && r.userEmail === user.attributes.email);
+          const existing = requests.find(r => r.documentName === datasheetKey && r.userEmail === currentUserEmail);
           if (existing) setRequestStatus(existing);
 
           // fetch user-specific access list
-          const access = await fetchUserAccess(user.userId);
+          const access = await fetchUserAccess(currentUserId as string);
           setUserAccess(access);
 
           // Debug Logging
           console.log("Access Check Debug:", {
-            userId: user.userId,
-            userEmail: user.attributes.email,
+            userId: currentUserId,
+            userEmail: currentUserEmail,
             datasheetKey: datasheetKey,
             requestStatus: existing?.status,
             userAccessList: access,
@@ -62,22 +66,25 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
       setIsChecking(false);
     }
     checkExistingRequest();
-  }, [user, datasheetKey]);
+  }, [user, googleUser, datasheetKey]);
 
   const handleRequest = async () => {
-    if (!user?.attributes?.email || !datasheetKey) return;
+    const currentUserEmail = user?.attributes?.email || googleUser?.email;
+    const currentUserName = user?.username || user?.attributes?.email.split('@')[0] || googleUser?.name || googleUser?.email.split('@')[0];
+
+    if (!currentUserEmail || !datasheetKey) return;
     setIsLoading(true);
     try {
       const result = await requestDocumentAccess(
-        user.attributes.email,
-        user.username || user.attributes.email.split('@')[0],
+        currentUserEmail,
+        currentUserName,
         datasheetKey
       );
       if (result.success) {
         setRequestStatus({
           id: 'temp',
-          userEmail: user.attributes.email,
-          userName: user.username || user.attributes.email.split('@')[0],
+          userEmail: currentUserEmail,
+          userName: currentUserName,
           documentName: datasheetKey,
           status: 'PENDING',
           requestDate: new Date().toISOString(),
@@ -139,9 +146,14 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
   };
 
   // Force download for protected code files
-  const handleDirectDownload = async (url: string, filenameSuffix: string) => {
-    const filename = `${sensor.datasheetKey}_${filenameSuffix.replace(/\s+/g, '_')}`;
-    await downloadFileFromUrl(url, filename);
+  const handleDirectDownload = async (url: string, filenameSuffix: string, key: string) => {
+    setDownloadingKey(key);
+    try {
+      const filename = `${sensor.datasheetKey}_${filenameSuffix.replace(/\s+/g, '_')}`;
+      await downloadFileFromUrl(url, filename);
+    } finally {
+      setDownloadingKey(null);
+    }
   };
 
   const handleEnquire = () => {
@@ -248,7 +260,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
             Checking Code Access...
           </div>
         );
-      } else if (!user) {
+      } else if (!user && !googleUser) {
         protectedButtons.push(
           <Link key="login" href="/login" className="bg-primary hover:bg-primary-light text-white font-bold py-4 px-8 rounded-full transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] flex items-center gap-2">
             <span className="material-symbols-outlined">lock</span>
@@ -260,11 +272,14 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
           protectedButtons.push(
             <button 
               key={cl.key}
-              onClick={() => handleDirectDownload((sensor as any)[cl.key], cl.label)} 
-              className="bg-primary hover:bg-primary-light text-white font-bold py-4 px-8 rounded-full transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] flex items-center gap-2 group"
+              onClick={() => handleDirectDownload((sensor as any)[cl.key], cl.label, cl.key)} 
+              disabled={downloadingKey === cl.key}
+              className={`bg-primary hover:bg-primary-light text-white font-bold py-4 px-8 rounded-full transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] flex items-center gap-2 group ${downloadingKey === cl.key ? 'opacity-75 cursor-wait' : ''}`}
             >
-              <span className="material-symbols-outlined group-hover:rotate-12 transition-transform">code</span>
-              {cl.label}
+              <span className={`material-symbols-outlined ${downloadingKey === cl.key ? 'animate-spin' : 'group-hover:rotate-12 transition-transform'}`}>
+                {downloadingKey === cl.key ? 'sync' : 'code'}
+              </span>
+              {downloadingKey === cl.key ? 'Downloading...' : cl.label}
             </button>
           );
         });

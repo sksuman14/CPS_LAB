@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useEffect, ReactNode } from 'react';
@@ -11,18 +10,18 @@ interface ProtectedRouteProps {
 }
 
 export default function ProtectedRoute({ children, requireAdmin = false }: ProtectedRouteProps) {
-  const { user, isAdmin, isLoading } = useAuth();
+  const { user, googleUser, isAdmin, isLoading } = useAuth();
   const router = useRouter();
 
   useEffect(() => {
     if (!isLoading) {
-      if (!user) {
+      if (!user && !googleUser) {
         router.push('/login');
       } else if (requireAdmin && !isAdmin) {
         router.push('/');
       }
     }
-  }, [user, isAdmin, isLoading, router, requireAdmin]);
+  }, [user, googleUser, isAdmin, isLoading, router, requireAdmin]);
 
   if (isLoading) {
     return (
@@ -32,7 +31,7 @@ export default function ProtectedRoute({ children, requireAdmin = false }: Prote
     );
   }
 
-  if (!user || (requireAdmin && !isAdmin)) {
+  if ((!user && !googleUser) || (requireAdmin && !isAdmin)) {
     return null;
   }
 
