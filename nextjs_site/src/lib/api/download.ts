@@ -1,6 +1,4 @@
 import { SENSOR_FILES } from '@/data/downloads';
-
-declare module 'jszip';
 import JSZip from 'jszip';
 
 async function fetchGithubDir(owner: string, repo: string, branch: string, path: string, zip: JSZip, folderPath: string = '') {

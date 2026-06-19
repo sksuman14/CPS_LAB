@@ -70,7 +70,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
 
   const handleRequest = async () => {
     const currentUserEmail = user?.attributes?.email || googleUser?.email;
-    const currentUserName = user?.username || user?.attributes?.email.split('@')[0] || googleUser?.name || googleUser?.email.split('@')[0];
+    const currentUserName = user?.username || user?.attributes?.email?.split('@')[0] || googleUser?.name || googleUser?.email?.split('@')[0] || 'User';
 
     if (!currentUserEmail || !datasheetKey) return;
     setIsLoading(true);
