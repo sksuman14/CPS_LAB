@@ -173,6 +173,12 @@ const deployments = [
     "title": "Deployment 28",
     "description": "AWaDH CPS Lab launched at Chandigarh University",
     "longDescription": "Indian Institute of Technology, Ropar Expands Deep-Tech Footprint with 28th CPS Lab at Chandigarh University."
+  },
+  {
+    "image": `${BASE_URL}/images/SRM+Deployment.JPG`,
+    "title": "Deployment 29",
+    "description": "AWaDH CPS Lab launched at SRM IST Chennai",
+    "longDescription": "Indian Institute of Technology, Ropar Expands Deep-Tech Footprint with 29th CPS Lab at SRM IST Chennai."
   }
 ];
 

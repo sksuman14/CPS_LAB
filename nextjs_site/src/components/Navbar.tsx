@@ -6,6 +6,9 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '@/context/AuthContext';
 import { usePathname, useRouter } from 'next/navigation';
+import { fetchAllRequests } from '@/lib/api/admin';
+import { AccessRequest } from '@/types/admin';
+import { allSensors } from '@/data/products';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,6 +16,10 @@ export default function Navbar() {
   const { user, isAdmin, logout, googleUser, isLoading } = useAuth();
   const router = useRouter();
   const pathname = usePathname();
+
+  const [notifications, setNotifications] = useState<AccessRequest[]>([]);
+  const [showNotifications, setShowNotifications] = useState(false);
+  const [hasUnread, setHasUnread] = useState(false);
 
   console.log('Navbar Auth State:', {
     isLoggedIn: !!(user || googleUser),
@@ -29,6 +36,67 @@ export default function Navbar() {
     const hasCookie = typeof document !== 'undefined' && document.cookie.includes('cps_logged_in=true');
     setIsLoggedIn(checkLogged || hasCookie);
   }, [user, googleUser]);
+
+  useEffect(() => {
+    async function loadNotifications() {
+      const email = user?.attributes?.email || googleUser?.email;
+      if (email) {
+        try {
+          const reqs = await fetchAllRequests(email);
+          // 1. Strictly filter by user email to ensure we only see THIS user's requests.
+          // 2. Only show updates (GRANTED or REVOKED/REJECTED)
+          const updates = reqs.filter(r => 
+            r.userEmail === email && 
+            (r.status === 'GRANTED' || r.status === 'REVOKED' || r.status === 'REJECTED')
+          );
+          // Sort by processedDate descending if exists, else requestDate
+          updates.sort((a, b) => new Date(b.processedDate || b.requestDate).getTime() - new Date(a.processedDate || a.requestDate).getTime());
+          
+          setNotifications(updates);
+          
+          // Check for unread notifications using a signature of current states
+          const currentSignature = updates.map(u => `${u.id}:${u.status}`).join(',');
+          const savedSignature = typeof window !== 'undefined' ? localStorage.getItem('cps_notif_signature') : null;
+          
+          if (savedSignature !== currentSignature && updates.length > 0) {
+            setHasUnread(true);
+          } else {
+            setHasUnread(false);
+          }
+        } catch (e) {
+          console.error("Failed to load notifications", e);
+        }
+      } else {
+        setNotifications([]);
+      }
+    }
+    loadNotifications();
+  }, [user, googleUser]);
+
+  const handleNotificationClick = () => {
+    setShowNotifications(!showNotifications);
+    if (!showNotifications) {
+      // Mark as read
+      setHasUnread(false);
+      if (typeof window !== 'undefined') {
+        const currentSignature = notifications.map(u => `${u.id}:${u.status}`).join(',');
+        localStorage.setItem('cps_notif_signature', currentSignature);
+      }
+    }
+  };
+
+  const formatNotifDate = (dateStr?: string, fallbackStr?: string) => {
+    let d = new Date(dateStr || '');
+    if (isNaN(d.getTime())) d = new Date(fallbackStr || '');
+    if (isNaN(d.getTime())) return 'Recently';
+    return d.toLocaleDateString();
+  };
+
+  // Helper to get product title from datasheetKey
+  const getProductTitle = (key: string) => {
+    const sensor = allSensors.find(s => s.datasheetKey === key);
+    return sensor ? `${sensor.title} ${sensor.highlightText}`.trim() : key;
+  };
 
   const displayName = user
     ? (user.username || 'User')
@@ -64,9 +132,9 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-white/10 shadow-[0_8px_32px_0_rgba(180,197,255,0.06)]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+      <div className="w-full max-w-[1600px] mx-auto px-6 md:px-8 lg:px-12 py-4 flex items-center justify-between">
         {/* LEFT: Logo */}
-        <div className="flex-shrink-0 flex items-center gap-3">
+        <div className="flex-1 flex items-center justify-start gap-3">
           <Link href="/home" className="group flex items-center gap-2">
             <div className="relative w-8 h-8 transition-transform duration-300 group-hover:scale-110">
               <Image
@@ -84,7 +152,7 @@ export default function Navbar() {
 
         {/* CENTER: Navigation Links - Desktop */}
         <div 
-          className="hidden lg:flex items-center justify-center flex-1 px-4 gap-2 xl:gap-4 text-xs xl:text-sm font-medium"
+          className="hidden lg:flex items-center justify-center px-4 gap-2 xl:gap-4 text-xs xl:text-sm font-medium"
           onMouseLeave={() => setHoveredLink(null)}
         >
           {navLinks.map((link) => {
@@ -105,13 +173,9 @@ export default function Navbar() {
                   <div className="absolute inset-0 bg-primary/20 rounded-full border border-primary/30 shadow-[0_0_10px_rgba(59,130,246,0.3)]" />
                 )}
                 
-                {/* Fluid Sliding Hover Pill */}
+                {/* Static Hover Pill (No Sliding) */}
                 {isHovered && !isActive && (
-                  <motion.div
-                    layoutId="sliding-hover-pill"
-                    className="absolute inset-0 bg-white/10 rounded-full border border-white/20"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                  />
+                  <div className="absolute inset-0 bg-white/10 rounded-full border border-white/20 animate-in fade-in duration-150" />
                 )}
 
                 <span className="relative z-10">{link.name}</span>
@@ -129,8 +193,70 @@ export default function Navbar() {
           )}
         </div>
 
-        {/* RIGHT: User Actions */}
-        <div className="flex-shrink-0 flex items-center gap-3">
+        {/* RIGHT: User Actions & Notifications */}
+        <div className="flex-1 flex items-center justify-end gap-4">
+          
+          {/* Notifications Icon (Visible when logged in) */}
+          {isLoggedIn && !isLoading && (
+            <div className="relative">
+              <button 
+                onClick={handleNotificationClick}
+                className="relative p-2 text-white/70 hover:text-white transition-colors hover:bg-white/10 rounded-full"
+              >
+                <span className="material-symbols-outlined text-xl">notifications</span>
+                {hasUnread && (
+                  <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full shadow-[0_0_5px_rgba(239,68,68,0.8)] animate-pulse" />
+                )}
+              </button>
+
+              {/* Notifications Dropdown */}
+              <AnimatePresence>
+                {showNotifications && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute right-0 mt-3 w-80 bg-surface-container-high/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.5)] overflow-hidden z-50 flex flex-col max-h-[400px]"
+                  >
+                    <div className="px-4 py-3 border-b border-white/10 bg-white/5 flex justify-between items-center">
+                      <h3 className="text-sm font-bold text-white tracking-widest uppercase">Notifications</h3>
+                      <button onClick={() => setShowNotifications(false)} className="text-white/50 hover:text-white">
+                        <span className="material-symbols-outlined text-sm">close</span>
+                      </button>
+                    </div>
+                    
+                    <div className="overflow-y-auto flex-1 custom-scrollbar">
+                      {notifications.length > 0 ? (
+                        notifications.map((notif, idx) => (
+                          <div key={idx} className="p-4 border-b border-white/5 hover:bg-white/5 transition-colors flex gap-3 items-start">
+                            <div className={`mt-0.5 rounded-full p-1 border ${notif.status === 'GRANTED' ? 'bg-green-500/10 border-green-500/30' : 'bg-red-500/10 border-red-500/30'}`}>
+                              <span className={`material-symbols-outlined text-sm ${notif.status === 'GRANTED' ? 'text-green-400' : 'text-red-400'}`}>
+                                {notif.status === 'GRANTED' ? 'check_circle' : 'cancel'}
+                              </span>
+                            </div>
+                            <div className="flex-1">
+                              <p className="text-xs text-white/90 mb-1 leading-relaxed">
+                                Your access request for <span className="font-bold text-primary">{getProductTitle(notif.documentName)}</span> has been <strong className={notif.status === 'GRANTED' ? 'text-green-400' : 'text-red-400'}>{notif.status === 'GRANTED' ? 'Approved' : 'Rejected'}</strong>.
+                              </p>
+                              <p className="text-[10px] text-white/40">
+                                {formatNotifDate(notif.processedDate, notif.requestDate)}
+                              </p>
+                            </div>
+                          </div>
+                        ))
+                      ) : (
+                        <div className="p-8 text-center text-white/50 text-xs">
+                          No updates on your requests yet.
+                        </div>
+                      )}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          )}
+
           {/* Desktop User Menu */}
           <div className="hidden lg:flex items-center gap-3">
             {isLoading ? (

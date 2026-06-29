@@ -170,8 +170,8 @@ export async function handleGetCurrentUser() {
  */
 export function isUserAdmin(email: string): boolean {
   const adminEmails = [
-    'thvwork07@gmail.com',
-    'vishal808066@gmail.com'
+    'awadhropar@gmail.com',
+    'ashutoshrj12@gmail.com'
   ];
   return adminEmails.includes(email.toLowerCase());
 }
