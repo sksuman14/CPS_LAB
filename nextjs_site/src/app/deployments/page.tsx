@@ -179,6 +179,12 @@ const deployments = [
     "title": "Deployment 29",
     "description": "AWaDH CPS Lab launched at SRM IST Chennai",
     "longDescription": "Indian Institute of Technology, Ropar Expands Deep-Tech Footprint with 29th CPS Lab at SRM IST Chennai."
+  },
+  {
+    "image": `${BASE_URL}/images/30..jpeg`,
+    "title": "Deployment 30",
+    "description": "AWaDH CPS Lab launched at Government Polytechnic College Mohali (Khunimajra)",
+    "longDescription": "Fostering next-generation skill development and deep-tech innovation, IIT Ropar's AWaDH establishes its 30th Cyber-Physical Systems Lab at Government Polytechnic College Mohali (Khunimajra)."
   }
 ];
 

@@ -193,6 +193,14 @@ const workshops = [
     location: "Chandigarh University",
     date: " ",
     participants: " ",
+  },
+  {
+    title: "Advanced Cyber-Physical Systems Workshop at SRM IST Chennai",
+    description: "Empowering next-generation engineers with practical, hands-on Cyber-Physical Systems training and advanced IoT applications.",
+    image: `${BASE_URL}/images/SRM+Training.jpeg`,
+    location: "SRM IST Chennai",
+    date: " ",
+    participants: " ",
   }
 ];
 
