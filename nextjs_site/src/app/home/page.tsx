@@ -149,7 +149,7 @@ function HomeContent() {
           <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }} className="grid grid-cols-1 md:grid-cols-12 md:grid-rows-2 gap-6 h-auto">
             
             {/* End-to-End CPS Approach Card */}
-            <motion.div variants={fadeIn} className="md:col-span-8 md:row-span-2 bg-gradient-to-br from-[#121626] to-[#0D101C] rounded-2xl p-8 md:p-10 border border-white/5 relative overflow-hidden flex flex-col group">
+            <motion.div variants={fadeIn} className="md:col-span-8 md:row-span-2 bg-gradient-to-br from-surface to-surface-container-lowest rounded-2xl p-8 md:p-10 border border-white/5 relative overflow-hidden flex flex-col group">
               <div className="relative z-10 flex flex-col h-full">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center border border-secondary/20">
@@ -164,7 +164,7 @@ function HomeContent() {
 
                   {[
                     { title: "Hardware", desc: "sensors • actuators • boards", icon: "extension", color: "text-gray-400" },
-                    { title: "Firmware", desc: "embedded control logic", icon: "memory", color: "text-[#A3E635]" },
+                    { title: "Firmware", desc: "embedded control logic", icon: "memory", color: "text-secondary" },
                     { title: "Connectivity", desc: "Wi-Fi • BLE • MQTT", icon: "satellite_alt", color: "text-blue-300" },
                     { title: "Cloud", desc: "ingestion • storage", icon: "cloud", color: "text-purple-100" },
                     { title: "AI Analytics", desc: "models • inference", icon: "psychology", color: "text-pink-400" },
@@ -190,7 +190,7 @@ function HomeContent() {
             </motion.div>
 
             {/* Continuous Engagement Card */}
-            <motion.div variants={fadeIn} className="md:col-span-4 bg-gradient-to-br from-[#181525] to-[#100D16] rounded-2xl p-8 border border-white/5 relative overflow-hidden flex flex-col group">
+            <motion.div variants={fadeIn} className="md:col-span-4 bg-gradient-to-br from-surface-container to-surface-container-lowest rounded-2xl p-8 border border-white/5 relative overflow-hidden flex flex-col group">
               <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 mb-6">
                 <span className="material-symbols-outlined text-purple-400 text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>all_inclusive</span>
               </div>
@@ -215,9 +215,9 @@ function HomeContent() {
             </motion.div>
 
             {/* Hands-On Involvement Card */}
-            <motion.div variants={fadeIn} className="md:col-span-4 bg-gradient-to-br from-[#111A1B] to-[#0A1010] rounded-2xl p-8 border border-white/5 relative overflow-hidden flex flex-col group">
+            <motion.div variants={fadeIn} className="md:col-span-4 bg-gradient-to-br from-surface-container-low to-surface-container-lowest rounded-2xl p-8 border border-white/5 relative overflow-hidden flex flex-col group">
               <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 mb-6">
-                <span className="material-symbols-outlined text-[#80d5cb] text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>build</span>
+                <span className="material-symbols-outlined text-secondary text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>build</span>
               </div>
               <h3 className="font-headline text-xl font-bold text-white mb-3">Hands-On Involvement</h3>
               <p className="font-body text-sm text-on-surface-variant/80 mb-8 max-w-sm">Students actively connect devices, test them, and see results — not just observe demonstrations.</p>
@@ -237,7 +237,7 @@ function HomeContent() {
                 </div>
                 
                 <div className="w-8 h-8 rounded-lg bg-surface border border-[#80d5cb]/40 flex items-center justify-center z-10 relative">
-                  <span className="material-symbols-outlined text-[#80d5cb] text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>laptop_mac</span>
+                  <span className="material-symbols-outlined text-secondary text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>laptop_mac</span>
                 </div>
               </div>
             </motion.div>
@@ -250,7 +250,7 @@ function HomeContent() {
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
               <h2 className="font-headline text-4xl md:text-5xl font-bold text-white mb-4">CPS Labs Across India</h2>
               <p className="font-body text-lg text-on-surface-variant mb-12">Our network of research centers spans across the country.</p>
-              <div className="h-[400px] md:h-[600px] w-full rounded-3xl bg-[#111827] border border-white/10 relative overflow-hidden group shadow-2xl">
+              <div className="h-[400px] md:h-[600px] w-full rounded-3xl bg-surface-container-lowest border border-white/10 relative overflow-hidden group shadow-2xl">
                 <IndiaMap />
                 <div className="absolute bottom-6 right-6 z-30 bg-primary/90 backdrop-blur-md text-white px-6 py-4 rounded-2xl shadow-[0_10px_30px_rgba(37,99,235,0.4)] border border-white/20 flex flex-col items-center">
                   <span className="font-headline text-3xl font-black leading-none drop-shadow-md mb-1 text-white">22+</span>
@@ -270,7 +270,7 @@ function HomeContent() {
           <div className="grid md:grid-cols-3 gap-8">
             {apps.map((app, idx) => (
               <motion.div key={app.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.2 }} className="bg-surface-container rounded-xl overflow-hidden border border-white/5 group flex flex-col">
-                <div className="h-56 overflow-hidden bg-[#EAEAEA] flex items-center justify-center p-4">
+                <div className="h-56 overflow-hidden bg-surface-container-lowest flex items-center justify-center p-4">
                   <img src={app.path} alt={app.title} className="max-h-full max-w-full object-contain rounded-md shadow-sm group-hover:scale-105 transition-transform duration-500" />
                 </div>
                 <div className="p-6 flex-grow flex flex-col">

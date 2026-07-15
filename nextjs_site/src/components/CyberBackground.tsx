@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 export default function CyberBackground({ variant = 'primary' }: { variant?: 'primary' | 'secondary' | 'tertiary' }) {
   const themes = {
     primary: {
-      bg: 'bg-[#030712]',
+      bg: 'bg-background',
       gridColor: '56, 189, 248',
       dot1: 'bg-blue-400 shadow-[0_0_12px_rgba(56,189,248,1)]',
       dot2: 'bg-blue-300 shadow-[0_0_10px_rgba(147,197,253,1)]',

@@ -331,7 +331,7 @@ export default function TrainingAndWorkshopPage() {
                 >
                   <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
 
-                  <div className="h-56 relative overflow-hidden bg-[#111827]">
+                  <div className="h-56 relative overflow-hidden bg-surface-container-lowest">
                     <img
                       src={workshop.image}
                       alt={workshop.title}
@@ -347,7 +347,7 @@ export default function TrainingAndWorkshopPage() {
 
                   </div>
 
-                  <div className="p-8 flex flex-col flex-grow bg-gradient-to-b from-surface-container to-[#0A0A0A] relative z-10">
+                  <div className="p-8 flex flex-col flex-grow bg-gradient-to-b from-surface-container to-surface-container-lowest relative z-10">
                     <h3 className="font-headline text-xl font-bold text-white mb-4 leading-snug drop-shadow-sm group-hover:text-primary-light transition-colors">
                       {workshop.title}
                     </h3>

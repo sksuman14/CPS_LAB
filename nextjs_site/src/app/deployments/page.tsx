@@ -206,7 +206,7 @@ function DeploymentTextBlock({ data, index, setActiveIndex }: { data: any, index
     >
       <div className={`transition-all duration-700 ${isInView ? 'opacity-100 scale-100' : 'opacity-40 scale-95'}`}>
         {/* Mobile Image (Only visible on small screens) */}
-        <div className="lg:hidden w-full h-[300px] bg-[#111827] rounded-3xl overflow-hidden shadow-2xl mb-8 relative border border-white/10">
+        <div className="lg:hidden w-full h-[300px] bg-surface-container-lowest rounded-3xl overflow-hidden shadow-2xl mb-8 relative border border-white/10">
           <img
             src={data.image}
             alt={data.title}
@@ -291,7 +291,7 @@ export default function DeploymentsPage() {
                     animate={{ opacity: 1, y: 0, rotateX: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -40, rotateX: -10, scale: 0.9 }}
                     transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                    className="w-full h-full relative rounded-3xl overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.7)] border border-white/10 group bg-surface-container flex items-center justify-center p-4 bg-gradient-to-br from-surface-container to-[#000]"
+                    className="w-full h-full relative rounded-3xl overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.7)] border border-white/10 group bg-surface-container flex items-center justify-center p-4 bg-gradient-to-br from-surface-container to-surface-container-lowest"
                   >
                     <div className="absolute inset-0 bg-primary/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                     <img

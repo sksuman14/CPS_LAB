@@ -3,18 +3,108 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --background: #f8fafc;
-    --foreground: #0f172a;
-    --card: #ffffff;
-    --card-foreground: #0f172a;
+    :root {
+    --color-white: 15 23 42;
+    --color-black: 255 255 255;
+    --on-tertiary: 255 255 255;
+    --surface-bright: 248 250 252;
+    --outline-variant: 203 213 225;
+    --on-tertiary-fixed-variant: 59 9 24;
+    --on-secondary-fixed-variant: 13 59 54;
+    --on-tertiary-container: 74 4 78;
+    --on-secondary: 255 255 255;
+    --tertiary-container: 253 244 255;
+    --on-background: 15 23 42;
+    --secondary-fixed: 204 251 241;
+    --surface-variant: 241 245 249;
+    --on-secondary-fixed: 4 47 46;
+    --on-surface: 15 23 42;
+    --on-tertiary-fixed: 74 4 78;
+    --surface-tint: 37 99 235;
+    --primary-fixed: 219 234 254;
+    --tertiary-fixed: 250 232 255;
+    --surface: 255 255 255;
+    --surface-container-low: 248 250 252;
+    --primary-fixed-dim: 191 219 254;
+    --inverse-surface: 30 41 59;
+    --surface-container-lowest: 255 255 255;
+    --outline: 148 163 184;
+    --on-secondary-container: 15 118 110;
+    --on-primary: 255 255 255;
+    --error-container: 254 226 226;
+    --tertiary-fixed-dim: 245 208 254;
+    --on-primary-fixed-variant: 30 58 138;
+    --on-primary-container: 30 64 175;
+    --error: 239 68 68;
+    --background: 248 250 252;
+    --on-primary-fixed: 23 37 84;
+    --secondary-container: 204 251 241;
+    --inverse-on-surface: 248 250 252;
+    --surface-container: 241 245 249;
+    --on-error-container: 127 29 29;
+    --surface-dim: 226 232 240;
+    --surface-container-highest: 226 232 240;
+    --surface-container-high: 226 232 240;
+    --primary-container: 219 234 254;
+    --inverse-primary: 147 197 253;
+    --secondary-fixed-dim: 153 246 228;
+    --secondary: 15 118 110;
+    --primary: 37 99 235;
+    --on-surface-variant: 51 65 85;
+    --tertiary: 192 38 211;
+    --on-error: 255 255 255;
   }
 
   .dark {
-    --background: #09090b;
-    --foreground: #e5e1e4;
-    --card: #121214;
-    --card-foreground: #e5e1e4;
+    --color-white: 255 255 255;
+    --color-black: 0 0 0;
+    --on-tertiary: 88 30 0;
+    --surface-bright: 57 57 59;
+    --outline-variant: 67 70 85;
+    --on-tertiary-fixed-variant: 125 45 0;
+    --on-secondary-fixed-variant: 0 80 74;
+    --on-tertiary-container: 255 237 230;
+    --on-secondary: 0 55 51;
+    --tertiary-container: 188 72 0;
+    --on-background: 229 225 228;
+    --secondary-fixed: 156 242 232;
+    --surface-variant: 53 52 55;
+    --on-secondary-fixed: 0 32 29;
+    --on-surface: 229 225 228;
+    --on-tertiary-fixed: 54 15 0;
+    --surface-tint: 180 197 255;
+    --primary-fixed: 219 225 255;
+    --tertiary-fixed: 255 219 205;
+    --surface: 19 19 21;
+    --surface-container-low: 28 27 29;
+    --primary-fixed-dim: 180 197 255;
+    --inverse-surface: 229 225 228;
+    --surface-container-lowest: 14 14 16;
+    --outline: 141 144 160;
+    --on-secondary-container: 154 240 229;
+    --on-primary: 0 42 120;
+    --error-container: 147 0 10;
+    --tertiary-fixed-dim: 255 181 150;
+    --on-primary-fixed-variant: 0 62 168;
+    --on-primary-container: 238 239 255;
+    --error: 255 180 171;
+    --background: 9 9 11;
+    --on-primary-fixed: 0 23 75;
+    --secondary-container: 0 112 104;
+    --inverse-on-surface: 49 48 50;
+    --surface-container: 32 31 34;
+    --on-error-container: 255 218 214;
+    --surface-dim: 19 19 21;
+    --surface-container-highest: 53 52 55;
+    --surface-container-high: 42 42 44;
+    --primary-container: 37 99 235;
+    --inverse-primary: 0 83 219;
+    --secondary-fixed-dim: 128 213 203;
+    --secondary: 128 213 203;
+    --primary: 180 197 255;
+    --on-surface-variant: 195 198 215;
+    --tertiary: 255 181 150;
+    --on-error: 105 0 5;
   }
 
   body {

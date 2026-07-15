@@ -79,7 +79,7 @@ export default function ContactPage() {
           {/* Left Column: Map */}
           <motion.div 
             variants={itemVariants}
-            className="w-full h-[500px] lg:h-auto rounded-[24px] overflow-hidden border border-white/5 shadow-2xl relative group bg-[#0e1116] flex flex-col"
+            className="w-full h-[500px] lg:h-auto rounded-[24px] overflow-hidden border border-white/5 shadow-2xl relative group bg-surface-container-lowest flex flex-col"
           >
              
              {/* Map container takes remaining space */}
@@ -145,7 +145,7 @@ export default function ContactPage() {
                     <a href="https://www.iitrpr.ac.in/awadh" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 hover:bg-primary/20 hover:border-primary/50 transition-all">
                       <span className="material-symbols-outlined text-sm text-white group-hover:text-primary">language</span>
                     </a>
-                    <a href="https://www.linkedin.com/company/ihub-awadh/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 hover:bg-[#0A66C2]/20 hover:border-[#0A66C2]/50 transition-all">
+                    <a href="https://www.linkedin.com/company/ihub-awadh/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 hover:bg-primary/20 hover:border-primary/50 transition-all">
                       <span className="text-white text-xs font-bold">in</span>
                     </a>
                   </div>
@@ -193,7 +193,7 @@ export default function ContactPage() {
                  <button 
                    type="submit"
                    disabled={isSubmitting}
-                   className="w-full bg-primary text-[#0f172a] font-headline font-bold text-base py-3 rounded-xl mt-2 hover:bg-primary/90 transition-all shadow-[0_0_15px_rgba(180,197,255,0.4)] active:scale-[0.98] disabled:opacity-70 flex items-center justify-center gap-2 group"
+                   className="w-full bg-primary text-on-primary font-headline font-bold text-base py-3 rounded-xl mt-2 hover:bg-primary/90 transition-all shadow-[0_0_15px_rgba(180,197,255,0.4)] active:scale-[0.98] disabled:opacity-70 flex items-center justify-center gap-2 group"
                  >
                    {isSubmitting ? 'Sending...' : 'Send Message'}
                    {!isSubmitting && <span className="material-symbols-outlined text-sm transform group-hover:translate-x-1 transition-transform" style={{ fontVariationSettings: "'FILL' 1" }}>send</span>}

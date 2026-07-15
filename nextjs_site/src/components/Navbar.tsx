@@ -9,6 +9,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { fetchAllRequests } from '@/lib/api/admin';
 import { AccessRequest } from '@/types/admin';
 import { allSensors } from '@/data/products';
+import { useTheme } from 'next-themes';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,6 +17,12 @@ export default function Navbar() {
   const { user, isAdmin, logout, googleUser, isLoading } = useAuth();
   const router = useRouter();
   const pathname = usePathname();
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const [notifications, setNotifications] = useState<AccessRequest[]>([]);
   const [showNotifications, setShowNotifications] = useState(false);
@@ -194,7 +201,20 @@ export default function Navbar() {
         </div>
 
         {/* RIGHT: User Actions & Notifications */}
-        <div className="flex-1 flex items-center justify-end gap-4">
+        <div className="flex-1 flex items-center justify-end gap-2 md:gap-4">
+          
+          {/* Theme Toggle */}
+          {mounted && (
+            <button
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              className="relative p-2 text-white/70 hover:text-white transition-colors hover:bg-white/10 rounded-full"
+              aria-label="Toggle theme"
+            >
+              <span className="material-symbols-outlined text-xl">
+                {theme === 'dark' ? 'light_mode' : 'dark_mode'}
+              </span>
+            </button>
+          )}
           
           {/* Notifications Icon (Visible when logged in) */}
           {isLoggedIn && !isLoading && (
