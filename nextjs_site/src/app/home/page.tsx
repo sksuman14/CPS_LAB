@@ -93,9 +93,6 @@ function HomeContent() {
         {/* Hero Section */}
         <section className="relative w-full pt-16 pb-32 mb-20 overflow-hidden flex flex-col items-center justify-center text-center">
           <motion.div variants={staggerContainer} initial="hidden" animate="show" className="max-w-4xl mx-auto px-8 relative z-20">
-            <motion.span variants={fadeIn} className="inline-block px-4 py-1.5 rounded-full bg-secondary-container/20 border border-secondary/30 text-secondary text-xs uppercase font-bold tracking-widest backdrop-blur-md mb-8">
-              IIT Ropar Research Center
-            </motion.span>
             <motion.h1 variants={fadeIn} className="font-headline text-6xl md:text-7xl lg:text-8xl font-black leading-[1.05] mb-6 tracking-tighter text-white drop-shadow-2xl">
               Cyber Physical<br />System <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent [text-shadow:0_0_1px_rgba(255,255,255,0.3)]">Laboratory</span>
             </motion.h1>
@@ -141,37 +138,108 @@ function HomeContent() {
         {/* Bento Grid */}
         <section className="max-w-7xl mx-auto px-8 mb-40">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16">
-            <h2 className="font-headline text-display-md text-secondary font-bold tracking-tight mb-4 uppercase">What Makes Us Different??</h2>
-            <p className="font-body text-lg text-on-surface-variant mb-4 max-w-3xl">Bridging the gap between theoretical research and real-world application through innovation and collaboration.</p>
-            <div className="w-24 h-1 bg-primary-container rounded-full"></div>
+            <div className="flex items-center gap-4 mb-4">
+              <div className="w-8 h-[2px] bg-secondary"></div>
+              <span className="text-secondary font-mono text-sm uppercase tracking-widest font-bold">What Makes Us Different</span>
+            </div>
+            <h2 className="font-headline text-4xl md:text-5xl font-bold text-white mb-8 max-w-4xl leading-tight">
+              Bridging the gap between theoretical research and real-world application <span className="text-on-surface-variant">through innovation and collaboration.</span>
+            </h2>
           </motion.div>
-          <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }} className="grid grid-cols-1 md:grid-cols-12 grid-rows-2 gap-6 h-auto md:h-[600px]">
-            <motion.div variants={fadeIn} whileHover={{ y: -5 }} className="md:col-span-8 md:row-span-2 bg-gradient-to-br from-surface-container to-[#111827] rounded-xl p-8 border border-white/5 relative overflow-hidden flex flex-col justify-end group cursor-pointer">
-              <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none rounded-xl"><CyberBackground /></div>
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
-              <div className="relative z-10">
-                <span className="material-symbols-outlined text-primary text-4xl mb-4" style={{ fontVariationSettings: "'FILL' 1" }}>integration_instructions</span>
-                <h3 className="font-headline text-3xl font-bold text-white mb-4">End-to-End CPS Approach</h3>
-                <p className="font-body text-on-surface-variant max-w-md">Complete stack from hardware and firmware through connectivity, cloud, AI analytics, to dashboards—not isolated kits.</p>
+          <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }} className="grid grid-cols-1 md:grid-cols-12 md:grid-rows-2 gap-6 h-auto">
+            
+            {/* End-to-End CPS Approach Card */}
+            <motion.div variants={fadeIn} className="md:col-span-8 md:row-span-2 bg-gradient-to-br from-[#121626] to-[#0D101C] rounded-2xl p-8 md:p-10 border border-white/5 relative overflow-hidden flex flex-col group">
+              <div className="relative z-10 flex flex-col h-full">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center border border-secondary/20">
+                    <span className="material-symbols-outlined text-secondary" style={{ fontVariationSettings: "'FILL' 1" }}>code_blocks</span>
+                  </div>
+                  <h3 className="font-headline text-2xl font-bold text-white">End-to-End CPS Approach</h3>
+                </div>
+                <p className="font-body text-on-surface-variant mb-12 max-w-lg">Complete stack from hardware and firmware through connectivity, cloud, and AI analytics, to dashboards — not isolated kits.</p>
+                
+                <div className="flex-grow flex flex-col justify-between relative md:pr-12">
+                  <div className="absolute left-[1.5rem] top-6 bottom-6 w-[1px] bg-gradient-to-b from-surface-variant via-primary/30 to-transparent z-0"></div>
+
+                  {[
+                    { title: "Hardware", desc: "sensors • actuators • boards", icon: "extension", color: "text-gray-400" },
+                    { title: "Firmware", desc: "embedded control logic", icon: "memory", color: "text-[#A3E635]" },
+                    { title: "Connectivity", desc: "Wi-Fi • BLE • MQTT", icon: "satellite_alt", color: "text-blue-300" },
+                    { title: "Cloud", desc: "ingestion • storage", icon: "cloud", color: "text-purple-100" },
+                    { title: "AI Analytics", desc: "models • inference", icon: "psychology", color: "text-pink-400" },
+                    { title: "Dashboards", desc: "live decisions", icon: "insert_chart", color: "text-blue-300" },
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center justify-between relative z-10 mb-6 last:mb-0">
+                      <div className="flex items-center gap-6">
+                        <div className="w-12 h-12 rounded-xl bg-surface-container border border-white/5 flex items-center justify-center shadow-lg z-10 group-hover:border-white/10 transition-colors">
+                          <span className={`material-symbols-outlined ${item.color}`} style={{ fontVariationSettings: "'FILL' 1" }}>{item.icon}</span>
+                        </div>
+                        <div>
+                          <h4 className="text-white font-bold text-base leading-tight mb-1">{item.title}</h4>
+                          <p className="font-mono text-[11px] text-on-surface-variant/60 uppercase tracking-widest">{item.desc}</p>
+                        </div>
+                      </div>
+                      <div className="font-mono text-[10px] text-white/30 border border-white/5 px-2 py-1 rounded-full bg-white/5">
+                        0{i + 1}
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </motion.div>
-            <motion.div variants={fadeIn} whileHover={{ y: -5 }} className="md:col-span-4 bg-surface-container rounded-xl p-8 border border-white/5 relative overflow-hidden group cursor-pointer">
-              <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none rounded-xl"><CyberBackground variant="secondary" /></div>
-              <div className="relative z-10">
-                <span className="material-symbols-outlined text-secondary text-3xl mb-4" style={{ fontVariationSettings: "'FILL' 1" }}>all_inclusive</span>
-                <h3 className="font-headline text-xl font-bold text-white mb-2">Continuous Engagement</h3>
-                <p className="font-body text-sm text-on-surface-variant">Ongoing upgrades, new experiments, internships, and collaborations not a one-time setup.</p>
+
+            {/* Continuous Engagement Card */}
+            <motion.div variants={fadeIn} className="md:col-span-4 bg-gradient-to-br from-[#181525] to-[#100D16] rounded-2xl p-8 border border-white/5 relative overflow-hidden flex flex-col group">
+              <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 mb-6">
+                <span className="material-symbols-outlined text-purple-400 text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>all_inclusive</span>
               </div>
-              <div className="absolute bottom-[-20%] right-[-10%] opacity-10"><span className="material-symbols-outlined text-[120px]">public</span></div>
+              <h3 className="font-headline text-xl font-bold text-white mb-3">Continuous Engagement</h3>
+              <p className="font-body text-sm text-on-surface-variant/80 mb-8 max-w-sm">Ongoing upgrades, new experiments, internships, and collaborations — not a one-time setup.</p>
+              
+              <div className="mt-auto flex items-center gap-6">
+                <motion.div 
+                  className="w-14 h-14 rounded-full border border-dashed border-white/20 relative flex items-center justify-center"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                >
+                  <div className="absolute top-1/2 -left-[3px] -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-purple-400 shadow-[0_0_8px_#c084fc]"></div>
+                </motion.div>
+                <div className="flex flex-col gap-1.5">
+                  <div className="font-mono text-[11px] text-on-surface-variant/60">
+                    <span className="text-white/80">v1 &rarr; v2 &rarr; v3</span> upgrades
+                  </div>
+                  <div className="font-mono text-[11px] text-on-surface-variant/60">new cohorts, quarterly</div>
+                </div>
+              </div>
             </motion.div>
-            <motion.div variants={fadeIn} whileHover={{ y: -5 }} className="md:col-span-4 bg-surface-container rounded-xl p-8 border border-white/5 relative overflow-hidden group cursor-pointer">
-              <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none rounded-xl"><CyberBackground variant="tertiary" /></div>
-              <div className="relative z-10">
-                <span className="material-symbols-outlined text-tertiary text-3xl mb-4" style={{ fontVariationSettings: "'FILL' 1" }}>build</span>
-                <h3 className="font-headline text-xl font-bold text-white mb-2">Hands-On Involvement</h3>
-                <p className="font-body text-sm text-on-surface-variant">Students actively connect devices, test them, and see results—not just observe demonstrations.</p>
+
+            {/* Hands-On Involvement Card */}
+            <motion.div variants={fadeIn} className="md:col-span-4 bg-gradient-to-br from-[#111A1B] to-[#0A1010] rounded-2xl p-8 border border-white/5 relative overflow-hidden flex flex-col group">
+              <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 mb-6">
+                <span className="material-symbols-outlined text-[#80d5cb] text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>build</span>
               </div>
-              <div className="absolute -right-4 -bottom-4 w-32 h-32 bg-tertiary-container/10 blur-2xl rounded-full"></div>
+              <h3 className="font-headline text-xl font-bold text-white mb-3">Hands-On Involvement</h3>
+              <p className="font-body text-sm text-on-surface-variant/80 mb-8 max-w-sm">Students actively connect devices, test them, and see results — not just observe demonstrations.</p>
+              
+              <div className="mt-auto flex items-center justify-between relative w-full pt-6 px-2">
+                <div className="absolute left-8 right-8 top-[38px] h-[1px] border-b border-dashed border-white/20 z-0"></div>
+                <div className="absolute left-8 right-8 top-[38px] h-[1px] z-0 overflow-hidden">
+                  <motion.div 
+                    className="absolute top-0 h-full w-[50%] bg-gradient-to-r from-transparent via-[#80d5cb] to-transparent opacity-70"
+                    animate={{ left: ["-50%", "100%"] }}
+                    transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
+                  />
+                </div>
+                
+                <div className="w-8 h-8 rounded-lg bg-surface border border-white/10 flex items-center justify-center z-10 relative">
+                  <span className="material-symbols-outlined text-purple-400 text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>electrical_services</span>
+                </div>
+                
+                <div className="w-8 h-8 rounded-lg bg-surface border border-[#80d5cb]/40 flex items-center justify-center z-10 relative">
+                  <span className="material-symbols-outlined text-[#80d5cb] text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>laptop_mac</span>
+                </div>
+              </div>
             </motion.div>
           </motion.div>
         </section>
