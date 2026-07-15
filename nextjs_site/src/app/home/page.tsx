@@ -93,18 +93,18 @@ function HomeContent() {
         {/* Hero Section */}
         <section className="relative w-full pt-16 pb-16 mb-10 overflow-hidden flex flex-col items-center justify-center text-center">
           <motion.div variants={staggerContainer} initial="hidden" animate="show" className="max-w-4xl mx-auto px-8 relative z-20">
-            <motion.h1 variants={fadeIn} className="font-headline text-6xl md:text-7xl lg:text-8xl font-black leading-[1.05] mb-6 tracking-tighter text-on-surface drop-shadow-2xl">
-              Cyber Physical<br />System <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent [text-shadow:0_0_1px_rgba(var(--on-surface-rgb),0.3)]">Laboratory</span>
+            <motion.h1 variants={fadeIn} className="font-headline text-6xl md:text-7xl lg:text-8xl font-black leading-[1.05] mb-6 tracking-tighter text-white drop-shadow-2xl">
+              Cyber Physical<br />System <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent [text-shadow:0_0_1px_rgba(255,255,255,0.3)]">Laboratory</span>
             </motion.h1>
             <motion.p variants={fadeIn} className="font-body text-xl text-on-surface-variant font-medium mb-12 max-w-2xl mx-auto leading-relaxed">
               Advancing research and innovation in Cyber-Physical Systems, IoT, AI, and intelligent automation through cutting-edge industry collaboration.
             </motion.p>
             <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link href="https://docs.google.com/forms/d/e/1FAIpQLSeDJHnUKcgVFHHAooXa47MoyhKmg_R_xmkoQJWhQ_XND_FA1g/viewform" target="_blank" className="bg-primary/90 backdrop-blur-md dark:border-white/20 border-black/10 dark:text-white text-gray-900 px-8 py-4 rounded-full font-headline font-bold text-lg hover:bg-primary transition-all flex items-center justify-center gap-2 group shadow-[0_0_30px_rgba(37,99,235,0.4)]">
+              <Link href="https://docs.google.com/forms/d/e/1FAIpQLSeDJHnUKcgVFHHAooXa47MoyhKmg_R_xmkoQJWhQ_XND_FA1g/viewform" target="_blank" className="bg-primary/90 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-full font-headline font-bold text-lg hover:bg-primary transition-all flex items-center justify-center gap-2 group shadow-[0_0_30px_rgba(37,99,235,0.4)]">
                 Expression of Interest
                 <span className="material-symbols-outlined uppercase group-hover:translate-x-1 transition-transform" style={{ fontVariationSettings: "'FILL' 0" }}>arrow_forward</span>
               </Link>
-              <Link href="#apps" className="dark:bg-white/5 bg-black/5 backdrop-blur-md dark:border-white/10 border-black/10 text-on-surface px-8 py-4 rounded-full font-headline font-bold text-lg dark:hover:bg-white/10 hover:bg-black/10 transition-all flex items-center justify-center gap-2">
+              <Link href="#apps" className="bg-white/5 backdrop-blur-md border border-white/10 text-white px-8 py-4 rounded-full font-headline font-bold text-lg hover:bg-white/10 transition-all flex items-center justify-center gap-2">
                 View Applications
               </Link>
             </motion.div>
@@ -142,20 +142,20 @@ function HomeContent() {
               <div className="w-8 h-[2px] bg-secondary"></div>
               <span className="text-secondary font-mono text-sm uppercase tracking-widest font-bold">What Makes Us Different</span>
             </div>
-            <h2 className="font-headline text-4xl md:text-5xl font-bold text-on-surface mb-8 max-w-4xl leading-tight">
+            <h2 className="font-headline text-4xl md:text-5xl font-bold text-white mb-8 max-w-4xl leading-tight">
               Bridging the gap between theoretical research and real-world application <span className="text-on-surface-variant">through innovation and collaboration.</span>
             </h2>
           </motion.div>
           <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }} className="grid grid-cols-1 md:grid-cols-12 md:grid-rows-2 gap-6 h-auto">
             
             {/* End-to-End CPS Approach Card */}
-            <motion.div variants={fadeIn} className="md:col-span-8 md:row-span-2 dark:bg-gradient-to-br dark:from-[#121626] dark:to-[#0D101C] bg-surface-container rounded-2xl p-8 md:p-10 border dark:border-white/5 border-black/5 relative overflow-hidden flex flex-col group">
+            <motion.div variants={fadeIn} className="md:col-span-8 md:row-span-2 bg-gradient-to-br from-[#121626] to-[#0D101C] rounded-2xl p-8 md:p-10 border border-white/5 relative overflow-hidden flex flex-col group">
               <div className="relative z-10 flex flex-col h-full">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center border border-secondary/20">
                     <span className="material-symbols-outlined text-secondary" style={{ fontVariationSettings: "'FILL' 1" }}>code_blocks</span>
                   </div>
-                  <h3 className="font-headline text-2xl font-bold text-on-surface">End-to-End CPS Approach</h3>
+                  <h3 className="font-headline text-2xl font-bold text-white">End-to-End CPS Approach</h3>
                 </div>
                 <p className="font-body text-on-surface-variant mb-12 max-w-lg">Complete stack from hardware and firmware through connectivity, cloud, and AI analytics, to dashboards — not isolated kits.</p>
                 
@@ -172,15 +172,15 @@ function HomeContent() {
                   ].map((item, i) => (
                     <div key={i} className="flex items-center justify-between relative z-10 mb-6 last:mb-0">
                       <div className="flex items-center gap-6">
-                        <div className="w-12 h-12 rounded-xl bg-surface-container border dark:border-white/5 border-black/5 flex items-center justify-center shadow-lg z-10 group-hover:border-outline transition-colors">
+                        <div className="w-12 h-12 rounded-xl bg-surface-container border border-white/5 flex items-center justify-center shadow-lg z-10 group-hover:border-white/10 transition-colors">
                           <span className={`material-symbols-outlined ${item.color}`} style={{ fontVariationSettings: "'FILL' 1" }}>{item.icon}</span>
                         </div>
                         <div>
-                          <h4 className="text-on-surface font-bold text-base leading-tight mb-1">{item.title}</h4>
+                          <h4 className="text-white font-bold text-base leading-tight mb-1">{item.title}</h4>
                           <p className="font-mono text-[11px] text-on-surface-variant/60 uppercase tracking-widest">{item.desc}</p>
                         </div>
                       </div>
-                      <div className="font-mono text-[10px] text-on-surface/40 border border-outline/20 px-2 py-1 rounded-full bg-surface-container">
+                      <div className="font-mono text-[10px] text-white/30 border border-white/5 px-2 py-1 rounded-full bg-white/5">
                         0{i + 1}
                       </div>
                     </div>
@@ -190,16 +190,16 @@ function HomeContent() {
             </motion.div>
 
             {/* Continuous Engagement Card */}
-            <motion.div variants={fadeIn} className="md:col-span-4 dark:bg-gradient-to-br dark:from-[#181525] dark:to-[#100D16] bg-surface-container rounded-2xl p-8 border border-outline/20 relative overflow-hidden flex flex-col group">
-              <div className="w-10 h-10 rounded-lg dark:bg-white/5 bg-black/5 flex items-center justify-center border dark:border-white/10 border-black/10 mb-6">
+            <motion.div variants={fadeIn} className="md:col-span-4 bg-gradient-to-br from-[#181525] to-[#100D16] rounded-2xl p-8 border border-white/5 relative overflow-hidden flex flex-col group">
+              <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 mb-6">
                 <span className="material-symbols-outlined text-purple-400 text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>all_inclusive</span>
               </div>
-              <h3 className="font-headline text-xl font-bold text-on-surface mb-3">Continuous Engagement</h3>
+              <h3 className="font-headline text-xl font-bold text-white mb-3">Continuous Engagement</h3>
               <p className="font-body text-sm text-on-surface-variant/80 mb-8 max-w-sm">Ongoing upgrades, new experiments, internships, and collaborations — not a one-time setup.</p>
               
               <div className="mt-auto flex items-center gap-6">
                 <motion.div 
-                  className="w-14 h-14 rounded-full border border-dashed dark:border-white/20 border-black/20 relative flex items-center justify-center"
+                  className="w-14 h-14 rounded-full border border-dashed border-white/20 relative flex items-center justify-center"
                   animate={{ rotate: 360 }}
                   transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
                 >
@@ -207,7 +207,7 @@ function HomeContent() {
                 </motion.div>
                 <div className="flex flex-col gap-1.5">
                   <div className="font-mono text-[11px] text-on-surface-variant/60">
-                    <span className="dark:text-white/80 text-black/80">v1 &rarr; v2 &rarr; v3</span> upgrades
+                    <span className="text-white/80">v1 &rarr; v2 &rarr; v3</span> upgrades
                   </div>
                   <div className="font-mono text-[11px] text-on-surface-variant/60">new cohorts, quarterly</div>
                 </div>
@@ -215,15 +215,15 @@ function HomeContent() {
             </motion.div>
 
             {/* Hands-On Involvement Card */}
-            <motion.div variants={fadeIn} className="md:col-span-4 dark:bg-gradient-to-br dark:from-[#111A1B] dark:to-[#0A1010] bg-surface-container rounded-2xl p-8 border border-outline/20 relative overflow-hidden flex flex-col group">
-              <div className="w-10 h-10 rounded-lg dark:bg-white/5 bg-black/5 flex items-center justify-center border dark:border-white/10 border-black/10 mb-6">
+            <motion.div variants={fadeIn} className="md:col-span-4 bg-gradient-to-br from-[#111A1B] to-[#0A1010] rounded-2xl p-8 border border-white/5 relative overflow-hidden flex flex-col group">
+              <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 mb-6">
                 <span className="material-symbols-outlined text-[#80d5cb] text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>build</span>
               </div>
-              <h3 className="font-headline text-xl font-bold text-on-surface mb-3">Hands-On Involvement</h3>
+              <h3 className="font-headline text-xl font-bold text-white mb-3">Hands-On Involvement</h3>
               <p className="font-body text-sm text-on-surface-variant/80 mb-8 max-w-sm">Students actively connect devices, test them, and see results — not just observe demonstrations.</p>
               
               <div className="mt-auto flex items-center justify-between relative w-full pt-6 px-2">
-                <div className="absolute left-8 right-8 top-[38px] h-[1px] border-b border-dashed border-outline/20 z-0"></div>
+                <div className="absolute left-8 right-8 top-[38px] h-[1px] border-b border-dashed border-white/20 z-0"></div>
                 <div className="absolute left-8 right-8 top-[38px] h-[1px] z-0 overflow-hidden">
                   <motion.div 
                     className="absolute top-0 h-full w-[50%] bg-gradient-to-r from-transparent via-[#80d5cb] to-transparent opacity-70"
@@ -232,7 +232,7 @@ function HomeContent() {
                   />
                 </div>
                 
-                <div className="w-8 h-8 rounded-lg bg-surface border border-outline/20 flex items-center justify-center z-10 relative">
+                <div className="w-8 h-8 rounded-lg bg-surface border border-white/10 flex items-center justify-center z-10 relative">
                   <span className="material-symbols-outlined text-purple-400 text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>electrical_services</span>
                 </div>
                 
@@ -245,15 +245,15 @@ function HomeContent() {
         </section>
 
         {/* Location Section */}
-        <section className="bg-surface-container-low py-16 border-y border-outline/20 shadow-inner">
+        <section className="bg-surface-container-low py-16 border-y border-white/5 shadow-inner">
           <div className="max-w-7xl mx-auto px-8 text-center md:text-left">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              <h2 className="font-headline text-4xl md:text-5xl font-bold text-on-surface mb-4">CPS Labs Across India</h2>
+              <h2 className="font-headline text-4xl md:text-5xl font-bold text-white mb-4">CPS Labs Across India</h2>
               <p className="font-body text-lg text-on-surface-variant mb-12">Our network of research centers spans across the country.</p>
-              <div className="h-[400px] md:h-[600px] w-full rounded-3xl dark:bg-[#111827] bg-surface-container border border-outline/20 relative overflow-hidden group shadow-2xl">
+              <div className="h-[400px] md:h-[600px] w-full rounded-3xl bg-[#111827] border border-white/10 relative overflow-hidden group shadow-2xl">
                 <IndiaMap />
-                <div className="absolute bottom-6 right-6 z-30 bg-primary/90 backdrop-blur-md text-on-primary px-6 py-4 rounded-2xl shadow-[0_10px_30px_rgba(37,99,235,0.4)] border border-outline/20 flex flex-col items-center">
-                  <span className="font-headline text-3xl font-black leading-none drop-shadow-md mb-1 text-on-primary">22+</span>
+                <div className="absolute bottom-6 right-6 z-30 bg-primary/90 backdrop-blur-md text-white px-6 py-4 rounded-2xl shadow-[0_10px_30px_rgba(37,99,235,0.4)] border border-white/20 flex flex-col items-center">
+                  <span className="font-headline text-3xl font-black leading-none drop-shadow-md mb-1 text-white">22+</span>
                   <span className="font-label text-[10px] uppercase tracking-widest font-bold opacity-90">Live Locations</span>
                 </div>
               </div>
@@ -262,20 +262,20 @@ function HomeContent() {
         </section>
 
         {/* Apps Section */}
-        <section id="apps" className="max-w-7xl mx-auto px-8 py-16 border-b border-outline/20">
+        <section id="apps" className="max-w-7xl mx-auto px-8 py-16 border-b border-white/5">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12">
-            <h2 className="font-headline text-4xl md:text-5xl font-bold text-on-surface mb-4">Our Applications</h2>
+            <h2 className="font-headline text-4xl md:text-5xl font-bold text-white mb-4">Our Applications</h2>
             <p className="font-body text-lg text-on-surface-variant max-w-3xl">Software suites tailored for Cyber Physical interaction.</p>
           </motion.div>
           <div className="grid md:grid-cols-3 gap-8">
             {apps.map((app, idx) => (
-              <motion.div key={app.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.2 }} className="bg-surface-container rounded-xl overflow-hidden border border-outline/20 group flex flex-col">
+              <motion.div key={app.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.2 }} className="bg-surface-container rounded-xl overflow-hidden border border-white/5 group flex flex-col">
                 <div className="h-56 overflow-hidden bg-[#EAEAEA] flex items-center justify-center p-4">
                   <img src={app.path} alt={app.title} className="max-h-full max-w-full object-contain rounded-md shadow-sm group-hover:scale-105 transition-transform duration-500" />
                 </div>
                 <div className="p-6 flex-grow flex flex-col">
                   <div className="flex items-start justify-between mb-2">
-                    <h3 className="font-headline font-bold text-xl text-on-surface">{app.title}</h3>
+                    <h3 className="font-headline font-bold text-xl text-white">{app.title}</h3>
                     <span className="text-xs bg-primary/20 text-primary px-2 py-1 rounded-full font-mono">{app.platform}</span>
                   </div>
                   <p className="font-body text-sm text-on-surface-variant mb-6">{app.desc}</p>
@@ -296,13 +296,13 @@ function HomeContent() {
 
         {/* CTA */}
         <section className="max-w-7xl mx-auto px-8 mb-20">
-          <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-gradient-to-br from-primary-container/20 to-secondary-container/20 rounded-3xl p-12 md:p-16 border border-outline/20 relative overflow-hidden text-center shadow-2xl">
+          <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-gradient-to-br from-primary-container/20 to-secondary-container/20 rounded-3xl p-12 md:p-16 border border-white/5 relative overflow-hidden text-center shadow-2xl">
             <div className="relative z-10 max-w-3xl mx-auto">
-              <h2 className="font-headline text-4xl md:text-5xl font-bold text-on-surface mb-8">Ready to define the future?</h2>
+              <h2 className="font-headline text-4xl md:text-5xl font-bold text-white mb-8">Ready to define the future?</h2>
               <p className="font-body text-lg text-on-surface-variant mb-12">We are always looking for passionate researchers, engineers, and collaborators to join our ecosystem at IIT Ropar.</p>
               <div className="flex flex-wrap justify-center gap-6">
-                <Link href="/contact" className="dark:bg-white bg-primary dark:text-surface text-on-primary px-10 py-4 rounded-full font-headline font-bold text-lg dark:hover:bg-gray-200 hover:bg-primary/80 hover:scale-105 transition-all">Contact Us</Link>
-                <Link href="https://docs.google.com/forms/d/e/1FAIpQLSeDJHnUKcgVFHHAooXa47MoyhKmg_R_xmkoQJWhQ_XND_FA1g/viewform" target="_blank" className="bg-transparent border dark:border-white/20 border-black/20 dark:text-white text-gray-900 px-10 py-4 rounded-full font-headline font-bold text-lg dark:hover:bg-white/10 hover:bg-black/10 hover:scale-105 transition-all">Expression of Interest</Link>
+                <Link href="/contact" className="bg-white text-surface px-10 py-4 rounded-full font-headline font-bold text-lg hover:bg-gray-200 hover:scale-105 transition-all">Contact Us</Link>
+                <Link href="https://docs.google.com/forms/d/e/1FAIpQLSeDJHnUKcgVFHHAooXa47MoyhKmg_R_xmkoQJWhQ_XND_FA1g/viewform" target="_blank" className="bg-transparent border border-white/20 text-white px-10 py-4 rounded-full font-headline font-bold text-lg hover:bg-white/10 hover:scale-105 transition-all">Expression of Interest</Link>
               </div>
             </div>
             <div className="absolute top-0 left-0 w-64 h-64 bg-primary/10 blur-[100px] rounded-full"></div>

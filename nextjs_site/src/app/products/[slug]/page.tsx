@@ -105,8 +105,8 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
          <div className="absolute inset-0 pointer-events-none z-0">
           <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] ambient-glow-2 opacity-50"></div>
         </div>
-        <h1 className="text-4xl text-on-surface font-headline font-bold relative z-10">Product not found</h1>
-        <Link href="/products" className="text-primary hover:text-on-surface transition-colors relative z-10">
+        <h1 className="text-4xl text-white font-headline font-bold relative z-10">Product not found</h1>
+        <Link href="/products" className="text-primary hover:text-white transition-colors relative z-10">
           ← Back to Products
         </Link>
       </div>
@@ -185,9 +185,9 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
         <button 
           key="enquire"
           onClick={handleEnquire}
-          className="bg-primary hover:bg-primary-light text-on-primary font-bold py-4 px-8 rounded-full transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] flex items-center gap-2 group"
+          className="bg-primary hover:bg-primary-light text-white font-bold py-4 px-8 rounded-full transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] flex items-center gap-2 group"
         >
-          <span className="material-symbols-outlined text-on-primary group-hover:scale-110 transition-transform">mail</span>
+          <span className="material-symbols-outlined text-white group-hover:scale-110 transition-transform">mail</span>
           Enquire
         </button>
       );
@@ -196,7 +196,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
           <button 
             key="datasheet"
             onClick={() => handleView('datasheet')}
-            className="dark:bg-white/5 bg-black/5 dark:hover:bg-white/10 hover:bg-black/10 text-on-surface font-bold py-4 px-8 rounded-full transition-all border dark:border-white/10 border-black/10 flex items-center gap-2 group"
+            className="bg-white/5 hover:bg-white/10 text-white font-bold py-4 px-8 rounded-full transition-all border border-white/10 flex items-center gap-2 group"
           >
             <span className="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">description</span>
             Datasheet
@@ -212,7 +212,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
             <button 
               key={type}
               onClick={() => handleView(type)}
-              className="dark:bg-white/5 bg-black/5 dark:hover:bg-white/10 hover:bg-black/10 text-on-surface font-bold py-4 px-8 rounded-full transition-all border dark:border-white/10 border-black/10 flex items-center gap-2 group"
+              className="bg-white/5 hover:bg-white/10 text-white font-bold py-4 px-8 rounded-full transition-all border border-white/10 flex items-center gap-2 group"
             >
               <span className="material-symbols-outlined text-accent group-hover:scale-110 transition-transform">menu_book</span>
               {label}
@@ -233,7 +233,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
               if (fileConfigExpKey) handleView(fileConfigExpKey);
               else window.open(directExpLink, '_blank');
             }}
-            className="dark:bg-white/5 bg-black/5 dark:hover:bg-white/10 hover:bg-black/10 text-on-surface font-bold py-4 px-8 rounded-full transition-all border dark:border-white/10 border-black/10 flex items-center gap-2 group"
+            className="bg-white/5 hover:bg-white/10 text-white font-bold py-4 px-8 rounded-full transition-all border border-white/10 flex items-center gap-2 group"
           >
             <span className="material-symbols-outlined text-secondary group-hover:scale-110 transition-transform">science</span>
             Experiments
@@ -262,7 +262,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
         );
       } else if (!user && !googleUser) {
         protectedButtons.push(
-          <Link key="login" href="/login" className="bg-primary hover:bg-primary-light text-on-primary font-bold py-4 px-8 rounded-full transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] flex items-center gap-2">
+          <Link key="login" href="/login" className="bg-primary hover:bg-primary-light text-white font-bold py-4 px-8 rounded-full transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] flex items-center gap-2">
             <span className="material-symbols-outlined">lock</span>
             Sign in for Code Access
           </Link>
@@ -274,7 +274,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
               key={cl.key}
               onClick={() => handleDirectDownload((sensor as any)[cl.key], cl.label, cl.key)} 
               disabled={downloadingKey === cl.key}
-              className={`bg-primary hover:bg-primary-light text-on-primary font-bold py-4 px-8 rounded-full transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] flex items-center gap-2 group ${downloadingKey === cl.key ? 'opacity-75 cursor-wait' : ''}`}
+              className={`bg-primary hover:bg-primary-light text-white font-bold py-4 px-8 rounded-full transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] flex items-center gap-2 group ${downloadingKey === cl.key ? 'opacity-75 cursor-wait' : ''}`}
             >
               <span className={`material-symbols-outlined ${downloadingKey === cl.key ? 'animate-spin' : 'group-hover:rotate-12 transition-transform'}`}>
                 {downloadingKey === cl.key ? 'sync' : 'code'}
@@ -296,7 +296,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
             key="request"
             onClick={handleRequest}
             disabled={isLoading}
-            className="bg-primary hover:bg-primary-light text-on-primary font-bold py-4 px-8 rounded-full transition-all shadow-[0_0_30px_rgba(6,182,212,0.2)] flex items-center gap-2 disabled:opacity-50"
+            className="bg-primary hover:bg-primary-light text-white font-bold py-4 px-8 rounded-full transition-all shadow-[0_0_30px_rgba(6,182,212,0.2)] flex items-center gap-2 disabled:opacity-50"
           >
             <span className="material-symbols-outlined">{isLoading ? 'sync' : 'verified_user'}</span>
             {isLoading ? 'Submitting...' : 'Request Code Access'}
@@ -330,15 +330,15 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
       </div>
 
       <div className="max-w-7xl mx-auto px-8 relative z-10">
-        <Link href="/products" className="inline-flex items-center text-on-surface-variant hover:text-on-surface transition-colors mb-12 font-label text-sm uppercase tracking-widest gap-2 group">
+        <Link href="/products" className="inline-flex items-center text-on-surface-variant hover:text-white transition-colors mb-12 font-label text-sm uppercase tracking-widest gap-2 group">
           <span className="material-symbols-outlined transform group-hover:-translate-x-1 transition-transform">arrow_back</span>
           Back to Products
         </Link>
 
         {/* Hero Section */}
         <div className="flex flex-col lg:flex-row gap-16 items-start mb-24">
-          <div className="w-full lg:w-1/2 bg-gradient-to-br from-gray-400 to-gray-500 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)] border dark:border-white/10 border-black/10 relative group min-h-[700px] flex items-center justify-center overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br dark:from-white/5 from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-3xl pointer-events-none"></div>
+          <div className="w-full lg:w-1/2 bg-gradient-to-br from-gray-400 to-gray-500 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 relative group min-h-[700px] flex items-center justify-center overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-3xl pointer-events-none"></div>
             
             {((sensor as any).modelPath || sensor.imagePath.toLowerCase().endsWith('.glb') || sensor.imagePath.toLowerCase().endsWith('.gltf')) && show3D ? (
               <div className="absolute inset-0 z-10">   
@@ -356,12 +356,12 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
                 {((sensor as any).modelPath || sensor.imagePath.toLowerCase().endsWith('.glb')) && !show3D && (
                   <button 
                     onClick={() => setShow3D(true)}
-                    className="absolute inset-0 m-auto w-40 h-16 bg-surface-container/80 backdrop-blur-md border dark:border-white/20 border-black/20 rounded-full flex items-center justify-center gap-3 shadow-[0_0_40px_rgba(37,99,235,0.4)] hover:scale-105 transition-all group/btn z-20"
+                    className="absolute inset-0 m-auto w-40 h-16 bg-surface-container/80 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center gap-3 shadow-[0_0_40px_rgba(37,99,235,0.4)] hover:scale-105 transition-all group/btn z-20"
                   >
                     <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-                      <span className="material-symbols-outlined text-on-primary text-xl">3d_rotation</span>
+                      <span className="material-symbols-outlined text-white text-xl">3d_rotation</span>
                     </div>
-                    <span className="font-label font-bold text-on-surface uppercase tracking-wider text-sm pr-2">View 3D</span>
+                    <span className="font-label font-bold text-white uppercase tracking-wider text-sm pr-2">View 3D</span>
                   </button>
                 )}
               </>
@@ -369,7 +369,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
           </div>
           
           <div className="w-full lg:w-1/2 flex flex-col justify-center">
-            <h1 className="font-headline text-5xl md:text-6xl font-bold text-on-surface mb-6 leading-tight tracking-tighter">
+            <h1 className="font-headline text-5xl md:text-6xl font-bold text-white mb-6 leading-tight tracking-tighter">
               {sensor.title} <span className="text-primary">{sensor.highlightText}</span>
             </h1>
             <h2 className="font-body text-xl md:text-2xl text-on-surface-variant font-medium mb-10 leading-relaxed">
@@ -378,9 +378,9 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
             
             <div className="flex flex-col gap-4 mb-10">
               {sensor.bannerPoints.map((point: string, i: number) => (
-                <div key={i} className="flex items-start gap-4 bg-surface-container py-3 px-5 rounded-2xl border dark:border-white/5 border-black/5 hover:bg-surface-container-high transition-colors">
+                <div key={i} className="flex items-start gap-4 bg-surface-container py-3 px-5 rounded-2xl border border-white/5 hover:bg-surface-container-high transition-colors">
                   <span className="material-symbols-outlined text-primary shrink-0 mt-0.5">check_circle</span>
-                  <p className="font-body text-on-surface/90">{point}</p>
+                  <p className="font-body text-white/90">{point}</p>
                 </div>
               ))}
             </div>
@@ -394,11 +394,11 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
         {/* Details Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Features */}
-          <div className="bg-surface-container rounded-3xl p-8 border dark:border-white/5 border-black/5 dark:hover:border-white/10 hover:border-black/10 transition-colors group">
+          <div className="bg-surface-container rounded-3xl p-8 border border-white/5 hover:border-white/10 transition-colors group">
              <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all duration-300">
                <span className="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">star</span>
              </div>
-             <h3 className="font-headline text-2xl font-bold text-on-surface mb-6 tracking-tight">Key Features</h3>
+             <h3 className="font-headline text-2xl font-bold text-white mb-6 tracking-tight">Key Features</h3>
              <ul className="flex flex-col gap-4">
                {sensor.features.map((feature: string, i: number) => (
                  <li key={i} className="flex gap-3 text-on-surface-variant font-body">
@@ -410,11 +410,11 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
           </div>
 
           {/* Applications */}
-          <div className="bg-surface-container rounded-3xl p-8 border dark:border-white/5 border-black/5 dark:hover:border-white/10 hover:border-black/10 transition-colors group">
+          <div className="bg-surface-container rounded-3xl p-8 border border-white/5 hover:border-white/10 transition-colors group">
              <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all duration-300">
                <span className="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">build</span>
              </div>
-             <h3 className="font-headline text-2xl font-bold text-on-surface mb-6 tracking-tight">Applications</h3>
+             <h3 className="font-headline text-2xl font-bold text-white mb-6 tracking-tight">Applications</h3>
              <ul className="flex flex-col gap-4">
                {sensor.applications.map((app: string, i: number) => (
                  <li key={i} className="flex gap-3 text-on-surface-variant font-body">
@@ -426,11 +426,11 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
           </div>
 
           {/* Specifications */}
-          <div className="bg-surface-container rounded-3xl p-8 border dark:border-white/5 border-black/5 dark:hover:border-white/10 hover:border-black/10 transition-colors group">
+          <div className="bg-surface-container rounded-3xl p-8 border border-white/5 hover:border-white/10 transition-colors group">
              <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all duration-300">
                <span className="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">analytics</span>
              </div>
-             <h3 className="font-headline text-2xl font-bold text-on-surface mb-6 tracking-tight">Specifications</h3>
+             <h3 className="font-headline text-2xl font-bold text-white mb-6 tracking-tight">Specifications</h3>
              <ul className="flex flex-col gap-4">
                {sensor.specifications.map((spec: string, i: number) => (
                  <li key={i} className="flex gap-3 text-on-surface-variant font-body">

@@ -60,7 +60,7 @@ function TiltCard({ children, href }: { children: React.ReactNode, href: string 
         <div className="absolute inset-0 bg-primary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl -z-10"></div>
 
         <div
-          className="bg-surface-container h-full rounded-2xl border dark:border-white/5 border-black/5 overflow-hidden flex flex-col dark:group-hover:border-white/20 group-hover:border-black/20 transition-colors shadow-xl group-hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.6)]"
+          className="bg-surface-container h-full rounded-2xl border border-white/5 overflow-hidden flex flex-col group-hover:border-white/20 transition-colors shadow-xl group-hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.6)]"
           style={{ transform: "translateZ(30px)", transformStyle: "preserve-3d" }}
         >
           {children}
@@ -96,7 +96,7 @@ export default function ProductsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] mb-6 tracking-tighter text-on-surface drop-shadow-2xl">
+            <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] mb-6 tracking-tighter text-white drop-shadow-2xl">
               Cutting-Edge<br />
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent [text-shadow:0_0_1px_rgba(255,255,255,0.3)]">Products</span>
             </h1>
@@ -116,7 +116,7 @@ export default function ProductsPage() {
                 onChange={(e) => {
                   setSearchQuery(e.target.value);
                 }}
-                className="w-full bg-surface-container/80 backdrop-blur-xl border dark:border-white/10 border-black/10 rounded-full py-5 pl-14 pr-6 text-on-surface text-lg dark:placeholder-white/40 placeholder-black/40 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 transition-all font-body shadow-2xl relative z-0"
+                className="w-full bg-surface-container/80 backdrop-blur-xl border border-white/10 rounded-full py-5 pl-14 pr-6 text-white text-lg placeholder-white/40 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 transition-all font-body shadow-2xl relative z-0"
               />
               <div className="absolute inset-0 bg-primary/5 blur-xl rounded-full opacity-0 group-focus-within:opacity-100 transition-opacity duration-500 -z-10"></div>
             </div>
@@ -128,7 +128,7 @@ export default function ProductsPage() {
             <motion.div
               initial={{ opacity: 0, y: 20 }} 
               animate={{ opacity: 1, y: 0 }}
-              className="text-center py-20 text-on-surface-variant font-body text-xl bg-surface-container/30 rounded-3xl border dark:border-white/5 border-black/5"
+              className="text-center py-20 text-on-surface-variant font-body text-xl bg-surface-container/30 rounded-3xl border border-white/5"
             >
               No products match your search. Try different keywords.
             </motion.div>
@@ -151,23 +151,23 @@ export default function ProductsPage() {
                         
                         {/* 3D Available Badge */}
                         {((item as any).modelPath || item.imagePath.toLowerCase().endsWith('.glb')) && (
-                          <div className="absolute top-4 right-4 dark:bg-black/40 bg-white/40 backdrop-blur-md border dark:border-white/10 border-black/10 rounded-full px-3 py-1 flex items-center gap-1.5 z-20 shadow-lg">
+                          <div className="absolute top-4 right-4 bg-black/40 backdrop-blur-md border border-white/10 rounded-full px-3 py-1 flex items-center gap-1.5 z-20 shadow-lg">
                             <span className="material-symbols-outlined text-primary text-[14px]">3d_rotation</span>
-                            <span className="text-[10px] font-bold text-on-surface tracking-widest uppercase">3D</span>
+                            <span className="text-[10px] font-bold text-white tracking-widest uppercase">3D</span>
                           </div>
                         )}
                       </div>
                       <div
-                        className="p-8 flex flex-col flex-grow bg-gradient-to-b from-surface-container dark:to-[#111827] to-surface-container-low relative z-20"
+                        className="p-8 flex flex-col flex-grow bg-gradient-to-b from-surface-container to-[#111827] relative z-20"
                         style={{ transform: "translateZ(40px)" }}
                       >
-                        <h3 className="font-headline text-xl font-bold text-on-surface mb-3 line-clamp-2 leading-tight drop-shadow-sm">
+                        <h3 className="font-headline text-xl font-bold text-white mb-3 line-clamp-2 leading-tight drop-shadow-sm">
                           {fullTitle}
                         </h3>
                         <p className="font-body text-sm text-on-surface-variant leading-relaxed line-clamp-3 mb-8 flex-grow">
                           {item.subtitle}
                         </p>
-                        <div className="w-full py-3 rounded-xl bg-primary/10 text-primary font-label font-bold text-center text-sm group-hover:bg-primary transition-all group-hover:text-on-primary uppercase tracking-wider relative overflow-hidden shadow-inner border border-primary/20">
+                        <div className="w-full py-3 rounded-xl bg-primary/10 text-primary font-label font-bold text-center text-sm group-hover:bg-primary transition-all group-hover:text-white uppercase tracking-wider relative overflow-hidden shadow-inner border border-primary/20">
                           <span className="relative z-10">Read More</span>
                         </div>
                       </div>

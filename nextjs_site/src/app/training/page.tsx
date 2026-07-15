@@ -247,7 +247,7 @@ export default function TrainingAndWorkshopPage() {
 
       <main className="relative z-10 flex-grow pt-32 pb-32">
         {/* Our Impact Section with Animated Counters */}
-        <section className="bg-surface-container-low border-y border-outline/20 py-24 mb-24 relative overflow-hidden">
+        <section className="bg-surface-container-low border-y border-white/5 py-24 mb-24 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-full h-[500px] bg-primary/10 rounded-full blur-[150px] -translate-y-1/2 translate-x-1/2"></div>
 
           <div className="max-w-7xl mx-auto px-8 relative z-10">
@@ -257,8 +257,8 @@ export default function TrainingAndWorkshopPage() {
               transition={{ duration: 0.8 }}
               className="text-center mb-16"
             >
-              <h1 className="font-headline text-5xl md:text-7xl font-bold leading-tight mb-6 tracking-tighter text-on-surface drop-shadow-lg">
-                Our <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent [text-shadow:0_0_1px_rgba(var(--on-surface-rgb),0.3)]">Impact</span>
+              <h1 className="font-headline text-5xl md:text-7xl font-bold leading-tight mb-6 tracking-tighter text-white drop-shadow-lg">
+                Our <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent [text-shadow:0_0_1px_rgba(255,255,255,0.3)]">Impact</span>
               </h1>
               <p className="font-body text-xl text-on-surface-variant font-medium max-w-2xl mx-auto">
                 Empowering minds through innovative training programs and state-of-the-art infrastructure.
@@ -274,7 +274,7 @@ export default function TrainingAndWorkshopPage() {
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, margin: "-100px" }}
-                className="relative bg-surface-container/40 backdrop-blur-3xl border dark:border-white/20 border-black/20 rounded-[40px] p-8 md:p-16 shadow-[0_0_40px_rgba(37,99,235,0.15)] ring-1 dark:ring-white/10 ring-black/10"
+                className="relative bg-surface-container/40 backdrop-blur-3xl border border-white/20 rounded-[40px] p-8 md:p-16 shadow-[0_0_40px_rgba(37,99,235,0.15)] ring-1 ring-white/10"
               >
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 text-center">
                   {stats.map((stat, i) => (
@@ -282,10 +282,10 @@ export default function TrainingAndWorkshopPage() {
                       <div className="w-20 h-20 rounded-3xl bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500 shadow-inner border border-primary/30 group-hover:border-primary/60 group-hover:shadow-[0_0_20px_rgba(37,99,235,0.4)]">
                         <span className="material-symbols-outlined text-primary text-4xl drop-shadow-[0_0_10px_rgba(37,99,235,0.8)]">{stat.icon}</span>
                       </div>
-                      <h3 className="font-headline text-4xl md:text-5xl font-black bg-gradient-to-b dark:from-white from-slate-900 via-blue-100 to-primary bg-clip-text text-transparent mb-2 drop-shadow-lg flex items-center justify-center gap-1">
+                      <h3 className="font-headline text-4xl md:text-5xl font-black bg-gradient-to-b from-white via-blue-100 to-primary bg-clip-text text-transparent mb-2 drop-shadow-lg flex items-center justify-center gap-1">
                         <AnimatedCounter to={stat.count} suffix={stat.suffix} />
                       </h3>
-                      <p className="font-label text-on-surface-variant uppercase tracking-widest text-sm font-bold group-hover:text-on-surface transition-colors">{stat.label}</p>
+                      <p className="font-label text-on-surface-variant uppercase tracking-widest text-sm font-bold group-hover:text-white transition-colors">{stat.label}</p>
                     </motion.div>
                   ))}
                 </div>
@@ -304,7 +304,7 @@ export default function TrainingAndWorkshopPage() {
               className="flex items-center gap-6 mb-4"
             >
               <div className="w-2 h-12 bg-gradient-to-b from-primary to-accent rounded-full shadow-[0_0_15px_rgba(37,99,235,0.5)]"></div>
-              <h2 className="font-headline text-4xl md:text-5xl font-bold text-on-surface drop-shadow-lg">
+              <h2 className="font-headline text-4xl md:text-5xl font-bold text-white drop-shadow-lg">
                 Workshops & Trainings
               </h2>
             </motion.div>
@@ -327,28 +327,28 @@ export default function TrainingAndWorkshopPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: (i % 3) * 0.1 }}
-                  className="bg-surface-container rounded-[32px] border border-outline/20 overflow-hidden flex flex-col group relative shadow-xl hover:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.6)] hover:-translate-y-2 hover:border-outline/50 transition-all duration-500"
+                  className="bg-surface-container rounded-[32px] border border-white/5 overflow-hidden flex flex-col group relative shadow-xl hover:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.6)] hover:-translate-y-2 hover:border-white/20 transition-all duration-500"
                 >
                   <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
 
-                  <div className="h-56 relative overflow-hidden dark:bg-[#111827] bg-surface-container">
+                  <div className="h-56 relative overflow-hidden bg-[#111827]">
                     <img
                       src={workshop.image}
                       alt={workshop.title}
-                      className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700 dark:mix-blend-screen mix-blend-multiply"
+                      className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700 mix-blend-screen"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-surface-container via-surface-container/50 to-transparent"></div>
 
                     {/* Floating Badges */}
-                    <div className="absolute top-4 left-4 bg-surface-container/80 backdrop-blur-md border dark:border-white/10 border-black/10 text-on-surface px-4 py-2 rounded-full flex items-center gap-2 shadow-lg">
+                    <div className="absolute top-4 left-4 bg-surface-container/80 backdrop-blur-md border border-white/10 text-white px-4 py-2 rounded-full flex items-center gap-2 shadow-lg">
                       <span className="material-symbols-outlined text-[16px] text-primary">location_on</span>
                       <span className="text-xs font-bold leading-none tracking-wide">{workshop.location}</span>
                     </div>
 
                   </div>
 
-                  <div className="p-8 flex flex-col flex-grow bg-gradient-to-b from-surface-container dark:to-[#0A0A0A] to-surface-container-low relative z-10">
-                    <h3 className="font-headline text-xl font-bold text-on-surface mb-4 leading-snug drop-shadow-sm group-hover:text-primary-light transition-colors">
+                  <div className="p-8 flex flex-col flex-grow bg-gradient-to-b from-surface-container to-[#0A0A0A] relative z-10">
+                    <h3 className="font-headline text-xl font-bold text-white mb-4 leading-snug drop-shadow-sm group-hover:text-primary-light transition-colors">
                       {workshop.title}
                     </h3>
 
@@ -361,7 +361,7 @@ export default function TrainingAndWorkshopPage() {
                       </span>
                     </div>
 
-                    <p className="font-body text-sm text-on-surface-variant leading-relaxed mt-auto relative z-10 group-hover:text-on-surface/90 transition-colors">
+                    <p className="font-body text-sm text-on-surface-variant leading-relaxed mt-auto relative z-10 group-hover:text-white/90 transition-colors">
                       {workshop.description}
                     </p>
                   </div>
