@@ -8,6 +8,17 @@
     --foreground: #0f172a;
     --card: #ffffff;
     --card-foreground: #0f172a;
+    
+    /* Light Mode Palette */
+    --surface: #ffffff;
+    --surface-container: #f1f5f9;
+    --surface-container-low: #f8fafc;
+    --primary: #2563eb;
+    --primary-container: #dbeafe;
+    --secondary: #0f766e;
+    --on-surface: #0f172a;
+    --on-surface-variant: #475569;
+    --outline: #cbd5e1;
   }
 
   .dark {
@@ -15,11 +26,22 @@
     --foreground: #e5e1e4;
     --card: #121214;
     --card-foreground: #e5e1e4;
+
+    /* Dark Mode Palette (Stitch Generated) */
+    --surface: #131315;
+    --surface-container: #201f22;
+    --surface-container-low: #1c1b1d;
+    --primary: #b4c5ff;
+    --primary-container: #2563eb;
+    --secondary: #80d5cb;
+    --on-surface: #e5e1e4;
+    --on-surface-variant: #c3c6d7;
+    --outline: #8d90a0;
   }
 
   body {
-    background-color: var(--background);
-    color: var(--foreground);
+    background-color: var(--surface);
+    color: var(--on-surface);
     @apply transition-colors duration-300;
     overflow-x: hidden;
   }

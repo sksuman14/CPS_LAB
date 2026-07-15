@@ -9,6 +9,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { fetchAllRequests } from '@/lib/api/admin';
 import { AccessRequest } from '@/types/admin';
 import { allSensors } from '@/data/products';
+import ThemeToggle from './ThemeToggle';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -131,7 +132,7 @@ export default function Navbar() {
   if (pathname === '/' || pathname === '/login') return null;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-white/10 shadow-[0_8px_32px_0_rgba(180,197,255,0.06)]">
+    <nav className="fixed top-0 left-0 right-0 z-50 dark:bg-black/90 bg-white/90 backdrop-blur-md border-b border-outline/20 shadow-[0_8px_32px_0_rgba(180,197,255,0.06)]">
       <div className="w-full max-w-[1600px] mx-auto px-6 md:px-8 lg:px-12 py-4 flex items-center justify-between">
         {/* LEFT: Logo */}
         <div className="flex-1 flex items-center justify-start gap-3">
@@ -144,7 +145,7 @@ export default function Navbar() {
                 className="object-contain"
               />
             </div>
-            <span className="font-headline text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-primary/80 tracking-tighter whitespace-nowrap">
+            <span className="font-headline text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r dark:from-white from-slate-800 to-primary/80 tracking-tighter whitespace-nowrap">
               CPS Lab
             </span>
           </Link>
@@ -165,7 +166,7 @@ export default function Navbar() {
                 onMouseEnter={() => setHoveredLink(link.name)}
                 className={`relative px-4 py-2 font-bold uppercase tracking-wide whitespace-nowrap transition-colors duration-300 ${isActive
                   ? 'text-primary'
-                  : 'text-white/60 hover:text-white'
+                  : 'text-on-surface-variant hover:text-on-surface'
                   }`}
               >
                 {/* Static Active Pill */}
@@ -175,7 +176,7 @@ export default function Navbar() {
                 
                 {/* Static Hover Pill (No Sliding) */}
                 {isHovered && !isActive && (
-                  <div className="absolute inset-0 bg-white/10 rounded-full border border-white/20 animate-in fade-in duration-150" />
+                  <div className="absolute inset-0 dark:bg-white/10 bg-black/5 rounded-full border dark:border-white/20 border-black/10 animate-in fade-in duration-150" />
                 )}
 
                 <span className="relative z-10">{link.name}</span>
@@ -196,12 +197,14 @@ export default function Navbar() {
         {/* RIGHT: User Actions & Notifications */}
         <div className="flex-1 flex items-center justify-end gap-4">
           
+          <ThemeToggle />
+
           {/* Notifications Icon (Visible when logged in) */}
           {isLoggedIn && !isLoading && (
             <div className="relative">
               <button 
                 onClick={handleNotificationClick}
-                className="relative p-2 text-white/70 hover:text-white transition-colors hover:bg-white/10 rounded-full"
+                className="relative p-2 text-on-surface-variant hover:text-on-surface transition-colors dark:hover:bg-white/10 hover:bg-black/10 rounded-full"
               >
                 <span className="material-symbols-outlined text-xl">notifications</span>
                 {hasUnread && (
@@ -217,11 +220,11 @@ export default function Navbar() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 10, scale: 0.95 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute right-0 mt-3 w-80 bg-surface-container-high/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.5)] overflow-hidden z-50 flex flex-col max-h-[400px]"
+                    className="absolute right-0 mt-3 w-80 bg-surface-container-high/95 backdrop-blur-xl border dark:border-white/10 border-black/10 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.5)] overflow-hidden z-50 flex flex-col max-h-[400px]"
                   >
-                    <div className="px-4 py-3 border-b border-white/10 bg-white/5 flex justify-between items-center">
-                      <h3 className="text-sm font-bold text-white tracking-widest uppercase">Notifications</h3>
-                      <button onClick={() => setShowNotifications(false)} className="text-white/50 hover:text-white">
+                    <div className="px-4 py-3 border-b dark:border-white/10 border-black/10 dark:bg-white/5 bg-black/5 flex justify-between items-center">
+                      <h3 className="text-sm font-bold text-on-surface tracking-widest uppercase">Notifications</h3>
+                      <button onClick={() => setShowNotifications(false)} className="text-on-surface-variant hover:text-on-surface">
                         <span className="material-symbols-outlined text-sm">close</span>
                       </button>
                     </div>
@@ -229,24 +232,24 @@ export default function Navbar() {
                     <div className="overflow-y-auto flex-1 custom-scrollbar">
                       {notifications.length > 0 ? (
                         notifications.map((notif, idx) => (
-                          <div key={idx} className="p-4 border-b border-white/5 hover:bg-white/5 transition-colors flex gap-3 items-start">
+                          <div key={idx} className="p-4 border-b dark:border-white/5 border-black/5 dark:hover:bg-white/5 hover:bg-black/5 transition-colors flex gap-3 items-start">
                             <div className={`mt-0.5 rounded-full p-1 border ${notif.status === 'GRANTED' ? 'bg-green-500/10 border-green-500/30' : 'bg-red-500/10 border-red-500/30'}`}>
                               <span className={`material-symbols-outlined text-sm ${notif.status === 'GRANTED' ? 'text-green-400' : 'text-red-400'}`}>
                                 {notif.status === 'GRANTED' ? 'check_circle' : 'cancel'}
                               </span>
                             </div>
                             <div className="flex-1">
-                              <p className="text-xs text-white/90 mb-1 leading-relaxed">
+                              <p className="text-xs text-on-surface/90 mb-1 leading-relaxed">
                                 Your access request for <span className="font-bold text-primary">{getProductTitle(notif.documentName)}</span> has been <strong className={notif.status === 'GRANTED' ? 'text-green-400' : 'text-red-400'}>{notif.status === 'GRANTED' ? 'Approved' : 'Rejected'}</strong>.
                               </p>
-                              <p className="text-[10px] text-white/40">
+                              <p className="text-[10px] text-on-surface/40">
                                 {formatNotifDate(notif.processedDate, notif.requestDate)}
                               </p>
                             </div>
                           </div>
                         ))
                       ) : (
-                        <div className="p-8 text-center text-white/50 text-xs">
+                        <div className="p-8 text-center text-on-surface-variant text-xs">
                           No updates on your requests yet.
                         </div>
                       )}
@@ -260,9 +263,9 @@ export default function Navbar() {
           {/* Desktop User Menu */}
           <div className="hidden lg:flex items-center gap-3">
             {isLoading ? (
-              <div className="w-24 h-10 bg-white/10 animate-pulse rounded-full" />
+              <div className="w-24 h-10 dark:bg-white/10 bg-black/10 animate-pulse rounded-full" />
             ) : isLoggedIn ? (
-              <div className="group/profile flex items-center gap-3 bg-white/5 hover:bg-white/10 pl-2 pr-1 py-1 rounded-full border border-white/10 hover:border-white/20 transition-all duration-300 shadow-[0_0_15px_rgba(255,255,255,0.02)]">
+              <div className="group/profile flex items-center gap-3 dark:bg-white/5 bg-black/5 dark:hover:bg-white/10 hover:bg-black/10 pl-2 pr-1 py-1 rounded-full border dark:border-white/10 border-black/10 dark:hover:border-white/20 hover:border-black/20 transition-all duration-300 shadow-[0_0_15px_rgba(255,255,255,0.02)]">
                 {/* Avatar: Google profile picture or initials */}
                 {displayPicture ? (
                   <img
@@ -280,11 +283,11 @@ export default function Navbar() {
                   </div>
                 )}
                 <div className="flex flex-col leading-tight max-w-[120px] xl:max-w-[180px]">
-                  <p className="text-white text-xs font-bold truncate">
+                  <p className="text-on-surface text-xs font-bold truncate">
                     {displayName}
                   </p>
                   {displayEmail && (
-                    <p className="text-white/40 group-hover/profile:text-white/60 transition-colors text-[10px] truncate">{displayEmail}</p>
+                    <p className="text-on-surface-variant group-hover/profile:text-on-surface transition-colors text-[10px] truncate">{displayEmail}</p>
                   )}
                 </div>
                 <button
@@ -307,7 +310,7 @@ export default function Navbar() {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
+            className="lg:hidden text-on-surface p-2 dark:hover:bg-white/10 hover:bg-black/10 rounded-lg transition-colors"
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
           >
             <span className="material-symbols-outlined text-2xl">
@@ -324,7 +327,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-black/95 backdrop-blur-md border-t border-white/10 overflow-hidden"
+            className="lg:hidden dark:bg-black/95 bg-white/95 backdrop-blur-md border-t dark:border-white/10 border-black/10 overflow-hidden"
           >
             <div className="px-4 pt-2 pb-6 space-y-2">
               {navLinks.map((link) => {
@@ -335,7 +338,7 @@ export default function Navbar() {
                     href={link.path}
                     className={`block px-4 py-3 rounded-xl text-base font-bold transition-colors ${isActive
                       ? 'text-primary bg-primary/10'
-                      : 'text-white/70 hover:text-white hover:bg-white/5'
+                      : 'text-on-surface-variant hover:text-on-surface dark:hover:bg-white/5 hover:bg-black/5'
                       }`}
                     onClick={() => setIsMenuOpen(false)}
                   >
@@ -356,12 +359,12 @@ export default function Navbar() {
 
               {isLoading ? (
                 <div className="pt-4 space-y-3">
-                  <div className="h-20 bg-white/10 animate-pulse rounded-xl" />
-                  <div className="h-12 bg-white/10 animate-pulse rounded-full" />
+                  <div className="h-20 dark:bg-white/10 bg-black/10 animate-pulse rounded-xl" />
+                  <div className="h-12 dark:bg-white/10 bg-black/10 animate-pulse rounded-full" />
                 </div>
               ) : isLoggedIn ? (
                 <div className="pt-4 space-y-3">
-                  <div className="flex items-center gap-3 px-4 py-3 bg-white/5 rounded-xl">
+                  <div className="flex items-center gap-3 px-4 py-3 dark:bg-white/5 bg-black/5 rounded-xl">
                     {displayPicture ? (
                       <img
                         src={displayPicture}
@@ -376,11 +379,11 @@ export default function Navbar() {
                       </div>
                     )}
                     <div className="flex-1">
-                      <p className="text-white text-sm font-medium">
+                      <p className="text-on-surface text-sm font-medium">
                         {displayName}
                       </p>
                       {displayEmail && (
-                        <p className="text-white/50 text-xs truncate">
+                        <p className="text-on-surface-variant text-xs truncate">
                           {displayEmail}
                         </p>
                       )}
@@ -397,7 +400,7 @@ export default function Navbar() {
                 <Link
                   href="/login"
                   onClick={() => setIsMenuOpen(false)}
-                  className="block text-center mt-4 bg-primary hover:bg-primary/90 text-white font-headline font-bold px-6 py-3 rounded-full transition-all shadow-md"
+                  className="block text-center mt-4 bg-primary hover:bg-primary/90 text-on-primary font-headline font-bold px-6 py-3 rounded-full transition-all shadow-md"
                 >
                   Login
                 </Link>

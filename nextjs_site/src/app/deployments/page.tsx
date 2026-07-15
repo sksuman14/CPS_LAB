@@ -206,7 +206,7 @@ function DeploymentTextBlock({ data, index, setActiveIndex }: { data: any, index
     >
       <div className={`transition-all duration-700 ${isInView ? 'opacity-100 scale-100' : 'opacity-40 scale-95'}`}>
         {/* Mobile Image (Only visible on small screens) */}
-        <div className="lg:hidden w-full h-[300px] bg-[#111827] rounded-3xl overflow-hidden shadow-2xl mb-8 relative border border-white/10">
+        <div className="lg:hidden w-full h-[300px] dark:bg-[#111827] bg-surface-container rounded-3xl overflow-hidden shadow-2xl mb-8 relative border dark:border-white/10 border-black/10">
           <img
             src={data.image}
             alt={data.title}
@@ -218,15 +218,15 @@ function DeploymentTextBlock({ data, index, setActiveIndex }: { data: any, index
         <div className="inline-block px-4 py-1.5 rounded-full bg-primary/20 text-primary border border-primary/30 text-xs font-label font-bold mb-6 tracking-widest uppercase">
           {data.title}
         </div>
-        <h3 className="font-headline text-3xl md:text-5xl font-bold text-white mb-6 leading-tight drop-shadow-md">
+        <h3 className="font-headline text-3xl md:text-5xl font-bold text-on-surface mb-6 leading-tight drop-shadow-md">
           {data.description}
         </h3>
-        <p className="font-body text-lg text-on-surface-variant leading-relaxed max-w-2xl bg-surface-container/50 backdrop-blur-sm p-6 rounded-2xl border border-white/5 shadow-xl">
+        <p className="font-body text-lg text-on-surface-variant leading-relaxed max-w-2xl bg-surface-container/50 backdrop-blur-sm p-6 rounded-2xl border dark:border-white/5 border-black/5 shadow-xl">
           {data.longDescription}
         </p>
 
         {/* Glow effect that tracks the active item */}
-        <div className={`absolute -left-8 top-1/2 -translate-y-1/2 w-1 h-32 rounded-full transition-all duration-700 ${isInView ? 'bg-primary shadow-[0_0_20px_rgba(37,99,235,1)] opacity-100' : 'bg-white/10 opacity-0'}`}></div>
+        <div className={`absolute -left-8 top-1/2 -translate-y-1/2 w-1 h-32 rounded-full transition-all duration-700 ${isInView ? 'bg-primary shadow-[0_0_20px_rgba(37,99,235,1)] opacity-100' : 'dark:bg-white/10 bg-black/10 opacity-0'}`}></div>
       </div>
     </div>
   );
@@ -255,9 +255,9 @@ export default function DeploymentsPage() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="max-w-3xl mx-auto"
           >
-            <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] mb-6 tracking-tighter text-white drop-shadow-2xl">
+            <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] mb-6 tracking-tighter text-on-surface drop-shadow-2xl">
               Nationwide<br />
-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent [text-shadow:0_0_1px_rgba(255,255,255,0.3)]">Deployments</span>
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent [text-shadow:0_0_1px_rgba(var(--on-surface-rgb),0.3)]">Deployments</span>
             </h1>
             <p className="font-body text-xl md:text-2xl text-on-surface-variant font-medium max-w-2xl mx-auto">
               Mapping our journey across India: Building the future of intelligent systems state by state.
@@ -270,7 +270,7 @@ export default function DeploymentsPage() {
           <div className="flex flex-col lg:flex-row gap-16 relative">
 
             {/* Left Column: Scrolling Text */}
-            <div className="w-full lg:w-1/2 relative z-10 pl-4 lg:pl-12 border-l border-white/5">
+            <div className="w-full lg:w-1/2 relative z-10 pl-4 lg:pl-12 border-l dark:border-white/5 border-black/5">
               {deployments.map((deployment, index) => (
                 <DeploymentTextBlock
                   key={index}
@@ -291,7 +291,7 @@ export default function DeploymentsPage() {
                     animate={{ opacity: 1, y: 0, rotateX: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -40, rotateX: -10, scale: 0.9 }}
                     transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                    className="w-full h-full relative rounded-3xl overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.7)] border border-white/10 group bg-surface-container flex items-center justify-center p-4 bg-gradient-to-br from-surface-container to-[#000]"
+                    className="w-full h-full relative rounded-3xl overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.7)] border dark:border-white/10 border-black/10 group bg-surface-container flex items-center justify-center p-4 bg-gradient-to-br from-surface-container dark:to-[#000] to-surface-container-low"
                   >
                     <div className="absolute inset-0 bg-primary/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                     <img
@@ -305,9 +305,9 @@ export default function DeploymentsPage() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.3, duration: 0.5 }}
-                      className="absolute bottom-8 left-8 right-8 bg-surface-container/60 backdrop-blur-md border border-white/20 p-4 rounded-2xl z-20 text-center"
+                      className="absolute bottom-8 left-8 right-8 bg-surface-container/60 backdrop-blur-md border dark:border-white/20 border-black/20 p-4 rounded-2xl z-20 text-center"
                     >
-                      <span className="text-white font-headline font-bold text-lg">{deployments[activeIndex].title}</span>
+                      <span className="text-on-surface font-headline font-bold text-lg">{deployments[activeIndex].title}</span>
                     </motion.div>
                   </motion.div>
                 </AnimatePresence>
