@@ -199,7 +199,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
       <button 
         key="enquire"
         onClick={handleEnquire}
-        className="w-full bg-[#3b82f6] hover:bg-[#2563eb] text-white font-headline font-bold py-4 rounded-2xl flex items-center justify-center gap-3 transition-all duration-300 shadow-lg shadow-blue-500/10 active:scale-[0.98]"
+        className="w-full bg-[#3b82f6] hover:bg-[#2563eb] text-white font-headline font-bold py-3 rounded-xl flex items-center justify-center gap-3 transition-all duration-300 shadow-lg shadow-blue-500/10 active:scale-[0.98]"
       >
         <span className="material-symbols-outlined text-white text-xl">mail</span>
         Enquire Now
@@ -214,7 +214,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
           <button 
             key="datasheet"
             onClick={() => handleView('datasheet')}
-            className="flex-grow bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-white font-body text-xs font-semibold py-3 px-5 rounded-xl flex items-center justify-center gap-2 transition-all"
+            className="flex-grow bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-white font-body text-xs font-semibold py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 transition-all"
           >
             <span className="material-symbols-outlined text-primary text-lg">description</span>
             Datasheet
@@ -230,7 +230,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
             <button 
               key={type}
               onClick={() => handleView(type)}
-              className="flex-grow bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-white font-body text-xs font-semibold py-3 px-5 rounded-xl flex items-center justify-center gap-2 transition-all"
+              className="flex-grow bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-white font-body text-xs font-semibold py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 transition-all"
             >
               <span className="material-symbols-outlined text-accent text-lg">menu_book</span>
               {label}
@@ -254,7 +254,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
               if (fileConfigExpKey) handleView(fileConfigExpKey);
               else window.open(directExpLink, '_blank');
             }}
-            className="w-full bg-emerald-500/5 dark:bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 dark:border-emerald-500/20 hover:border-emerald-500/50 text-emerald-600 dark:text-emerald-400 font-headline font-bold py-3.5 rounded-2xl flex items-center justify-center gap-2 transition-all duration-300"
+            className="w-full bg-emerald-500/5 dark:bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 dark:border-emerald-500/20 hover:border-emerald-500/50 text-emerald-600 dark:text-emerald-400 font-headline font-bold py-2.5 rounded-xl flex items-center justify-center gap-2 transition-all duration-300"
           >
             <span className="material-symbols-outlined text-emerald-600 dark:text-emerald-400 text-lg">edit</span>
             View Experiments
@@ -277,14 +277,14 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
     if (availableCode.length > 0) {
       if (isChecking) {
         codeAccessButton = (
-          <div className="w-full bg-purple-500/5 py-3.5 rounded-2xl border border-purple-500/10 opacity-50 flex items-center justify-center gap-3 text-purple-600 dark:text-purple-400 text-sm font-bold">
+          <div className="w-full bg-purple-500/5 py-2.5 rounded-xl border border-purple-500/10 opacity-50 flex items-center justify-center gap-3 text-purple-600 dark:text-purple-400 text-sm font-bold">
             <span className="material-symbols-outlined animate-spin text-lg">refresh</span>
             Checking Code Access...
           </div>
         );
       } else if (!user && !googleUser) {
         codeAccessButton = (
-          <Link href="/login" className="w-full bg-purple-500/5 dark:bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 dark:border-purple-500/20 hover:border-purple-500/50 text-purple-600 dark:text-purple-400 font-headline font-bold py-3.5 rounded-2xl flex items-center justify-center gap-2 transition-all duration-300">
+          <Link href="/login" className="w-full bg-purple-500/5 dark:bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 dark:border-purple-500/20 hover:border-purple-500/50 text-purple-600 dark:text-purple-400 font-headline font-bold py-2.5 rounded-xl flex items-center justify-center gap-2 transition-all duration-300">
             <span className="material-symbols-outlined text-lg">lock</span>
             Sign in for Code Access
           </Link>
@@ -297,7 +297,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
                 key={cl.key}
                 onClick={() => handleDirectDownload((sensor as any)[cl.key], cl.label, cl.key)} 
                 disabled={downloadingKey === cl.key}
-                className={`bg-purple-500/5 dark:bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 dark:border-purple-500/20 hover:border-purple-500/50 text-purple-600 dark:text-purple-400 font-headline font-bold py-3 px-5 rounded-2xl flex items-center justify-center gap-2 transition-all duration-300 disabled:opacity-50 ${downloadingKey === cl.key ? 'cursor-wait' : ''}`}
+                className={`bg-purple-500/5 dark:bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 dark:border-purple-500/20 hover:border-purple-500/50 text-purple-600 dark:text-purple-400 font-headline font-bold py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 transition-all duration-300 disabled:opacity-50 ${downloadingKey === cl.key ? 'cursor-wait' : ''}`}
               >
                 <span className={`material-symbols-outlined text-lg ${downloadingKey === cl.key ? 'animate-spin' : ''}`}>
                   {downloadingKey === cl.key ? 'sync' : 'code'}
@@ -309,7 +309,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
         );
       } else if (requestStatus?.status === 'PENDING') {
         codeAccessButton = (
-          <button className="w-full bg-yellow-500/15 text-yellow-500 font-headline font-bold py-3.5 rounded-2xl flex items-center justify-center gap-2 border border-yellow-500/20 cursor-default">
+          <button className="w-full bg-yellow-500/15 text-yellow-500 font-headline font-bold py-2.5 rounded-xl flex items-center justify-center gap-2 border border-yellow-500/20 cursor-default">
             <span className="material-symbols-outlined animate-pulse text-lg">pending</span>
             Access Request Pending
           </button>
@@ -319,7 +319,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
           <button 
             onClick={handleRequest}
             disabled={isLoading}
-            className={`bg-purple-500/5 dark:bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 dark:border-purple-500/20 hover:border-purple-500/50 text-purple-600 dark:text-purple-400 font-headline font-bold py-3.5 rounded-2xl flex items-center justify-center gap-2 transition-all duration-300 disabled:opacity-50`}
+            className={`bg-purple-500/5 dark:bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 dark:border-purple-500/20 hover:border-purple-500/50 text-purple-600 dark:text-purple-400 font-headline font-bold py-2.5 rounded-xl flex items-center justify-center gap-2 transition-all duration-300 disabled:opacity-50`}
           >
             <span className="material-symbols-outlined text-lg">{isLoading ? 'sync' : 'verified_user'}</span>
             {isLoading ? 'Submitting...' : 'Request Code Access'}
@@ -342,12 +342,17 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
     );
   };
 
+  const titleText = `${sensor.title.trim()} ${sensor.highlightText.trim()}`.replace(/\s+/g, ' ');
+  const titleSizeClass = titleText.length > 40 
+    ? "text-3xl md:text-4xl lg:text-4xl" 
+    : "text-5xl lg:text-6xl";
+
   return (
     <div className="min-h-screen bg-surface text-on-surface pt-32 pb-24 relative overflow-hidden">
       {/* Ambient Glow */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-[-20%] right-[-10%] w-[60%] h-[60%] ambient-glow-1 opacity-20"></div>
-        <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] ambient-glow-2 opacity-20"></div>
+        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] ambient-glow-2 opacity-50"></div>
+        <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] ambient-glow-1 opacity-30"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-8 relative z-10">
@@ -357,9 +362,9 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
         </Link>
 
         {/* Hero Section */}
-        <div className="flex flex-col lg:flex-row gap-16 items-start mb-24">
+        <div className="flex flex-col lg:flex-row gap-16 items-stretch mb-24">
           {/* Left Column: Image/3D Viewer */}
-          <div className="w-full lg:w-1/2 bg-[#f8fafc] dark:bg-[#0B0F19] border border-slate-200/80 dark:border-white/10 rounded-3xl min-h-[550px] lg:min-h-[600px] flex items-center justify-center relative overflow-hidden shadow-2xl group">
+          <div className="w-full lg:w-1/2 bg-surface-container border border-white/5 hover:border-white/20 rounded-3xl min-h-[450px] lg:min-h-[600px] lg:self-stretch flex items-center justify-center relative overflow-hidden shadow-2xl group transition-colors duration-300">
             {/* Grid background pattern */}
             <div className="absolute inset-0 pointer-events-none" style={{
               backgroundImage: 'radial-gradient(var(--grid-dot-color) 1px, transparent 1px)',
@@ -402,20 +407,18 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
 
           {/* Right Column: Details & Actions */}
           <div className="w-full lg:w-1/2 flex flex-col justify-start">
-            <span className="text-[#10b981] font-label font-bold text-xs uppercase tracking-widest mb-3 block">
-              SENSOR PRODUCT
-            </span>
-            <h1 className="font-headline text-5xl lg:text-6xl font-black text-slate-900 dark:text-white mb-4 leading-[1.1] tracking-tighter">
+
+            <h1 className={`font-headline ${titleSizeClass} font-black text-white mb-2.5 leading-[1.1] tracking-tighter`}>
               {sensor.title} <span className="text-primary">{sensor.highlightText}</span>
             </h1>
-            <p className="font-body text-lg text-on-surface-variant/80 mb-8 font-medium">
+            <p className="font-body text-base text-on-surface-variant/80 mb-5 font-medium">
               {sensor.subtitle}
             </p>
 
             {/* Checkmark Pills */}
-            <div className="flex flex-col gap-4 mb-8 w-full">
+            <div className="flex flex-col gap-3 mb-6 w-full">
               {sensor.bannerPoints.map((point: string, i: number) => (
-                <div key={i} className="flex items-center gap-4 bg-[#f8fafc] dark:bg-[#0B0F19] border border-slate-200/80 dark:border-white/5 py-4 px-6 rounded-2xl shadow-sm hover:border-slate-300 dark:hover:border-white/10 transition-all duration-300">
+                <div key={i} className="flex items-center gap-4 bg-surface-container-low border border-white/5 py-3 px-5 rounded-xl shadow-sm hover:border-white/10 transition-all duration-300">
                   <span className="material-symbols-outlined text-emerald-500 dark:text-emerald-400 text-xl shrink-0 font-bold">check</span>
                   <p className="font-body text-sm text-on-surface-variant/90 font-semibold">{point}</p>
                 </div>
@@ -432,11 +435,11 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
         {/* Details Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
           {/* Features */}
-          <div className="bg-[#f8fafc] dark:bg-[#0B0F19] rounded-3xl p-8 border border-slate-200/80 dark:border-white/5 hover:border-slate-300 dark:hover:border-white/10 transition-all duration-300 group flex flex-col shadow-lg">
+          <div className="bg-surface-container rounded-3xl p-8 border border-white/5 hover:border-white/20 transition-all duration-300 group flex flex-col shadow-lg">
              <div className="w-12 h-12 bg-amber-500/10 rounded-2xl flex items-center justify-center mb-6 text-amber-500 dark:text-amber-400">
                <span className="material-symbols-outlined text-2xl">star</span>
              </div>
-             <h3 className="font-headline text-2xl font-bold text-slate-900 dark:text-white mb-6 tracking-tight">Key Features</h3>
+             <h3 className="font-headline text-2xl font-bold text-white mb-6 tracking-tight">Key Features</h3>
              <ul className="flex flex-col gap-4">
                {sensor.features.map((feature: string, i: number) => (
                  <li key={i} className="flex items-start gap-3 text-sm text-on-surface-variant/80 font-body leading-relaxed">
@@ -448,11 +451,11 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
           </div>
 
           {/* Applications */}
-          <div className="bg-[#f8fafc] dark:bg-[#0B0F19] rounded-3xl p-8 border border-slate-200/80 dark:border-white/5 hover:border-slate-300 dark:hover:border-white/10 transition-all duration-300 group flex flex-col shadow-lg">
+          <div className="bg-surface-container rounded-3xl p-8 border border-white/5 hover:border-white/20 transition-all duration-300 group flex flex-col shadow-lg">
              <div className="w-12 h-12 bg-indigo-500/10 rounded-2xl flex items-center justify-center mb-6 text-indigo-500 dark:text-indigo-400">
                <span className="material-symbols-outlined text-2xl">build</span>
              </div>
-             <h3 className="font-headline text-2xl font-bold text-slate-900 dark:text-white mb-6 tracking-tight">Applications</h3>
+             <h3 className="font-headline text-2xl font-bold text-white mb-6 tracking-tight">Applications</h3>
              <ul className="flex flex-col gap-4">
                {sensor.applications.map((app: string, i: number) => (
                  <li key={i} className="flex items-start gap-3 text-sm text-on-surface-variant/80 font-body leading-relaxed">
@@ -464,11 +467,11 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
           </div>
 
           {/* Specifications */}
-          <div className="bg-[#f8fafc] dark:bg-[#0B0F19] rounded-3xl p-8 border border-slate-200/80 dark:border-white/5 hover:border-slate-300 dark:hover:border-white/10 transition-all duration-300 group flex flex-col shadow-lg">
+          <div className="bg-surface-container rounded-3xl p-8 border border-white/5 hover:border-white/20 transition-all duration-300 group flex flex-col shadow-lg">
              <div className="w-12 h-12 bg-emerald-500/10 rounded-2xl flex items-center justify-center mb-6 text-emerald-500 dark:text-emerald-400">
                <span className="material-symbols-outlined text-2xl">analytics</span>
              </div>
-             <h3 className="font-headline text-2xl font-bold text-slate-900 dark:text-white mb-6 tracking-tight">Specifications</h3>
+             <h3 className="font-headline text-2xl font-bold text-white mb-6 tracking-tight">Specifications</h3>
              <ul className="flex flex-col gap-4">
                {sensor.specifications.map((spec: string, i: number) => (
                  <li key={i} className="flex items-start gap-3 text-sm text-on-surface-variant/80 font-body leading-relaxed">

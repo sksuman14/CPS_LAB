@@ -159,9 +159,8 @@ export default function ProductsPage() {
                       </div>
                       <div
                         className="p-8 flex flex-col flex-grow bg-gradient-to-b from-surface-container to-surface-container-lowest relative z-20"
-                        style={{ transform: "translateZ(40px)" }}
                       >
-                        <h3 className="font-headline text-xl font-bold text-white mb-3 line-clamp-2 leading-tight drop-shadow-sm">
+                        <h3 className="font-headline text-xl font-bold text-white mb-3 line-clamp-none leading-tight drop-shadow-sm">
                           {fullTitle}
                         </h3>
                         <p className="font-body text-sm text-on-surface-variant leading-relaxed line-clamp-3 mb-8 flex-grow">
