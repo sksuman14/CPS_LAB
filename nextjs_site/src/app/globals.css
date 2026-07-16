@@ -50,9 +50,11 @@
     --secondary-fixed-dim: 153 246 228;
     --secondary: 15 118 110;
     --primary: 37 99 235;
-    --on-surface-variant: 51 65 85;
+    --accent: 96 165 250;
+    --on-surface-variant: 30 41 59;
     --tertiary: 192 38 211;
     --on-error: 255 255 255;
+    --grid-dot-color: rgba(0, 0, 0, 0.05);
   }
 
   .dark {
@@ -102,9 +104,11 @@
     --secondary-fixed-dim: 128 213 203;
     --secondary: 128 213 203;
     --primary: 180 197 255;
+    --accent: 9 9 11;
     --on-surface-variant: 195 198 215;
     --tertiary: 255 181 150;
     --on-error: 105 0 5;
+    --grid-dot-color: rgba(255, 255, 255, 0.05);
   }
 
   body {

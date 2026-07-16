@@ -107,7 +107,7 @@ export default function Footer() {
         <div className="w-full h-px bg-white/10 mb-6"></div>
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="font-label text-sm text-on-surface-variant/60 uppercase tracking-widest">
-            © 2026 IIT Ropar – Cyber Physical System Lab
+            IIT Ropar – Cyber Physical System Lab
           </p>
 
           <button 

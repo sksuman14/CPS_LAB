@@ -282,7 +282,7 @@ export default function TrainingAndWorkshopPage() {
                       <div className="w-20 h-20 rounded-3xl bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500 shadow-inner border border-primary/30 group-hover:border-primary/60 group-hover:shadow-[0_0_20px_rgba(37,99,235,0.4)]">
                         <span className="material-symbols-outlined text-primary text-4xl drop-shadow-[0_0_10px_rgba(37,99,235,0.8)]">{stat.icon}</span>
                       </div>
-                      <h3 className="font-headline text-4xl md:text-5xl font-black bg-gradient-to-b from-white via-blue-100 to-primary bg-clip-text text-transparent mb-2 drop-shadow-lg flex items-center justify-center gap-1">
+                      <h3 className="font-headline text-4xl md:text-5xl font-black bg-gradient-to-b from-primary to-blue-800 dark:from-white dark:via-blue-100 dark:to-primary bg-clip-text text-transparent mb-2 drop-shadow-lg flex items-center justify-center gap-1">
                         <AnimatedCounter to={stat.count} suffix={stat.suffix} />
                       </h3>
                       <p className="font-label text-on-surface-variant uppercase tracking-widest text-sm font-bold group-hover:text-white transition-colors">{stat.label}</p>
@@ -335,9 +335,8 @@ export default function TrainingAndWorkshopPage() {
                     <img
                       src={workshop.image}
                       alt={workshop.title}
-                      className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-all duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-surface-container via-surface-container/50 to-transparent"></div>
 
                     {/* Floating Badges */}
                     <div className="absolute top-4 left-4 bg-surface-container/80 backdrop-blur-md border border-white/10 text-white px-4 py-2 rounded-full flex items-center gap-2 shadow-lg">
@@ -348,18 +347,11 @@ export default function TrainingAndWorkshopPage() {
                   </div>
 
                   <div className="p-8 flex flex-col flex-grow bg-gradient-to-b from-surface-container to-surface-container-lowest relative z-10">
-                    <h3 className="font-headline text-xl font-bold text-white mb-4 leading-snug drop-shadow-sm group-hover:text-primary-light transition-colors">
+                    <h3 className="font-headline text-xl font-bold text-white mb-4 leading-snug drop-shadow-sm group-hover:text-primary transition-colors">
                       {workshop.title}
                     </h3>
 
-                    <div className="flex items-center gap-2 mb-6">
-                      <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
-                        <span className="material-symbols-outlined text-primary text-[16px]">group</span>
-                      </div>
-                      <span className="text-xs font-label uppercase tracking-widest text-on-surface-variant group-hover:text-on-surface transition-colors font-bold">
-                        {workshop.participants}
-                      </span>
-                    </div>
+                    {/* Removed participants section */}
 
                     <p className="font-body text-sm text-on-surface-variant leading-relaxed mt-auto relative z-10 group-hover:text-white/90 transition-colors">
                       {workshop.description}

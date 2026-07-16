@@ -171,34 +171,52 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
     }
   };
 
+  const findIPRating = () => {
+    const ipPattern = /IP\d{2}/i;
+    const allTexts = [...(sensor?.features || []), ...(sensor?.specifications || [])];
+    for (const f of allTexts) {
+      const match = f.match(ipPattern);
+      if (match) return `${match[0]} Rated`;
+    }
+    return "IP54 Rated"; // fallback
+  };
+
+  const findMaterial = () => {
+    const materialPattern = /(ABS|Polycarbonate|Aluminium|Metal|Stainless Steel|Silicon|Glass)/i;
+    const allTexts = [...(sensor?.features || []), ...(sensor?.specifications || [])];
+    for (const f of allTexts) {
+      const match = f.match(materialPattern);
+      if (match) return `${match[0]} Body`;
+    }
+    return "ABS Body"; // fallback
+  };
+
   const renderActionButtons = () => {
     const fileConfig = sensor.datasheetKey ? SENSOR_FILES[sensor.datasheetKey] : null;
     
-    // Lists of buttons to render
-    const publicButtons = [];
-    const protectedButtons = [];
+    // 1. Enquire Button
+    const enquireButton = (
+      <button 
+        key="enquire"
+        onClick={handleEnquire}
+        className="w-full bg-[#3b82f6] hover:bg-[#2563eb] text-white font-headline font-bold py-4 rounded-2xl flex items-center justify-center gap-3 transition-all duration-300 shadow-lg shadow-blue-500/10 active:scale-[0.98]"
+      >
+        <span className="material-symbols-outlined text-white text-xl">mail</span>
+        Enquire Now
+      </button>
+    );
 
-    // 1. PUBLIC DOCUMENTS (Datasheet & Manuals)
+    // 2. Document Buttons (Datasheet & Manuals)
+    const docButtons = [];
     if (fileConfig) {
-      // 0. ENQUIRE BUTTON
-      publicButtons.push(
-        <button 
-          key="enquire"
-          onClick={handleEnquire}
-          className="bg-primary hover:bg-primary-light text-white font-bold py-4 px-8 rounded-full transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] flex items-center gap-2 group"
-        >
-          <span className="material-symbols-outlined text-white group-hover:scale-110 transition-transform">mail</span>
-          Enquire
-        </button>
-      );
       if (fileConfig.datasheet) {
-        publicButtons.push(
+        docButtons.push(
           <button 
             key="datasheet"
             onClick={() => handleView('datasheet')}
-            className="bg-white/5 hover:bg-white/10 text-white font-bold py-4 px-8 rounded-full transition-all border border-white/10 flex items-center gap-2 group"
+            className="flex-grow bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-white font-body text-xs font-semibold py-3 px-5 rounded-xl flex items-center justify-center gap-2 transition-all"
           >
-            <span className="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">description</span>
+            <span className="material-symbols-outlined text-primary text-lg">description</span>
             Datasheet
           </button>
         );
@@ -208,97 +226,102 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
       manualTypes.forEach(type => {
         if (fileConfig[type]) {
           const label = type === 'manual' ? 'nRF Manual' : type === 'quec_manual' ? 'Quec Manual' : 'UI Manual';
-          publicButtons.push(
+          docButtons.push(
             <button 
               key={type}
               onClick={() => handleView(type)}
-              className="bg-white/5 hover:bg-white/10 text-white font-bold py-4 px-8 rounded-full transition-all border border-white/10 flex items-center gap-2 group"
+              className="flex-grow bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-white font-body text-xs font-semibold py-3 px-5 rounded-xl flex items-center justify-center gap-2 transition-all"
             >
-              <span className="material-symbols-outlined text-accent group-hover:scale-110 transition-transform">menu_book</span>
+              <span className="material-symbols-outlined text-accent text-lg">menu_book</span>
               {label}
             </button>
           );
         }
       });
+    }
 
-      // 1.5 EXPERIMENTS
+    // 3. Experiments Button
+    let experimentsButton = null;
+    if (fileConfig) {
       const fileConfigExpKey = fileConfig.experiments ? 'experiments' : fileConfig.student_doc ? 'student_doc' : null;
       const directExpLink = (sensor as any).experimentsLink || (sensor as any).experiments;
 
       if (fileConfigExpKey || directExpLink) {
-        publicButtons.push(
+        experimentsButton = (
           <button 
             key="experiments"
             onClick={() => {
               if (fileConfigExpKey) handleView(fileConfigExpKey);
               else window.open(directExpLink, '_blank');
             }}
-            className="bg-white/5 hover:bg-white/10 text-white font-bold py-4 px-8 rounded-full transition-all border border-white/10 flex items-center gap-2 group"
+            className="w-full bg-emerald-500/5 dark:bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 dark:border-emerald-500/20 hover:border-emerald-500/50 text-emerald-600 dark:text-emerald-400 font-headline font-bold py-3.5 rounded-2xl flex items-center justify-center gap-2 transition-all duration-300"
           >
-            <span className="material-symbols-outlined text-secondary group-hover:scale-110 transition-transform">science</span>
-            Experiments
+            <span className="material-symbols-outlined text-emerald-600 dark:text-emerald-400 text-lg">edit</span>
+            View Experiments
           </button>
         );
       }
     }
 
-    // 2. PROTECTED CODE (Requires Request Access)
+    // 4. Code Access Button
     const codeLinks = [
       { key: 'nreCodeLink', label: 'nRF Code' },
       { key: 'quecCodeLink', label: 'Quec Code' },
       { key: 'nrfUICodeLink', label: 'nRF UI Code' },
-      { key: 'nrfCodeLink', label: 'nRF Code' } // some use different naming
+      { key: 'nrfCodeLink', label: 'nRF Code' }
     ];
 
     const availableCode = codeLinks.filter(cl => (sensor as any)[cl.key]);
+    let codeAccessButton = null;
 
     if (availableCode.length > 0) {
       if (isChecking) {
-        protectedButtons.push(
-          <div key="checking" className="bg-surface-container py-4 px-8 rounded-full border border-white/5 opacity-50 flex items-center gap-3">
-            <span className="material-symbols-outlined animate-spin">refresh</span>
+        codeAccessButton = (
+          <div className="w-full bg-purple-500/5 py-3.5 rounded-2xl border border-purple-500/10 opacity-50 flex items-center justify-center gap-3 text-purple-600 dark:text-purple-400 text-sm font-bold">
+            <span className="material-symbols-outlined animate-spin text-lg">refresh</span>
             Checking Code Access...
           </div>
         );
       } else if (!user && !googleUser) {
-        protectedButtons.push(
-          <Link key="login" href="/login" className="bg-primary hover:bg-primary-light text-white font-bold py-4 px-8 rounded-full transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] flex items-center gap-2">
-            <span className="material-symbols-outlined">lock</span>
+        codeAccessButton = (
+          <Link href="/login" className="w-full bg-purple-500/5 dark:bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 dark:border-purple-500/20 hover:border-purple-500/50 text-purple-600 dark:text-purple-400 font-headline font-bold py-3.5 rounded-2xl flex items-center justify-center gap-2 transition-all duration-300">
+            <span className="material-symbols-outlined text-lg">lock</span>
             Sign in for Code Access
           </Link>
         );
       } else if (userAccess.includes(datasheetKey) || requestStatus?.status === 'GRANTED') {
-        availableCode.forEach(cl => {
-          protectedButtons.push(
-            <button 
-              key={cl.key}
-              onClick={() => handleDirectDownload((sensor as any)[cl.key], cl.label, cl.key)} 
-              disabled={downloadingKey === cl.key}
-              className={`bg-primary hover:bg-primary-light text-white font-bold py-4 px-8 rounded-full transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] flex items-center gap-2 group ${downloadingKey === cl.key ? 'opacity-75 cursor-wait' : ''}`}
-            >
-              <span className={`material-symbols-outlined ${downloadingKey === cl.key ? 'animate-spin' : 'group-hover:rotate-12 transition-transform'}`}>
-                {downloadingKey === cl.key ? 'sync' : 'code'}
-              </span>
-              {downloadingKey === cl.key ? 'Downloading...' : cl.label}
-            </button>
-          );
-        });
+        codeAccessButton = (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full">
+            {availableCode.map(cl => (
+              <button 
+                key={cl.key}
+                onClick={() => handleDirectDownload((sensor as any)[cl.key], cl.label, cl.key)} 
+                disabled={downloadingKey === cl.key}
+                className={`bg-purple-500/5 dark:bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 dark:border-purple-500/20 hover:border-purple-500/50 text-purple-600 dark:text-purple-400 font-headline font-bold py-3 px-5 rounded-2xl flex items-center justify-center gap-2 transition-all duration-300 disabled:opacity-50 ${downloadingKey === cl.key ? 'cursor-wait' : ''}`}
+              >
+                <span className={`material-symbols-outlined text-lg ${downloadingKey === cl.key ? 'animate-spin' : ''}`}>
+                  {downloadingKey === cl.key ? 'sync' : 'code'}
+                </span>
+                {downloadingKey === cl.key ? 'Downloading...' : cl.label}
+              </button>
+            ))}
+          </div>
+        );
       } else if (requestStatus?.status === 'PENDING') {
-        protectedButtons.push(
-          <button key="pending" className="bg-yellow-500/20 text-yellow-500 font-bold py-4 px-8 rounded-full flex items-center gap-2 border border-yellow-500/30 cursor-default">
-            <span className="material-symbols-outlined animate-pulse">pending</span>
+        codeAccessButton = (
+          <button className="w-full bg-yellow-500/15 text-yellow-500 font-headline font-bold py-3.5 rounded-2xl flex items-center justify-center gap-2 border border-yellow-500/20 cursor-default">
+            <span className="material-symbols-outlined animate-pulse text-lg">pending</span>
             Access Request Pending
           </button>
         );
       } else {
-        protectedButtons.push(
+        codeAccessButton = (
           <button 
-            key="request"
             onClick={handleRequest}
             disabled={isLoading}
-            className="bg-primary hover:bg-primary-light text-white font-bold py-4 px-8 rounded-full transition-all shadow-[0_0_30px_rgba(6,182,212,0.2)] flex items-center gap-2 disabled:opacity-50"
+            className={`bg-purple-500/5 dark:bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 dark:border-purple-500/20 hover:border-purple-500/50 text-purple-600 dark:text-purple-400 font-headline font-bold py-3.5 rounded-2xl flex items-center justify-center gap-2 transition-all duration-300 disabled:opacity-50`}
           >
-            <span className="material-symbols-outlined">{isLoading ? 'sync' : 'verified_user'}</span>
+            <span className="material-symbols-outlined text-lg">{isLoading ? 'sync' : 'verified_user'}</span>
             {isLoading ? 'Submitting...' : 'Request Code Access'}
           </button>
         );
@@ -306,17 +329,15 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
     }
 
     return (
-      <div className="flex flex-col gap-6 w-full">
-        {publicButtons.length > 0 && (
-          <div className="flex flex-wrap gap-4">
-            {publicButtons}
+      <div className="flex flex-col gap-4 w-full">
+        {enquireButton}
+        {docButtons.length > 0 && (
+          <div className="flex flex-wrap gap-3 w-full">
+            {docButtons}
           </div>
         )}
-        {protectedButtons.length > 0 && (
-          <div className="flex flex-wrap gap-4">
-            {protectedButtons}
-          </div>
-        )}
+        {experimentsButton}
+        {codeAccessButton}
       </div>
     );
   };
@@ -330,16 +351,37 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
       </div>
 
       <div className="max-w-7xl mx-auto px-8 relative z-10">
-        <Link href="/products" className="inline-flex items-center text-on-surface-variant hover:text-white transition-colors mb-12 font-label text-sm uppercase tracking-widest gap-2 group">
+        <Link href="/products" className="inline-flex items-center text-on-surface-variant hover:text-white transition-colors mb-12 font-label text-xs uppercase tracking-widest gap-2 group">
           <span className="material-symbols-outlined transform group-hover:-translate-x-1 transition-transform">arrow_back</span>
           Back to Products
         </Link>
 
         {/* Hero Section */}
         <div className="flex flex-col lg:flex-row gap-16 items-start mb-24">
-          <div className="w-full lg:w-1/2 bg-gradient-to-br from-gray-400 to-gray-500 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 relative group min-h-[700px] flex items-center justify-center overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-3xl pointer-events-none"></div>
+          {/* Left Column: Image/3D Viewer */}
+          <div className="w-full lg:w-1/2 bg-[#f8fafc] dark:bg-[#0B0F19] border border-slate-200/80 dark:border-white/10 rounded-3xl min-h-[550px] lg:min-h-[600px] flex items-center justify-center relative overflow-hidden shadow-2xl group">
+            {/* Grid background pattern */}
+            <div className="absolute inset-0 pointer-events-none" style={{
+              backgroundImage: 'radial-gradient(var(--grid-dot-color) 1px, transparent 1px)',
+              backgroundSize: '24px 24px'
+            }}></div>
             
+            {/* Ambient glow */}
+            <div className="absolute w-[85%] h-[85%] bg-primary/10 rounded-full blur-[100px] pointer-events-none"></div>
+            
+            {/* IP Rating Badge */}
+            <div className="absolute top-6 left-6 px-4 py-1.5 rounded-full bg-white/85 dark:bg-[#0F172A]/80 backdrop-blur-md border border-slate-200/50 dark:border-white/10 text-[10px] text-on-surface-variant font-semibold uppercase tracking-wider flex items-center gap-2 shadow-lg">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              {findIPRating()}
+            </div>
+
+            {/* Material Badge */}
+            <div className="absolute top-6 right-6 px-4 py-1.5 rounded-full bg-white/85 dark:bg-[#0F172A]/80 backdrop-blur-md border border-slate-200/50 dark:border-white/10 text-[10px] text-on-surface-variant font-semibold uppercase tracking-wider flex items-center gap-2 shadow-lg">
+              <span className="w-2 h-2 rounded-full bg-blue-500"></span>
+              {findMaterial()}
+            </div>
+
+            {/* Model / Image Rendering */}
             {((sensor as any).modelPath || sensor.imagePath.toLowerCase().endsWith('.glb') || sensor.imagePath.toLowerCase().endsWith('.gltf')) && show3D ? (
               <div className="absolute inset-0 z-10">   
                 <ModelViewer modelPath={(sensor as any).modelPath || sensor.imagePath} autoRotate={true} />
@@ -349,14 +391,14 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
                 <img 
                   src={`/${sensor.imagePath}`} 
                   alt={productDisplayName}
-                  className="w-full h-auto object-contain max-h-[500px] transform group-hover:scale-105 transition-transform duration-700"
+                  className="w-[70%] h-auto object-contain max-h-[450px] transform group-hover:scale-105 transition-transform duration-700 relative z-10"
                 />
                 
-                {/* 3D Overlay Button if modelPath exists */}
+                {/* 3D Overlay Button */}
                 {((sensor as any).modelPath || sensor.imagePath.toLowerCase().endsWith('.glb')) && !show3D && (
                   <button 
                     onClick={() => setShow3D(true)}
-                    className="absolute inset-0 m-auto w-40 h-16 bg-surface-container/80 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center gap-3 shadow-[0_0_40px_rgba(37,99,235,0.4)] hover:scale-105 transition-all group/btn z-20"
+                    className="absolute inset-0 m-auto w-40 h-16 bg-[#0F172A]/90 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center gap-3 shadow-[0_0_40px_rgba(37,99,235,0.4)] hover:scale-105 transition-all group/btn z-20"
                   >
                     <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
                       <span className="material-symbols-outlined text-white text-xl">3d_rotation</span>
@@ -367,42 +409,48 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
               </>
             )}
           </div>
-          
-          <div className="w-full lg:w-1/2 flex flex-col justify-center">
-            <h1 className="font-headline text-5xl md:text-6xl font-bold text-white mb-6 leading-tight tracking-tighter">
+
+          {/* Right Column: Details & Actions */}
+          <div className="w-full lg:w-1/2 flex flex-col justify-start">
+            <span className="text-[#10b981] font-label font-bold text-xs uppercase tracking-widest mb-3 block">
+              SENSOR PRODUCT
+            </span>
+            <h1 className="font-headline text-5xl lg:text-6xl font-black text-slate-900 dark:text-white mb-4 leading-[1.1] tracking-tighter">
               {sensor.title} <span className="text-primary">{sensor.highlightText}</span>
             </h1>
-            <h2 className="font-body text-xl md:text-2xl text-on-surface-variant font-medium mb-10 leading-relaxed">
+            <p className="font-body text-lg text-on-surface-variant/80 mb-8 font-medium">
               {sensor.subtitle}
-            </h2>
-            
-            <div className="flex flex-col gap-4 mb-10">
+            </p>
+
+            {/* Checkmark Pills */}
+            <div className="flex flex-col gap-4 mb-8 w-full">
               {sensor.bannerPoints.map((point: string, i: number) => (
-                <div key={i} className="flex items-start gap-4 bg-surface-container py-3 px-5 rounded-2xl border border-white/5 hover:bg-surface-container-high transition-colors">
-                  <span className="material-symbols-outlined text-primary shrink-0 mt-0.5">check_circle</span>
-                  <p className="font-body text-white/90">{point}</p>
+                <div key={i} className="flex items-center gap-4 bg-[#f8fafc] dark:bg-[#0B0F19] border border-slate-200/80 dark:border-white/5 py-4 px-6 rounded-2xl shadow-sm hover:border-slate-300 dark:hover:border-white/10 transition-all duration-300">
+                  <span className="material-symbols-outlined text-emerald-500 dark:text-emerald-400 text-xl shrink-0 font-bold">check</span>
+                  <p className="font-body text-sm text-on-surface-variant/90 font-semibold">{point}</p>
                 </div>
               ))}
             </div>
 
-            <div className="flex gap-4">
+            {/* Buttons Group */}
+            <div className="w-full">
               {renderActionButtons()}
             </div>
           </div>
         </div>
 
         {/* Details Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
           {/* Features */}
-          <div className="bg-surface-container rounded-3xl p-8 border border-white/5 hover:border-white/10 transition-colors group">
-             <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all duration-300">
-               <span className="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">star</span>
+          <div className="bg-[#f8fafc] dark:bg-[#0B0F19] rounded-3xl p-8 border border-slate-200/80 dark:border-white/5 hover:border-slate-300 dark:hover:border-white/10 transition-all duration-300 group flex flex-col shadow-lg">
+             <div className="w-12 h-12 bg-amber-500/10 rounded-2xl flex items-center justify-center mb-6 text-amber-500 dark:text-amber-400">
+               <span className="material-symbols-outlined text-2xl">star</span>
              </div>
-             <h3 className="font-headline text-2xl font-bold text-white mb-6 tracking-tight">Key Features</h3>
+             <h3 className="font-headline text-2xl font-bold text-slate-900 dark:text-white mb-6 tracking-tight">Key Features</h3>
              <ul className="flex flex-col gap-4">
                {sensor.features.map((feature: string, i: number) => (
-                 <li key={i} className="flex gap-3 text-on-surface-variant font-body">
-                   <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0 mt-2.5"></span>
+                 <li key={i} className="flex items-start gap-3 text-sm text-on-surface-variant/80 font-body leading-relaxed">
+                   <span className="w-1.5 h-1.5 rounded-full bg-amber-500 dark:bg-amber-400 shrink-0 mt-2"></span>
                    <span>{feature}</span>
                  </li>
                ))}
@@ -410,15 +458,15 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
           </div>
 
           {/* Applications */}
-          <div className="bg-surface-container rounded-3xl p-8 border border-white/5 hover:border-white/10 transition-colors group">
-             <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all duration-300">
-               <span className="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">build</span>
+          <div className="bg-[#f8fafc] dark:bg-[#0B0F19] rounded-3xl p-8 border border-slate-200/80 dark:border-white/5 hover:border-slate-300 dark:hover:border-white/10 transition-all duration-300 group flex flex-col shadow-lg">
+             <div className="w-12 h-12 bg-indigo-500/10 rounded-2xl flex items-center justify-center mb-6 text-indigo-500 dark:text-indigo-400">
+               <span className="material-symbols-outlined text-2xl">build</span>
              </div>
-             <h3 className="font-headline text-2xl font-bold text-white mb-6 tracking-tight">Applications</h3>
+             <h3 className="font-headline text-2xl font-bold text-slate-900 dark:text-white mb-6 tracking-tight">Applications</h3>
              <ul className="flex flex-col gap-4">
                {sensor.applications.map((app: string, i: number) => (
-                 <li key={i} className="flex gap-3 text-on-surface-variant font-body">
-                   <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0 mt-2.5"></span>
+                 <li key={i} className="flex items-start gap-3 text-sm text-on-surface-variant/80 font-body leading-relaxed">
+                   <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 dark:bg-indigo-400 shrink-0 mt-2"></span>
                    <span>{app}</span>
                  </li>
                ))}
@@ -426,15 +474,15 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
           </div>
 
           {/* Specifications */}
-          <div className="bg-surface-container rounded-3xl p-8 border border-white/5 hover:border-white/10 transition-colors group">
-             <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all duration-300">
-               <span className="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">analytics</span>
+          <div className="bg-[#f8fafc] dark:bg-[#0B0F19] rounded-3xl p-8 border border-slate-200/80 dark:border-white/5 hover:border-slate-300 dark:hover:border-white/10 transition-all duration-300 group flex flex-col shadow-lg">
+             <div className="w-12 h-12 bg-emerald-500/10 rounded-2xl flex items-center justify-center mb-6 text-emerald-500 dark:text-emerald-400">
+               <span className="material-symbols-outlined text-2xl">analytics</span>
              </div>
-             <h3 className="font-headline text-2xl font-bold text-white mb-6 tracking-tight">Specifications</h3>
+             <h3 className="font-headline text-2xl font-bold text-slate-900 dark:text-white mb-6 tracking-tight">Specifications</h3>
              <ul className="flex flex-col gap-4">
                {sensor.specifications.map((spec: string, i: number) => (
-                 <li key={i} className="flex gap-3 text-on-surface-variant font-body">
-                   <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0 mt-2.5"></span>
+                 <li key={i} className="flex items-start gap-3 text-sm text-on-surface-variant/80 font-body leading-relaxed">
+                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 shrink-0 mt-2"></span>
                    <span>{spec}</span>
                  </li>
                ))}

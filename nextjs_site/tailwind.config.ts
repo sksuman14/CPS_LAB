@@ -64,6 +64,7 @@ const config: Config = {
         "primary": 'rgb(var(--primary) / <alpha-value>)',
         "on-surface-variant": 'rgb(var(--on-surface-variant) / <alpha-value>)',
         "tertiary": 'rgb(var(--tertiary) / <alpha-value>)',
+        "accent": 'rgb(var(--accent) / <alpha-value>)',
         "on-error": 'rgb(var(--on-error) / <alpha-value>)'
       },
       backgroundImage: {

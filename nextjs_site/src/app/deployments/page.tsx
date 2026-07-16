@@ -212,7 +212,7 @@ function DeploymentTextBlock({ data, index, setActiveIndex }: { data: any, index
             alt={data.title}
             className="object-cover w-full h-full"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+
         </div>
 
         <div className="inline-block px-4 py-1.5 rounded-full bg-primary/20 text-primary border border-primary/30 text-xs font-label font-bold mb-6 tracking-widest uppercase">
