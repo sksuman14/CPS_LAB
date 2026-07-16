@@ -369,17 +369,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
             {/* Ambient glow */}
             <div className="absolute w-[85%] h-[85%] bg-primary/10 rounded-full blur-[100px] pointer-events-none"></div>
             
-            {/* IP Rating Badge */}
-            <div className="absolute top-6 left-6 px-4 py-1.5 rounded-full bg-white/85 dark:bg-[#0F172A]/80 backdrop-blur-md border border-slate-200/50 dark:border-white/10 text-[10px] text-on-surface-variant font-semibold uppercase tracking-wider flex items-center gap-2 shadow-lg">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              {findIPRating()}
-            </div>
-
-            {/* Material Badge */}
-            <div className="absolute top-6 right-6 px-4 py-1.5 rounded-full bg-white/85 dark:bg-[#0F172A]/80 backdrop-blur-md border border-slate-200/50 dark:border-white/10 text-[10px] text-on-surface-variant font-semibold uppercase tracking-wider flex items-center gap-2 shadow-lg">
-              <span className="w-2 h-2 rounded-full bg-blue-500"></span>
-              {findMaterial()}
-            </div>
+            {/* Badges removed */}
 
             {/* Model / Image Rendering */}
             {((sensor as any).modelPath || sensor.imagePath.toLowerCase().endsWith('.glb') || sensor.imagePath.toLowerCase().endsWith('.gltf')) && show3D ? (
@@ -398,12 +388,12 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
                 {((sensor as any).modelPath || sensor.imagePath.toLowerCase().endsWith('.glb')) && !show3D && (
                   <button 
                     onClick={() => setShow3D(true)}
-                    className="absolute inset-0 m-auto w-40 h-16 bg-[#0F172A]/90 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center gap-3 shadow-[0_0_40px_rgba(37,99,235,0.4)] hover:scale-105 transition-all group/btn z-20"
+                    className="absolute inset-0 m-auto w-40 h-16 bg-[#0F172A]/90 backdrop-blur-md border border-slate-500/30 rounded-full flex items-center justify-center gap-3 shadow-[0_0_40px_rgba(37,99,235,0.4)] hover:scale-105 transition-all group/btn z-20"
                   >
                     <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-                      <span className="material-symbols-outlined text-white text-xl">3d_rotation</span>
+                      <span className="material-symbols-outlined text-slate-100 text-xl">3d_rotation</span>
                     </div>
-                    <span className="font-label font-bold text-white uppercase tracking-wider text-sm pr-2">View 3D</span>
+                    <span className="font-label font-bold text-slate-100 uppercase tracking-wider text-sm pr-2">View 3D</span>
                   </button>
                 )}
               </>
