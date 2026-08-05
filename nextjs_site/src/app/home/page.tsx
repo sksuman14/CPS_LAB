@@ -52,7 +52,7 @@ function HomeContent() {
       title: "Serial Monitor",
       desc: "Real-time robust data visualization with IoT bounds.",
       path: "/assets/images/serialmonitor.jpeg",
-      downloadLink: "https://iot-serial-communication-app.s3.us-east-1.amazonaws.com/IOT+Serial+Monitor+Setup+1.0.0.exe",
+      downloadLink: "https://iot-serial-communication-app.s3.us-east-1.amazonaws.com/IOT+Serial+Monitor+Setup+1.0.0+(1).exe",
       platform: ".exe"
     },
     {
