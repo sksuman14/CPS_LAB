@@ -253,7 +253,7 @@ function HomeContent() {
               <div className="h-[400px] md:h-[600px] w-full rounded-3xl bg-surface-container-lowest border border-white/10 relative overflow-hidden group shadow-2xl">
                 <IndiaMap />
                 <div className="absolute bottom-6 right-6 z-30 bg-primary/90 backdrop-blur-md text-white px-6 py-4 rounded-2xl shadow-[0_10px_30px_rgba(37,99,235,0.4)] border border-white/20 flex flex-col items-center">
-                  <span className="font-headline text-3xl font-black leading-none drop-shadow-md mb-1 text-white">22+</span>
+                  <span className="font-headline text-3xl font-black leading-none drop-shadow-md mb-1 text-white">31+</span>
                   <span className="font-label text-[10px] uppercase tracking-widest font-bold opacity-90">Live Locations</span>
                 </div>
               </div>

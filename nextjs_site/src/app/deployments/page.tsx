@@ -191,7 +191,7 @@ const deployments = [
     "title": "Deployment 31",
     "description": "AWaDH CPS Lab launched at Dr. K.N. Modi University, Ghaziabad.",
     "longDescription": "Strengthening India's Deep-Tech Future — Indian Institute of Technology, Ropar (iHub - AWaDH) successfully inaugurated its 31st Cyber-Physical Systems (CPS) Lab, powered by the National Mission on Interdisciplinary Cyber-Physical Systems (NM-ICPS), at Dr. K.N. Modi University. The CPS Lab was inaugurated in the presence of distinguished dignitaries including Prof. (Dr.) D.K. Modi (Chancellor), Dr. P. N Hrisheekesha (Vice Chancellor), Prof. Rajeev Ahuja (Director, IIT Ropar), Dr. Radhika Trikha (CEO, iHub-AWaDH), and Dr. Mukesh Kestwal (CIO, iHub-AWaDH). Following the inauguration, a 2-day Training of Trainers (ToT) program was conducted to enable faculty members to build hands-on expertise in CPS-based learning."
-  }
+  },
 ];
 
 // Helper Component for Text Block
