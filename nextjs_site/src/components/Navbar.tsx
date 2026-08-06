@@ -128,6 +128,7 @@ export default function Navbar() {
 
   const navLinks = [
     { name: 'Home', path: '/home' },
+    { name: 'Device', path: '/device' },
     { name: 'Deployments', path: '/deployments' },
     { name: 'Products', path: '/products' },
     { name: 'Training & Workshop', path: '/training' },

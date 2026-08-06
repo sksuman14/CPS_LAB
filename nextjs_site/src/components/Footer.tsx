@@ -9,6 +9,7 @@ export default function Footer() {
   
   const sitemapLinks = [
     { name: 'Home', path: '/home' },
+    { name: 'Device', path: '/device' },
     { name: 'Products', path: '/products' },
     { name: 'Deployments', path: '/deployments' },
     { name: 'Training & Workshop', path: '/training' },
