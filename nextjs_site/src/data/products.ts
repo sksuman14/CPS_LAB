@@ -1,29 +1,29 @@
 export const allSensors = [
   // gATEWAY
   {
-    "title": "BLE",
-    "highlightText": "Gateway",
-    "subtitle": "BLE Gateway For industrial IoT Applications",
-    "bannerPoints": [
+    title: "BLE",
+    highlightText: "Gateway",
+    subtitle: "BLE Gateway For industrial IoT Applications",
+    bannerPoints: [
       "Multi-Industry IoT Gateway Solution",
       "Real-Time Data Aggregation",
       "Scalable Gateway for 100+ nodes",
     ],
-    "features": [
+    features: [
       "Real Time Monitoring with low power consumptions",
       "FOTA (Firmware Over the Air)",
       "Supports 100+ nodes with BLE range up to 1 km Line of sight",
       "IP66 & Compact design",
       "Connectivity option: 4G, WIFI, LAN",
     ],
-    "applications": [
+    applications: [
       "Smart Agriculture & Precision farming",
       "Logistics and asset tracking",
       "Industrial equipment and health monitoring",
       "Healthcare wearable data collections",
       "Home Automations and energy management",
     ],
-    "specifications": [
+    specifications: [
       "Input Voltage Range : 5 - 30 v",
       "On board led indications for networking , cloud and BLE connectivity.",
       "Processor : Dual- Core Arm Cortex-M33.",
@@ -34,37 +34,37 @@ export const allSensors = [
       "Integrated with both battery and solar panel.",
       "512KB RAM +1MB Flash",
     ],
-    "imagePath": "assets/images/blegateway.png",
-    "modelPath": "https://cpslabhub-assets.s3.ap-south-1.amazonaws.com/models/data_logger.glb",
-    "email": "Vikash.hardwareengineer@ihub-awadh.in",
-    "datasheetKey": "Gateway",
+    imagePath: "assets/images/blegateway.png",
+    modelPath:
+      "https://cpslabhub-assets.s3.ap-south-1.amazonaws.com/models/data_logger.glb",
+    email: "Vikash.hardwareengineer@ihub-awadh.in",
+    datasheetKey: "Gateway",
   },
   // wind
   {
-    "title": "Ultrasonic ",
-    "highlightText": "Anemometer",
-    "subtitle":
-      "Ultrasonic Anemometer for precise wind speed and wind direction",
-    "bannerPoints": [
+    title: "Ultrasonic ",
+    highlightText: "Anemometer",
+    subtitle: "Ultrasonic Anemometer for precise wind speed and wind direction",
+    bannerPoints: [
       "Accurate wind monitoring",
       "Real time speed and direction measurement",
       "Robust and compact design",
     ],
-    "features": [
+    features: [
       "High Quality measurement up to 60m/s (216km/h)",
       "High accuracy with fast response time",
       "0°-360° wind direction coverage with 1° resolution",
       "Low Maintenance, ensuring low cost of ownership",
       "Robust design for all weather conditions",
     ],
-    "applications": [
+    applications: [
       "Weather monitoring stations",
       "Smart agriculture and precision farming",
       "Ports and harbours",
       "Runways and helipads",
       "Wind turbine performance monitoring",
     ],
-    "specifications": [
+    specifications: [
       "Input Supply voltage: 2V - 16V",
       "Measure wind speed and wind direction via Δ ToF",
       "Communication protocols: RS232 or RS485 (Modbus)",
@@ -72,38 +72,39 @@ export const allSensors = [
       "Weight : 0.6kg",
       "Heating option (-40℃ to +70℃)",
     ],
-    "imagePath": "assets/images/ultrasonic.png",
-    "modelPath": "https://cpslabhub-assets.s3.ap-south-1.amazonaws.com/models/ultrasonic.glb",
-    "email": "Vikash.hardwareengineer@ihub-awadh.in",
-    "datasheetKey": "WindSensor",
-    "quecCodeLink":
+    imagePath: "assets/images/ultrasonic.png",
+    modelPath:
+      "https://cpslabhub-assets.s3.ap-south-1.amazonaws.com/models/ultrasonic.glb",
+    email: "Vikash.hardwareengineer@ihub-awadh.in",
+    datasheetKey: "WindSensor",
+    quecCodeLink:
       "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/Wind_Sensor_UI",
   },
   // rain
   {
-    "title": "Rain",
-    "highlightText": "Gauge",
-    "subtitle": "Tipping Bucket Rain Gauge",
-    "bannerPoints": [
+    title: "Rain",
+    highlightText: "Gauge",
+    subtitle: "Tipping Bucket Rain Gauge",
+    bannerPoints: [
       "Measure rain via Tipping Bucket Mechanism",
       "Accurate and Low Maintenance",
       "Robust design for all weather conditions",
     ],
-    "features": [
+    features: [
       "Balanced tipping bucket mechanism ensures high accuracy",
       "Minimal moving parts → long-term reliability with low maintenance",
       "Reed switch / magnetic sensor for precise detection",
       "Durable ABS body with weather resistance",
       "Easy integration with data loggers and weather stations for automated rainfall recording",
     ],
-    "applications": [
+    applications: [
       "Meteorological stations for rainfall monitoring",
       "Agriculture & irrigation planning",
       "Environmental monitoring & climate research",
       "Suitable for precise/general purpose rain monitoring",
       "Urban drainage & stormwater management",
     ],
-    "specifications": [
+    specifications: [
       "Made of ABS material, offering durability and weather resistance",
       "Available in two diameter options: 159.5 mm and 200 mm",
       "Collection areas: 200 cm² and 314 cm²",
@@ -111,26 +112,27 @@ export const allSensors = [
       "Equipped with reed switch or magnetic sensor for tip detection",
       "Data Output: Number of tips × Resolution = Total Rainfall",
     ],
-    "imagePath": "assets/images/gauge.png",
-    "modelPath": "https://cpslabhub-assets.s3.ap-south-1.amazonaws.com/models/raingauge.glb",
-    "email": "Vikash.hardwareengineer@ihub-awadh.in",
-    "datasheetKey": "RainGauge",
-    "nreCodeLink":
+    imagePath: "assets/images/gauge.png",
+    modelPath:
+      "https://cpslabhub-assets.s3.ap-south-1.amazonaws.com/models/raingauge.glb",
+    email: "Vikash.hardwareengineer@ihub-awadh.in",
+    datasheetKey: "RainGauge",
+    nreCodeLink:
       "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/Rain_Gauge_Analog_Read",
-    "quecCodeLink":
+    quecCodeLink:
       "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/Rain_Gauge_UI",
   },
 
   {
-    "title": "Temperature Humidity Light Intensity and Pressure",
-    "highlightText": "Sensor",
-    "subtitle": "Compact environmental sensing unit for precise measurements",
-    "bannerPoints": [
+    title: "Temperature Humidity Light Intensity and Pressure",
+    highlightText: "Sensor",
+    subtitle: "Compact environmental sensing unit for precise measurements",
+    bannerPoints: [
       "High-precision measurements with cutting-edge sensor",
       "Robust design for long-term reliability",
       "Flexible model to diverse applications",
     ],
-    "features": [
+    features: [
       "Accurate Wide Environmental Measurement Range",
       "Maintenance-free for long-term field deployment",
       "Low power consumption, suitable for remote station",
@@ -138,7 +140,7 @@ export const allSensors = [
       "All-weather protection",
       "Compact & lightweight, easy to install with radiation shield",
     ],
-    "applications": [
+    applications: [
       "Agriculture and smart irrigation system",
       "Environmental monitoring",
       "Healthcare & Medical Facilities",
@@ -146,7 +148,7 @@ export const allSensors = [
       "Industrial Process monitoring (HVAC, Food processing)",
       "Safety and Security",
     ],
-    "specifications": [
+    specifications: [
       "Supply Voltage : 3.3 V DC",
       "Range of Temperature : -40 to +85 °C",
       "Range of Humidity : 0-100%",
@@ -158,26 +160,27 @@ export const allSensors = [
       "Pressure Accuracy:±1hPa",
       "LUX Accuracy:±3%",
     ],
-    "imagePath": "assets/images/luxpressure.png",
-    "modelPath": "https://cpslabhub-assets.s3.ap-south-1.amazonaws.com/models/radiation_shield.glb",
-    "email": "Vikash.hardwareengineer@ihub-awadh.in",
-    "datasheetKey": "ARTH",
-    "quecCodeLink":
+    imagePath: "assets/images/luxpressure.png",
+    modelPath:
+      "https://cpslabhub-assets.s3.ap-south-1.amazonaws.com/models/radiation_shield.glb",
+    email: "Vikash.hardwareengineer@ihub-awadh.in",
+    datasheetKey: "ARTH",
+    quecCodeLink:
       "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/Weather_Sheild_UI",
-    "nrfUICodeLink":
+    nrfUICodeLink:
       "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/Weather_shield_UI",
   },
 
   {
-    "title": "Soil",
-    "highlightText": "Spectra",
-    "subtitle": "Smart soil sensing for modern agriculture",
-    "bannerPoints": [
+    title: "Soil",
+    highlightText: "Spectra",
+    subtitle: "Smart soil sensing for modern agriculture",
+    bannerPoints: [
       "Supports RS485 Modbus RTU for long-distance, reliable communication",
       "Captures vital soil health parameters: Moisture, Temperature, EC, pH, N, P, K",
       "Ideal for agriculture & environmental monitoring applications",
     ],
-    "features": [
+    features: [
       "7-in-1 multi-parameter soil measurement (Moisture, Temperature, EC, pH, N, P, K)",
       "Long-distance RS485 Modbus RTU communication for reliable data transfer",
       "Rugged IP68 protection for harsh field environments and buried installation",
@@ -186,7 +189,7 @@ export const allSensors = [
       " Low power requirement — ideal for IoT and remote deployments",
       "Strong corrosion and shock resistance for long-term durability in agriculture",
     ],
-    "applications": [
+    applications: [
       "Smart agriculture & irrigation automation",
       "Greenhouse and indoor farming control",
       "Soil mapping for precision farming practices",
@@ -195,7 +198,7 @@ export const allSensors = [
       "Sustainable agriculture — govt./NGO programs in rural development",
       "Suitable for farms of all scales — small to large agritech deployments",
     ],
-    "specifications": [
+    specifications: [
       "Supply Voltage: 5V DC",
       "Output Interface: RS485 Modbus RTU",
       "Response Time: < 1 second",
@@ -211,35 +214,35 @@ export const allSensors = [
       "NPK Accuracy: ±2% F.S.",
       "Operating Temperature: −20°C to +85°C",
     ],
-    "imagePath": "assets/images/soil.png",
-    "email": "Vikash.hardwareengineer@ihub-awadh.in",
-    "datasheetKey": "Soil",
+    imagePath: "assets/images/soil.png",
+    email: "Vikash.hardwareengineer@ihub-awadh.in",
+    datasheetKey: "Soil",
   },
   {
-    "title": "Activity/Vibration",
-    "highlightText": "Monitor Kit",
-    "subtitle":
+    title: "Activity/Vibration",
+    highlightText: "Monitor Kit",
+    subtitle:
       "Real-time motion and environmental data tracker for STEM and IoT projects",
-    "bannerPoints": [
+    bannerPoints: [
       "3-axis accelerometer for real-time motion tracking",
       "Bluetooth Low Energy (BLE) connectivity for mobile and PC",
       "Compact, low-power, portable, and wearable design",
     ],
-    "features": [
+    features: [
       "Real-time motion tracking with high-precision accelerometer",
       "Seamless Bluetooth Low Energy (BLE) connectivity",
       "Compact, low-power design ideal for wearables",
       "Supports experiments like pendulum motion, velocity, and step counting",
       "Multiple communication interfaces (PC, SPI, UART) for easy integration",
     ],
-    "applications": [
+    applications: [
       "Physics Experiments – Pendulum motion, harmonic oscillation, gravity, and acceleration studies",
       "Step Counting – Pedometer creation for detecting and counting steps",
       "Velocity Measurement – Track acceleration over time and calculate velocity",
       "Speed Monitoring – Real-time speed measurement using accelerometer data",
       "Environmental Monitoring – Measure motion/vibration data for STEM and IoT projects",
     ],
-    "specifications": [
+    specifications: [
       "Controller: Nordic nRF52832 SoC, ARM Cortex-M4F, 64 MHz",
       "Memory: 512 KB Flash, 64 KB RAM",
       "Accelerometer: LIS3DH, 3-axis, ±2g/±4g/±8g/±16g, 12-bit resolution",
@@ -249,37 +252,37 @@ export const allSensors = [
       "Form Factor: Compact, battery-powered design for portable use",
       "Use Case: Suitable for STEM education, wearable projects, and IoT applications",
     ],
-    "imagePath": "assets/images/Actitvity.png",
-    "modelPath": "https://cpslabhub-assets.s3.ap-south-1.amazonaws.com/models/cattle+logger+.glb",
-    "email": "Vikash.hardwareengineer@ihub-awadh.in",
-    "datasheetKey": "ACTIVITY",
+    imagePath: "assets/images/Actitvity.png",
+    modelPath:
+      "https://cpslabhub-assets.s3.ap-south-1.amazonaws.com/models/cattle+logger+.glb",
+    email: "Vikash.hardwareengineer@ihub-awadh.in",
+    datasheetKey: "ACTIVITY",
   },
 
   {
-    "title": "Data",
-    "highlightText": "Logger",
-    "subtitle":
-      "High-Performance LTE IoT Board with Built-in GPS & Solar Power",
-    "bannerPoints": [
+    title: "Data",
+    highlightText: "Logger",
+    subtitle: "High-Performance LTE IoT Board with Built-in GPS & Solar Power",
+    bannerPoints: [
       "Powered by Quectel EC200U LTE Cat 1 Module",
       "Integrated LTE and GPS Antennas for Cloud Connectivity",
       "Supports MPPT Solar Charging and Dual SIM Network Redundancy",
     ],
-    "features": [
+    features: [
       "OpenCPU architecture with Quectel EC200U LTE Cat 1 module",
       "Built-in LTE and GPS antennas for connectivity and tracking",
       "Dual SIM switching for reliable network redundancy",
       "Supports QuecPython for rapid IoT application development",
       "Multi-protocol interfaces: UART, I²C, SPI, RS232, and RS485",
     ],
-    "applications": [
+    applications: [
       "Smart agriculture: real-time monitoring of soil, weather, and irrigation",
       "Industrial automation: remote control and predictive maintenance",
       "Environmental monitoring with onboard sensors and GPS tracking",
       "Asset tracking using LTE and GPS for reliable data transmission",
       "Weather stations and IoT gateways for cloud-based data logging",
     ],
-    "specifications": [
+    specifications: [
       "Processor Module: Quectel EC200U LTE Cat 1",
       "Input Voltage Range: 5V – 12V DC",
       "Operating Temperature: -30°C to +75°C",
@@ -289,35 +292,322 @@ export const allSensors = [
       "Storage Support: microSD card slot (up to 32GB)",
       "Power Management: MPPT solar charging via CN3791, Li-ion battery, and USB-C input",
     ],
-    "imagePath": "assets/images/dataloggerrender.png",
-    "email": "Vikash.hardwareengineer@ihub-awadh.in",
-    "datasheetKey": "DataLogger",
+    imagePath: "assets/images/dataloggerrender.png",
+    email: "Vikash.hardwareengineer@ihub-awadh.in",
+    datasheetKey: "DataLogger",
+  },
+  {
+    title: "Bluetooth Low Energy",
+    highlightText: "Development Kit",
+    subtitle:
+      "Multi-protocol wireless prototyping kit for IoT and smart devices",
+    bannerPoints: [
+      "Supports Bluetooth Low Energy, Mesh, ANT, and 2.4 GHz",
+      "Arduino Uno Rev. 3 compatible for prototyping",
+      "Includes on-board SEGGER J-Link debugger",
+    ],
+    features: [
+      "Rapid prototyping board tailored for IoT and wireless applications",
+      "Multi-protocol support: Bluetooth LE, Bluetooth Mesh, ANT, proprietary 2.4 GHz",
+      "Enhanced Bluetooth 5 capability with higher throughput and extended advertising",
+      "User-friendly design with 4 programmable buttons and 4 LEDs",
+      "Plug-and-play compatibility with Arduino Uno Rev. 3 shields",
+      "On-board SEGGER J-Link debugger for seamless development",
+      "External SoC programming and debugging via dedicated header",
+      "Integrated antenna for stable wireless performance",
+      "Flexible powering options: USB, external supply, or CR2032 battery",
+      "Compatible with IDEs like SEGGER Embedded Studio, Visual Studio, Keil, GCC, and IAR",
+    ],
+    applications: [
+      "IoT Devices – Smart home hubs, connected sensors, automation controllers",
+      "Wearables – Fitness trackers, health monitors, smartwatches",
+      "Smart Lighting – Professional and consumer-grade wireless lighting systems",
+      "Industrial Monitoring – Asset tracking, predictive maintenance, sensor logging",
+      "Environmental Monitoring – Air quality, weather stations, smart agriculture",
+      "Wireless Audio – LE Audio prototypes and Bluetooth-based sound systems",
+      "Healthcare Devices – Medical wearables and patient monitoring solutions",
+      "Automotive Applications – Vehicle diagnostics, tracking, infotainment",
+      "Educational Development – Training kits, student projects, prototyping platforms",
+      "Smart Infrastructure – Building automation and energy management systems",
+    ],
+    specifications: [
+      "Processor: Arm Cortex-M4F @ 64 MHz with FPU and DSP instructions",
+      "Memory: 512 kB Flash, 64 kB RAM (on-chip)",
+      "Connectivity: Bluetooth 5, ANT, 2.4 GHz proprietary",
+      "Interfaces: GPIO, UART, SPI, I²C, ADC, PWM routed to edge connectors",
+      "Debugging Interface: SEGGER J-Link OB with SWD support",
+      "Power Supply Voltage: 1.7 V – 3.3 V (USB, external supply, CR2032 battery)",
+      "Antenna: 2.4 GHz PCB trace antenna",
+      "Form Factor: Arduino Uno Rev. 3 layout (~68 mm × 52 mm)",
+      "User I/O: 4 LEDs and 4 push-buttons",
+      "Operating Conditions: -40°C to +85°C (industrial grade)",
+    ],
+    imagePath: "assets/images/ble_dev_kit.jpg",
+    email: "Vikash.hardwareengineer@ihub-awadh.in",
+    datasheetKey: "BLEKIT",
+    nreCodeLink:
+      "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/Blink_Led/Led_Blink",
+    nrfUICodeLink:
+      "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/Led_Blink_UI",
+  },
+  {
+    title: "Groove ",
+    highlightText: "Shield",
+    subtitle:
+      "Easy integration of sensors, actuators, and inputs for rapid IoT prototyping",
+    bannerPoints: [
+      "Plug-and-play modular system for rapid prototyping",
+      "Standardized Grove 4-pin interface for sensors and modules",
+      "Compatible with BLE development kits and Arduino ecosystem",
+    ],
+    features: [
+      "Plug-and-play modular system for quick sensor and module integration",
+      "Standardized Grove interface with 4-pin connectors.",
+      "Compatible with BLE development kits for simplified prototyping",
+      "No soldering required, enabling faster project development",
+      "Scalable design supporting multiple Grove modules simultaneously",
+    ],
+    applications: [
+      "Rapid Prototyping – Quickly test sensors, actuators, and wireless modules",
+      "IoT Development – Connect BLE-enabled boards with Grove sensors",
+      "Wearables & Health Monitoring – Integrate bio-sensors with BLE kits",
+      "STEM Education & Learning – Teaching electronics and IoT concepts",
+      "Smart Systems – Build scalable automation and monitoring solutions",
+    ],
+    specifications: [
+      "Operating Voltage: 3.3 V / 5 V (depends on development kit)",
+      "Interfaces: Digital, Analog, I²C, UART via Grove connectors",
+      "Connector Type: Standard 4-pin Grove headers",
+      "Compatibility: Works with Arduino, BLE kits, and Seeed Studio Grove ecosystem",
+      "Form Factor: Shield/hat design for easy stacking on development boards",
+      "Prototyping Support: Simplifies modular prototyping without soldering",
+      "Design: Compact and scalable for multiple module connections",
+      "Use Case: Ideal for rapid IoT prototyping and educational projects",
+    ],
+    imagePath: "assets/images/groove.png",
+    email: "Vikash.hardwareengineer@ihub-awadh.in",
+    datasheetKey: "GROOVE",
+  },
+  {
+    title: "BLE",
+    highlightText: "Node",
+    subtitle:
+      "Advanced Bluetooth LE solution for IoT and wearable applications",
+    bannerPoints: [
+      "Equipped with NRF52832 microcontroller",
+      "Supports Bluetooth LE and proprietary 2.4 GHz",
+      "Ultra-low power consumption",
+    ],
+    features: [
+      "Multiprotocol support with advanced Bluetooth LE",
+      "High-performance processor for complex applications",
+      "Generous memory for demanding IoT and wearable use cases",
+      "NFC-A tag for easy pairing and payments",
+      "Rich peripherals including audio interfaces",
+      "Ultra-low power with adaptive management",
+    ],
+    applications: [
+      "Ideal for building low-power wireless devices for IoT networks",
+      "Suitable for fitness trackers and health monitoring devices",
+      "Used in creating location-based services and remote controls",
+      "Can be integrated into smart building systems for lighting and HVAC",
+      "Used in devices that transmit patient data like heart rate and blood oxygen",
+      "Supports activity levels to healthcare providers remotely",
+    ],
+    specifications: [
+      "2.4 GHz RF transceiver with Bluetooth LE support, 2 Mbps throughput",
+      "Concurrent multiprotocol operation for BLE, Bluetooth Mesh, and proprietary 2.4 GHz",
+      "Integrated NFC-A tag for secure pairing and data exchange",
+      "ARM Cortex-M4 processor with hardware FPU and DSP extensions",
+      "Configurable memory variants: up to 512 kB Flash and 64 kB RAM",
+      "Operating voltage range: 1.7 V - 3.6 V",
+    ],
+    imagePath: "assets/images/bleNode.png",
+    email: "Vikash.hardwareengineer@ihub-awadh.in",
+    datasheetKey: "BLENODE",
+  },
+  {
+    title: "ModView nRF52833 BLE ",
+    highlightText: "+ RS485 Data Logger",
+    subtitle:
+      "Low-power embedded board for IoT communication, data logging, telemetry applications",
+    bannerPoints: [
+      "Features Nordic nRF52833 SoC with BLE 5.1 and RS485/422 communication",
+      "Supports SD card storage, USB-C, and Li-ion battery management",
+      "Compact design ideal for IoT, telemetry, and solar-powered systems",
+    ],
+    features: [
+      "High-performance Nordic nRF52833-QDAA MCU with BLE 5.1 and 2.4 GHz protocols",
+      "RS485/422 connectivity via MAX13487EESA with automatic direction control",
+      "Li-ion and solar power management with CN3791 MPPT charger support",
+      "Flexible power input options: USB-C, VIN (2–16 V), or battery",
+      "Expandable storage with microSD and W25Q16 SPI Flash for data logging",
+      "Robust protection with ESD, TVS diodes, and reverse-polarity safeguards",
+    ],
+    applications: [
+      "Industrial RS485 Modbus communication with BLE monitoring",
+      "Solar-powered IoT data logging and environmental monitoring",
+      "Remote telemetry and condition monitoring systems",
+      "Battery-operated BLE sensors or gateways",
+      "Wireless configuration of RS485-based devices",
+      "Energy and environmental monitoring platforms",
+    ],
+    specifications: [
+      "Microcontroller: nRF52833-QDAA (ARM Cortex-M4F, 64 MHz, 512 KB Flash, 128 KB RAM)",
+      "Wireless Connectivity: BLE 5.1 and 2.4 GHz proprietary protocols",
+      "Communication Interfaces: RS485 (MAX13487EESA), UART, SPI, I²C, GPIO",
+      "Memory: 16 Mbit W25Q16 SPI Flash and optional microSD card (SPI)",
+      "Battery Charging: CN3791, 4 A Li-ion charger with MPPT",
+      "Voltage Regulation: TPS63070 (Buck-Boost), TLV75533 LDO 3.3V, 500 mA",
+      "Indicators: Power, BLE status (green), fault/error (red)",
+      "Connectors: UFL antenna, SD card, USB-C, RS485 screw terminal, JST headers",
+      "Protection: ESD, TVS diodes, reverse polarity via MOSFET",
+      "Operating Temperature: -40°C to +85°C",
+    ],
+    imagePath: "assets/images/modview_nrf52833.png",
+    email: "Vikash.hardwareengineer@ihub-awadh.in",
+    datasheetKey: "MODVIEWNRF52833",
+  },
+  {
+    title: "nRF52832-Based ",
+    highlightText: "Robotic Kit",
+    subtitle:
+      "High-performance Bluetooth 5.0 robotic kit with motor drivers, OLED display, and sensor support",
+    bannerPoints: [
+      "Powered by ARM Cortex-M4F MCU (nRF52832) with Bluetooth 5.0",
+      "Integrated L293D motor driver for smooth motor control",
+      "Supports OLED display and multiple sensor interfaces",
+    ],
+    features: [
+      "High-performance ARM Cortex-M4F processor for fast and smooth robot control",
+      "Bluetooth 5.0 connectivity for reliable real-time IoT communication",
+      "Onboard OLED interface for live data visualization and feedback",
+      "Expandable sensor support for gas, ultrasonic, and analog sensors",
+      "Modular design with USB-C power and multiple I/O & PWM expansion pins",
+      "Ideal for learning, prototyping, and smart robotics development",
+    ],
+    applications: [
+      "Smart robotic projects such as line followers and obstacle-avoiding robots",
+      "IoT and mobile robots integrating wireless sensors and control systems",
+      "STEM learning platform for embedded systems and programming education",
+      "Sensor-based experiments for gas detection and environmental monitoring",
+      "Prototyping and innovation in smart automation systems",
+      "Educational competitions and lab-based robotics workshops",
+    ],
+    specifications: [
+      "Microcontroller: Nordic nRF52832 (ARM Cortex-M4F, 64 MHz, 512 KB Flash, 64 KB SRAM)",
+      "Wireless Connectivity: Integrated BLE 5.0 for reliable communication",
+      "Motor Driver: L293D Dual H-Bridge, 2 DC motors or 1 stepper, 4.5–36V, 600mA/channel",
+      "Display: 0.96″ OLED (I²C interface) for live data and feedback",
+      "Sensors: MQ gas sensor header, ultrasonic interface, potentiometer calibration",
+      "Power: USB Type-C and 7–12V DC input with onboard 3.3V/5V regulators",
+      "Expansion: Multiple GPIO, PWM, and ADC pins for motors and peripherals",
+      "Extras: Onboard buzzer, reset button, and LEDs for real-time feedback",
+    ],
+    imagePath: "assets/images/nrf52832_robotickit.png",
+    email: "Vikash.hardwareengineer@ihub-awadh.in",
+    datasheetKey: "nRF52832RoboticKit",
+  },
+  {
+    title: "Arduino Based ",
+    highlightText: "Robotic Kit",
+    subtitle:
+      "Versatile Arduino Nano-based kit with motor drivers, Bluetooth, and sensor interfaces",
+    bannerPoints: [
+      "Built-in Arduino Nano (ATmega328P) with L293D motor driver",
+      "Supports multiple communication interfaces: Bluetooth, I²C, and UART",
+      "Integrated OLED display and sensor sockets for rapid prototyping",
+    ],
+    features: [
+      "Pre-integrated Arduino Nano with L293D motor driver for DC/stepper motors",
+      "Dedicated sockets for Bluetooth, OLED, and MQ-series sensors",
+      "Onboard buzzer and protection circuitry for reliable operation",
+      "Multiple GPIO and expansion headers for sensors, servos, and add-on modules",
+    ],
+    applications: [
+      "Bluetooth-controlled robotic cars and smart vehicles",
+      "IoT-based environmental and automation projects",
+      "Educational robotics and embedded system training",
+      "Prototyping of mobile robots, alert systems, and automation devices",
+    ],
+    specifications: [
+      "Microcontroller: ATmega328P (Arduino Nano compatible)",
+      "Operating Voltage: 5V DC; Input: 7–12V DC (Barrel/USB-C)",
+      "Motor Driver: L293D Dual H-Bridge, 2 channels (DC/stepper), 4.5–36V, 600mA per channel",
+      "Communication Interfaces: HC-05 Bluetooth, I²C, UART, SPI (optional)",
+      "Display: 0.96″ OLED (I²C interface)",
+      "Supported Sensors: MQ-series gas, ultrasonic, potentiometer",
+      "Power Supply: 5V regulated, DC barrel jack, USB-C, onboard regulator",
+      "Protection: Reverse-polarity (SS34 diode) and overcurrent protection",
+    ],
+    imagePath: "assets/images/robotickitrender.png",
+    email: "Vikash.hardwareengineer@ihub-awadh.in",
+    datasheetKey: "ArduinoRoboticKit",
+  },
+  {
+    title: "Flash Tool",
+    highlightText: "Development, Programming, and Debugging Tool",
+    subtitle: "Designed for nRF series SoCs.",
+    bannerPoints: [
+      "Broad compatibility with nRF series SoCs",
+      "Seamless firmware programming and bootloader updates",
+      "Reliable debugging with real-time code inspection",
+    ],
+    features: [
+      "Broad compatibility with multiple nRF series SoCs for flexible development",
+      "Seamless firmware programming, bootloader updates, and device configuration",
+      "Reliable debugging with real-time code inspection and error tracking",
+      "Cross-platform usability for developers on different systems",
+      "Smooth integration with Nordic SDKs and supporting tools",
+      "User-friendly operation suitable for beginners and advanced developers",
+    ],
+    applications: [
+      "Firmware Development: Writing and deploying firmware",
+      "Debugging: Tools to debug and troubleshoot firmware issues for efficient bug fixing",
+      "Testing: Facilitating testing of wireless applications to meet required specifications",
+      "Production Programming: Programming multiple devices in manufacturing environments ",
+      "Bootloader Updates: Updating bootloaders on nRF devices to support new features or fix issues",
+      "Configuration: Setting device parameters, calibrating sensors, and adjusting wireless settings",
+    ],
+    specifications: [
+      "Supported Devices: Compatibility with nRF51, nRF52, nRF53 series SoCs",
+      "Programming Interface: JTAG, SWD (Serial Wire Debug), or USB",
+      "Software Compatibility: Support for IDEs like SEGGER Embedded Studio, Keil",
+      "Operating System Support: Windows, macOS, and Linux",
+      "Programming Modes: Flash firmware, update bootloaders, and configure device settings",
+      "Debugging Capabilities: Breakpoints, single-stepping, and memory/register inspection",
+      "Integration: Works with nRF Connect SDK, Command Line Tools, and nRF Connect ",
+      "Enhanced Workflow: Breakpoint control and stepwise debugging for efficiency",
+    ],
+    imagePath: "assets/images/programmer.png",
+    email: "Vikash.hardwareengineer@ihub-awadh.in",
+    datasheetKey: "FLASHTOOL",
   },
 
   {
-    "title": "STTS751",
-    "highlightText": "Temperature Sensor",
-    "subtitle": " Programmable resolution and low power consumption",
-    "bannerPoints": [
+    title: "STTS751",
+    highlightText: "Temperature Sensor",
+    subtitle: " Programmable resolution and low power consumption",
+    bannerPoints: [
       "I²C and SMBus 2.0 compatible digital temperature sensor",
       "Programmable resolution from 9-bit to 12-bit",
       "Built-in alarm function with EVENT output",
     ],
-    "features": [
+    features: [
       "Digital temperature sensor with I²C communication",
       "Programmable resolution for flexible performance",
       "Built-in alarm function with EVENT output",
       "Very low power consumption, ideal for portable devices",
       "Compact package, easy to integrate into systems",
     ],
-    "applications": [
+    applications: [
       "Weather Monitoring Systems",
       "Automotive Electronics",
       "Telecom Equipment",
       "Consumer Electronics",
       "Power Electronics",
     ],
-    "specifications": [
+    specifications: [
       "Operating Voltage: 2.25 V to 3.6 V",
       "Operating Temperature Range: -40 °C to +125 °C",
       "Selectable Conversion Rates: 0.0625 to 32 conversions/second",
@@ -326,41 +616,41 @@ export const allSensors = [
       "Supply Current: 50 µA @ 8 conversions/s, 20 µA @ 1 conversion/s, 3 µA standby",
       "Accuracy: ±0.5 °C (0 °C to +85 °C), ±0.5 °C (-40 °C to +125 °C)",
     ],
-    "imagePath": "assets/images/stts751.png",
-    "email": "Vikash.hardwareengineer@ihub-awadh.in",
-    "datasheetKey": "STTS751",
-    "nreCodeLink":
+    imagePath: "assets/images/stts751.png",
+    email: "Vikash.hardwareengineer@ihub-awadh.in",
+    datasheetKey: "STTS751",
+    nreCodeLink:
       "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/All_Temperature_Sensors/STTS751_Sensor",
-    "quecCodeLink":
+    quecCodeLink:
       "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/Stts751_UI",
-    "nrfUICodeLink":
+    nrfUICodeLink:
       "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/STTS751_UI",
   },
   {
-    "title": "LIS3DH",
-    "highlightText": "Motion Sensor",
-    "subtitle":
+    title: "LIS3DH",
+    highlightText: "Motion Sensor",
+    subtitle:
       "Compact and efficient accelerometer for motion detection and orientation sensing",
-    "bannerPoints": [
+    bannerPoints: [
       "Ultra-low power 3-axis accelerometer for battery-powered devices",
       "Supports I2C and SPI digital interfaces",
       "Built-in FIFO buffer for reduced processor load",
     ],
-    "features": [
+    features: [
       "Ultra-low power 3-axis accelerometer – ideal for battery-powered devices",
       "Multiple motion detection functions – free-fall, tap/click, activity, and orientation",
       "Flexible performance – supports both high-resolution and low-power modes",
       "Built-in FIFO buffer – reduces processor load and saves power",
       "Compact LGA package – small size (3 × 3 × 1 mm) for wearables and mobile devices",
     ],
-    "applications": [
+    applications: [
       "Motion activated functions",
       "Free-fall detection",
       "Display orientation",
       "Gaming and virtual reality input devices",
       "Impact recognition and logging",
     ],
-    "specifications": [
+    specifications: [
       "Wide supply voltage: 1.71V to 3.6V",
       "Operating temperature range: -40°C to +85°C",
       "Independent IO supply (1.8V) and supply voltage compatible",
@@ -374,40 +664,40 @@ export const allSensors = [
       "Measurement range (selectable): ±2g / ±4g / ±8g / ±16g",
       "I2C logic: Address jumper for 0x18 or 0x19, pull-up enable for VCC",
     ],
-    "imagePath": "assets/images/lis3dh.png",
-    "email": "Vikash.hardwareengineer@ihub-awadh.in",
-    "datasheetKey": "LIS3DH",
-    "nreCodeLink":
+    imagePath: "assets/images/lis3dh.png",
+    email: "Vikash.hardwareengineer@ihub-awadh.in",
+    datasheetKey: "LIS3DH",
+    nreCodeLink:
       "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/LIS3DH_Sensor/lis3dhSensor",
-    "quecCodeLink":
+    quecCodeLink:
       "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/Lis3dh_UI",
-    "nrfUICodeLink":
+    nrfUICodeLink:
       "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/LIS3DH_UI",
   },
   {
-    "title": "W25Q16 / W25Q32",
-    "highlightText": "Memory Board",
-    "subtitle": "Compact, low-power, high-speed storage solution.",
-    "bannerPoints": [
+    title: "W25Q16 / W25Q32",
+    highlightText: "Memory Board",
+    subtitle: "Compact, low-power, high-speed storage solution.",
+    bannerPoints: [
       "High-speed SPI interface with Standard, Dual, and Quad I/O",
       "Low power consumption with wide voltage range (2.7V to 3.6V)",
       "Compact packaging ideal for space-saving embedded applications",
     ],
-    "features": [
+    features: [
       "High-speed SPI interface supporting Standard, Dual, and Quad modes for faster data transfer",
       "Ultra-low power operation with ~5 mA active current and ~1 µA in standby mode",
       "Wide 2.7V–3.6V voltage range, optimized for battery-powered applications",
       "Flexible architecture for code shadowing, XIP (execute-in-place), and storage of voice, text, and data",
       "Compact, space-saving packages ideal for embedded systems",
     ],
-    "applications": [
+    applications: [
       "Embedded and IoT systems – storing firmware, configuration, and application data",
       "Consumer electronics – TVs, cameras, set-top boxes, and gaming consoles",
       "Mobile and networking devices – smartphones, tablets, routers, and modems",
       "Automotive and industrial electronics – dashboards, ADAS, PLCs, and monitoring systems",
       "Medical, audio, and PC peripherals – diagnostics tools, sound storage, printers, SSD controllers, and BIOS",
     ],
-    "specifications": [
+    specifications: [
       "High-speed SPI up to 104 MHz with Standard, Dual, and Quad I/O",
       "Execute-In-Place (XIP) enabling direct code execution from flash",
       "256-byte page memory with multiple erase sizes (4 KB, 32 KB, 64 KB, full chip)",
@@ -417,35 +707,35 @@ export const allSensors = [
       "Data retention exceeding 20 years",
       "Integrated security features – OTP area, block protection, and unique 64-bit ID",
     ],
-    "imagePath": "assets/images/memory.png",
-    "email": "Vikash.hardwareengineer@ihub-awadh.in",
-    "datasheetKey": "W25QXX",
-    "nreCodeLink":
+    imagePath: "assets/images/memory.png",
+    email: "Vikash.hardwareengineer@ihub-awadh.in",
+    datasheetKey: "W25QXX",
+    nreCodeLink:
       "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/MX25r6435_and_W25q16dv_SPI_FLash",
   },
   {
-    "title": "Buzzer",
-    "highlightText": "Signaling Device",
-    "subtitle": "Compact audio signaling component.",
-    "bannerPoints": [
+    title: "Buzzer",
+    highlightText: "Signaling Device",
+    subtitle: "Compact audio signaling component.",
+    bannerPoints: [
       "Generates alarms, beeps, and melodies with simple DC power",
       "Small, solid design suitable for breadboards and PCBs",
     ],
-    "features": [
+    features: [
       "Simple 3-pin interface (VDD, GND, control signal) for easy connection",
       "Microcontroller-compatible, directly driven by digital I/O (PWM for tones)",
       "Stable operation with internal driver ensuring consistent sound output",
       "Compact, small-size design suitable for breadboards and PCB integration",
       "Versatile sound output capable of alarms, beeps, and melody generation",
     ],
-    "applications": [
+    applications: [
       "Alarms & security systems – intruder, smoke, or fire detection alerts",
       "User interface feedback – confirmation tones in electronic devices",
       "Timers & reminders – used in kitchen timers and home appliances",
       "Consumer electronics – printers, computers, and notification systems",
       "Industrial and embedded projects – audio signaling in automation and control",
     ],
-    "specifications": [
+    specifications: [
       "Rated Voltage: 3.5V",
       "Operating Voltage Range: 2.5V to 6.0V",
       "Mean Current: 35mA (Max)",
@@ -455,39 +745,38 @@ export const allSensors = [
       "Rated Frequency: 2048 Hz",
       "Compact design optimized for embedded and portable devices",
     ],
-    "imagePath": "assets/images/buzzer.png",
-    "email": "Vikash.hardwareengineer@ihub-awadh.in",
-    "datasheetKey": "BUZZER",
-    "nreCodeLink":
+    imagePath: "assets/images/buzzer.png",
+    email: "Vikash.hardwareengineer@ihub-awadh.in",
+    datasheetKey: "BUZZER",
+    nreCodeLink:
       "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/Buzzer",
-    "nrfUICodeLink":
+    nrfUICodeLink:
       "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/Buzzer_UI",
   },
   {
-    "title": "Relay",
-    "highlightText": "Electrical Switch",
-    "subtitle":
-      "Electromagnetically operated switch for automation and control",
-    "bannerPoints": [
+    title: "Relay",
+    highlightText: "Electrical Switch",
+    subtitle: "Electromagnetically operated switch for automation and control",
+    bannerPoints: [
       "Electrically operated switch with multiple contacts",
       "Works on electromagnetic attraction principle",
       "Supports safe isolation between control and load",
     ],
-    "features": [
+    features: [
       "Coil Voltage: 5 V DC operation",
       "High Switching Capacity: Supports up to 10 A at 250 V AC / 30 V DC",
       "Compact PCB mountable design",
       "Galvanic Isolation for safety",
       "Widely compatible with microcontrollers using driver circuitry",
     ],
-    "applications": [
+    applications: [
       "Home automation – switching lights, fans, or appliances",
       "Industrial control – motor control, pumps, and machinery",
       "Smart IoT systems – relay-controlled automation projects",
       "Power electronics – switching high-power loads safely",
       "General automation – fault sensing and protection circuits",
     ],
-    "specifications": [
+    specifications: [
       "Coil Voltage: 5 V DC (Nominal)",
       "Coil Resistance: ~70 Ω (±10%)",
       "Contact Rating: 10 A @ 250 V AC or 10 A @ 30 V DC",
@@ -495,156 +784,25 @@ export const allSensors = [
       "Mechanical Life: ≥10 million operations",
       "Electrical Life: ≥100,000 operations",
     ],
-    "imagePath": "assets/images/relay.png",
-    "email": "Vikash.hardwareengineer@ihub-awadh.in",
-    "datasheetKey": "RELAY",
-    "nreCodeLink":
+    imagePath: "assets/images/relay.png",
+    email: "Vikash.hardwareengineer@ihub-awadh.in",
+    datasheetKey: "RELAY",
+    nreCodeLink:
       "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/Relay",
-    "nrfUICodeLink":
+    nrfUICodeLink:
       "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/relay_UI",
   },
   {
-    "title": "Bluetooth Low Energy",
-    "highlightText": "Development Kit",
-    "subtitle":
-      "Multi-protocol wireless prototyping kit for IoT and smart devices",
-    "bannerPoints": [
-      "Supports Bluetooth Low Energy, Mesh, ANT, and 2.4 GHz",
-      "Arduino Uno Rev. 3 compatible for prototyping",
-      "Includes on-board SEGGER J-Link debugger",
-    ],
-    "features": [
-      "Rapid prototyping board tailored for IoT and wireless applications",
-      "Multi-protocol support: Bluetooth LE, Bluetooth Mesh, ANT, proprietary 2.4 GHz",
-      "Enhanced Bluetooth 5 capability with higher throughput and extended advertising",
-      "User-friendly design with 4 programmable buttons and 4 LEDs",
-      "Plug-and-play compatibility with Arduino Uno Rev. 3 shields",
-      "On-board SEGGER J-Link debugger for seamless development",
-      "External SoC programming and debugging via dedicated header",
-      "Integrated antenna for stable wireless performance",
-      "Flexible powering options: USB, external supply, or CR2032 battery",
-      "Compatible with IDEs like SEGGER Embedded Studio, Visual Studio, Keil, GCC, and IAR",
-    ],
-    "applications": [
-      "IoT Devices – Smart home hubs, connected sensors, automation controllers",
-      "Wearables – Fitness trackers, health monitors, smartwatches",
-      "Smart Lighting – Professional and consumer-grade wireless lighting systems",
-      "Industrial Monitoring – Asset tracking, predictive maintenance, sensor logging",
-      "Environmental Monitoring – Air quality, weather stations, smart agriculture",
-      "Wireless Audio – LE Audio prototypes and Bluetooth-based sound systems",
-      "Healthcare Devices – Medical wearables and patient monitoring solutions",
-      "Automotive Applications – Vehicle diagnostics, tracking, infotainment",
-      "Educational Development – Training kits, student projects, prototyping platforms",
-      "Smart Infrastructure – Building automation and energy management systems",
-    ],
-    "specifications": [
-      "Processor: Arm Cortex-M4F @ 64 MHz with FPU and DSP instructions",
-      "Memory: 512 kB Flash, 64 kB RAM (on-chip)",
-      "Connectivity: Bluetooth 5, ANT, 2.4 GHz proprietary",
-      "Interfaces: GPIO, UART, SPI, I²C, ADC, PWM routed to edge connectors",
-      "Debugging Interface: SEGGER J-Link OB with SWD support",
-      "Power Supply Voltage: 1.7 V – 3.3 V (USB, external supply, CR2032 battery)",
-      "Antenna: 2.4 GHz PCB trace antenna",
-      "Form Factor: Arduino Uno Rev. 3 layout (~68 mm × 52 mm)",
-      "User I/O: 4 LEDs and 4 push-buttons",
-      "Operating Conditions: -40°C to +85°C (industrial grade)",
-    ],
-    "imagePath": "assets/images/ble_dev_kit.jpg",
-    "email": "Vikash.hardwareengineer@ihub-awadh.in",
-    "datasheetKey": "BLEKIT",
-    "nreCodeLink":
-      "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/Blink_Led/Led_Blink",
-    "nrfUICodeLink":
-      "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/Led_Blink_UI",
-  },
-  {
-    "title": "BLE",
-    "highlightText": "Node",
-    "subtitle":
-      "Advanced Bluetooth LE solution for IoT and wearable applications",
-    "bannerPoints": [
-      "Equipped with NRF52832 microcontroller",
-      "Supports Bluetooth LE and proprietary 2.4 GHz",
-      "Ultra-low power consumption",
-    ],
-    "features": [
-      "Multiprotocol support with advanced Bluetooth LE",
-      "High-performance processor for complex applications",
-      "Generous memory for demanding IoT and wearable use cases",
-      "NFC-A tag for easy pairing and payments",
-      "Rich peripherals including audio interfaces",
-      "Ultra-low power with adaptive management",
-    ],
-    "applications": [
-      "Ideal for building low-power wireless devices for IoT networks",
-      "Suitable for fitness trackers and health monitoring devices",
-      "Used in creating location-based services and remote controls",
-      "Can be integrated into smart building systems for lighting and HVAC",
-      "Used in devices that transmit patient data like heart rate and blood oxygen",
-      "Supports activity levels to healthcare providers remotely",
-    ],
-    "specifications": [
-      "2.4 GHz RF transceiver with Bluetooth LE support, 2 Mbps throughput",
-      "Concurrent multiprotocol operation for BLE, Bluetooth Mesh, and proprietary 2.4 GHz",
-      "Integrated NFC-A tag for secure pairing and data exchange",
-      "ARM Cortex-M4 processor with hardware FPU and DSP extensions",
-      "Configurable memory variants: up to 512 kB Flash and 64 kB RAM",
-      "Operating voltage range: 1.7 V - 3.6 V",
-    ],
-    "imagePath": "assets/images/bleNode.png",
-    "email": "Vikash.hardwareengineer@ihub-awadh.in",
-    "datasheetKey": "BLENODE",
-  },
-  {
-    "title": "Flash Tool",
-    "highlightText": "Development, Programming, and Debugging Tool",
-    "subtitle": "Designed for nRF series SoCs.",
-    "bannerPoints": [
-      "Broad compatibility with nRF series SoCs",
-      "Seamless firmware programming and bootloader updates",
-      "Reliable debugging with real-time code inspection",
-    ],
-    "features": [
-      "Broad compatibility with multiple nRF series SoCs for flexible development",
-      "Seamless firmware programming, bootloader updates, and device configuration",
-      "Reliable debugging with real-time code inspection and error tracking",
-      "Cross-platform usability for developers on different systems",
-      "Smooth integration with Nordic SDKs and supporting tools",
-      "User-friendly operation suitable for beginners and advanced developers",
-    ],
-    "applications": [
-      "Firmware Development: Writing and deploying firmware",
-      "Debugging: Tools to debug and troubleshoot firmware issues for efficient bug fixing",
-      "Testing: Facilitating testing of wireless applications to meet required specifications",
-      "Production Programming: Programming multiple devices in manufacturing environments ",
-      "Bootloader Updates: Updating bootloaders on nRF devices to support new features or fix issues",
-      "Configuration: Setting device parameters, calibrating sensors, and adjusting wireless settings",
-    ],
-    "specifications": [
-      "Supported Devices: Compatibility with nRF51, nRF52, nRF53 series SoCs",
-      "Programming Interface: JTAG, SWD (Serial Wire Debug), or USB",
-      "Software Compatibility: Support for IDEs like SEGGER Embedded Studio, Keil",
-      "Operating System Support: Windows, macOS, and Linux",
-      "Programming Modes: Flash firmware, update bootloaders, and configure device settings",
-      "Debugging Capabilities: Breakpoints, single-stepping, and memory/register inspection",
-      "Integration: Works with nRF Connect SDK, Command Line Tools, and nRF Connect ",
-      "Enhanced Workflow: Breakpoint control and stepwise debugging for efficiency",
-    ],
-    "imagePath": "assets/images/programmer.png",
-    "email": "Vikash.hardwareengineer@ihub-awadh.in",
-    "datasheetKey": "FLASHTOOL",
-  },
-  {
-    "title": "BME680",
-    "highlightText": " Temperature, Humidity, Pressure and Gas Sensor",
-    "subtitle":
+    title: "BME680",
+    highlightText: " Temperature, Humidity, Pressure and Gas Sensor",
+    subtitle:
       "Compact 4-in-1 environmental sensor for IoT and air quality monitoring",
-    "bannerPoints": [
+    bannerPoints: [
       "Integrated 4-in-1 sensing: gas, pressure, humidity, temperature",
       "Supports I2C and SPI digital interfaces",
       "Low power consumption for battery-powered devices",
     ],
-    "features": [
+    features: [
       "Integrated 4-in-1 environmental sensor (gas, pressure, humidity, temperature)",
       "Provides Indoor Air Quality (IAQ) index output",
       "Supports I2C and SPI digital interfaces for flexible integration",
@@ -652,7 +810,7 @@ export const allSensors = [
       "Compact 3.0 × 3.0 × 0.93 mm package for space-saving integration",
       "Fast response time for real-time environmental monitoring",
     ],
-    "applications": [
+    applications: [
       "Indoor Air Quality monitoring in smart homes and offices",
       "Home automation and IoT-based environmental control",
       "Weather forecasting and environmental sensing",
@@ -660,7 +818,7 @@ export const allSensors = [
       "Wearable devices for health and fitness tracking",
       "Smart appliances with environment-based adaptive features",
     ],
-    "specifications": [
+    specifications: [
       "Package: 3.0 mm × 3.0 mm × 0.93 mm, metal lid LGA",
       "Digital Interfaces: I2C (up to 3.4 MHz), SPI (3/4-wire up to 10 MHz)",
       "Supply Voltage: VDD 1.71V–3.6V, VDDIO 1.2V–3.6V",
@@ -670,41 +828,41 @@ export const allSensors = [
       "Humidity Sensor: Response ~8s, accuracy ±3% r.H., hysteresis ±1.5% r.H.",
       "Pressure Sensor: RMS noise 0.12 Pa (~1.7 cm), offset coefficient ±1.3 Pa/K",
     ],
-    "imagePath": "assets/images/bme680.png",
-    "email": "Vikash.hardwareengineer@ihub-awadh.in",
-    "datasheetKey": "BME680",
-    "nreCodeLink":
+    imagePath: "assets/images/bme680.png",
+    email: "Vikash.hardwareengineer@ihub-awadh.in",
+    datasheetKey: "BME680",
+    nreCodeLink:
       "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/BME680_Sensor",
-    "quecCodeLink":
+    quecCodeLink:
       "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/Bme680_UI",
-    "nrfUICodeLink":
+    nrfUICodeLink:
       "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/Bme680_UI",
   },
   {
-    "title": "Lux ",
-    "highlightText": "Sensor",
-    "subtitle":
+    title: "Lux ",
+    highlightText: "Sensor",
+    subtitle:
       "16-bit resolution sensor for consumer and industrial applications",
-    "bannerPoints": [
+    bannerPoints: [
       "Integrated ambient light and proximity sensing",
       "High sensitivity for accurate light and object detection",
       "Low power consumption optimized for portable devices",
     ],
-    "features": [
+    features: [
       "Combined ambient light and proximity sensing in a compact package",
       "High sensitivity for precise detection of objects and light levels",
       "Wide detection range suitable for consumer and industrial use",
       "Low power consumption ideal for battery-powered devices",
       "I²C interface for easy integration with microcontrollers",
     ],
-    "applications": [
+    applications: [
       "Smartphones & Tablets – Auto brightness control and proximity sensing during calls",
       "Wearables – Gesture recognition and display power-saving control",
       "Consumer Electronics – Adaptive brightness and touchless control",
       "Industrial Systems – Light level monitoring and automation",
       "IoT Devices – Smart lighting, energy management, and sensor-based systems",
     ],
-    "specifications": [
+    specifications: [
       "Proximity Sensor Range: Up to 200 mm with sunlight immunity",
       "Ambient Light Sensor Range: 0.0125 lux to 20,000 lux (16-bit resolution)",
       "Supply Voltage: 2.5 V to 3.6 V",
@@ -714,114 +872,76 @@ export const allSensors = [
       "Current Consumption: ~80 µA (ALS), ~200 µA (Proximity), <1 µA (Shutdown Mode)",
       "Form Factor: Miniature package (6.8 × 3.0 × 2.5 mm)",
     ],
-    "imagePath": "assets/images/lux.png",
-    "email": "Vikash.hardwareengineer@ihub-awadh.in",
-    "datasheetKey": "LUX",
-    "nreCodeLink":
+    imagePath: "assets/images/lux.png",
+    email: "Vikash.hardwareengineer@ihub-awadh.in",
+    datasheetKey: "LUX",
+    nreCodeLink:
       "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/VCNL4040_LuxSensor",
-    "nrfUICodeLink":
+    nrfUICodeLink:
       "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/vcnlLuxSensor_UI",
   },
   {
-    "title": "Groove ",
-    "highlightText": "Shield",
-    "subtitle":
-      "Easy integration of sensors, actuators, and inputs for rapid IoT prototyping",
-    "bannerPoints": [
-      "Plug-and-play modular system for rapid prototyping",
-      "Standardized Grove 4-pin interface for sensors and modules",
-      "Compatible with BLE development kits and Arduino ecosystem",
-    ],
-    "features": [
-      "Plug-and-play modular system for quick sensor and module integration",
-      "Standardized Grove interface with 4-pin connectors.",
-      "Compatible with BLE development kits for simplified prototyping",
-      "No soldering required, enabling faster project development",
-      "Scalable design supporting multiple Grove modules simultaneously",
-    ],
-    "applications": [
-      "Rapid Prototyping – Quickly test sensors, actuators, and wireless modules",
-      "IoT Development – Connect BLE-enabled boards with Grove sensors",
-      "Wearables & Health Monitoring – Integrate bio-sensors with BLE kits",
-      "STEM Education & Learning – Teaching electronics and IoT concepts",
-      "Smart Systems – Build scalable automation and monitoring solutions",
-    ],
-    "specifications": [
-      "Operating Voltage: 3.3 V / 5 V (depends on development kit)",
-      "Interfaces: Digital, Analog, I²C, UART via Grove connectors",
-      "Connector Type: Standard 4-pin Grove headers",
-      "Compatibility: Works with Arduino, BLE kits, and Seeed Studio Grove ecosystem",
-      "Form Factor: Shield/hat design for easy stacking on development boards",
-      "Prototyping Support: Simplifies modular prototyping without soldering",
-      "Design: Compact and scalable for multiple module connections",
-      "Use Case: Ideal for rapid IoT prototyping and educational projects",
-    ],
-    "imagePath": "assets/images/groove.png",
-    "email": "Vikash.hardwareengineer@ihub-awadh.in",
-    "datasheetKey": "GROOVE",
-  },
-  {
-    "title": "TLV493D",
-    "highlightText": "3D Magnetic Sensor",
-    "subtitle":
+    title: "TLV493D",
+    highlightText: "3D Magnetic Sensor",
+    subtitle:
       "High precision Hall-effect sensor for accurate 3D magnetic field measurement",
-    "bannerPoints": [
+    bannerPoints: [
       "True 3D magnetic sensing (X, Y, Z axes)",
       "Compact & ultra-low power design",
       "High precision 12-bit resolution",
     ],
-    "features": [
+    features: [
       "True 3D Magnetic Sensing – Simultaneous measurement of X, Y, and Z magnetic field components",
       "Compact & Low-Power Design – Ultra-low power consumption (<10 μA) supports battery operation",
       "High Precision & Stability – 12-bit resolution ensures accurate position and angle detection",
       "Digital Interface – Fast and reliable I²C communication up to 1 MHz",
       "Versatile Applications – Suitable for automotive, robotics, gaming, and consumer electronics",
     ],
-    "applications": [
+    applications: [
       "Robotics: 3D position sensing for robotic arms and actuators",
       "Automotive: Component position detection (gear shifters, pedals, steering systems)",
       "Consumer Electronics: Gesture recognition for smart devices and touchless interfaces",
       "Gaming & AR/VR: Tilt, rotation, and motion detection in controllers and headsets",
       "Industrial & Smart Systems: Precise position sensing for automation and monitoring",
     ],
-    "specifications": [
+    specifications: [
       "Operating Voltage: 2.7 V – 3.5 V (typical 3.3 V)",
       "Magnetic Field Measurement Range: ±130 mT (X, Y axes), ±180 mT (Z axis)",
       "Resolution: 12-bit for all three axes",
       "Current Consumption: ~10 μA (Ultra Low-Power Mode)",
     ],
-    "imagePath": "assets/images/tlv.png",
-    "email": "Vikash.hardwareengineer@ihub-awadh.in",
-    "datasheetKey": "TLV",
-    "nreCodeLink":
+    imagePath: "assets/images/tlv.png",
+    email: "Vikash.hardwareengineer@ihub-awadh.in",
+    datasheetKey: "TLV",
+    nreCodeLink:
       "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/Tlv493d_Magnetometer",
-    "quecCodeLink":
+    quecCodeLink:
       "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/Tlv493D_UI",
   },
   {
-    "title": "TOF VL53L0X",
-    "highlightText": "Laser Distance Sensor",
-    "subtitle": "Millimeter-level accuracy for precise distance measurement.",
-    "bannerPoints": [
+    title: "TOF VL53L0X",
+    highlightText: "Laser Distance Sensor",
+    subtitle: "Millimeter-level accuracy for precise distance measurement.",
+    bannerPoints: [
       "Up to 2m measurement range with mm-level accuracy",
       "Compact ToF sensor with fast response",
       "Low power consumption for battery-based devices",
     ],
-    "features": [
+    features: [
       "Compact ToF Sensor: Provides precise distance measurement in a small form factor",
       "High Accuracy: Millimeter-level resolution for reliable detection",
       "Fast Response: Adjustable timing budget with measurement rates up to 50 Hz",
       "Wide Applications: Suitable for robotics, smartphones, and industrial automation",
       "Low Power Operation: Optimized for battery-powered and energy-sensitive devices",
     ],
-    "applications": [
+    applications: [
       "Obstacle Detection & Avoidance: Robotics, drones, and autonomous vehicles",
       "Proximity Sensing: Smartphones, smart home devices, and touchless controls",
       "Gesture Recognition: Smart interfaces, AR/VR, and gaming devices",
       "Laser Autofocus: Enhances focus speed and accuracy in cameras",
       "Industrial Automation: Precise distance measurement in factory equipment and safety systems",
     ],
-    "specifications": [
+    specifications: [
       "Measurement Range: Up to 2 meters (with mm accuracy)",
       "Interface: I²C (standard and fast mode)",
       "Operating Voltage: 2.6V – 3.5V (typical 3.3V)",
@@ -829,41 +949,41 @@ export const allSensors = [
       "Measurement Frequency: Up to 50 Hz (configurable)",
       "Low Power Design: Optimized for energy-efficient applications",
     ],
-    "imagePath": "assets/images/vl5.png",
-    "email": "Vikash.hardwareengineer@ihub-awadh.in",
-    "datasheetKey": "VL",
-    "nreCodeLink":
+    imagePath: "assets/images/vl5.png",
+    email: "Vikash.hardwareengineer@ihub-awadh.in",
+    datasheetKey: "VL",
+    nreCodeLink:
       "https://github.com/sksuman14/nRF_All_Sensors_Codes/blob/main/TOFVl53l0x_Sensor",
-    "quecCodeLink":
+    quecCodeLink:
       "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/TofVl53Lox_UI",
-    "nrfUICodeLink":
+    nrfUICodeLink:
       "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/TOFVl53l0x_UI",
   },
   {
-    "title": "UV LTR-390 ",
-    "highlightText": "Light Sensor",
-    "subtitle":
+    title: "UV LTR-390 ",
+    highlightText: "Light Sensor",
+    subtitle:
       "Ideal for UV index monitoring, wearables, IoT, and healthcare applications",
-    "bannerPoints": [
+    bannerPoints: [
       "Dual sensing capability for UV and ambient light",
       "Ultra-low power consumption (~1.5 µA standby)",
       "Compact design optimized for wearables and IoT",
     ],
-    "features": [
+    features: [
       "Dual Sensing Capability – Detects both UV intensity and ambient visible light",
       "Ultra-Low Power Design – Consumes only ~1.5 µA in standby mode",
       "Digital Interface – I²C communication with multiple address options",
       "High Sensitivity & Accuracy – Suitable for wearables and precise UV index monitoring",
       "Compact Form Factor – Optimized for integration in small IoT and portable devices",
     ],
-    "applications": [
+    applications: [
       "UV Index Monitoring – Environmental monitoring and personal UV trackers",
       "Wearables – Smartwatches, bands, and fitness trackers",
       "Automatic Brightness Control – Smartphones, tablets, and laptops",
       "IoT Devices – Smart home and connected sensing applications",
       "Healthcare & Industrial – UV safety, sterilization monitoring, and light control",
     ],
-    "specifications": [
+    specifications: [
       "Operating Voltage: 1.7 V to 3.6 V",
       "Interface: I²C digital (configurable addresses)",
       "Detection Range: UV index measurement + visible light sensing",
@@ -871,27 +991,27 @@ export const allSensors = [
       "Package: Compact sensor package suitable for wearables and embedded systems",
       "Communication Support: Multiple I²C addresses for flexible integration",
     ],
-    "imagePath": "assets/images/ltr390.png",
-    "email": "Vikash.hardwareengineer@ihub-awadh.in",
-    "datasheetKey": "UVLTR",
-    "nreCodeLink":
+    imagePath: "assets/images/ltr390.png",
+    email: "Vikash.hardwareengineer@ihub-awadh.in",
+    datasheetKey: "UVLTR",
+    nreCodeLink:
       "https://github.com/sksuman14/nRF_All_Sensors_Codes/blob/main/UVLtr390_Sensor",
-    "quecCodeLink":
+    quecCodeLink:
       "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/UvLtr390_UI",
-    "nrfUICodeLink":
+    nrfUICodeLink:
       "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/uvLtr390_UI",
   },
   {
-    "title": "Linear Magnetic Hall",
-    "highlightText": "Sensor",
-    "subtitle":
+    title: "Linear Magnetic Hall",
+    highlightText: "Sensor",
+    subtitle:
       "Detects magnetic fields with digital and analog outputs for automotive, industrial, and consumer applications",
-    "bannerPoints": [
+    bannerPoints: [
       "Wide voltage range operation (3.3 V – 24 V)",
       "Adjustable sensitivity with potentiometer",
       "Supports analog, digital, and PWM outputs",
     ],
-    "features": [
+    features: [
       "Features wide range voltage comparator LM393",
       "Adjustable sensitivity with built-in potentiometer",
       "Signal output indicator with retaining bolt hole for easy installation",
@@ -899,7 +1019,7 @@ export const allSensors = [
       "Can be used for acoustic control light, sound alarm, and sound detection",
       "Compact sensor design with LED indication and simple wiring",
     ],
-    "applications": [
+    applications: [
       "Automotive Systems – Wheel speed sensing, gear position detection, and pedal position monitoring",
       "Motor Control – Rotor position detection in BLDC and stepper motors",
       "Consumer Electronics – Open/close detection in phones, laptops, and smart appliances",
@@ -907,7 +1027,7 @@ export const allSensors = [
       "Medical Devices – Position and movement detection in diagnostic or monitoring equipment",
       "Smart Systems – Acoustic/sound-based detection and control applications",
     ],
-    "specifications": [
+    specifications: [
       "Supply Voltage (Vcc): 3.3 V to 24 V",
       "Magnetic Range: ±50 mT to ±1000 mT",
       "Output Types: Analog (voltage proportional to field strength), Digital (binary on/off), PWM (duty cycle proportional to field strength)",
@@ -917,27 +1037,27 @@ export const allSensors = [
       "Response Time: Microseconds to milliseconds",
       "Hysteresis: Few % of magnetic range; Linearity: Defined as % of full-scale output",
     ],
-    "imagePath": "assets/images/halleffect.png",
-    "email": "Vikash.hardwareengineer@ihub-awadh.in",
-    "datasheetKey": "HALL",
-    "nreCodeLink":
+    imagePath: "assets/images/halleffect.png",
+    email: "Vikash.hardwareengineer@ihub-awadh.in",
+    datasheetKey: "HALL",
+    nreCodeLink:
       "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/Hall_Effect_Sensor",
-    "quecCodeLink":
+    quecCodeLink:
       "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/Hall_Effect_UI",
-    "nrfUICodeLink":
+    nrfUICodeLink:
       "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/hall_effect_UI",
   },
   {
-    "title": "InfraRed ",
-    "highlightText": "Sensor",
-    "subtitle":
+    title: "InfraRed ",
+    highlightText: "Sensor",
+    subtitle:
       "Detects infrared radiation emitted by objects, supporting motion detection, temperature measurement, and control systems",
-    "bannerPoints": [
+    bannerPoints: [
       "Detects infrared radiation for multiple applications",
       "Supports motion, temperature, and remote-control sensing",
       "Multiple output modes: Analog, Digital, PWM",
     ],
-    "features": [
+    features: [
       "Detects infrared radiation for motion, temperature, and control applications",
       "Wide detection range from centimeters to several meters",
       "Supports multiple output modes (analog, digital, PWM) for flexible system integration",
@@ -945,7 +1065,7 @@ export const allSensors = [
       "Adjustable field of view for both broad coverage and narrow precision sensing",
       "Compact package options for easy integration in consumer and industrial devices",
     ],
-    "applications": [
+    applications: [
       "Motion Detection – Security systems, automatic lighting, robotics",
       "Temperature Measurement – Contactless thermometers, industrial monitoring",
       "Remote Controls – TVs, AC units, and other consumer electronics",
@@ -953,7 +1073,7 @@ export const allSensors = [
       "Industrial Automation – Object counting, positioning systems",
       "Automotive – Night vision systems and driver assistance sensors",
     ],
-    "specifications": [
+    specifications: [
       "Operating Voltage: 3.3 V to 5 V (higher for some variants)",
       "Current Consumption: Few mA to tens of mA",
       "Detection Range: Few cm to several meters (depending on sensor type)",
@@ -963,35 +1083,35 @@ export const allSensors = [
       "Output Types: Analog, Digital, PWM",
       "Operating Temperature: -40 °C to +85 °C",
     ],
-    "imagePath": "assets/images/ir_sensor.png",
-    "email": "Vikash.hardwareengineer@ihub-awadh.in",
-    "datasheetKey": "IR",
-    "quecCodeLink":
+    imagePath: "assets/images/ir_sensor.png",
+    email: "Vikash.hardwareengineer@ihub-awadh.in",
+    datasheetKey: "IR",
+    quecCodeLink:
       "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/IR_UI",
   },
   {
-    "title": "SHT-40",
-    "highlightText": "Temperature and Humidity Sensor",
-    "subtitle":
+    title: "SHT-40",
+    highlightText: "Temperature and Humidity Sensor",
+    subtitle:
       "High-accuracy digital humidity and temperature sensor with ultra-low power operation ",
-    "bannerPoints": [
+    bannerPoints: [
       "Measures humidity (±1.8 %RH) and temperature (±0.2 °C) via I²C interface",
       "Operates from 0–100 %RH and –40 °C to +125 °C range",
       "Consumes only 0.4 µA average current at 1 Hz measurement rate",
     ],
-    "features": [
+    features: [
       "High-accuracy digital humidity and temperature sensing using I²C interface",
       "Ultra-low power operation ideal for IoT and portable applications",
       "Reliable performance in condensing and harsh environments",
       "Integrated variable power heater for effective moisture management",
     ],
-    "applications": [
+    applications: [
       "Weather monitoring and climate sensing systems",
       "HVAC and air quality management in buildings",
       "Smart agriculture and greenhouse control",
       "IoT and industrial environmental monitoring devices",
     ],
-    "specifications": [
+    specifications: [
       "Relative Humidity Accuracy: ±1.8 %RH (typical)",
       "Temperature Accuracy: ±0.2 °C (typical)",
       "Supply Voltage: 3.3 V to 5 V",
@@ -1001,103 +1121,27 @@ export const allSensors = [
       "Operating Range: 0–100 %RH, –40 °C to +125 °C",
       "Default I²C Address: 0x44",
     ],
-    "nreCodeLink":
+    nreCodeLink:
       "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/All_Temperature_Sensors/SHT40",
-    "quecCodeLink":
+    quecCodeLink:
       "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/Sht40_UI",
-    "nrfUICodeLink":
+    nrfUICodeLink:
       "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/sht40_UI",
 
-    "imagePath": "assets/images/sht40render.png",
-    "email": "Vikash.hardwareengineer@ihub-awadh.in",
-    "datasheetKey": "SHT40",
+    imagePath: "assets/images/sht40render.png",
+    email: "Vikash.hardwareengineer@ihub-awadh.in",
+    datasheetKey: "SHT40",
   },
   {
-    "title": "Arduino Based ",
-    "highlightText": "Robotic Kit",
-    "subtitle":
-      "Versatile Arduino Nano-based kit with motor drivers, Bluetooth, and sensor interfaces",
-    "bannerPoints": [
-      "Built-in Arduino Nano (ATmega328P) with L293D motor driver",
-      "Supports multiple communication interfaces: Bluetooth, I²C, and UART",
-      "Integrated OLED display and sensor sockets for rapid prototyping",
-    ],
-    "features": [
-      "Pre-integrated Arduino Nano with L293D motor driver for DC/stepper motors",
-      "Dedicated sockets for Bluetooth, OLED, and MQ-series sensors",
-      "Onboard buzzer and protection circuitry for reliable operation",
-      "Multiple GPIO and expansion headers for sensors, servos, and add-on modules",
-    ],
-    "applications": [
-      "Bluetooth-controlled robotic cars and smart vehicles",
-      "IoT-based environmental and automation projects",
-      "Educational robotics and embedded system training",
-      "Prototyping of mobile robots, alert systems, and automation devices",
-    ],
-    "specifications": [
-      "Microcontroller: ATmega328P (Arduino Nano compatible)",
-      "Operating Voltage: 5V DC; Input: 7–12V DC (Barrel/USB-C)",
-      "Motor Driver: L293D Dual H-Bridge, 2 channels (DC/stepper), 4.5–36V, 600mA per channel",
-      "Communication Interfaces: HC-05 Bluetooth, I²C, UART, SPI (optional)",
-      "Display: 0.96″ OLED (I²C interface)",
-      "Supported Sensors: MQ-series gas, ultrasonic, potentiometer",
-      "Power Supply: 5V regulated, DC barrel jack, USB-C, onboard regulator",
-      "Protection: Reverse-polarity (SS34 diode) and overcurrent protection",
-    ],
-    "imagePath": "assets/images/robotickitrender.png",
-    "email": "Vikash.hardwareengineer@ihub-awadh.in",
-    "datasheetKey": "ArduinoRoboticKit",
-  },
-  {
-    "title": "nRF52832-Based ",
-    "highlightText": "Robotic Kit",
-    "subtitle":
-      "High-performance Bluetooth 5.0 robotic kit with motor drivers, OLED display, and sensor support",
-    "bannerPoints": [
-      "Powered by ARM Cortex-M4F MCU (nRF52832) with Bluetooth 5.0",
-      "Integrated L293D motor driver for smooth motor control",
-      "Supports OLED display and multiple sensor interfaces",
-    ],
-    "features": [
-      "High-performance ARM Cortex-M4F processor for fast and smooth robot control",
-      "Bluetooth 5.0 connectivity for reliable real-time IoT communication",
-      "Onboard OLED interface for live data visualization and feedback",
-      "Expandable sensor support for gas, ultrasonic, and analog sensors",
-      "Modular design with USB-C power and multiple I/O & PWM expansion pins",
-      "Ideal for learning, prototyping, and smart robotics development",
-    ],
-    "applications": [
-      "Smart robotic projects such as line followers and obstacle-avoiding robots",
-      "IoT and mobile robots integrating wireless sensors and control systems",
-      "STEM learning platform for embedded systems and programming education",
-      "Sensor-based experiments for gas detection and environmental monitoring",
-      "Prototyping and innovation in smart automation systems",
-      "Educational competitions and lab-based robotics workshops",
-    ],
-    "specifications": [
-      "Microcontroller: Nordic nRF52832 (ARM Cortex-M4F, 64 MHz, 512 KB Flash, 64 KB SRAM)",
-      "Wireless Connectivity: Integrated BLE 5.0 for reliable communication",
-      "Motor Driver: L293D Dual H-Bridge, 2 DC motors or 1 stepper, 4.5–36V, 600mA/channel",
-      "Display: 0.96″ OLED (I²C interface) for live data and feedback",
-      "Sensors: MQ gas sensor header, ultrasonic interface, potentiometer calibration",
-      "Power: USB Type-C and 7–12V DC input with onboard 3.3V/5V regulators",
-      "Expansion: Multiple GPIO, PWM, and ADC pins for motors and peripherals",
-      "Extras: Onboard buzzer, reset button, and LEDs for real-time feedback",
-    ],
-    "imagePath": "assets/images/nrf52832_robotickit.png",
-    "email": "Vikash.hardwareengineer@ihub-awadh.in",
-    "datasheetKey": "nRF52832RoboticKit",
-  },
-  {
-    "title": "STS30-DIS ",
-    "highlightText": "Temperature Sensor",
-    "subtitle": "Compact, low-power sensor with I²C/SPI interface",
-    "bannerPoints": [
+    title: "STS30-DIS ",
+    highlightText: "Temperature Sensor",
+    subtitle: "Compact, low-power sensor with I²C/SPI interface",
+    bannerPoints: [
       "High-accuracy digital sensor for temperature and humidity",
       "Supports I²C and SPI communication interfaces",
       "Ideal for embedded and IoT-based monitoring applications",
     ],
-    "features": [
+    features: [
       "Fully calibrated and linearized digital output for precision measurement",
       "High accuracy and repeatability across wide temperature range",
       "Low power consumption suitable for battery-powered systems",
@@ -1105,7 +1149,7 @@ export const allSensors = [
       "Compact DFN package ensures easy hardware integration",
       "Simple I²C/SPI interface for effortless system connection",
     ],
-    "applications": [
+    applications: [
       "Precision temperature and humidity control in industrial environments",
       "HVAC systems for energy-efficient climate optimization",
       "Smart agriculture, greenhouse, and soil monitoring solutions",
@@ -1113,7 +1157,7 @@ export const allSensors = [
       "Weather and data logging stations for continuous monitoring",
       "Laboratory and research-grade environmental measurements",
     ],
-    "specifications": [
+    specifications: [
       "Measurement Parameters: Temperature and Humidity",
       "Temperature Range: -40°C to +85°C (industrial grade)",
       "Humidity Range: 0% to 100% RH (non-condensing)",
@@ -1125,57 +1169,15 @@ export const allSensors = [
       "Operating Temperature: -40°C to +85°C",
       "Power Consumption: <1mA (typical, ultra-low power)",
     ],
-    "nreCodeLink":
+    nreCodeLink:
       "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/All_Temperature_Sensors/STS30",
-    "quecCodeLink":
+    quecCodeLink:
       "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/Sts30_UI",
-    "nrfUICodeLink":
+    nrfUICodeLink:
       "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/sts30_UI",
 
-    "imagePath": "assets/images/sts30_dis.png",
-    "email": "Vikash.hardwareengineer@ihub-awadh.in",
-    "datasheetKey": "STS30DIS",
-  },
-  {
-    "title": "ModView nRF52833 BLE ",
-    "highlightText": "+ RS485 Data Logger",
-    "subtitle":
-      "Low-power embedded board for IoT communication, data logging, telemetry applications",
-    "bannerPoints": [
-      "Features Nordic nRF52833 SoC with BLE 5.1 and RS485/422 communication",
-      "Supports SD card storage, USB-C, and Li-ion battery management",
-      "Compact design ideal for IoT, telemetry, and solar-powered systems",
-    ],
-    "features": [
-      "High-performance Nordic nRF52833-QDAA MCU with BLE 5.1 and 2.4 GHz protocols",
-      "RS485/422 connectivity via MAX13487EESA with automatic direction control",
-      "Li-ion and solar power management with CN3791 MPPT charger support",
-      "Flexible power input options: USB-C, VIN (2–16 V), or battery",
-      "Expandable storage with microSD and W25Q16 SPI Flash for data logging",
-      "Robust protection with ESD, TVS diodes, and reverse-polarity safeguards",
-    ],
-    "applications": [
-      "Industrial RS485 Modbus communication with BLE monitoring",
-      "Solar-powered IoT data logging and environmental monitoring",
-      "Remote telemetry and condition monitoring systems",
-      "Battery-operated BLE sensors or gateways",
-      "Wireless configuration of RS485-based devices",
-      "Energy and environmental monitoring platforms",
-    ],
-    "specifications": [
-      "Microcontroller: nRF52833-QDAA (ARM Cortex-M4F, 64 MHz, 512 KB Flash, 128 KB RAM)",
-      "Wireless Connectivity: BLE 5.1 and 2.4 GHz proprietary protocols",
-      "Communication Interfaces: RS485 (MAX13487EESA), UART, SPI, I²C, GPIO",
-      "Memory: 16 Mbit W25Q16 SPI Flash and optional microSD card (SPI)",
-      "Battery Charging: CN3791, 4 A Li-ion charger with MPPT",
-      "Voltage Regulation: TPS63070 (Buck-Boost), TLV75533 LDO 3.3V, 500 mA",
-      "Indicators: Power, BLE status (green), fault/error (red)",
-      "Connectors: UFL antenna, SD card, USB-C, RS485 screw terminal, JST headers",
-      "Protection: ESD, TVS diodes, reverse polarity via MOSFET",
-      "Operating Temperature: -40°C to +85°C",
-    ],
-    "imagePath": "assets/images/modview_nrf52833.png",
-    "email": "Vikash.hardwareengineer@ihub-awadh.in",
-    "datasheetKey": "MODVIEWNRF52833",
+    imagePath: "assets/images/sts30_dis.png",
+    email: "Vikash.hardwareengineer@ihub-awadh.in",
+    datasheetKey: "STS30DIS",
   },
 ];

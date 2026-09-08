@@ -97,7 +97,7 @@ function HomeContent() {
               Cyber Physical<br />System <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent [text-shadow:0_0_1px_rgba(255,255,255,0.3)]">Laboratory</span>
             </motion.h1>
             <motion.p variants={fadeIn} className="font-body text-xl text-on-surface-variant font-medium mb-12 max-w-2xl mx-auto leading-relaxed">
-              Advancing research and innovation in Cyber-Physical Systems, IoT, AI, and intelligent automation through cutting-edge industry collaboration.
+              Empowering schools and colleges by advancing research and innovation in Cyber-Physical Systems, IoT, AI, and intelligent automation through cutting-edge industry collaboration.
             </motion.p>
             <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link href="https://docs.google.com/forms/d/e/1FAIpQLSeDJHnUKcgVFHHAooXa47MoyhKmg_R_xmkoQJWhQ_XND_FA1g/viewform" target="_blank" className="bg-primary/90 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-full font-headline font-bold text-lg hover:bg-primary transition-all flex items-center justify-center gap-2 group shadow-[0_0_30px_rgba(37,99,235,0.4)]">
@@ -248,12 +248,12 @@ function HomeContent() {
         <section className="bg-surface-container-low py-16 border-y border-white/5 shadow-inner">
           <div className="max-w-7xl mx-auto px-8 text-center md:text-left">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              <h2 className="font-headline text-4xl md:text-5xl font-bold text-white mb-4">CPS Labs Across India</h2>
-              <p className="font-body text-lg text-on-surface-variant mb-12">Our network of research centers spans across the country.</p>
+              <h2 className="font-headline text-4xl md:text-5xl font-bold text-white mb-4">CPS Labs in Schools and Colleges Across India</h2>
+              <p className="font-body text-lg text-on-surface-variant mb-12">Our network of research centers spans across educational institutions nationwide.</p>
               <div className="h-[400px] md:h-[600px] w-full rounded-3xl bg-surface-container-lowest border border-white/10 relative overflow-hidden group shadow-2xl">
                 <IndiaMap />
                 <div className="absolute bottom-6 right-6 z-30 bg-primary/90 backdrop-blur-md text-white px-6 py-4 rounded-2xl shadow-[0_10px_30px_rgba(37,99,235,0.4)] border border-white/20 flex flex-col items-center">
-                  <span className="font-headline text-3xl font-black leading-none drop-shadow-md mb-1 text-white">31+</span>
+                  <span className="font-headline text-3xl font-black leading-none drop-shadow-md mb-1 text-white">32+</span>
                   <span className="font-label text-[10px] uppercase tracking-widest font-bold opacity-90">Live Locations</span>
                 </div>
               </div>

@@ -11,7 +11,7 @@ import { AccessRequest } from '@/types/admin';
 import ModelViewer from '@/components/ModelViewer';
 
 export default function ProductDetailsPage({ params }: { params: { slug: string } }) {
-  const { user, googleUser } = useAuth();
+  const { user, googleUser, isAdmin } = useAuth();
   const [requestStatus, setRequestStatus] = useState<AccessRequest | null>(null);
   const [userAccess, setUserAccess] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -289,7 +289,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
             Sign in for Code Access
           </Link>
         );
-      } else if (userAccess.includes(datasheetKey) || requestStatus?.status === 'GRANTED') {
+      } else if (isAdmin || userAccess.includes(datasheetKey) || requestStatus?.status === 'GRANTED') {
         codeAccessButton = (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full">
             {availableCode.map(cl => (

@@ -5,7 +5,7 @@ import { useState, useRef, useEffect } from 'react';
 
 const BASE_URL = "https://cpslabhub-assets.s3.ap-south-1.amazonaws.com";
 
-const deployments = [
+const collegeDeployments = [
   {
     "image": `${BASE_URL}/images/1.png`,
     "title": "Deployment 1",
@@ -194,6 +194,15 @@ const deployments = [
   },
 ];
 
+const schoolDeployments = [
+  {
+    "image": "/images/jnv_logo.png",
+    "title": "Upcoming School Deployment",
+    "description": "AWaDH CPS Lab will soon be launched at JNV POJEWAL SCHOOL.",
+    "longDescription": "Indian Institute of Technology, Ropar is expanding its Deep-Tech Footprint with an upcoming CPS Lab deployment at Jawahar Navodaya Vidyalaya (JNV) Pojewal School. This deployment is planned for the near future."
+  }
+];
+
 // Helper Component for Text Block
 function DeploymentTextBlock({ data, index, setActiveIndex }: { data: any, index: number, setActiveIndex: (i: number) => void }) {
   const ref = useRef(null);
@@ -240,6 +249,13 @@ function DeploymentTextBlock({ data, index, setActiveIndex }: { data: any, index
 
 export default function DeploymentsPage() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [activeCategory, setActiveCategory] = useState<'college' | 'school'>('college');
+
+  const currentDeployments = activeCategory === 'college' ? collegeDeployments : schoolDeployments;
+
+  useEffect(() => {
+    setActiveIndex(0);
+  }, [activeCategory]);
 
   return (
     <div className="relative flex flex-col min-h-screen bg-surface text-on-surface">
@@ -255,6 +271,7 @@ export default function DeploymentsPage() {
       <main className="relative z-10 pt-40 pb-32">
         {/* Header Section */}
         <section className="max-w-7xl mx-auto px-8 mb-20 text-center relative">
+          
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -265,10 +282,26 @@ export default function DeploymentsPage() {
               Nationwide<br />
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent [text-shadow:0_0_1px_rgba(255,255,255,0.3)]">Deployments</span>
             </h1>
-            <p className="font-body text-xl md:text-2xl text-on-surface-variant font-medium max-w-2xl mx-auto">
+            <p className="font-body text-xl md:text-2xl text-on-surface-variant font-medium max-w-2xl mx-auto mb-10">
               Mapping our journey across India: Building the future of intelligent systems state by state.
             </p>
+            
+            <div className="flex justify-center gap-4 mt-8">
+              <button
+                onClick={() => setActiveCategory('college')}
+                className={`px-6 py-3 rounded-full font-bold transition-all duration-300 ${activeCategory === 'college' ? 'bg-primary text-white shadow-[0_0_20px_rgba(37,99,235,0.5)]' : 'bg-surface-container text-on-surface-variant hover:text-white border border-white/10'}`}
+              >
+                College Deployments
+              </button>
+              <button
+                onClick={() => setActiveCategory('school')}
+                className={`px-6 py-3 rounded-full font-bold transition-all duration-300 ${activeCategory === 'school' ? 'bg-primary text-white shadow-[0_0_20px_rgba(37,99,235,0.5)]' : 'bg-surface-container text-on-surface-variant hover:text-white border border-white/10'}`}
+              >
+                School Deployments
+              </button>
+            </div>
           </motion.div>
+
         </section>
 
         {/* Parallax Content Container */}
@@ -277,7 +310,7 @@ export default function DeploymentsPage() {
 
             {/* Left Column: Scrolling Text */}
             <div className="w-full lg:w-1/2 relative z-10 pl-4 lg:pl-12 border-l border-white/5">
-              {deployments.map((deployment, index) => (
+              {currentDeployments.map((deployment, index) => (
                 <DeploymentTextBlock
                   key={index}
                   data={deployment}
@@ -301,8 +334,8 @@ export default function DeploymentsPage() {
                   >
                     <div className="absolute inset-0 bg-primary/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                     <img
-                      src={deployments[activeIndex].image}
-                      alt={deployments[activeIndex].title}
+                      src={currentDeployments[activeIndex]?.image}
+                      alt={currentDeployments[activeIndex]?.title}
                       className="object-contain w-full h-full relative z-10 drop-shadow-2xl"
                     />
 
@@ -313,7 +346,7 @@ export default function DeploymentsPage() {
                       transition={{ delay: 0.3, duration: 0.5 }}
                       className="absolute bottom-8 left-8 right-8 bg-surface-container/60 backdrop-blur-md border border-white/20 p-4 rounded-2xl z-20 text-center"
                     >
-                      <span className="text-white font-headline font-bold text-lg">{deployments[activeIndex].title}</span>
+                      <span className="text-white font-headline font-bold text-lg">{currentDeployments[activeIndex]?.title}</span>
                     </motion.div>
                   </motion.div>
                 </AnimatePresence>
