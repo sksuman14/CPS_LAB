@@ -270,7 +270,7 @@ const upcomingCollegeDeployments = [
     title: "ITI Banswara",
   },
   {
-    image: "/images/app_logo.png",
+    image: "/images/shivalik.jpg",
     title: "Shivalik, Uttrakhand",
   },
   {
