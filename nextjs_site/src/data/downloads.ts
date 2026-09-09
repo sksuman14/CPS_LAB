@@ -157,7 +157,7 @@ export const SENSOR_FILES: Record<string, Record<string, string>> = {
     "nrf_manual": "https://raw.githubusercontent.com/sksuman14/Cps_Lab_All_nRF_UI_Manual/main/STS30_UI_manual.pdf",
   },
   "MODVIEWNRF52833": {
-    "datasheet": "assets/pdfs/modview.pdf",
+    "datasheet": "assets/pdfs/All_Protocol_PCB_Datasheet.pdf",
     "manual": "",
     "quec_manual": "",
     "nrf_manual": "",

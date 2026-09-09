@@ -427,8 +427,8 @@ export const allSensors = [
     datasheetKey: "BLENODE",
   },
   {
-    title: "ModView nRF52833 BLE ",
-    highlightText: "+ RS485 Data Logger",
+    title: "All Protocol ",
+    highlightText: "PCB",
     subtitle:
       "Low-power embedded board for IoT communication, data logging, telemetry applications",
     bannerPoints: [
