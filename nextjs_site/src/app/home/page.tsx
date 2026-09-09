@@ -302,7 +302,8 @@ function HomeContent() {
               <p className="font-body text-lg text-on-surface-variant mb-12">We are always looking for passionate researchers, engineers, and collaborators to join our ecosystem at IIT Ropar.</p>
               <div className="flex flex-wrap justify-center gap-6">
                 <Link href="/contact" className="bg-white text-surface px-10 py-4 rounded-full font-headline font-bold text-lg hover:bg-gray-200 hover:scale-105 transition-all">Contact Us</Link>
-                <Link href="https://docs.google.com/forms/d/e/1FAIpQLSeDJHnUKcgVFHHAooXa47MoyhKmg_R_xmkoQJWhQ_XND_FA1g/viewform" target="_blank" className="bg-transparent border border-white/20 text-white px-10 py-4 rounded-full font-headline font-bold text-lg hover:bg-white/10 hover:scale-105 transition-all">Expression of Interest</Link>
+                <Link href="https://docs.google.com/forms/d/e/1FAIpQLSeDJHnUKcgVFHHAooXa47MoyhKmg_R_xmkoQJWhQ_XND_FA1g/viewform" target="_blank" className="bg-transparent border border-white/20 text-white px-10 py-4 rounded-full font-headline font-bold text-lg hover:bg-white/10 hover:scale-105 transition-all">Expression of Interest (College)</Link>
+                <Link href="https://docs.google.com/forms/d/17OmpfmPfYMbMlVwMZ0Upej00dqJfq8AvhVCMDrESueM/viewform" target="_blank" className="bg-transparent border border-white/20 text-white px-10 py-4 rounded-full font-headline font-bold text-lg hover:bg-white/10 hover:scale-105 transition-all">Expression of Interest (School)</Link>
               </div>
             </div>
             <div className="absolute top-0 left-0 w-64 h-64 bg-primary/10 blur-[100px] rounded-full"></div>
