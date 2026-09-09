@@ -21,6 +21,14 @@ const BASE_URL = "https://cpslabhub-assets.s3.ap-south-1.amazonaws.com";
 
 const workshops = [
   {
+    title: "CPS Training at BML Munjal University",
+    description: "Hands-on Cyber-Physical Systems training at BML Munjal University, fostering next-generation innovation.",
+    image: "/images/bml_munjal.jpeg",
+    location: "BML Munjal",
+    date: "Sep 2026",
+    participants: "Students",
+  },
+  {
     title: "Empowering Northeast Youth: CPS Training for CCCT Sikkim",
     description: "A month-long hands-on CPS training for 30+ students from CCCT Sikkim hosted at IIT Ropar.",
     image: "/images/ccct_sikkim.jpeg",
