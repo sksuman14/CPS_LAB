@@ -243,6 +243,13 @@ const collegeDeployments = [
     longDescription:
       "Strengthening India's Deep-Tech Future — Indian Institute of Technology, Ropar (iHub - AWaDH) successfully inaugurated its 31st Cyber-Physical Systems (CPS) Lab, powered by the National Mission on Interdisciplinary Cyber-Physical Systems (NM-ICPS), at Dr. K.N. Modi University. The CPS Lab was inaugurated in the presence of distinguished dignitaries including Prof. (Dr.) D.K. Modi (Chancellor), Dr. P. N Hrisheekesha (Vice Chancellor), Prof. Rajeev Ahuja (Director, IIT Ropar), Dr. Radhika Trikha (CEO, iHub-AWaDH), and Dr. Mukesh Kestwal (CIO, iHub-AWaDH). Following the inauguration, a 2-day Training of Trainers (ToT) program was conducted to enable faculty members to build hands-on expertise in CPS-based learning.",
   },
+  {
+    image: "/images/munjal_lab.jpeg",
+    title: "Deployment 32",
+    description: "AWaDH CPS Lab launched at BML Munjal University, Delhi.",
+    longDescription:
+      "Indian Institute of Technology, Ropar (iHub - AWaDH) successfully launched its 32nd Cyber-Physical Systems (CPS) Lab at BML Munjal University, Delhi. This deployment strengthens India's deep-tech ecosystem and empowers students with hands-on CPS education.",
+  },
 ];
 
 const upcomingSchoolDeployments = [
@@ -256,10 +263,6 @@ const upcomingCollegeDeployments = [
   {
     image: "/images/pec.png",
     title: "PEC, Chandigarh",
-  },
-  {
-    image: "/images/bml.jpg",
-    title: "BML-Munjal, Delhi",
   },
   {
     image: "/images/vvce.jpg",
