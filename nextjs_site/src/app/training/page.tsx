@@ -11,7 +11,7 @@ import { useEffect, useRef, useState } from "react";
 
 // Shared data
 const stats = [
-  { icon: "science", count: 31, label: "Established CPS Labs", suffix: "" },
+  { icon: "science", count: 32, label: "Established CPS Labs", suffix: "" },
   { icon: "school", count: 24, label: "CPS Lab Trainings", suffix: "+" },
   { icon: "groups", count: 400, label: "Faculty Trained", suffix: "+" },
   { icon: "psychology", count: 800, label: "Students Trained", suffix: "+" },
