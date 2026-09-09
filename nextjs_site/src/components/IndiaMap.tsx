@@ -73,8 +73,8 @@ export default function IndiaMap() {
         style={{ zIndex: 1, backgroundColor: '#0A0E17' }} // Matches nextjs space
       >
         <TileLayer
-          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-          attribution='&copy; <a href="https://carto.com/attributions">CARTO</a>'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
         {cpsLabs.map((lab, index) => (
           <Marker 
