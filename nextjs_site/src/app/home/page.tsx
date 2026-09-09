@@ -99,9 +99,13 @@ function HomeContent() {
             <motion.p variants={fadeIn} className="font-body text-xl text-on-surface-variant font-medium mb-12 max-w-2xl mx-auto leading-relaxed">
               Empowering schools and colleges by advancing research and innovation in Cyber-Physical Systems, IoT, AI, and intelligent automation through cutting-edge industry collaboration.
             </motion.p>
-            <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4 justify-center items-center flex-wrap">
               <Link href="https://docs.google.com/forms/d/e/1FAIpQLSeDJHnUKcgVFHHAooXa47MoyhKmg_R_xmkoQJWhQ_XND_FA1g/viewform" target="_blank" className="bg-primary/90 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-full font-headline font-bold text-lg hover:bg-primary transition-all flex items-center justify-center gap-2 group shadow-[0_0_30px_rgba(37,99,235,0.4)]">
-                Expression of Interest
+                Expression of Interest (College)
+                <span className="material-symbols-outlined uppercase group-hover:translate-x-1 transition-transform" style={{ fontVariationSettings: "'FILL' 0" }}>arrow_forward</span>
+              </Link>
+              <Link href="https://docs.google.com/forms/d/17OmpfmPfYMbMlVwMZ0Upej00dqJfq8AvhVCMDrESueM/viewform" target="_blank" className="bg-primary/90 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-full font-headline font-bold text-lg hover:bg-primary transition-all flex items-center justify-center gap-2 group shadow-[0_0_30px_rgba(37,99,235,0.4)]">
+                Expression of Interest (School)
                 <span className="material-symbols-outlined uppercase group-hover:translate-x-1 transition-transform" style={{ fontVariationSettings: "'FILL' 0" }}>arrow_forward</span>
               </Link>
               <Link href="#apps" className="bg-white/5 backdrop-blur-md border border-white/10 text-white px-8 py-4 rounded-full font-headline font-bold text-lg hover:bg-white/10 transition-all flex items-center justify-center gap-2">
