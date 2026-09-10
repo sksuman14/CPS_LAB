@@ -23,7 +23,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-surface-container-low pt-10 md:pt-16 pb-8 md:pb-12 mt-4 relative z-10 overflow-hidden">
+    <footer className="bg-black/90 backdrop-blur-md border-t border-white/10 pt-10 md:pt-16 pb-8 md:pb-12 mt-4 relative z-10 overflow-hidden">
       {/* Cyber/Tech Glow Top Border */}
       <div className="absolute top-0 left-0 w-full h-[2px] bg-primary shadow-[0_0_15px_rgba(37,99,235,0.5)]" />
 
