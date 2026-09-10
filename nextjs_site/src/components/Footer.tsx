@@ -23,20 +23,20 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-black/90 backdrop-blur-md border-t border-white/10 pt-10 md:pt-16 pb-8 md:pb-12 mt-4 relative z-10 overflow-hidden">
+    <footer className="bg-black/90 backdrop-blur-md border-t border-white/10 pt-12 md:pt-16 pb-8 mt-8 relative z-10 overflow-hidden">
       {/* Cyber/Tech Glow Top Border */}
       <div className="absolute top-0 left-0 w-full h-[2px] bg-primary shadow-[0_0_15px_rgba(37,99,235,0.5)]" />
 
       <div className="max-w-6xl mx-auto px-6 md:px-8 relative">
-        <div className="flex flex-col md:flex-row items-start justify-between gap-10 md:gap-16 mb-10 md:mb-12 w-full">
+        <div className="flex flex-col md:flex-row items-start justify-between gap-8 md:gap-16 mb-10 w-full">
           {/* LEFT: Branding & Description */}
           <div className="flex flex-col items-start gap-4 md:max-w-sm w-full">
             <div className="flex items-center gap-3">
               <Image
                 src="/images/app_logo.png"
                 alt="CPS Lab Logo"
-                width={40}
-                height={40}
+                width={36}
+                height={36}
                 className="object-contain"
               />
               <h2 className="font-headline text-2xl font-black text-white leading-none">
@@ -44,19 +44,19 @@ export default function Footer() {
                 <span className="text-primary tracking-widest">LAB</span>
               </h2>
             </div>
-            <p className="font-body text-xs text-on-surface-variant leading-relaxed opacity-80 mt-2">
+            <p className="font-body text-xs text-on-surface-variant leading-relaxed opacity-80 mt-1">
               Building the future of intelligent systems through rigorous
               research and open innovation.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 sm:gap-12 w-full md:w-auto">
+          <div className="flex flex-col md:flex-row gap-8 md:gap-16 w-full md:w-auto">
             {/* MIDDLE: Sitemap Section */}
-            <div className="flex flex-col items-start gap-4 md:gap-6">
+            <div className="flex flex-col items-start gap-4">
               <h3 className="font-headline text-sm font-bold text-white uppercase tracking-widest">
                 Sitemap
               </h3>
-              <ul className="flex flex-col gap-3">
+              <ul className="grid grid-cols-2 gap-x-8 gap-y-2">
                 {sitemapLinks.map((link) => (
                   <li key={link.name}>
                     <Link
@@ -66,9 +66,6 @@ export default function Footer() {
                       <span className="transition-transform duration-300 group-hover:translate-x-1">
                         {link.name}
                       </span>
-                      <span className="opacity-0 -translate-x-2 text-primary transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
-                        →
-                      </span>
                     </Link>
                   </li>
                 ))}
@@ -76,44 +73,32 @@ export default function Footer() {
             </div>
 
             {/* RIGHT: Visit Us Section */}
-            <div className="flex flex-col items-start gap-4 md:gap-6">
+            <div className="flex flex-col items-start gap-4">
               <h3 className="font-headline text-sm font-bold text-white uppercase tracking-widest">
                 Visit Us
               </h3>
 
-              <div className="flex flex-col gap-5 md:gap-6">
+              <div className="flex flex-col gap-4">
                 {/* Address */}
-                <div className="group flex items-start gap-4 cursor-pointer">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center transition-all duration-300 group-hover:bg-primary/20 group-hover:border-primary/40 group-hover:scale-110 shadow-[0_0_0_rgba(37,99,235,0)] group-hover:shadow-[0_0_15px_rgba(37,99,235,0.4)]">
-                    <MapPin className="w-5 h-5 text-blue-300 transition-colors duration-300 group-hover:text-primary" />
+                <div className="group flex items-start gap-3">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
+                    <MapPin className="w-4 h-4 text-blue-300" />
                   </div>
-                  <div className="flex flex-col gap-1">
-                    <h4 className="font-headline text-xs font-bold text-white transition-colors duration-300 group-hover:text-primary">
-                      Address
-                    </h4>
-                    <p className="font-body text-xs text-on-surface-variant leading-relaxed transition-colors duration-300 group-hover:text-white">
-                      214 / M. Visvesvaraya Block
-                      <br />
-                      IIT Ropar, Rupnagar
-                      <br />
-                      Punjab - 140001, India
-                    </p>
-                  </div>
+                  <p className="font-body text-xs text-on-surface-variant leading-relaxed">
+                    214 / M. Visvesvaraya Block<br />
+                    IIT Ropar, Rupnagar<br />
+                    Punjab - 140001, India
+                  </p>
                 </div>
 
                 {/* Phone */}
-                <div className="group flex items-start gap-4 cursor-pointer">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center transition-all duration-300 group-hover:bg-primary/20 group-hover:border-primary/40 group-hover:scale-110 shadow-[0_0_0_rgba(37,99,235,0)] group-hover:shadow-[0_0_15px_rgba(37,99,235,0.4)]">
-                    <Phone className="w-5 h-5 text-blue-300 transition-colors duration-300 group-hover:text-primary" />
+                <div className="group flex items-start gap-3">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
+                    <Phone className="w-4 h-4 text-blue-300" />
                   </div>
-                  <div className="flex flex-col gap-1">
-                    <h4 className="font-headline text-xs font-bold text-white transition-colors duration-300 group-hover:text-primary">
-                      Phone
-                    </h4>
-                    <p className="font-body text-xs text-on-surface-variant leading-relaxed transition-colors duration-300 group-hover:text-white">
-                      +91 70870 32853
-                    </p>
-                  </div>
+                  <p className="font-body text-xs text-on-surface-variant leading-relaxed mt-1">
+                    +91 70870 32853
+                  </p>
                 </div>
               </div>
             </div>
@@ -121,15 +106,15 @@ export default function Footer() {
         </div>
 
         {/* Divider & Copyright */}
-        <div className="w-full h-px bg-white/10 mb-6"></div>
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="font-label text-[10px] md:text-xs text-on-surface-variant/60 uppercase tracking-widest text-center md:text-left leading-relaxed">
+        <div className="w-full h-px bg-white/10 mb-4"></div>
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="font-label text-xs text-on-surface-variant/60 uppercase tracking-widest text-center md:text-left">
             IIT Ropar – Cyber Physical System Lab
           </p>
 
           <button 
             onClick={scrollToTop}
-            className="group flex items-center gap-2 px-4 py-2 mt-2 md:mt-0 rounded-full bg-white/5 border border-white/10 text-on-surface-variant text-[10px] md:text-xs font-bold uppercase tracking-widest hover:bg-primary/20 hover:text-white hover:border-primary/50 transition-all duration-300 shadow-md hover:shadow-[0_0_15px_rgba(37,99,235,0.3)]"
+            className="group flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-on-surface-variant text-xs font-bold uppercase tracking-widest hover:bg-primary/20 hover:text-white hover:border-primary/50 transition-all duration-300"
           >
             <span>Back to Top</span>
             <ArrowUp className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-1 group-hover:text-primary" />
