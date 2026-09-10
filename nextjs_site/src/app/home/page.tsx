@@ -150,8 +150,9 @@ function HomeContent() {
           <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }} className="grid grid-cols-1 md:grid-cols-12 md:grid-rows-2 gap-6 h-auto">
             
             {/* End-to-End CPS Approach Card */}
-            <motion.div variants={fadeIn} className="md:col-span-8 md:row-span-2 bg-gradient-to-br from-surface to-surface-container-lowest rounded-2xl p-8 md:p-10 border border-white/5 relative overflow-hidden flex flex-col group">
-              <div className="relative z-10 flex flex-col h-full">
+            <motion.div variants={fadeIn} className="md:col-span-8 md:row-span-2 bg-gradient-to-br from-[#0f172a]/80 to-[#020617]/80 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/10 hover:border-primary/50 relative overflow-hidden flex flex-col group transition-all duration-500 shadow-2xl">
+              <div className="absolute top-[-20%] right-[-10%] w-[70%] h-[70%] bg-primary/20 blur-[120px] rounded-full pointer-events-none group-hover:bg-primary/30 transition-all duration-700"></div>
+                <div className="relative z-10 flex flex-col h-full">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center border border-secondary/20">
                     <span className="material-symbols-outlined text-secondary" style={{ fontVariationSettings: "'FILL' 1" }}>code_blocks</span>
@@ -191,12 +192,13 @@ function HomeContent() {
             </motion.div>
 
             {/* Continuous Engagement Card */}
-            <motion.div variants={fadeIn} className="md:col-span-4 bg-gradient-to-br from-surface-container to-surface-container-lowest rounded-2xl p-8 border border-white/5 relative overflow-hidden flex flex-col group">
-              <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 mb-6">
+            <motion.div variants={fadeIn} className="md:col-span-4 bg-gradient-to-br from-[#1e1b4b]/60 to-[#020617]/80 backdrop-blur-md rounded-3xl p-8 md:p-10 border border-white/10 hover:border-purple-500/50 relative overflow-hidden flex flex-col group transition-all duration-500 shadow-2xl">
+              <div className="absolute top-0 left-0 w-full h-full bg-purple-500/10 blur-[80px] rounded-full pointer-events-none group-hover:bg-purple-500/20 transition-all duration-700"></div>
+              <div className="relative z-10 w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 mb-6 shadow-[0_0_15px_rgba(168,85,247,0.4)]">
                 <span className="material-symbols-outlined text-purple-400 text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>all_inclusive</span>
               </div>
-              <h3 className="font-headline text-xl font-bold text-white mb-3">Continuous Engagement</h3>
-              <p className="font-body text-sm text-on-surface-variant/80 mb-8 max-w-sm">Ongoing upgrades, new experiments, internships, and collaborations — not a one-time setup.</p>
+              <h3 className="relative z-10 font-headline text-xl font-bold text-white mb-3">Continuous Engagement</h3>
+              <p className="relative z-10 font-body text-sm text-on-surface-variant/80 mb-8 max-w-sm">Ongoing upgrades, new experiments, internships, and collaborations — not a one-time setup.</p>
               
               <div className="mt-auto flex items-center gap-6">
                 <motion.div 
@@ -216,12 +218,13 @@ function HomeContent() {
             </motion.div>
 
             {/* Hands-On Involvement Card */}
-            <motion.div variants={fadeIn} className="md:col-span-4 bg-gradient-to-br from-surface-container-low to-surface-container-lowest rounded-2xl p-8 border border-white/5 relative overflow-hidden flex flex-col group">
-              <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 mb-6">
+            <motion.div variants={fadeIn} className="md:col-span-4 bg-gradient-to-br from-[#042f2e]/60 to-[#020617]/80 backdrop-blur-md rounded-3xl p-8 md:p-10 border border-white/10 hover:border-secondary/50 relative overflow-hidden flex flex-col group transition-all duration-500 shadow-2xl">
+              <div className="absolute bottom-[-20%] right-[-20%] w-[120%] h-[120%] bg-secondary/10 blur-[100px] rounded-full pointer-events-none group-hover:bg-secondary/20 transition-all duration-700"></div>
+              <div className="relative z-10 w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 mb-6 shadow-[0_0_15px_rgba(15,118,110,0.4)]">
                 <span className="material-symbols-outlined text-secondary text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>build</span>
               </div>
-              <h3 className="font-headline text-xl font-bold text-white mb-3">Hands-On Involvement</h3>
-              <p className="font-body text-sm text-on-surface-variant/80 mb-8 max-w-sm">Students actively connect devices, test them, and see results — not just observe demonstrations.</p>
+              <h3 className="relative z-10 font-headline text-xl font-bold text-white mb-3">Hands-On Involvement</h3>
+              <p className="relative z-10 font-body text-sm text-on-surface-variant/80 mb-8 max-w-sm">Students actively connect devices, test them, and see results — not just observe demonstrations.</p>
               
               <div className="mt-auto flex items-center justify-between relative w-full pt-6 px-2">
                 <div className="absolute left-8 right-8 top-[38px] h-[1px] border-b border-dashed border-white/20 z-0"></div>
