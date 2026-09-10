@@ -347,7 +347,7 @@ function SingleDeviceSection({
             <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-300" />
             <div className="relative flex items-center gap-2.5 px-4 py-2 rounded-2xl bg-surface-container-lowest dark:bg-black/80 border border-primary/50 text-on-surface dark:text-white shadow-md">
               <Cpu className="w-5 h-5 text-primary animate-pulse" />
-              <span className="font-headline font-black text-lg sm:text-xl tracking-tight uppercase">
+              <span className="font-headline font-black text-base sm:text-lg tracking-tight uppercase">
                 DEVICE ID: <span className="text-primary font-mono font-bold">#{deviceId}</span>
               </span>
             </div>
@@ -359,7 +359,7 @@ function SingleDeviceSection({
           <button
             onClick={exportDeviceCSV}
             disabled={readings.length === 0}
-            className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-surface-container-low dark:bg-white/5 hover:bg-surface-container-high dark:hover:bg-white/10 border border-outline-variant/30 dark:border-white/10 text-on-surface dark:text-white text-xs font-bold uppercase transition-all disabled:opacity-40"
+            className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-surface-container-low dark:bg-white/5 hover:bg-surface-container-high dark:hover:bg-white/10 border border-outline-variant/30 dark:border-white/10 text-on-surface dark:text-white text-[10px] font-bold uppercase transition-all disabled:opacity-40"
           >
             <Download className="w-3.5 h-3.5 text-primary" />
             Export CSV
@@ -400,11 +400,11 @@ function SingleDeviceSection({
             )}
           </div>
 
-          <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant/70 dark:text-white/50 mb-1">
+          <p className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/70 dark:text-white/50 mb-1">
             Temperature
           </p>
           <div className="flex items-baseline gap-2 mb-3">
-            <h2 className="text-3xl sm:text-4xl font-extrabold font-headline tracking-tight text-on-surface dark:text-white">
+            <h2 className="text-2xl sm:text-3xl font-extrabold font-headline tracking-tight text-on-surface dark:text-white">
               {loading ? '--' : stats.latestTemp !== null ? `${stats.latestTemp}°C` : 'N/A'}
             </h2>
           </div>
@@ -445,11 +445,11 @@ function SingleDeviceSection({
             )}
           </div>
 
-          <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant/70 dark:text-white/50 mb-1">
+          <p className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/70 dark:text-white/50 mb-1">
             Humidity
           </p>
           <div className="flex items-baseline gap-2 mb-3">
-            <h2 className="text-3xl sm:text-4xl font-extrabold font-headline tracking-tight text-on-surface dark:text-white">
+            <h2 className="text-2xl sm:text-3xl font-extrabold font-headline tracking-tight text-on-surface dark:text-white">
               {loading ? '--' : stats.latestHumidity !== null ? `${stats.latestHumidity}%` : 'N/A'}
             </h2>
           </div>
@@ -482,14 +482,14 @@ function SingleDeviceSection({
           </div>
 
           <div>
-            <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant/70 dark:text-white/50 mb-1">
+            <p className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/70 dark:text-white/50 mb-1">
               Telemetry Logs
             </p>
             <div className="flex items-baseline gap-2">
-              <h2 className="text-3xl sm:text-4xl font-extrabold font-headline tracking-tight text-on-surface dark:text-white">
+              <h2 className="text-2xl sm:text-3xl font-extrabold font-headline tracking-tight text-on-surface dark:text-white">
                 {loading ? '--' : readings.length}
               </h2>
-              <span className="text-xs text-on-surface-variant/60 dark:text-white/40 font-medium">records</span>
+              <span className="text-[10px] text-on-surface-variant/60 dark:text-white/40 font-medium">records</span>
             </div>
           </div>
         </TiltCard>
@@ -509,11 +509,11 @@ function SingleDeviceSection({
             </span>
           </div>
 
-          <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant/70 dark:text-white/50 mb-1">
+          <p className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/70 dark:text-white/50 mb-1">
             Gateway Node ID
           </p>
           <div className="flex items-baseline gap-2 mb-3">
-            <h2 className="text-3xl sm:text-4xl font-extrabold font-headline tracking-tight text-on-surface dark:text-white font-mono">
+            <h2 className="text-2xl sm:text-3xl font-extrabold font-headline tracking-tight text-on-surface dark:text-white font-mono">
               #{deviceId}
             </h2>
           </div>
@@ -531,7 +531,7 @@ function SingleDeviceSection({
       <div className="mb-8 p-6 rounded-2xl bg-surface-container-high/90 dark:bg-[#090d16] backdrop-blur-xl border border-outline-variant/30 dark:border-white/10 shadow-lg">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 pb-4 border-b border-outline-variant/30 dark:border-white/10">
           <div>
-            <h3 className="text-lg font-bold font-headline text-on-surface dark:text-white flex items-center gap-2">
+            <h3 className="text-base font-bold font-headline text-on-surface dark:text-white flex items-center gap-2">
               <TrendingUp className="w-5 h-5 text-primary" />
               Telemetry Visualizer
             </h3>
@@ -540,7 +540,7 @@ function SingleDeviceSection({
           {/* Controls: View Mode, Zoom & Pan */}
           <div className="flex flex-wrap items-center gap-3">
             {/* Metric Toggle */}
-            <div className="flex items-center bg-surface-container-low dark:bg-black/40 p-1 rounded-xl border border-outline-variant/30 dark:border-white/10 text-xs font-bold">
+            <div className="flex items-center bg-surface-container-low dark:bg-black/40 p-1 rounded-xl border border-outline-variant/30 dark:border-white/10 text-[10px] font-bold">
               <button
                 onClick={() => setChartView('combined')}
                 className={`px-3 py-1.5 rounded-lg transition-all ${
@@ -630,18 +630,18 @@ function SingleDeviceSection({
         {loading ? (
           <div className="h-80 w-full flex flex-col items-center justify-center bg-surface-container-lowest dark:bg-black/40 rounded-xl border border-outline-variant/20 dark:border-white/5 animate-pulse">
             <RefreshCw className="w-8 h-8 text-primary animate-spin mb-2" />
-            <p className="text-xs text-on-surface-variant/50 dark:text-white/40 font-mono">Loading telemetry graph for Device #{deviceId}...</p>
+            <p className="text-[10px] text-on-surface-variant/50 dark:text-white/40 font-mono">Loading telemetry graph for Device #{deviceId}...</p>
           </div>
         ) : readings.length === 0 ? (
           <div className="h-80 w-full flex flex-col items-center justify-center bg-surface-container-lowest dark:bg-black/40 rounded-xl border border-outline-variant/20 dark:border-white/5">
             <Database className="w-10 h-10 text-on-surface-variant/30 dark:text-white/20 mb-3" />
-            <p className="text-sm font-bold text-on-surface-variant dark:text-white/60">No Telemetry Observations Found for Device #{deviceId}</p>
-            <p className="text-xs text-on-surface-variant/50 dark:text-white/40 mt-1">Select a different date range above.</p>
+            <p className="text-xs font-bold text-on-surface-variant dark:text-white/60">No Telemetry Observations Found for Device #{deviceId}</p>
+            <p className="text-[10px] text-on-surface-variant/50 dark:text-white/40 mt-1">Select a different date range above.</p>
           </div>
         ) : (
           <div className="relative">
             {/* Legend & Hover Info Header */}
-            <div className="flex items-center justify-between text-xs mb-3 px-2">
+            <div className="flex items-center justify-between text-[10px] mb-3 px-2">
               <div className="flex items-center gap-6">
                 {(chartView === 'combined' || chartView === 'temperature') && (
                   <div className="flex items-center gap-2">
@@ -674,7 +674,7 @@ function SingleDeviceSection({
                     left: Math.min(mousePos.x + 15, 800),
                     top: Math.max(mousePos.y - 60, 10),
                   }}
-                  className="absolute z-30 pointer-events-none bg-surface-container-lowest dark:bg-black/90 border border-amber-500/50 p-2.5 rounded-xl shadow-xl text-xs font-mono backdrop-blur-md text-on-surface dark:text-white"
+                  className="absolute z-30 pointer-events-none bg-surface-container-lowest dark:bg-black/90 border border-amber-500/50 p-2.5 rounded-xl shadow-xl text-[10px] font-mono backdrop-blur-md text-on-surface dark:text-white"
                 >
                   <div className="text-[10px] text-on-surface-variant/70 dark:text-white/50 mb-1 border-b border-outline-variant/30 dark:border-white/10 pb-0.5">
                     {visibleReadings[hoverIndex].TimeStamp} (Device #{deviceId})
@@ -906,7 +906,7 @@ function SingleDeviceSection({
       <div className="p-6 rounded-2xl bg-surface-container-high/60 dark:bg-surface-container-high/60 backdrop-blur-xl border border-outline-variant/30 dark:border-white/10 shadow-lg overflow-hidden">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <div>
-            <h3 className="text-lg font-bold font-headline text-on-surface dark:text-white flex items-center gap-2">
+            <h3 className="text-base font-bold font-headline text-on-surface dark:text-white flex items-center gap-2">
               <Database className="w-5 h-5 text-primary" />
               Raw Telemetry Logs
             </h3>
@@ -923,7 +923,7 @@ function SingleDeviceSection({
                 setCurrentPage(1);
               }}
               placeholder="Search timestamps or values..."
-              className="w-full pl-9 pr-8 py-2 rounded-xl bg-surface-container-lowest dark:bg-black/40 border border-outline-variant/40 dark:border-white/15 text-on-surface dark:text-white text-xs focus:outline-none focus:border-primary transition-all placeholder:text-on-surface-variant/40 dark:placeholder:text-white/30"
+              className="w-full pl-9 pr-8 py-2 rounded-xl bg-surface-container-lowest dark:bg-black/40 border border-outline-variant/40 dark:border-white/15 text-on-surface dark:text-white text-[10px] focus:outline-none focus:border-primary transition-all placeholder:text-on-surface-variant/40 dark:placeholder:text-white/30"
             />
             {searchQuery && (
               <button
@@ -942,7 +942,7 @@ function SingleDeviceSection({
 
         {/* Table View */}
         <div className="overflow-x-auto custom-scrollbar border border-outline-variant/30 dark:border-white/10 rounded-xl">
-          <table className="w-full text-left text-xs">
+          <table className="w-full text-left text-[10px]">
             <thead className="bg-surface-container-low dark:bg-white/5 text-on-surface-variant dark:text-white/70 uppercase tracking-wider font-bold text-[10px] border-b border-outline-variant/30 dark:border-white/10">
               <tr>
                 <th className="py-3.5 px-4 font-mono">#</th>
@@ -991,7 +991,7 @@ function SingleDeviceSection({
                 <tr>
                   <td colSpan={5} className="py-12 text-center text-on-surface-variant/40 dark:text-white/40">
                     <Database className="w-8 h-8 mx-auto mb-2 opacity-30" />
-                    <p className="font-bold text-sm">No telemetry records found for Device #{deviceId}</p>
+                    <p className="font-bold text-xs">No telemetry records found for Device #{deviceId}</p>
                   </td>
                 </tr>
               ) : (
@@ -1025,7 +1025,7 @@ function SingleDeviceSection({
 
         {/* Pagination Controls */}
         {!loading && filteredReadings.length > 0 && (
-          <div className="mt-4 pt-4 border-t border-outline-variant/30 dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+          <div className="mt-4 pt-4 border-t border-outline-variant/30 dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px]">
             <div className="flex items-center gap-2 text-on-surface-variant/70 dark:text-white/50">
               <span>Showing</span>
               <span className="font-bold text-on-surface dark:text-white">
@@ -1297,7 +1297,7 @@ export default function DevicePage() {
             <button
               key={id}
               onClick={() => scrollToDevice(id)}
-              className="px-2.5 py-1.5 rounded-xl bg-surface-container-low dark:bg-white/5 hover:bg-primary/20 border border-outline-variant/30 dark:border-white/10 hover:border-primary/50 text-on-surface dark:text-white font-mono text-xs font-bold transition-all hover:scale-105"
+              className="px-2.5 py-1.5 rounded-xl bg-surface-container-low dark:bg-white/5 hover:bg-primary/20 border border-outline-variant/30 dark:border-white/10 hover:border-primary/50 text-on-surface dark:text-white font-mono text-[10px] font-bold transition-all hover:scale-105"
               title={`Jump to Device #${id}`}
             >
               #{id}
@@ -1318,16 +1318,16 @@ export default function DevicePage() {
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-outline-variant/30 dark:border-white/10">
             <div>
               <div className="flex items-center gap-3 mb-2">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 border border-primary/30 text-primary text-xs font-bold uppercase tracking-wider">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 border border-primary/30 text-primary text-[10px] font-bold uppercase tracking-wider">
                   <Layers className="w-3.5 h-3.5" />
                   Multi-Node Gateway Telemetry
                 </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-bold">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                   {deviceList.length} Devices Online
                 </span>
               </div>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black font-headline tracking-tight text-on-surface dark:text-white">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black font-headline tracking-tight text-on-surface dark:text-white">
                 Gateway <span className="text-primary bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-500">SHT40 Sensors</span> Dashboard
               </h1>
             </div>
@@ -1336,7 +1336,7 @@ export default function DevicePage() {
             <div className="flex flex-wrap items-center gap-3">
               <button
                 onClick={exportAllDevicesCSV}
-                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-surface-container-low dark:bg-white/5 border border-outline-variant/30 dark:border-white/15 hover:bg-surface-container-high dark:hover:bg-white/10 text-on-surface dark:text-white text-xs font-bold uppercase tracking-wider transition-all hover:border-primary/40 shadow-sm"
+                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-surface-container-low dark:bg-white/5 border border-outline-variant/30 dark:border-white/15 hover:bg-surface-container-high dark:hover:bg-white/10 text-on-surface dark:text-white text-[10px] font-bold uppercase tracking-wider transition-all hover:border-primary/40 shadow-sm"
                 title="Export combined CSV for all devices"
               >
                 <Download className="w-4 h-4 text-primary" />
@@ -1346,7 +1346,7 @@ export default function DevicePage() {
               <button
                 onClick={() => fetchAllDevicesData()}
                 disabled={globalLoading}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary hover:bg-primary/90 text-white text-xs font-bold uppercase tracking-wider transition-all shadow-[0_0_20px_rgba(59,130,246,0.3)] disabled:opacity-50"
+                className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary hover:bg-primary/90 text-white text-[10px] font-bold uppercase tracking-wider transition-all shadow-[0_0_20px_rgba(59,130,246,0.3)] disabled:opacity-50"
               >
                 <RefreshCw className={`w-4 h-4 ${globalLoading ? 'animate-spin' : ''}`} />
                 {globalLoading ? 'Fetching All...' : 'Refresh All'}
@@ -1366,7 +1366,7 @@ export default function DevicePage() {
             
             {/* Start Date Picker */}
             <div>
-              <label className="block text-xs font-bold uppercase tracking-widest text-on-surface-variant/80 dark:text-white/70 mb-2 flex items-center gap-1.5">
+              <label className="block text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/80 dark:text-white/70 mb-2 flex items-center gap-1.5">
                 <Calendar className="w-3.5 h-3.5 text-primary" />
                 Start Date
               </label>
@@ -1374,13 +1374,13 @@ export default function DevicePage() {
                 type="date"
                 value={startDate}
                 onChange={(e) => setStartDate(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl bg-surface-container-lowest dark:bg-black/50 border border-outline-variant/40 dark:border-white/15 text-on-surface dark:text-white font-mono text-sm focus:outline-none focus:border-primary transition-all color-scheme-light dark:color-scheme-dark"
+                className="w-full px-4 py-2.5 rounded-xl bg-surface-container-lowest dark:bg-black/50 border border-outline-variant/40 dark:border-white/15 text-on-surface dark:text-white font-mono text-xs focus:outline-none focus:border-primary transition-all color-scheme-light dark:color-scheme-dark"
               />
             </div>
 
             {/* End Date Picker */}
             <div>
-              <label className="block text-xs font-bold uppercase tracking-widest text-on-surface-variant/80 dark:text-white/70 mb-2 flex items-center gap-1.5">
+              <label className="block text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/80 dark:text-white/70 mb-2 flex items-center gap-1.5">
                 <Calendar className="w-3.5 h-3.5 text-primary" />
                 End Date
               </label>
@@ -1388,13 +1388,13 @@ export default function DevicePage() {
                 type="date"
                 value={endDate}
                 onChange={(e) => setEndDate(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl bg-surface-container-lowest dark:bg-black/50 border border-outline-variant/40 dark:border-white/15 text-on-surface dark:text-white font-mono text-sm focus:outline-none focus:border-primary transition-all color-scheme-light dark:color-scheme-dark"
+                className="w-full px-4 py-2.5 rounded-xl bg-surface-container-lowest dark:bg-black/50 border border-outline-variant/40 dark:border-white/15 text-on-surface dark:text-white font-mono text-xs focus:outline-none focus:border-primary transition-all color-scheme-light dark:color-scheme-dark"
               />
             </div>
 
             {/* Add Device ID Input */}
             <div>
-              <label className="block text-xs font-bold uppercase tracking-widest text-on-surface-variant/80 dark:text-white/70 mb-2 flex items-center gap-1.5">
+              <label className="block text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/80 dark:text-white/70 mb-2 flex items-center gap-1.5">
                 <Plus className="w-3.5 h-3.5 text-primary" />
                 Add Device ID
               </label>
@@ -1404,12 +1404,12 @@ export default function DevicePage() {
                   value={newDeviceId}
                   onChange={(e) => setNewDeviceId(e.target.value)}
                   placeholder="e.g. 150"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-surface-container-lowest dark:bg-black/50 border border-outline-variant/40 dark:border-white/15 text-on-surface dark:text-white font-mono text-sm focus:outline-none focus:border-primary transition-all"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-surface-container-lowest dark:bg-black/50 border border-outline-variant/40 dark:border-white/15 text-on-surface dark:text-white font-mono text-xs focus:outline-none focus:border-primary transition-all"
                   onKeyDown={(e) => e.key === 'Enter' && handleAddDevice()}
                 />
                 <button
                   onClick={handleAddDevice}
-                  className="px-3 py-2.5 rounded-xl bg-surface-container-low dark:bg-white/10 hover:bg-surface-container-high dark:hover:bg-white/20 border border-outline-variant/40 dark:border-white/15 text-on-surface dark:text-white text-xs font-bold uppercase"
+                  className="px-3 py-2.5 rounded-xl bg-surface-container-low dark:bg-white/10 hover:bg-surface-container-high dark:hover:bg-white/20 border border-outline-variant/40 dark:border-white/15 text-on-surface dark:text-white text-[10px] font-bold uppercase"
                 >
                   Add
                 </button>
@@ -1420,7 +1420,7 @@ export default function DevicePage() {
             <div className="flex items-center gap-3">
               <button
                 onClick={fetchAllDevicesData}
-                className="flex-1 px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs uppercase tracking-wider transition-all shadow-md hover:shadow-[0_0_15px_rgba(59,130,246,0.5)]"
+                className="flex-1 px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-[10px] uppercase tracking-wider transition-all shadow-md hover:shadow-[0_0_15px_rgba(59,130,246,0.5)]"
               >
                 Apply Range
               </button>
@@ -1435,7 +1435,7 @@ export default function DevicePage() {
                 title="Auto-refresh every 15 seconds"
               >
                 <RefreshCw className={`w-4 h-4 ${autoRefresh ? 'animate-spin' : ''}`} />
-                <span className="text-xs font-bold uppercase hidden sm:inline">
+                <span className="text-[10px] font-bold uppercase hidden sm:inline">
                   {autoRefresh ? `Live (${countdown}s)` : 'Auto'}
                 </span>
               </button>
@@ -1443,7 +1443,7 @@ export default function DevicePage() {
           </div>
 
           {/* Quick Date Range Buttons & Active Device Badges */}
-          <div className="pt-4 border-t border-outline-variant/30 dark:border-white/5 flex flex-wrap items-center justify-between gap-3 text-xs">
+          <div className="pt-4 border-t border-outline-variant/30 dark:border-white/5 flex flex-wrap items-center justify-between gap-3 text-[10px]">
             <div className="flex items-center gap-2">
               <span className="text-on-surface-variant/60 dark:text-white/40 font-bold uppercase tracking-wider text-[10px]">Quick Presets:</span>
               <button
@@ -1493,13 +1493,13 @@ export default function DevicePage() {
             <div className="flex items-center gap-3">
               <AlertTriangle className="w-6 h-6 text-red-500 flex-shrink-0" />
               <div>
-                <h4 className="font-bold text-sm text-red-700 dark:text-red-200">Connection Warning</h4>
-                <p className="text-xs text-red-600/80 dark:text-red-300/80">{error}</p>
+                <h4 className="font-bold text-xs text-red-700 dark:text-red-200">Connection Warning</h4>
+                <p className="text-[10px] text-red-600/80 dark:text-red-300/80">{error}</p>
               </div>
             </div>
             <button
               onClick={fetchAllDevicesData}
-              className="px-4 py-2 rounded-xl bg-red-500/20 hover:bg-red-500/30 border border-red-500/40 text-red-700 dark:text-red-200 font-bold text-xs uppercase"
+              className="px-4 py-2 rounded-xl bg-red-500/20 hover:bg-red-500/30 border border-red-500/40 text-red-700 dark:text-red-200 font-bold text-[10px] uppercase"
             >
               Try Again
             </button>
@@ -1510,8 +1510,8 @@ export default function DevicePage() {
         {sortedDevices.length === 0 ? (
           <div className="p-12 text-center text-on-surface-variant/50 dark:text-white/40 bg-surface-container-high/40 rounded-3xl border border-outline-variant/30 dark:border-white/10">
             <Cpu className="w-12 h-12 mx-auto mb-3 opacity-30 text-primary" />
-            <h3 className="text-lg font-bold text-on-surface dark:text-white">No Devices Selected</h3>
-            <p className="text-xs text-on-surface-variant/60 dark:text-white/40 mt-1">Add a Device ID above to display telemetry data.</p>
+            <h3 className="text-base font-bold text-on-surface dark:text-white">No Devices Selected</h3>
+            <p className="text-[10px] text-on-surface-variant/60 dark:text-white/40 mt-1">Add a Device ID above to display telemetry data.</p>
           </div>
         ) : (
           sortedDevices.map((id) => (

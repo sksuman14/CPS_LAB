@@ -109,33 +109,33 @@ export default function AuthCallback() {
         {status === 'processing' && (
           <>
             <div className="w-16 h-16 border-4 border-primary/20 border-t-primary rounded-full animate-spin mx-auto mb-4"></div>
-            <p className="text-white font-label tracking-widest uppercase text-sm animate-pulse">
+            <p className="text-white font-label tracking-widest uppercase text-xs animate-pulse">
               Authenticating with Google...
             </p>
-            <p className="text-white/50 text-xs mt-4">Please wait while we complete your login</p>
+            <p className="text-white/50 text-[10px] mt-4">Please wait while we complete your login</p>
           </>
         )}
         {status === 'success' && (
           <>
             <div className="w-16 h-16 flex items-center justify-center mx-auto mb-4">
-              <div className="material-symbols-outlined text-4xl text-green-500">check_circle</div>
+              <div className="material-symbols-outlined text-3xl text-green-500">check_circle</div>
             </div>
-            <p className="text-white font-label tracking-widest uppercase text-sm">
+            <p className="text-white font-label tracking-widest uppercase text-xs">
               Login Successful!
             </p>
-            <p className="text-white/50 text-xs mt-4">Redirecting to home...</p>
+            <p className="text-white/50 text-[10px] mt-4">Redirecting to home...</p>
           </>
         )}
         {status === 'error' && (
           <>
             <div className="w-16 h-16 flex items-center justify-center mx-auto mb-4">
-              <div className="material-symbols-outlined text-4xl text-red-500">error</div>
+              <div className="material-symbols-outlined text-3xl text-red-500">error</div>
             </div>
-            <p className="text-white font-label tracking-widest uppercase text-sm">
+            <p className="text-white font-label tracking-widest uppercase text-xs">
               Authentication Failed
             </p>
-            <p className="text-red-400 text-xs mt-4 break-words">{errorMsg}</p>
-            <p className="text-white/50 text-xs mt-2">Redirecting to login...</p>
+            <p className="text-red-400 text-[10px] mt-4 break-words">{errorMsg}</p>
+            <p className="text-white/50 text-[10px] mt-2">Redirecting to login...</p>
           </>
         )}
       </div>

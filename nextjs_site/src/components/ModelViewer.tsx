@@ -58,7 +58,7 @@ export default function ModelViewer({
       <Suspense fallback={
         <div className="absolute inset-0 flex items-center justify-center bg-white/5 rounded-3xl animate-pulse z-10">
           <div className="flex flex-col items-center gap-3 text-white/40">
-            <span className="material-symbols-outlined animate-spin text-3xl">sync</span>
+            <span className="material-symbols-outlined animate-spin text-2xl">sync</span>
             <span className="text-[10px] uppercase font-bold tracking-widest">Warming Engine</span>
           </div>
         </div>

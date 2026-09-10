@@ -63,7 +63,7 @@ export default function GrantAccessDialog({ isOpen, onClose, onGrant }: GrantAcc
                 >
                   <CheckCircle2 size={48} />
                 </motion.div>
-                <h2 className="text-3xl font-headline font-bold text-white">Access Granted!</h2>
+                <h2 className="text-2xl font-headline font-bold text-white">Access Granted!</h2>
                 <p className="text-on-surface-variant font-body">Notification has been sent to the user.</p>
               </div>
             ) : (
@@ -73,7 +73,7 @@ export default function GrantAccessDialog({ isOpen, onClose, onGrant }: GrantAcc
                     <div className="p-3 bg-primary/20 rounded-2xl text-primary">
                       <UserPlus size={24} />
                     </div>
-                    <h2 className="text-2xl font-headline font-bold text-white">Grant New Access</h2>
+                    <h2 className="text-xl font-headline font-bold text-white">Grant New Access</h2>
                   </div>
                   <button type="button" onClick={onClose} className="text-on-surface-variant hover:text-white transition-all">
                     <X size={24} />
@@ -82,7 +82,7 @@ export default function GrantAccessDialog({ isOpen, onClose, onGrant }: GrantAcc
                 
                 <div className="p-8 space-y-6">
                   <div className="space-y-2">
-                    <label className="text-xs font-label font-bold uppercase tracking-widest text-on-surface-variant ml-1">User Email Address</label>
+                    <label className="text-[10px] font-label font-bold uppercase tracking-widest text-on-surface-variant ml-1">User Email Address</label>
                     <div className="relative group">
                       <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary transition-colors cursor-pointer" size={18} />
                       <input 
@@ -97,7 +97,7 @@ export default function GrantAccessDialog({ isOpen, onClose, onGrant }: GrantAcc
                   </div>
                   
                   <div className="space-y-2">
-                    <label className="text-xs font-label font-bold uppercase tracking-widest text-on-surface-variant ml-1">Document Name / ID</label>
+                    <label className="text-[10px] font-label font-bold uppercase tracking-widest text-on-surface-variant ml-1">Document Name / ID</label>
                     <div className="relative group">
                       <FileText className="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary transition-colors cursor-pointer" size={18} />
                       <input 

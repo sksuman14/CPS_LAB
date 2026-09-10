@@ -105,7 +105,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
          <div className="absolute inset-0 pointer-events-none z-0">
           <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] ambient-glow-2 opacity-50"></div>
         </div>
-        <h1 className="text-4xl text-white font-headline font-bold relative z-10">Product not found</h1>
+        <h1 className="text-3xl text-white font-headline font-bold relative z-10">Product not found</h1>
         <Link href="/products" className="text-primary hover:text-white transition-colors relative z-10">
           ← Back to Products
         </Link>
@@ -201,7 +201,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
         onClick={handleEnquire}
         className="w-full bg-[#3b82f6] hover:bg-[#2563eb] text-white font-headline font-bold py-3 rounded-xl flex items-center justify-center gap-3 transition-all duration-300 shadow-lg shadow-blue-500/10 active:scale-[0.98]"
       >
-        <span className="material-symbols-outlined text-white text-xl">mail</span>
+        <span className="material-symbols-outlined text-white text-lg">mail</span>
         Enquire Now
       </button>
     );
@@ -214,9 +214,9 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
           <button 
             key="datasheet"
             onClick={() => handleView('datasheet')}
-            className="flex-grow bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-white font-body text-xs font-semibold py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 transition-all"
+            className="flex-grow bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-white font-body text-[10px] font-semibold py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 transition-all"
           >
-            <span className="material-symbols-outlined text-primary text-lg">description</span>
+            <span className="material-symbols-outlined text-primary text-base">description</span>
             Datasheet
           </button>
         );
@@ -230,9 +230,9 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
             <button 
               key={type}
               onClick={() => handleView(type)}
-              className="flex-grow bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-white font-body text-xs font-semibold py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 transition-all"
+              className="flex-grow bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-white font-body text-[10px] font-semibold py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 transition-all"
             >
-              <span className="material-symbols-outlined text-accent text-lg">menu_book</span>
+              <span className="material-symbols-outlined text-accent text-base">menu_book</span>
               {label}
             </button>
           );
@@ -256,7 +256,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
             }}
             className="w-full bg-emerald-500/5 dark:bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 dark:border-emerald-500/20 hover:border-emerald-500/50 text-emerald-600 dark:text-emerald-400 font-headline font-bold py-2.5 rounded-xl flex items-center justify-center gap-2 transition-all duration-300"
           >
-            <span className="material-symbols-outlined text-emerald-600 dark:text-emerald-400 text-lg">edit</span>
+            <span className="material-symbols-outlined text-emerald-600 dark:text-emerald-400 text-base">edit</span>
             View Experiments
           </button>
         );
@@ -277,15 +277,15 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
     if (availableCode.length > 0) {
       if (isChecking) {
         codeAccessButton = (
-          <div className="w-full bg-purple-500/5 py-2.5 rounded-xl border border-purple-500/10 opacity-50 flex items-center justify-center gap-3 text-purple-600 dark:text-purple-400 text-sm font-bold">
-            <span className="material-symbols-outlined animate-spin text-lg">refresh</span>
+          <div className="w-full bg-purple-500/5 py-2.5 rounded-xl border border-purple-500/10 opacity-50 flex items-center justify-center gap-3 text-purple-600 dark:text-purple-400 text-xs font-bold">
+            <span className="material-symbols-outlined animate-spin text-base">refresh</span>
             Checking Code Access...
           </div>
         );
       } else if (!user && !googleUser) {
         codeAccessButton = (
           <Link href="/login" className="w-full bg-purple-500/5 dark:bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 dark:border-purple-500/20 hover:border-purple-500/50 text-purple-600 dark:text-purple-400 font-headline font-bold py-2.5 rounded-xl flex items-center justify-center gap-2 transition-all duration-300">
-            <span className="material-symbols-outlined text-lg">lock</span>
+            <span className="material-symbols-outlined text-base">lock</span>
             Sign in for Code Access
           </Link>
         );
@@ -299,7 +299,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
                 disabled={downloadingKey === cl.key}
                 className={`bg-purple-500/5 dark:bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 dark:border-purple-500/20 hover:border-purple-500/50 text-purple-600 dark:text-purple-400 font-headline font-bold py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 transition-all duration-300 disabled:opacity-50 ${downloadingKey === cl.key ? 'cursor-wait' : ''}`}
               >
-                <span className={`material-symbols-outlined text-lg ${downloadingKey === cl.key ? 'animate-spin' : ''}`}>
+                <span className={`material-symbols-outlined text-base ${downloadingKey === cl.key ? 'animate-spin' : ''}`}>
                   {downloadingKey === cl.key ? 'sync' : 'code'}
                 </span>
                 {downloadingKey === cl.key ? 'Downloading...' : cl.label}
@@ -310,7 +310,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
       } else if (requestStatus?.status === 'PENDING') {
         codeAccessButton = (
           <button className="w-full bg-yellow-500/15 text-yellow-500 font-headline font-bold py-2.5 rounded-xl flex items-center justify-center gap-2 border border-yellow-500/20 cursor-default">
-            <span className="material-symbols-outlined animate-pulse text-lg">pending</span>
+            <span className="material-symbols-outlined animate-pulse text-base">pending</span>
             Access Request Pending
           </button>
         );
@@ -321,7 +321,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
             disabled={isLoading}
             className={`bg-purple-500/5 dark:bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 dark:border-purple-500/20 hover:border-purple-500/50 text-purple-600 dark:text-purple-400 font-headline font-bold py-2.5 rounded-xl flex items-center justify-center gap-2 transition-all duration-300 disabled:opacity-50`}
           >
-            <span className="material-symbols-outlined text-lg">{isLoading ? 'sync' : 'verified_user'}</span>
+            <span className="material-symbols-outlined text-base">{isLoading ? 'sync' : 'verified_user'}</span>
             {isLoading ? 'Submitting...' : 'Request Code Access'}
           </button>
         );
@@ -344,8 +344,8 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
 
   const titleText = `${sensor.title.trim()} ${sensor.highlightText.trim()}`.replace(/\s+/g, ' ');
   const titleSizeClass = titleText.length > 40 
-    ? "text-3xl md:text-4xl lg:text-4xl" 
-    : "text-5xl lg:text-6xl";
+    ? "text-2xl md:text-3xl lg:text-3xl" 
+    : "text-4xl lg:text-5xl";
 
   return (
     <div className="min-h-screen bg-surface text-on-surface pt-32 pb-24 relative overflow-hidden">
@@ -356,7 +356,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
       </div>
 
       <div className="max-w-7xl mx-auto px-8 relative z-10">
-        <Link href="/products" className="inline-flex items-center text-on-surface-variant hover:text-white transition-colors mb-12 font-label text-xs uppercase tracking-widest gap-2 group">
+        <Link href="/products" className="inline-flex items-center text-on-surface-variant hover:text-white transition-colors mb-12 font-label text-[10px] uppercase tracking-widest gap-2 group">
           <span className="material-symbols-outlined transform group-hover:-translate-x-1 transition-transform">arrow_back</span>
           Back to Products
         </Link>
@@ -396,9 +396,9 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
                     className="absolute inset-0 m-auto w-40 h-16 bg-[#0F172A]/90 backdrop-blur-md border border-slate-500/30 rounded-full flex items-center justify-center gap-3 shadow-[0_0_40px_rgba(37,99,235,0.4)] hover:scale-105 transition-all group/btn z-20"
                   >
                     <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-                      <span className="material-symbols-outlined text-slate-100 text-xl">3d_rotation</span>
+                      <span className="material-symbols-outlined text-slate-100 text-lg">3d_rotation</span>
                     </div>
-                    <span className="font-label font-bold text-slate-100 uppercase tracking-wider text-sm pr-2">View 3D</span>
+                    <span className="font-label font-bold text-slate-100 uppercase tracking-wider text-xs pr-2">View 3D</span>
                   </button>
                 )}
               </>
@@ -411,7 +411,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
             <h1 className={`font-headline ${titleSizeClass} font-black text-white mb-2.5 leading-[1.1] tracking-tighter`}>
               {sensor.title} <span className="text-primary">{sensor.highlightText}</span>
             </h1>
-            <p className="font-body text-base text-on-surface-variant/80 mb-5 font-medium">
+            <p className="font-body text-sm text-on-surface-variant/80 mb-5 font-medium">
               {sensor.subtitle}
             </p>
 
@@ -419,8 +419,8 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
             <div className="flex flex-col gap-3 mb-6 w-full">
               {sensor.bannerPoints.map((point: string, i: number) => (
                 <div key={i} className="flex items-center gap-4 bg-surface-container-low border border-white/5 py-3 px-5 rounded-xl shadow-sm hover:border-white/10 transition-all duration-300">
-                  <span className="material-symbols-outlined text-emerald-500 dark:text-emerald-400 text-xl shrink-0 font-bold">check</span>
-                  <p className="font-body text-sm text-on-surface-variant/90 font-semibold">{point}</p>
+                  <span className="material-symbols-outlined text-emerald-500 dark:text-emerald-400 text-lg shrink-0 font-bold">check</span>
+                  <p className="font-body text-xs text-on-surface-variant/90 font-semibold">{point}</p>
                 </div>
               ))}
             </div>
@@ -437,12 +437,12 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
           {/* Features */}
           <div className="bg-surface-container rounded-3xl p-8 border border-white/5 hover:border-white/20 transition-all duration-300 group flex flex-col shadow-lg">
              <div className="w-12 h-12 bg-amber-500/10 rounded-2xl flex items-center justify-center mb-6 text-amber-500 dark:text-amber-400">
-               <span className="material-symbols-outlined text-2xl">star</span>
+               <span className="material-symbols-outlined text-xl">star</span>
              </div>
-             <h3 className="font-headline text-2xl font-bold text-white mb-6 tracking-tight">Key Features</h3>
+             <h3 className="font-headline text-xl font-bold text-white mb-6 tracking-tight">Key Features</h3>
              <ul className="flex flex-col gap-4">
                {sensor.features.map((feature: string, i: number) => (
-                 <li key={i} className="flex items-start gap-3 text-sm text-on-surface-variant/80 font-body leading-relaxed">
+                 <li key={i} className="flex items-start gap-3 text-xs text-on-surface-variant/80 font-body leading-relaxed">
                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500 dark:bg-amber-400 shrink-0 mt-2"></span>
                    <span>{feature}</span>
                  </li>
@@ -453,12 +453,12 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
           {/* Applications */}
           <div className="bg-surface-container rounded-3xl p-8 border border-white/5 hover:border-white/20 transition-all duration-300 group flex flex-col shadow-lg">
              <div className="w-12 h-12 bg-indigo-500/10 rounded-2xl flex items-center justify-center mb-6 text-indigo-500 dark:text-indigo-400">
-               <span className="material-symbols-outlined text-2xl">build</span>
+               <span className="material-symbols-outlined text-xl">build</span>
              </div>
-             <h3 className="font-headline text-2xl font-bold text-white mb-6 tracking-tight">Applications</h3>
+             <h3 className="font-headline text-xl font-bold text-white mb-6 tracking-tight">Applications</h3>
              <ul className="flex flex-col gap-4">
                {sensor.applications.map((app: string, i: number) => (
-                 <li key={i} className="flex items-start gap-3 text-sm text-on-surface-variant/80 font-body leading-relaxed">
+                 <li key={i} className="flex items-start gap-3 text-xs text-on-surface-variant/80 font-body leading-relaxed">
                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 dark:bg-indigo-400 shrink-0 mt-2"></span>
                    <span>{app}</span>
                  </li>
@@ -469,12 +469,12 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
           {/* Specifications */}
           <div className="bg-surface-container rounded-3xl p-8 border border-white/5 hover:border-white/20 transition-all duration-300 group flex flex-col shadow-lg">
              <div className="w-12 h-12 bg-emerald-500/10 rounded-2xl flex items-center justify-center mb-6 text-emerald-500 dark:text-emerald-400">
-               <span className="material-symbols-outlined text-2xl">analytics</span>
+               <span className="material-symbols-outlined text-xl">analytics</span>
              </div>
-             <h3 className="font-headline text-2xl font-bold text-white mb-6 tracking-tight">Specifications</h3>
+             <h3 className="font-headline text-xl font-bold text-white mb-6 tracking-tight">Specifications</h3>
              <ul className="flex flex-col gap-4">
                {sensor.specifications.map((spec: string, i: number) => (
-                 <li key={i} className="flex items-start gap-3 text-sm text-on-surface-variant/80 font-body leading-relaxed">
+                 <li key={i} className="flex items-start gap-3 text-xs text-on-surface-variant/80 font-body leading-relaxed">
                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 shrink-0 mt-2"></span>
                    <span>{spec}</span>
                  </li>

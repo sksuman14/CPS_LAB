@@ -22,8 +22,8 @@ export default function AccessTable({ requests, onAction, isLoading }: AccessTab
   if (isLoading) {
     return (
       <div className="w-full h-64 flex flex-col items-center justify-center bg-surface-container/50 rounded-3xl animate-pulse">
-        <span className="material-symbols-outlined text-4xl text-primary mb-4 animate-[spin_3s_linear_infinite]">sync</span>
-        <p className="font-label text-white/50 text-sm tracking-widest uppercase font-bold">Fetching Access Logs</p>
+        <span className="material-symbols-outlined text-3xl text-primary mb-4 animate-[spin_3s_linear_infinite]">sync</span>
+        <p className="font-label text-white/50 text-xs tracking-widest uppercase font-bold">Fetching Access Logs</p>
       </div>
     );
   }
@@ -31,8 +31,8 @@ export default function AccessTable({ requests, onAction, isLoading }: AccessTab
   if (requests.length === 0) {
     return (
       <div className="w-full h-64 flex flex-col items-center justify-center bg-surface-container/30 border border-white/5 rounded-3xl text-center p-8">
-        <span className="material-symbols-outlined text-6xl text-white/10 mb-6 drop-shadow-lg">inventory_2</span>
-        <h3 className="font-headline text-2xl font-bold text-white mb-2">No matching requests found</h3>
+        <span className="material-symbols-outlined text-5xl text-white/10 mb-6 drop-shadow-lg">inventory_2</span>
+        <h3 className="font-headline text-xl font-bold text-white mb-2">No matching requests found</h3>
         <p className="font-body text-on-surface-variant max-w-sm">Try adjusting your filters or search query to see other entries.</p>
       </div>
     );
@@ -44,11 +44,11 @@ export default function AccessTable({ requests, onAction, isLoading }: AccessTab
         <table className="w-full border-collapse">
           <thead>
             <tr className="border-b border-white/10 text-left">
-              <th className="px-8 py-6 font-label text-xs uppercase tracking-widest text-on-surface-variant/70 font-black">User Details</th>
-              <th className="px-8 py-6 font-label text-xs uppercase tracking-widest text-on-surface-variant/70 font-black">Document</th>
-              <th className="px-8 py-6 font-label text-xs uppercase tracking-widest text-on-surface-variant/70 font-black">Status</th>
-              <th className="px-8 py-6 font-label text-xs uppercase tracking-widest text-on-surface-variant/70 font-black">Request Date</th>
-              <th className="px-8 py-6 font-label text-xs uppercase tracking-widest text-on-surface-variant/70 font-black text-right">Actions</th>
+              <th className="px-8 py-6 font-label text-[10px] uppercase tracking-widest text-on-surface-variant/70 font-black">User Details</th>
+              <th className="px-8 py-6 font-label text-[10px] uppercase tracking-widest text-on-surface-variant/70 font-black">Document</th>
+              <th className="px-8 py-6 font-label text-[10px] uppercase tracking-widest text-on-surface-variant/70 font-black">Status</th>
+              <th className="px-8 py-6 font-label text-[10px] uppercase tracking-widest text-on-surface-variant/70 font-black">Request Date</th>
+              <th className="px-8 py-6 font-label text-[10px] uppercase tracking-widest text-on-surface-variant/70 font-black text-right">Actions</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-white/[0.05]">
@@ -69,20 +69,20 @@ export default function AccessTable({ requests, onAction, isLoading }: AccessTab
                     <td className="px-8 py-6">
                       <div className="flex flex-col">
                         <span className="font-headline font-bold text-white group-hover:text-primary transition-colors uppercase tracking-tight">{request.userName}</span>
-                        <span className="font-body text-sm text-on-surface-variant">{request.userEmail}</span>
+                        <span className="font-body text-xs text-on-surface-variant">{request.userEmail}</span>
                       </div>
                     </td>
                     <td className="px-8 py-6">
                       <span className="font-body text-white font-medium bg-white/5 py-1 px-3 rounded-lg border border-white/5">{request.documentName}</span>
                     </td>
                     <td className="px-8 py-6">
-                      <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-bold uppercase tracking-wider ${config.color}`}>
+                      <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-[10px] font-bold uppercase tracking-wider ${config.color}`}>
                         {StatusIcon && <span className="w-3 h-3 flex items-center justify-center"><StatusIcon size={12} /></span>}
                         {config.label}
                       </div>
                     </td>
                     <td className="px-8 py-6">
-                      <span className="font-mono text-xs text-on-surface-variant/80">
+                      <span className="font-mono text-[10px] text-on-surface-variant/80">
                         {request.requestDate && !isNaN(new Date(request.requestDate).getTime())
                           ? new Date(request.requestDate).toLocaleString()
                           : "N/A"}

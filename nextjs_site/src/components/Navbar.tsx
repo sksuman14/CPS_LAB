@@ -152,7 +152,7 @@ export default function Navbar() {
                 className="object-contain"
               />
             </div>
-            <span className="font-headline text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-primary/80 tracking-tighter whitespace-nowrap">
+            <span className="font-headline text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-primary/80 tracking-tighter whitespace-nowrap">
               CPS Lab
             </span>
           </Link>
@@ -160,7 +160,7 @@ export default function Navbar() {
 
         {/* CENTER: Navigation Links - Desktop */}
         <div 
-          className="hidden lg:flex items-center justify-center px-4 gap-2 xl:gap-4 text-xs xl:text-sm font-medium"
+          className="hidden lg:flex items-center justify-center px-4 gap-2 xl:gap-4 text-[10px] xl:text-xs font-medium"
           onMouseLeave={() => setHoveredLink(null)}
         >
           {navLinks.map((link) => {
@@ -194,7 +194,7 @@ export default function Navbar() {
           {isAdmin && (
             <Link
               href="/admin"
-              className="text-primary hover:bg-primary/10 rounded-full px-3 xl:px-4 py-2 text-xs xl:text-sm font-bold uppercase tracking-widest border border-primary/20 whitespace-nowrap"
+              className="text-primary hover:bg-primary/10 rounded-full px-3 xl:px-4 py-2 text-[10px] xl:text-xs font-bold uppercase tracking-widest border border-primary/20 whitespace-nowrap"
             >
               Admin
             </Link>
@@ -211,7 +211,7 @@ export default function Navbar() {
               className="relative p-2 text-white/70 hover:text-white transition-colors hover:bg-white/10 rounded-full"
               aria-label="Toggle theme"
             >
-              <span className="material-symbols-outlined text-xl">
+              <span className="material-symbols-outlined text-lg">
                 {theme === 'dark' ? 'light_mode' : 'dark_mode'}
               </span>
             </button>
@@ -224,7 +224,7 @@ export default function Navbar() {
                 onClick={handleNotificationClick}
                 className="relative p-2 text-white/70 hover:text-white transition-colors hover:bg-white/10 rounded-full"
               >
-                <span className="material-symbols-outlined text-xl">notifications</span>
+                <span className="material-symbols-outlined text-lg">notifications</span>
                 {hasUnread && (
                   <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full shadow-[0_0_5px_rgba(239,68,68,0.8)] animate-pulse" />
                 )}
@@ -241,9 +241,9 @@ export default function Navbar() {
                     className="absolute right-0 mt-3 w-80 bg-surface-container-high/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.5)] overflow-hidden z-50 flex flex-col max-h-[400px]"
                   >
                     <div className="px-4 py-3 border-b border-white/10 bg-white/5 flex justify-between items-center">
-                      <h3 className="text-sm font-bold text-white tracking-widest uppercase">Notifications</h3>
+                      <h3 className="text-xs font-bold text-white tracking-widest uppercase">Notifications</h3>
                       <button onClick={() => setShowNotifications(false)} className="text-white/50 hover:text-white">
-                        <span className="material-symbols-outlined text-sm">close</span>
+                        <span className="material-symbols-outlined text-xs">close</span>
                       </button>
                     </div>
                     
@@ -252,12 +252,12 @@ export default function Navbar() {
                         notifications.map((notif, idx) => (
                           <div key={idx} className="p-4 border-b border-white/5 hover:bg-white/5 transition-colors flex gap-3 items-start">
                             <div className={`mt-0.5 rounded-full p-1 border ${notif.status === 'GRANTED' ? 'bg-green-500/10 border-green-500/30' : 'bg-red-500/10 border-red-500/30'}`}>
-                              <span className={`material-symbols-outlined text-sm ${notif.status === 'GRANTED' ? 'text-green-400' : 'text-red-400'}`}>
+                              <span className={`material-symbols-outlined text-xs ${notif.status === 'GRANTED' ? 'text-green-400' : 'text-red-400'}`}>
                                 {notif.status === 'GRANTED' ? 'check_circle' : 'cancel'}
                               </span>
                             </div>
                             <div className="flex-1">
-                              <p className="text-xs text-white/90 mb-1 leading-relaxed">
+                              <p className="text-[10px] text-white/90 mb-1 leading-relaxed">
                                 Your access request for <span className="font-bold text-primary">{getProductTitle(notif.documentName)}</span> has been <strong className={notif.status === 'GRANTED' ? 'text-green-400' : 'text-red-400'}>{notif.status === 'GRANTED' ? 'Approved' : 'Rejected'}</strong>.
                               </p>
                               <p className="text-[10px] text-white/40">
@@ -267,7 +267,7 @@ export default function Navbar() {
                           </div>
                         ))
                       ) : (
-                        <div className="p-8 text-center text-white/50 text-xs">
+                        <div className="p-8 text-center text-white/50 text-[10px]">
                           No updates on your requests yet.
                         </div>
                       )}
@@ -295,13 +295,13 @@ export default function Navbar() {
                   />
                 ) : (
                   <div className="w-8 h-8 rounded-full bg-primary/20 border border-primary/30 group-hover/profile:border-primary/60 transition-colors flex items-center justify-center">
-                    <span className="text-primary font-bold text-xs uppercase">
+                    <span className="text-primary font-bold text-[10px] uppercase">
                       {displayName?.[0] || 'U'}
                     </span>
                   </div>
                 )}
                 <div className="flex flex-col leading-tight max-w-[120px] xl:max-w-[180px]">
-                  <p className="text-white text-xs font-bold truncate">
+                  <p className="text-white text-[10px] font-bold truncate">
                     {displayName}
                   </p>
                   {displayEmail && (
@@ -318,7 +318,7 @@ export default function Navbar() {
             ) : (
               <Link
                 href="/login"
-                className="px-7 py-2 rounded-full border border-primary/50 bg-primary/10 transition-all duration-300 hover:border-primary hover:shadow-[0_0_15px_rgba(59,130,246,0.4)] text-xs font-bold uppercase tracking-widest text-primary"
+                className="px-7 py-2 rounded-full border border-primary/50 bg-primary/10 transition-all duration-300 hover:border-primary hover:shadow-[0_0_15px_rgba(59,130,246,0.4)] text-[10px] font-bold uppercase tracking-widest text-primary"
               >
                 Login
               </Link>
@@ -331,7 +331,7 @@ export default function Navbar() {
             className="lg:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
           >
-            <span className="material-symbols-outlined text-2xl">
+            <span className="material-symbols-outlined text-xl">
               {isMenuOpen ? 'close' : 'menu'}
             </span>
           </button>
@@ -354,7 +354,7 @@ export default function Navbar() {
                   <Link
                     key={link.name}
                     href={link.path}
-                    className={`block px-4 py-3 rounded-xl text-base font-bold transition-colors ${isActive
+                    className={`block px-4 py-3 rounded-xl text-sm font-bold transition-colors ${isActive
                       ? 'text-primary bg-primary/10'
                       : 'text-white/70 hover:text-white hover:bg-white/5'
                       }`}
@@ -368,7 +368,7 @@ export default function Navbar() {
               {isAdmin && (
                 <Link
                   href="/admin"
-                  className="block px-4 py-3 rounded-xl text-base font-bold text-primary uppercase tracking-widest hover:bg-primary/10 transition-colors"
+                  className="block px-4 py-3 rounded-xl text-sm font-bold text-primary uppercase tracking-widest hover:bg-primary/10 transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Admin Panel
@@ -391,17 +391,17 @@ export default function Navbar() {
                       />
                     ) : (
                       <div className="w-10 h-10 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center">
-                        <span className="text-primary font-bold text-base uppercase">
+                        <span className="text-primary font-bold text-sm uppercase">
                           {displayName?.[0] || 'U'}
                         </span>
                       </div>
                     )}
                     <div className="flex-1">
-                      <p className="text-white text-sm font-medium">
+                      <p className="text-white text-xs font-medium">
                         {displayName}
                       </p>
                       {displayEmail && (
-                        <p className="text-white/50 text-xs truncate">
+                        <p className="text-white/50 text-[10px] truncate">
                           {displayEmail}
                         </p>
                       )}

@@ -25,7 +25,7 @@ export default function StatusFilter({ currentFilter, onFilterChange }: StatusFi
         <button
           key={filter.value}
           onClick={() => onFilterChange(filter.value)}
-          className={`relative px-4 py-2.5 rounded-xl font-label text-xs uppercase tracking-widest font-bold flex-grow transition-all flex items-center justify-center`}
+          className={`relative px-4 py-2.5 rounded-xl font-label text-[10px] uppercase tracking-widest font-bold flex-grow transition-all flex items-center justify-center`}
         >
           {currentFilter === filter.value && (
             <motion.div 

@@ -96,11 +96,11 @@ export default function ProductsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] mb-6 tracking-tighter text-white drop-shadow-2xl">
+            <h1 className="font-headline text-4xl md:text-6xl lg:text-7xl font-black leading-[1.05] mb-6 tracking-tighter text-white drop-shadow-2xl">
               Cutting-Edge<br />
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent [text-shadow:0_0_1px_rgba(255,255,255,0.3)]">Products</span>
             </h1>
-            <p className="font-body text-xl md:text-2xl text-on-surface-variant font-medium max-w-2xl mx-auto mb-12">
+            <p className="font-body text-lg md:text-xl text-on-surface-variant font-medium max-w-2xl mx-auto mb-12">
               Explore our range of high-performance sensors, boards, and development kits designed for robust Cyber Physical Systems.
             </p>
 
@@ -116,7 +116,7 @@ export default function ProductsPage() {
                 onChange={(e) => {
                   setSearchQuery(e.target.value);
                 }}
-                className="w-full bg-surface-container/80 backdrop-blur-xl border border-white/10 rounded-full py-5 pl-14 pr-6 text-white text-lg placeholder-white/40 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 transition-all font-body shadow-2xl relative z-0"
+                className="w-full bg-surface-container/80 backdrop-blur-xl border border-white/10 rounded-full py-5 pl-14 pr-6 text-white text-base placeholder-white/40 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 transition-all font-body shadow-2xl relative z-0"
               />
               <div className="absolute inset-0 bg-primary/5 blur-xl rounded-full opacity-0 group-focus-within:opacity-100 transition-opacity duration-500 -z-10"></div>
             </div>
@@ -128,7 +128,7 @@ export default function ProductsPage() {
             <motion.div
               initial={{ opacity: 0, y: 20 }} 
               animate={{ opacity: 1, y: 0 }}
-              className="text-center py-20 text-on-surface-variant font-body text-xl bg-surface-container/30 rounded-3xl border border-white/5"
+              className="text-center py-20 text-on-surface-variant font-body text-lg bg-surface-container/30 rounded-3xl border border-white/5"
             >
               No products match your search. Try different keywords.
             </motion.div>
@@ -160,13 +160,13 @@ export default function ProductsPage() {
                       <div
                         className="p-8 flex flex-col flex-grow bg-gradient-to-b from-surface-container to-surface-container-lowest relative z-20"
                       >
-                        <h3 className="font-headline text-xl font-bold text-white mb-3 line-clamp-none leading-tight drop-shadow-sm">
+                        <h3 className="font-headline text-lg font-bold text-white mb-3 line-clamp-none leading-tight drop-shadow-sm">
                           {fullTitle}
                         </h3>
-                        <p className="font-body text-sm text-on-surface-variant leading-relaxed line-clamp-3 mb-8 flex-grow">
+                        <p className="font-body text-xs text-on-surface-variant leading-relaxed line-clamp-3 mb-8 flex-grow">
                           {item.subtitle}
                         </p>
-                        <div className="w-full py-3 rounded-xl bg-primary/10 text-primary font-label font-bold text-center text-sm group-hover:bg-primary transition-all group-hover:text-white uppercase tracking-wider relative overflow-hidden shadow-inner border border-primary/20">
+                        <div className="w-full py-3 rounded-xl bg-primary/10 text-primary font-label font-bold text-center text-xs group-hover:bg-primary transition-all group-hover:text-white uppercase tracking-wider relative overflow-hidden shadow-inner border border-primary/20">
                           <span className="relative z-10">Read More</span>
                         </div>
                       </div>

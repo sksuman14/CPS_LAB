@@ -29,13 +29,13 @@ export default function DebugPage() {
   return (
     <div className="min-h-screen bg-surface p-8 text-white">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8">Debug Page</h1>
+        <h1 className="text-3xl font-bold mb-8">Debug Page</h1>
 
         <div className="space-y-6">
           {/* Auth Context State */}
           <div className="bg-surface-container p-6 rounded-lg border border-white/10">
-            <h2 className="text-2xl font-bold mb-4">Auth Context State</h2>
-            <div className="space-y-2 font-mono text-sm">
+            <h2 className="text-xl font-bold mb-4">Auth Context State</h2>
+            <div className="space-y-2 font-mono text-xs">
               <div><span className="text-primary">isLoading:</span> {isLoading ? 'true' : 'false'}</div>
               <div><span className="text-primary">isAdmin:</span> {isAdmin ? 'true' : 'false'}</div>
               <div><span className="text-primary">user:</span> {user ? JSON.stringify({ username: user.username, email: user.attributes?.email }) : 'null'}</div>
@@ -45,8 +45,8 @@ export default function DebugPage() {
 
           {/* Stored Tokens */}
           <div className="bg-surface-container p-6 rounded-lg border border-white/10">
-            <h2 className="text-2xl font-bold mb-4">Stored Tokens</h2>
-            <div className="space-y-2 font-mono text-sm">
+            <h2 className="text-xl font-bold mb-4">Stored Tokens</h2>
+            <div className="space-y-2 font-mono text-xs">
               <div><span className="text-primary">ID Token (first 50 chars):</span> {tokens?.idToken || 'NOT FOUND'}</div>
               <div><span className="text-primary">Access Token (first 50 chars):</span> {tokens?.accessToken || 'NOT FOUND'}</div>
             </div>
@@ -55,8 +55,8 @@ export default function DebugPage() {
           {/* Decoded ID Token */}
           {decoded && (
             <div className="bg-surface-container p-6 rounded-lg border border-white/10">
-              <h2 className="text-2xl font-bold mb-4">Decoded ID Token Payload</h2>
-              <pre className="bg-black/20 p-4 rounded text-sm overflow-auto max-h-96">
+              <h2 className="text-xl font-bold mb-4">Decoded ID Token Payload</h2>
+              <pre className="bg-black/20 p-4 rounded text-xs overflow-auto max-h-96">
                 {JSON.stringify(decoded, null, 2)}
               </pre>
             </div>
@@ -64,16 +64,16 @@ export default function DebugPage() {
 
           {/* Cookies */}
           <div className="bg-surface-container p-6 rounded-lg border border-white/10">
-            <h2 className="text-2xl font-bold mb-4">Cookies</h2>
-            <pre className="bg-black/20 p-4 rounded text-sm overflow-auto max-h-96">
+            <h2 className="text-xl font-bold mb-4">Cookies</h2>
+            <pre className="bg-black/20 p-4 rounded text-xs overflow-auto max-h-96">
               {cookies || 'NO COOKIES'}
             </pre>
           </div>
 
           {/* LocalStorage */}
           <div className="bg-surface-container p-6 rounded-lg border border-white/10">
-            <h2 className="text-2xl font-bold mb-4">LocalStorage Keys</h2>
-            <div className="space-y-2 font-mono text-sm">
+            <h2 className="text-xl font-bold mb-4">LocalStorage Keys</h2>
+            <div className="space-y-2 font-mono text-xs">
               {typeof window !== 'undefined' && Object.keys(localStorage).map(key => (
                 <div key={key}><span className="text-primary">{key}:</span> {localStorage.getItem(key)?.substring(0, 50)}...</div>
               ))}
@@ -82,7 +82,7 @@ export default function DebugPage() {
 
           {/* Instructions */}
           <div className="bg-surface-container p-6 rounded-lg border border-white/10">
-            <h2 className="text-2xl font-bold mb-4">Debugging Steps</h2>
+            <h2 className="text-xl font-bold mb-4">Debugging Steps</h2>
             <ol className="list-decimal list-inside space-y-2">
               <li>Open your browser's Developer Tools (F12)</li>
               <li>Go to Console tab and look for logs starting with [OAuth], [AuthContext], or [Navbar]</li>

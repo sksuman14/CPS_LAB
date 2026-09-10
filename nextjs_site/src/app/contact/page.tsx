@@ -52,19 +52,19 @@ export default function ContactPage() {
         <motion.div variants={containerVariants} initial="hidden" animate="show" className="mb-12">
           <motion.div variants={itemVariants} className="flex items-center gap-4 mb-4">
              <div className="w-8 h-[2px] bg-primary"></div>
-             <span className="text-primary font-mono text-sm uppercase tracking-widest font-bold">CONTACT</span>
+             <span className="text-primary font-mono text-xs uppercase tracking-widest font-bold">CONTACT</span>
           </motion.div>
-          <motion.h1 variants={itemVariants} className="font-headline text-5xl md:text-6xl font-black text-white mb-8 tracking-tighter">
+          <motion.h1 variants={itemVariants} className="font-headline text-4xl md:text-5xl font-black text-white mb-8 tracking-tighter">
             Get in Touch
           </motion.h1>
           <motion.div variants={itemVariants} className="bg-surface-container border border-white/5 p-6 md:p-8 rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div>
-              <strong className="block mb-1 font-headline not-italic text-white text-lg">Innovation Hub for Automation Technology (AWaDH)</strong>
-              <p className="font-body text-on-surface-variant text-sm italic">We're here to collaborate, innovate, and transform ideas into reality.</p>
+              <strong className="block mb-1 font-headline not-italic text-white text-base">Innovation Hub for Automation Technology (AWaDH)</strong>
+              <p className="font-body text-on-surface-variant text-xs italic">We're here to collaborate, innovate, and transform ideas into reality.</p>
             </div>
             <div className="px-4 py-2 rounded-full border border-primary/30 bg-primary/10 flex items-center gap-2 whitespace-nowrap">
                <div className="w-1.5 h-1.5 bg-primary rounded-full shadow-[0_0_8px_#b4c5ff]"></div>
-               <span className="text-primary text-xs font-mono">Response within 24h</span>
+               <span className="text-primary text-[10px] font-mono">Response within 24h</span>
             </div>
           </motion.div>
         </motion.div>
@@ -103,16 +103,16 @@ export default function ContactPage() {
           <div className="w-full flex flex-col gap-6">
              {/* Address Card */}
              <motion.div variants={itemVariants} className="bg-surface-container rounded-[24px] p-8 md:p-10 border border-white/5 shadow-2xl relative overflow-hidden group">
-                <h2 className="font-headline text-2xl font-bold text-white mb-8 relative z-10">Visit Us</h2>
+                <h2 className="font-headline text-xl font-bold text-white mb-8 relative z-10">Visit Us</h2>
                 
                 <div className="flex flex-col gap-6 relative z-10">
                   <div className="flex gap-4 items-start group/item">
                     <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center shrink-0 border border-white/5 group-hover/item:bg-primary/20 group-hover/item:border-primary/30 transition-all">
-                      <span className="material-symbols-outlined text-primary text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>location_on</span>
+                      <span className="material-symbols-outlined text-primary text-base" style={{ fontVariationSettings: "'FILL' 1" }}>location_on</span>
                     </div>
                     <div>
                       <h4 className="font-mono text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Address</h4>
-                      <p className="text-white font-body text-sm leading-relaxed">
+                      <p className="text-white font-body text-xs leading-relaxed">
                         214 / M. Visvesvaraya Block<br />
                         IIT Ropar, Rupnagar<br />
                         Punjab – 140001, India
@@ -122,31 +122,31 @@ export default function ContactPage() {
 
                   <div className="flex gap-4 items-start group/item">
                     <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center shrink-0 border border-white/5 group-hover/item:bg-primary/20 group-hover/item:border-primary/30 transition-all">
-                      <span className="material-symbols-outlined text-primary text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>phone</span>
+                      <span className="material-symbols-outlined text-primary text-base" style={{ fontVariationSettings: "'FILL' 1" }}>phone</span>
                     </div>
                     <div>
                       <h4 className="font-mono text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Phone</h4>
-                      <p className="text-white font-body text-sm">+91 70870 32853</p>
+                      <p className="text-white font-body text-xs">+91 70870 32853</p>
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
                     <a href="mailto:awadhropar@gmail.com" className="flex gap-3 items-center group/item cursor-pointer bg-white/5 p-3 rounded-xl border border-white/5 hover:bg-white/10 transition-all">
                       <div className="w-2.5 h-2.5 rounded-sm bg-white/30 group-hover/item:bg-primary transition-colors"></div>
-                      <span className="text-on-surface-variant text-xs font-medium group-hover/item:text-white truncate">awadhropar@gmail.com</span>
+                      <span className="text-on-surface-variant text-[10px] font-medium group-hover/item:text-white truncate">awadhropar@gmail.com</span>
                     </a>
                     <a href="mailto:project.manager@ihub-awadh.in" className="flex gap-3 items-center group/item cursor-pointer bg-white/5 p-3 rounded-xl border border-white/5 hover:bg-white/10 transition-all">
                       <div className="w-2.5 h-2.5 rounded-sm bg-white/30 group-hover/item:bg-primary transition-colors"></div>
-                      <span className="text-on-surface-variant text-xs font-medium group-hover/item:text-white truncate">project.manager@ihub-awadh...</span>
+                      <span className="text-on-surface-variant text-[10px] font-medium group-hover/item:text-white truncate">project.manager@ihub-awadh...</span>
                     </a>
                   </div>
 
                   <div className="flex gap-3 mt-4">
                     <a href="https://www.iitrpr.ac.in/awadh" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 hover:bg-primary/20 hover:border-primary/50 transition-all">
-                      <span className="material-symbols-outlined text-sm text-white group-hover:text-primary">language</span>
+                      <span className="material-symbols-outlined text-xs text-white group-hover:text-primary">language</span>
                     </a>
                     <a href="https://www.linkedin.com/company/ihub-awadh/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 hover:bg-primary/20 hover:border-primary/50 transition-all">
-                      <span className="text-white text-xs font-bold">in</span>
+                      <span className="text-white text-[10px] font-bold">in</span>
                     </a>
                   </div>
                 </div>
@@ -154,8 +154,8 @@ export default function ContactPage() {
 
              {/* Contact Form */}
              <motion.div variants={itemVariants} className="bg-surface-container rounded-[24px] p-8 md:p-10 border border-white/5 shadow-2xl relative">
-               <h2 className="font-headline text-2xl font-bold text-white mb-2">Send us a message</h2>
-               <p className="text-sm text-on-surface-variant mb-6">Fill in the form and our team will get back to you within a day.</p>
+               <h2 className="font-headline text-xl font-bold text-white mb-2">Send us a message</h2>
+               <p className="text-xs text-on-surface-variant mb-6">Fill in the form and our team will get back to you within a day.</p>
                <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                  <div>
                    <label className="block font-mono text-[10px] text-on-surface-variant uppercase tracking-widest mb-2">Your Name *</label>
@@ -164,7 +164,7 @@ export default function ContactPage() {
                      required
                      value={name}
                      onChange={(e) => setName(e.target.value)}
-                     className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-colors"
+                     className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-xs focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-colors"
                      placeholder="John Doe"
                    />
                  </div>
@@ -175,7 +175,7 @@ export default function ContactPage() {
                      required
                      value={email}
                      onChange={(e) => setEmail(e.target.value)}
-                     className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-colors"
+                     className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-xs focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-colors"
                      placeholder="john@example.com"
                    />
                  </div>
@@ -186,17 +186,17 @@ export default function ContactPage() {
                      rows={3}
                      value={message}
                      onChange={(e) => setMessage(e.target.value)}
-                     className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-colors resize-none"
+                     className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-xs focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-colors resize-none"
                      placeholder="How can we help you?"
                    ></textarea>
                  </div>
                  <button 
                    type="submit"
                    disabled={isSubmitting}
-                   className="w-full bg-primary text-on-primary font-headline font-bold text-base py-3 rounded-xl mt-2 hover:bg-primary/90 transition-all shadow-[0_0_15px_rgba(180,197,255,0.4)] active:scale-[0.98] disabled:opacity-70 flex items-center justify-center gap-2 group"
+                   className="w-full bg-primary text-on-primary font-headline font-bold text-sm py-3 rounded-xl mt-2 hover:bg-primary/90 transition-all shadow-[0_0_15px_rgba(180,197,255,0.4)] active:scale-[0.98] disabled:opacity-70 flex items-center justify-center gap-2 group"
                  >
                    {isSubmitting ? 'Sending...' : 'Send Message'}
-                   {!isSubmitting && <span className="material-symbols-outlined text-sm transform group-hover:translate-x-1 transition-transform" style={{ fontVariationSettings: "'FILL' 1" }}>send</span>}
+                   {!isSubmitting && <span className="material-symbols-outlined text-xs transform group-hover:translate-x-1 transition-transform" style={{ fontVariationSettings: "'FILL' 1" }}>send</span>}
                  </button>
                </form>
              </motion.div>

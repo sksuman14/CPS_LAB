@@ -302,13 +302,13 @@ export default function TrainingAndWorkshopPage() {
               transition={{ duration: 0.8 }}
               className="text-center mb-16"
             >
-              <h1 className="font-headline text-5xl md:text-7xl font-bold leading-tight mb-6 tracking-tighter text-white drop-shadow-lg">
+              <h1 className="font-headline text-4xl md:text-6xl font-bold leading-tight mb-6 tracking-tighter text-white drop-shadow-lg">
                 Our{" "}
                 <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent [text-shadow:0_0_1px_rgba(255,255,255,0.3)]">
                   Impact
                 </span>
               </h1>
-              <p className="font-body text-xl text-on-surface-variant font-medium max-w-2xl mx-auto">
+              <p className="font-body text-lg text-on-surface-variant font-medium max-w-2xl mx-auto">
                 Empowering minds through innovative training programs and
                 state-of-the-art infrastructure.
               </p>
@@ -333,14 +333,14 @@ export default function TrainingAndWorkshopPage() {
                       className="flex flex-col items-center justify-center group relative z-10"
                     >
                       <div className="w-20 h-20 rounded-3xl bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500 shadow-inner border border-primary/30 group-hover:border-primary/60 group-hover:shadow-[0_0_20px_rgba(37,99,235,0.4)]">
-                        <span className="material-symbols-outlined text-primary text-4xl drop-shadow-[0_0_10px_rgba(37,99,235,0.8)]">
+                        <span className="material-symbols-outlined text-primary text-3xl drop-shadow-[0_0_10px_rgba(37,99,235,0.8)]">
                           {stat.icon}
                         </span>
                       </div>
-                      <h3 className="font-headline text-4xl md:text-5xl font-black bg-gradient-to-b from-primary to-blue-800 dark:from-white dark:via-blue-100 dark:to-primary bg-clip-text text-transparent mb-2 drop-shadow-lg flex items-center justify-center gap-1">
+                      <h3 className="font-headline text-3xl md:text-4xl font-black bg-gradient-to-b from-primary to-blue-800 dark:from-white dark:via-blue-100 dark:to-primary bg-clip-text text-transparent mb-2 drop-shadow-lg flex items-center justify-center gap-1">
                         <AnimatedCounter to={stat.count} suffix={stat.suffix} />
                       </h3>
-                      <p className="font-label text-on-surface-variant uppercase tracking-widest text-sm font-bold group-hover:text-white transition-colors">
+                      <p className="font-label text-on-surface-variant uppercase tracking-widest text-xs font-bold group-hover:text-white transition-colors">
                         {stat.label}
                       </p>
                     </motion.div>
@@ -361,7 +361,7 @@ export default function TrainingAndWorkshopPage() {
               className="flex items-center gap-6 mb-4"
             >
               <div className="w-2 h-12 bg-gradient-to-b from-primary to-accent rounded-full shadow-[0_0_15px_rgba(37,99,235,0.5)]"></div>
-              <h2 className="font-headline text-4xl md:text-5xl font-bold text-white drop-shadow-lg">
+              <h2 className="font-headline text-3xl md:text-4xl font-bold text-white drop-shadow-lg">
                 Workshops & Trainings
               </h2>
             </motion.div>
@@ -369,7 +369,7 @@ export default function TrainingAndWorkshopPage() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="font-body text-xl text-on-surface-variant font-medium pl-8"
+              className="font-body text-lg text-on-surface-variant font-medium pl-8"
             >
               Swipe to explore our comprehensive training programs and
               expert-led sessions globally.
@@ -401,20 +401,20 @@ export default function TrainingAndWorkshopPage() {
                       <span className="material-symbols-outlined text-[16px] text-primary">
                         location_on
                       </span>
-                      <span className="text-xs font-bold leading-none tracking-wide">
+                      <span className="text-[10px] font-bold leading-none tracking-wide">
                         {workshop.location}
                       </span>
                     </div>
                   </div>
 
                   <div className="p-8 flex flex-col flex-grow bg-gradient-to-b from-surface-container to-surface-container-lowest relative z-10">
-                    <h3 className="font-headline text-xl font-bold text-white mb-4 leading-snug drop-shadow-sm group-hover:text-primary transition-colors">
+                    <h3 className="font-headline text-lg font-bold text-white mb-4 leading-snug drop-shadow-sm group-hover:text-primary transition-colors">
                       {workshop.title}
                     </h3>
 
                     {/* Removed participants section */}
 
-                    <p className="font-body text-sm text-on-surface-variant leading-relaxed mt-auto relative z-10 group-hover:text-white/90 transition-colors">
+                    <p className="font-body text-xs text-on-surface-variant leading-relaxed mt-auto relative z-10 group-hover:text-white/90 transition-colors">
                       {workshop.description}
                     </p>
                   </div>

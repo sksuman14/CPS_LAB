@@ -64,7 +64,7 @@ export default function LoginPage() {
     return (
       <div className="min-h-screen bg-surface flex flex-col items-center justify-center p-6">
         <div className="w-16 h-16 border-4 border-primary/20 border-t-primary rounded-full animate-spin mb-4"></div>
-        <p className="text-white font-label tracking-widest uppercase text-sm animate-pulse">Initializing Session</p>
+        <p className="text-white font-label tracking-widest uppercase text-xs animate-pulse">Initializing Session</p>
       </div>
     );
   }
@@ -200,17 +200,17 @@ export default function LoginPage() {
           <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-black/20 rounded-full blur-[80px]"></div>
 
           <div className="relative z-10">
-            <h3 className="text-white/90 font-label font-bold tracking-widest uppercase mb-4 text-sm md:text-base">
+            <h3 className="text-white/90 font-label font-bold tracking-widest uppercase mb-4 text-xs md:text-sm">
               Welcome To
             </h3>
-            <h1 className="text-white font-headline font-black text-4xl md:text-5xl lg:text-6xl leading-tight mb-2 tracking-tighter shadow-sm">
+            <h1 className="text-white font-headline font-black text-3xl md:text-4xl lg:text-5xl leading-tight mb-2 tracking-tighter shadow-sm">
               CYBER PHYSICAL SYSTEM LAB
             </h1>
-            <h2 className="text-white font-headline font-bold text-2xl md:text-3xl mb-8 tracking-wide">
+            <h2 className="text-white font-headline font-bold text-xl md:text-2xl mb-8 tracking-wide">
               IIT ROPAR
             </h2>
             <div className="w-16 h-1 bg-white/30 rounded-full mb-8"></div>
-            <p className="font-body text-white/90 text-sm md:text-base leading-relaxed">
+            <p className="font-body text-white/90 text-xs md:text-sm leading-relaxed">
               Advancing the future through IoT, AI, smart infrastructure, and cyber-physical technologies.
               <br /><br />
               Bridging cutting-edge research with real-world innovation.
@@ -235,7 +235,7 @@ export default function LoginPage() {
               ══════════════════════════════════════ */}
               {authStep === 'LOGIN_SIGNUP' && (
                 <>
-                  <h2 className="font-headline text-4xl font-bold text-white mb-2 tracking-tight">
+                  <h2 className="font-headline text-3xl font-bold text-white mb-2 tracking-tight">
                     {isLogin ? "Sign In" : "Create Account"}
                   </h2>
                   <p className="font-body text-on-surface-variant mb-6">
@@ -245,8 +245,8 @@ export default function LoginPage() {
 
                   {error && (
                     <div className="mb-6 p-4 bg-error/10 border border-error/20 rounded-2xl flex items-start gap-3 transition-all">
-                      <span className="material-symbols-outlined text-error text-xl">error</span>
-                      <p className="text-error text-sm font-medium">{error}</p>
+                      <span className="material-symbols-outlined text-error text-lg">error</span>
+                      <p className="text-error text-xs font-medium">{error}</p>
                     </div>
                   )}
 
@@ -320,7 +320,7 @@ export default function LoginPage() {
                         <button 
                           type="button" 
                           onClick={() => setAuthStep('FORGOT_PASSWORD')}
-                          className="font-label text-sm text-primary hover:text-primary-light transition-colors font-bold uppercase tracking-wider"
+                          className="font-label text-xs text-primary hover:text-primary-light transition-colors font-bold uppercase tracking-wider"
                         >
                           Forgot Password?
                         </button>
@@ -330,7 +330,7 @@ export default function LoginPage() {
                     <button 
                       type="submit"
                       disabled={isLoading}
-                      className="w-full bg-primary hover:bg-primary-light text-white font-headline font-bold text-lg py-4 rounded-2xl mt-4 transition-all shadow-lg shadow-primary/20 active:scale-[0.98] disabled:opacity-70 disabled:hover:bg-primary flex items-center justify-center gap-3"
+                      className="w-full bg-primary hover:bg-primary-light text-white font-headline font-bold text-base py-4 rounded-2xl mt-4 transition-all shadow-lg shadow-primary/20 active:scale-[0.98] disabled:opacity-70 disabled:hover:bg-primary flex items-center justify-center gap-3"
                     >
                       <AnimatePresence mode="wait">
                         {isLoading ? (
@@ -349,7 +349,7 @@ export default function LoginPage() {
                   <div className="mt-8 flex flex-col items-center gap-4">
                     <button 
                       onClick={toggleMode}
-                      className="font-body text-on-surface-variant hover:text-white transition-colors text-sm"
+                      className="font-body text-on-surface-variant hover:text-white transition-colors text-xs"
                     >
                       {isLogin ? "Don't have an account? " : "Already have an account? "}
                       <span className="text-primary font-bold">{isLogin ? "Sign up" : "Sign in"}</span>
@@ -360,7 +360,7 @@ export default function LoginPage() {
                     type="button"
                     onClick={handleGoogleLogin}
                     style={{ backgroundColor: '#ffffff', color: '#1f2937' }}
-                    className="w-full flex items-center justify-center gap-3 font-semibold text-base py-4 rounded-2xl transition-all shadow-lg active:scale-[0.98] mb-4"
+                    className="w-full flex items-center justify-center gap-3 font-semibold text-sm py-4 rounded-2xl transition-all shadow-lg active:scale-[0.98] mb-4"
                   >
                     <GoogleIcon />
                     <span>Continue with Google</span>
@@ -368,7 +368,7 @@ export default function LoginPage() {
                     
                     <div className="w-full flex items-center gap-4 my-2 opacity-50">
                       <div className="h-px bg-white/20 flex-grow"></div>
-                      <span className="font-label text-xs uppercase text-white tracking-widest">OR</span>
+                      <span className="font-label text-[10px] uppercase text-white tracking-widest">OR</span>
                       <div className="h-px bg-white/20 flex-grow"></div>
                     </div>
 
@@ -387,15 +387,15 @@ export default function LoginPage() {
               ══════════════════════════════════════ */}
               {authStep === 'CONFIRM_SIGNUP' && (
                 <>
-                  <h2 className="font-headline text-4xl font-bold text-white mb-2 tracking-tight">Verify Account</h2>
+                  <h2 className="font-headline text-3xl font-bold text-white mb-2 tracking-tight">Verify Account</h2>
                   <p className="font-body text-on-surface-variant mb-6">
                     Enter the code we sent to your email.
                   </p>
 
                   {error && (
                     <div className="mb-6 p-4 bg-error/10 border border-error/20 rounded-2xl flex items-start gap-3 transition-all">
-                      <span className="material-symbols-outlined text-error text-xl">error</span>
-                      <p className="text-error text-sm font-medium">{error}</p>
+                      <span className="material-symbols-outlined text-error text-lg">error</span>
+                      <p className="text-error text-xs font-medium">{error}</p>
                     </div>
                   )}
 
@@ -414,23 +414,23 @@ export default function LoginPage() {
                     <button 
                       type="submit" 
                       disabled={isLoading}
-                      className="w-full bg-primary hover:bg-primary-light text-white font-headline font-bold text-lg py-4 rounded-2xl"
+                      className="w-full bg-primary hover:bg-primary-light text-white font-headline font-bold text-base py-4 rounded-2xl"
                     >
                       {isLoading ? 'Verifying...' : 'Confirm Registration'}
                     </button>
                     <button 
                       type="button"
                       onClick={() => handleResendSignUpCode({ username })}
-                      className="text-on-surface-variant text-sm hover:text-white transition-colors"
+                      className="text-on-surface-variant text-xs hover:text-white transition-colors"
                     >
                       Didn&apos;t receive code? <span className="text-primary font-bold">Resend</span>
                     </button>
                     <button 
                       type="button" 
                       onClick={() => setAuthStep('LOGIN_SIGNUP')}
-                      className="text-white/60 text-sm mt-2 flex items-center justify-center gap-2 hover:text-white transition-colors"
+                      className="text-white/60 text-xs mt-2 flex items-center justify-center gap-2 hover:text-white transition-colors"
                     >
-                      <span className="material-symbols-outlined text-base">arrow_back</span> Back to Sign In
+                      <span className="material-symbols-outlined text-sm">arrow_back</span> Back to Sign In
                     </button>
                   </form>
                 </>
@@ -441,12 +441,12 @@ export default function LoginPage() {
               ══════════════════════════════════════ */}
               {authStep === 'FORGOT_PASSWORD' && (
                 <>
-                  <h2 className="font-headline text-4xl font-bold text-white mb-2 tracking-tight">Reset Password</h2>
+                  <h2 className="font-headline text-3xl font-bold text-white mb-2 tracking-tight">Reset Password</h2>
                   <p className="font-body text-on-surface-variant mb-6">
                     Enter your username to receive a reset code.
                   </p>
 
-                  {error && <div className="mb-4 text-error text-sm">{error}</div>}
+                  {error && <div className="mb-4 text-error text-xs">{error}</div>}
 
                   <form onSubmit={handleForgotPasswordRequest} className="flex flex-col gap-5">
                     <div className="relative group">
@@ -463,16 +463,16 @@ export default function LoginPage() {
                     <button 
                       type="submit" 
                       disabled={isLoading}
-                      className="w-full bg-primary hover:bg-primary-light text-white font-headline font-bold text-lg py-4 rounded-2xl"
+                      className="w-full bg-primary hover:bg-primary-light text-white font-headline font-bold text-base py-4 rounded-2xl"
                     >
                       {isLoading ? 'Sending...' : 'Send Reset Code'}
                     </button>
                     <button 
                       type="button" 
                       onClick={() => setAuthStep('LOGIN_SIGNUP')}
-                      className="text-white/60 text-sm mt-2 flex items-center justify-center gap-2 hover:text-white transition-colors"
+                      className="text-white/60 text-xs mt-2 flex items-center justify-center gap-2 hover:text-white transition-colors"
                     >
-                      <span className="material-symbols-outlined text-base">arrow_back</span> Back to Sign In
+                      <span className="material-symbols-outlined text-sm">arrow_back</span> Back to Sign In
                     </button>
                   </form>
                 </>
@@ -483,7 +483,7 @@ export default function LoginPage() {
               ══════════════════════════════════════ */}
               {authStep === 'CONFIRM_FORGOT_PASSWORD' && (
                 <>
-                  <h2 className="font-headline text-4xl font-bold text-white mb-2 tracking-tight">New Password</h2>
+                  <h2 className="font-headline text-3xl font-bold text-white mb-2 tracking-tight">New Password</h2>
                   <p className="font-body text-on-surface-variant mb-6">Enter reset code and your new password.</p>
 
                   <form onSubmit={handlePasswordReset} className="flex flex-col gap-5">
@@ -519,7 +519,7 @@ export default function LoginPage() {
                     <button
                       type="submit"
                       disabled={isLoading}
-                      className="w-full bg-primary hover:bg-primary-light text-white font-headline font-bold text-lg py-4 rounded-2xl"
+                      className="w-full bg-primary hover:bg-primary-light text-white font-headline font-bold text-base py-4 rounded-2xl"
                     >
                       {isLoading ? 'Updating...' : 'Update Password'}
                     </button>

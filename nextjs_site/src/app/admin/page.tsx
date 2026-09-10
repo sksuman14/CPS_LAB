@@ -130,11 +130,11 @@ export default function AdminDashboard() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
             >
-              <Link href="/" className="inline-flex items-center text-on-surface-variant hover:text-white transition-colors mb-6 font-label text-xs uppercase tracking-widest gap-2 group">
+              <Link href="/" className="inline-flex items-center text-on-surface-variant hover:text-white transition-colors mb-6 font-label text-[10px] uppercase tracking-widest gap-2 group">
                 <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                 Back to Dashboard
               </Link>
-              <h1 className="font-headline text-5xl font-black text-white leading-tight mb-2 tracking-tighter shadow-sm uppercase">
+              <h1 className="font-headline text-4xl font-black text-white leading-tight mb-2 tracking-tighter shadow-sm uppercase">
                 Admin <span className="text-primary">Control</span>
               </h1>
               <p className="font-body text-on-surface-variant flex items-center gap-2">
@@ -150,14 +150,14 @@ export default function AdminDashboard() {
                 className="p-4 bg-white/5 border border-white/10 rounded-2xl text-on-surface-variant hover:text-white hover:bg-white/10 transition-all flex items-center gap-2 disabled:opacity-50 group active:scale-95"
               >
                 <RefreshCw className={`w-5 h-5 ${isLoading ? 'animate-spin text-primary' : 'group-hover:rotate-180 transition-transform duration-500'}`} />
-                <span className="font-headline font-bold text-sm hidden sm:inline uppercase tracking-widest">Manual Refresh</span>
+                <span className="font-headline font-bold text-xs hidden sm:inline uppercase tracking-widest">Manual Refresh</span>
               </button>
               <button 
                 onClick={() => setIsGrantDialogOpen(true)}
                 className="p-4 px-6 bg-primary hover:bg-primary-light text-white rounded-2xl shadow-lg shadow-primary/20 transition-all flex items-center gap-3 hover:scale-[1.02] active:scale-[0.98] group"
               >
                 <Plus className="w-5 h-5 group-hover:rotate-90 transition-transform" />
-                <span className="font-headline font-black text-sm uppercase tracking-widest">Grant New Access</span>
+                <span className="font-headline font-black text-xs uppercase tracking-widest">Grant New Access</span>
               </button>
             </div>
           </div>
@@ -188,10 +188,10 @@ export default function AdminDashboard() {
                 <div className="bg-red-500/10 border border-red-500/30 p-6 rounded-2xl flex items-center gap-4 text-red-500 relative overflow-hidden group">
                   <ShieldAlert className="w-6 h-6 flex-shrink-0 animate-pulse" />
                   <div className="flex-grow">
-                    <h4 className="font-headline font-black text-sm uppercase mb-1">Synchronisation Error</h4>
-                    <p className="font-body text-sm opacity-90">{error}</p>
+                    <h4 className="font-headline font-black text-xs uppercase mb-1">Synchronisation Error</h4>
+                    <p className="font-body text-xs opacity-90">{error}</p>
                   </div>
-                  <button onClick={loadData} className="px-5 py-2 rounded-xl bg-red-500/20 hover:bg-red-500/30 transition-all font-headline font-bold text-xs uppercase">Retry</button>
+                  <button onClick={loadData} className="px-5 py-2 rounded-xl bg-red-500/20 hover:bg-red-500/30 transition-all font-headline font-bold text-[10px] uppercase">Retry</button>
                   <div className="absolute top-0 right-0 w-32 h-32 bg-red-500/5 blur-3xl rounded-full"></div>
                 </div>
               </motion.div>
@@ -207,7 +207,7 @@ export default function AdminDashboard() {
             />
             
             <div className="mt-8 flex items-center justify-center">
-              <p className="text-on-surface-variant font-body text-xs opacity-50 uppercase tracking-widest text-center">
+              <p className="text-on-surface-variant font-body text-[10px] opacity-50 uppercase tracking-widest text-center">
                 Showing {filteredRequests.length} of {requests.length} total interactions recorded
               </p>
             </div>

@@ -21,10 +21,10 @@ export default function StatsCard({ label, value, icon: Icon, color }: StatsCard
         <Icon className={`w-8 h-8 ${color.replace('bg-', 'text-')}`} />
       </div>
       <div>
-        <h4 className="font-label text-on-surface-variant text-xs uppercase tracking-widest font-bold mb-1 opacity-70">
+        <h4 className="font-label text-on-surface-variant text-[10px] uppercase tracking-widest font-bold mb-1 opacity-70">
           {label}
         </h4>
-        <p className="font-headline text-3xl font-black text-white drop-shadow-sm">
+        <p className="font-headline text-2xl font-black text-white drop-shadow-sm">
           {value}
         </p>
       </div>
