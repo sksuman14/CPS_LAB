@@ -93,18 +93,18 @@ function HomeContent() {
         {/* Hero Section */}
         <section className="relative w-full pt-16 pb-16 mb-10 overflow-hidden flex flex-col items-center justify-center text-center">
           <motion.div variants={staggerContainer} initial="hidden" animate="show" className="max-w-4xl mx-auto px-8 relative z-20">
-            <motion.h1 variants={fadeIn} className="font-headline text-6xl md:text-7xl lg:text-8xl font-black leading-[1.05] mb-6 tracking-tighter text-white drop-shadow-2xl">
+            <motion.h1 variants={fadeIn} className="font-headline text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] mb-6 tracking-tighter text-white drop-shadow-2xl">
               Cyber Physical<br />System <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent [text-shadow:0_0_1px_rgba(255,255,255,0.3)]">Laboratory</span>
             </motion.h1>
-            <motion.p variants={fadeIn} className="font-body text-xl text-on-surface-variant font-medium mb-12 max-w-2xl mx-auto leading-relaxed">
+            <motion.p variants={fadeIn} className="font-body text-lg text-on-surface-variant font-medium mb-10 max-w-2xl mx-auto leading-relaxed">
               Empowering schools and colleges by advancing research and innovation in Cyber-Physical Systems, IoT, AI, and intelligent automation through cutting-edge industry collaboration.
             </motion.p>
             <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4 justify-center items-center flex-wrap">
-              <Link href="https://docs.google.com/forms/d/e/1FAIpQLSeDJHnUKcgVFHHAooXa47MoyhKmg_R_xmkoQJWhQ_XND_FA1g/viewform" target="_blank" className="bg-primary/90 backdrop-blur-md border border-white/20 text-white px-6 py-3 rounded-full font-headline font-bold text-base hover:bg-primary transition-all flex items-center justify-center gap-2 group shadow-[0_0_30px_rgba(37,99,235,0.4)]">
+              <Link href="https://docs.google.com/forms/d/e/1FAIpQLSeDJHnUKcgVFHHAooXa47MoyhKmg_R_xmkoQJWhQ_XND_FA1g/viewform" target="_blank" className="bg-primary/90 backdrop-blur-md border border-white/20 text-white px-5 py-2.5 rounded-full font-headline font-bold text-sm hover:bg-primary transition-all flex items-center justify-center gap-2 group shadow-[0_0_30px_rgba(37,99,235,0.4)]">
                 Expression of Interest (College)
                 <span className="material-symbols-outlined uppercase group-hover:translate-x-1 transition-transform text-sm" style={{ fontVariationSettings: "'FILL' 0" }}>arrow_forward</span>
               </Link>
-              <Link href="https://docs.google.com/forms/d/17OmpfmPfYMbMlVwMZ0Upej00dqJfq8AvhVCMDrESueM/viewform" target="_blank" className="bg-primary/90 backdrop-blur-md border border-white/20 text-white px-6 py-3 rounded-full font-headline font-bold text-base hover:bg-primary transition-all flex items-center justify-center gap-2 group shadow-[0_0_30px_rgba(37,99,235,0.4)]">
+              <Link href="https://docs.google.com/forms/d/17OmpfmPfYMbMlVwMZ0Upej00dqJfq8AvhVCMDrESueM/viewform" target="_blank" className="bg-primary/90 backdrop-blur-md border border-white/20 text-white px-5 py-2.5 rounded-full font-headline font-bold text-sm hover:bg-primary transition-all flex items-center justify-center gap-2 group shadow-[0_0_30px_rgba(37,99,235,0.4)]">
                 Expression of Interest (School)
                 <span className="material-symbols-outlined uppercase group-hover:translate-x-1 transition-transform text-sm" style={{ fontVariationSettings: "'FILL' 0" }}>arrow_forward</span>
               </Link>
@@ -143,7 +143,7 @@ function HomeContent() {
               <div className="w-8 h-[2px] bg-secondary"></div>
               <span className="text-secondary font-mono text-sm uppercase tracking-widest font-bold">What Makes Us Different</span>
             </div>
-            <h2 className="font-headline text-4xl md:text-5xl font-bold text-on-surface dark:text-white mb-8 max-w-4xl leading-tight">
+            <h2 className="font-headline text-3xl md:text-4xl font-bold text-on-surface dark:text-white mb-6 max-w-4xl leading-tight">
               Bridging the gap between theoretical research and real-world application <span className="text-on-surface-variant">through innovation and collaboration.</span>
             </h2>
           </motion.div>
@@ -157,9 +157,9 @@ function HomeContent() {
                   <div className="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center border border-secondary/20">
                     <span className="material-symbols-outlined text-secondary" style={{ fontVariationSettings: "'FILL' 1" }}>code_blocks</span>
                   </div>
-                  <h3 className="font-headline text-2xl font-bold text-on-surface dark:text-white">End-to-End CPS Approach</h3>
+                  <h3 className="font-headline text-xl font-bold text-on-surface dark:text-white">End-to-End CPS Approach</h3>
                 </div>
-                <p className="font-body text-on-surface-variant mb-12 max-w-lg">Complete stack from hardware and firmware through connectivity, cloud, and AI analytics, to dashboards — not isolated kits.</p>
+                <p className="font-body text-sm text-on-surface-variant mb-8 max-w-lg">Complete stack from hardware and firmware through connectivity, cloud, and AI analytics, to dashboards — not isolated kits.</p>
                 
                 <div className="flex-grow flex flex-col justify-between relative md:pr-12">
                   <div className="absolute left-[1.5rem] top-6 bottom-6 w-[1px] bg-gradient-to-b from-surface-variant via-primary/30 to-transparent z-0"></div>
@@ -178,8 +178,8 @@ function HomeContent() {
                           <span className={`material-symbols-outlined ${item.color}`} style={{ fontVariationSettings: "'FILL' 1" }}>{item.icon}</span>
                         </div>
                         <div>
-                          <h4 className="text-on-surface dark:text-white font-bold text-base leading-tight mb-1">{item.title}</h4>
-                          <p className="font-mono text-[11px] text-on-surface-variant/60 uppercase tracking-widest">{item.desc}</p>
+                          <h4 className="text-on-surface dark:text-white font-bold text-sm leading-tight mb-1">{item.title}</h4>
+                          <p className="font-mono text-[10px] text-on-surface-variant/60 uppercase tracking-widest">{item.desc}</p>
                         </div>
                       </div>
                       <div className="font-mono text-[10px] text-black/40 dark:text-white/30 border border-black/10 dark:border-white/5 px-2 py-1 rounded-full bg-black/5 dark:bg-white/5">
@@ -197,8 +197,8 @@ function HomeContent() {
               <div className="relative z-10 w-10 h-10 rounded-lg bg-black/5 dark:bg-white/5 flex items-center justify-center border border-black/10 dark:border-white/10 mb-6 shadow-[0_0_15px_rgba(168,85,247,0.4)]">
                 <span className="material-symbols-outlined text-purple-400 text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>all_inclusive</span>
               </div>
-              <h3 className="relative z-10 font-headline text-xl font-bold text-on-surface dark:text-white mb-3">Continuous Engagement</h3>
-              <p className="relative z-10 font-body text-sm text-on-surface-variant/80 mb-8 max-w-sm">Ongoing upgrades, new experiments, internships, and collaborations — not a one-time setup.</p>
+              <h3 className="relative z-10 font-headline text-lg font-bold text-on-surface dark:text-white mb-2">Continuous Engagement</h3>
+              <p className="relative z-10 font-body text-xs text-on-surface-variant/80 mb-6 max-w-sm">Ongoing upgrades, new experiments, internships, and collaborations — not a one-time setup.</p>
               
               <div className="mt-auto flex items-center gap-6">
                 <motion.div 
@@ -223,8 +223,8 @@ function HomeContent() {
               <div className="relative z-10 w-10 h-10 rounded-lg bg-black/5 dark:bg-white/5 flex items-center justify-center border border-black/10 dark:border-white/10 mb-6 shadow-[0_0_15px_rgba(15,118,110,0.4)]">
                 <span className="material-symbols-outlined text-secondary text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>build</span>
               </div>
-              <h3 className="relative z-10 font-headline text-xl font-bold text-on-surface dark:text-white mb-3">Hands-On Involvement</h3>
-              <p className="relative z-10 font-body text-sm text-on-surface-variant/80 mb-8 max-w-sm">Students actively connect devices, test them, and see results — not just observe demonstrations.</p>
+              <h3 className="relative z-10 font-headline text-lg font-bold text-on-surface dark:text-white mb-2">Hands-On Involvement</h3>
+              <p className="relative z-10 font-body text-xs text-on-surface-variant/80 mb-6 max-w-sm">Students actively connect devices, test them, and see results — not just observe demonstrations.</p>
               
               <div className="mt-auto flex items-center justify-between relative w-full pt-6 px-2">
                 <div className="absolute left-8 right-8 top-[38px] h-[1px] border-b border-dashed border-black/20 dark:border-white/20 z-0"></div>
@@ -252,12 +252,12 @@ function HomeContent() {
         <section className="py-16 border-y border-white/5">
           <div className="max-w-7xl mx-auto px-8 text-center md:text-left">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              <h2 className="font-headline text-4xl md:text-5xl font-bold text-white mb-4">CPS Labs in Schools and Colleges Across India</h2>
-              <p className="font-body text-lg text-on-surface-variant mb-12">Our network of research centers spans across educational institutions nationwide.</p>
+              <h2 className="font-headline text-3xl md:text-4xl font-bold text-white mb-3">CPS Labs in Schools and Colleges Across India</h2>
+              <p className="font-body text-base text-on-surface-variant mb-8">Our network of research centers spans across educational institutions nationwide.</p>
               <div className="h-[400px] md:h-[600px] w-full rounded-3xl bg-surface-container-lowest border border-black/10 dark:border-white/10 relative overflow-hidden group shadow-xl dark:shadow-2xl hover:shadow-[0_0_40px_rgba(37,99,235,0.15)] hover:border-primary/40 transition-all duration-500">
                 <IndiaMap />
-                <div className="absolute bottom-6 right-6 z-30 bg-primary/90 backdrop-blur-md text-white px-6 py-4 rounded-2xl shadow-[0_10px_30px_rgba(37,99,235,0.4)] border border-white/20 flex flex-col items-center group-hover:scale-110 group-hover:-translate-y-2 group-hover:shadow-[0_15px_40px_rgba(37,99,235,0.6)] transition-all duration-500">
-                  <span className="font-headline text-3xl font-black leading-none drop-shadow-md mb-1 text-white">32+</span>
+                <div className="absolute bottom-6 right-6 z-30 bg-primary/90 backdrop-blur-md text-white px-5 py-3 rounded-2xl shadow-[0_10px_30px_rgba(37,99,235,0.4)] border border-white/20 flex flex-col items-center group-hover:scale-110 group-hover:-translate-y-2 group-hover:shadow-[0_15px_40px_rgba(37,99,235,0.6)] transition-all duration-500">
+                  <span className="font-headline text-2xl font-black leading-none drop-shadow-md mb-1 text-white">32+</span>
                   <span className="font-label text-[10px] uppercase tracking-widest font-bold opacity-90">Live Locations</span>
                 </div>
               </div>
@@ -268,7 +268,7 @@ function HomeContent() {
         {/* Apps Section */}
         <section id="apps" className="max-w-7xl mx-auto px-8 py-16 border-b border-white/5">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12">
-            <h2 className="font-headline text-4xl md:text-5xl font-bold text-white mb-4">Our Applications</h2>
+            <h2 className="font-headline text-3xl md:text-4xl font-bold text-white mb-3">Our Applications</h2>
             <p className="font-body text-lg text-on-surface-variant max-w-3xl">Software suites tailored for Cyber Physical interaction.</p>
           </motion.div>
           <div className="grid md:grid-cols-3 gap-8">
@@ -280,20 +280,20 @@ function HomeContent() {
                 </div>
                 <div className="p-6 flex-grow flex flex-col">
                   <div className="flex items-start justify-between mb-2">
-                    <h3 className="font-headline font-bold text-xl text-white">{app.title}</h3>
-                    <span className="text-xs bg-primary/20 text-primary px-2 py-1 rounded-full font-mono">{app.platform}</span>
+                    <h3 className="font-headline font-bold text-lg text-white">{app.title}</h3>
+                    <span className="text-[10px] bg-primary/20 text-primary px-2 py-0.5 rounded-full font-mono">{app.platform}</span>
                   </div>
-                  <p className="font-body text-sm text-on-surface-variant mb-6">{app.desc}</p>
-                  <Link href={app.downloadLink} download className="mt-auto relative z-10 inline-flex items-center gap-2 bg-primary/10 hover:bg-primary border border-primary/30 hover:border-primary text-primary hover:text-white px-4 py-2 rounded-lg transition-all w-full justify-center group/btn shadow-sm hover:shadow-[0_0_15px_rgba(37,99,235,0.4)]">
+                  <p className="font-body text-xs text-on-surface-variant mb-4">{app.desc}</p>
+                  <Link href={app.downloadLink} download className="mt-auto relative z-10 inline-flex items-center gap-2 bg-primary/10 hover:bg-primary border border-primary/30 hover:border-primary text-primary hover:text-white px-3 py-1.5 rounded-lg transition-all w-full justify-center group/btn shadow-sm hover:shadow-[0_0_15px_rgba(37,99,235,0.4)]">
                     <span className="material-symbols-outlined text-lg group-hover/btn:-translate-y-1 transition-transform" style={{ fontVariationSettings: "'FILL' 1" }}>download</span>
-                    <span className="font-body text-sm font-semibold">Download APK</span>
+                    <span className="font-body text-xs font-semibold">Download APK</span>
                   </Link>
                 </div>
               </motion.div>
             ))}
           </div>
           <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="mt-12 text-center">
-            <p className="text-on-surface-variant text-sm">All applications are compatible with Android devices. iOS versions coming soon.</p>
+            <p className="text-on-surface-variant text-xs">All applications are compatible with Android devices. iOS versions coming soon.</p>
           </motion.div>
         </section>
 
@@ -303,12 +303,12 @@ function HomeContent() {
         <section className="max-w-7xl mx-auto px-8 mb-20">
           <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-surface-container rounded-3xl p-12 md:p-16 border border-black/5 dark:border-white/5 relative overflow-hidden text-center shadow-xl dark:shadow-2xl hover:border-primary/30 hover:shadow-[0_0_50px_rgba(37,99,235,0.15)] transition-all duration-500 group">
             <div className="relative z-10 max-w-3xl mx-auto">
-              <h2 className="font-headline text-4xl md:text-5xl font-bold text-on-surface dark:text-white mb-8">Ready to define the future?</h2>
-              <p className="font-body text-lg text-on-surface-variant mb-12">We are always looking for passionate researchers, engineers, and collaborators to join our ecosystem at IIT Ropar.</p>
+              <h2 className="font-headline text-3xl md:text-4xl font-bold text-on-surface dark:text-white mb-6">Ready to define the future?</h2>
+              <p className="font-body text-base text-on-surface-variant mb-8">We are always looking for passionate researchers, engineers, and collaborators to join our ecosystem at IIT Ropar.</p>
               <div className="flex flex-row flex-wrap justify-center gap-4">
-                <Link href="/contact" className="bg-primary text-white dark:bg-white dark:text-surface px-7 py-4 rounded-full font-headline font-bold text-base hover:bg-primary/90 dark:hover:bg-gray-200 hover:scale-105 transition-all whitespace-nowrap">Contact Us</Link>
-                <Link href="https://docs.google.com/forms/d/e/1FAIpQLSeDJHnUKcgVFHHAooXa47MoyhKmg_R_xmkoQJWhQ_XND_FA1g/viewform" target="_blank" className="bg-transparent border border-black/20 dark:border-white/20 text-on-surface dark:text-white px-7 py-4 rounded-full font-headline font-bold text-base hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition-all whitespace-nowrap">EOI (College)</Link>
-                <Link href="https://docs.google.com/forms/d/17OmpfmPfYMbMlVwMZ0Upej00dqJfq8AvhVCMDrESueM/viewform" target="_blank" className="bg-transparent border border-black/20 dark:border-white/20 text-on-surface dark:text-white px-7 py-4 rounded-full font-headline font-bold text-base hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition-all whitespace-nowrap">EOI (School)</Link>
+                <Link href="/contact" className="bg-primary text-white dark:bg-white dark:text-surface px-6 py-3 rounded-full font-headline font-bold text-sm hover:bg-primary/90 dark:hover:bg-gray-200 hover:scale-105 transition-all whitespace-nowrap">Contact Us</Link>
+                <Link href="https://docs.google.com/forms/d/e/1FAIpQLSeDJHnUKcgVFHHAooXa47MoyhKmg_R_xmkoQJWhQ_XND_FA1g/viewform" target="_blank" className="bg-transparent border border-black/20 dark:border-white/20 text-on-surface dark:text-white px-6 py-3 rounded-full font-headline font-bold text-sm hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition-all whitespace-nowrap">EOI (College)</Link>
+                <Link href="https://docs.google.com/forms/d/17OmpfmPfYMbMlVwMZ0Upej00dqJfq8AvhVCMDrESueM/viewform" target="_blank" className="bg-transparent border border-black/20 dark:border-white/20 text-on-surface dark:text-white px-6 py-3 rounded-full font-headline font-bold text-sm hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition-all whitespace-nowrap">EOI (School)</Link>
               </div>
             </div>
             <div className="absolute top-0 left-0 w-64 h-64 bg-primary/10 blur-[100px] rounded-full group-hover:scale-150 group-hover:bg-primary/20 transition-all duration-700"></div>
