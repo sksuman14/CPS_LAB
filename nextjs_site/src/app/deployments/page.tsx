@@ -291,15 +291,8 @@ const schoolDeployments = [
     longDescription: (
       <>
         Indian Institute of Technology, Ropar has successfully deployed a
-        Cyber-Physical Systems (CPS) Lab at{" "}
-        <a
-          href="https://tis.edu.in/"
-          target="_blank"
-          className="text-primary hover:underline"
-        >
-          Tula's International School - Dehradun
-        </a>
-        . This deployment empowers students with hands-on learning experiences
+        Cyber-Physical Systems (CPS) Lab at Tula's International School - Dehradun. 
+        This deployment empowers students with hands-on learning experiences
         and brings deep-tech education directly to the school level.
       </>
     ),
