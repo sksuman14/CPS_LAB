@@ -378,7 +378,7 @@ export default function DeploymentsPage() {
         <div className="absolute top-[30%] right-[10%] w-96 h-96 bg-primary/10 blur-[120px] rounded-full transition-colors duration-1000"></div>
       </div>
 
-      <main className="relative z-10 pt-24 pb-16">
+      <main className="relative z-10 pt-36 pb-16">
         {/* Header Section */}
         <section className="max-w-7xl mx-auto px-8 mb-8 text-center relative">
           <motion.div
