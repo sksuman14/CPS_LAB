@@ -143,21 +143,21 @@ function HomeContent() {
               <div className="w-8 h-[2px] bg-secondary"></div>
               <span className="text-secondary font-mono text-sm uppercase tracking-widest font-bold">What Makes Us Different</span>
             </div>
-            <h2 className="font-headline text-4xl md:text-5xl font-bold text-white mb-8 max-w-4xl leading-tight">
+            <h2 className="font-headline text-4xl md:text-5xl font-bold text-on-surface dark:text-white mb-8 max-w-4xl leading-tight">
               Bridging the gap between theoretical research and real-world application <span className="text-on-surface-variant">through innovation and collaboration.</span>
             </h2>
           </motion.div>
           <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }} className="grid grid-cols-1 md:grid-cols-12 md:grid-rows-2 gap-6 h-auto">
             
             {/* End-to-End CPS Approach Card */}
-            <motion.div variants={fadeIn} className="md:col-span-8 md:row-span-2 bg-gradient-to-br from-[#0f172a]/80 to-[#020617]/80 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/10 hover:border-primary/50 relative overflow-hidden flex flex-col group transition-all duration-500 shadow-2xl">
+            <motion.div variants={fadeIn} className="md:col-span-8 md:row-span-2 bg-gradient-to-br from-blue-50/80 to-blue-100/50 dark:from-[#0f172a]/80 dark:to-[#020617]/80 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-black/5 dark:border-white/10 hover:border-primary/50 relative overflow-hidden flex flex-col group transition-all duration-500 shadow-xl dark:shadow-2xl">
               <div className="absolute top-[-20%] right-[-10%] w-[70%] h-[70%] bg-primary/20 blur-[120px] rounded-full pointer-events-none group-hover:bg-primary/30 transition-all duration-700"></div>
                 <div className="relative z-10 flex flex-col h-full">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center border border-secondary/20">
                     <span className="material-symbols-outlined text-secondary" style={{ fontVariationSettings: "'FILL' 1" }}>code_blocks</span>
                   </div>
-                  <h3 className="font-headline text-2xl font-bold text-white">End-to-End CPS Approach</h3>
+                  <h3 className="font-headline text-2xl font-bold text-on-surface dark:text-white">End-to-End CPS Approach</h3>
                 </div>
                 <p className="font-body text-on-surface-variant mb-12 max-w-lg">Complete stack from hardware and firmware through connectivity, cloud, and AI analytics, to dashboards — not isolated kits.</p>
                 
@@ -174,15 +174,15 @@ function HomeContent() {
                   ].map((item, i) => (
                     <div key={i} className="flex items-center justify-between relative z-10 mb-6 last:mb-0">
                       <div className="flex items-center gap-6">
-                        <div className="w-12 h-12 rounded-xl bg-surface-container border border-white/5 flex items-center justify-center shadow-lg z-10 group-hover:border-white/10 transition-colors">
+                        <div className="w-12 h-12 rounded-xl bg-surface-container border border-black/5 dark:border-white/5 flex items-center justify-center shadow-lg z-10 hover:border-black/10 dark:group-hover:border-white/10 transition-colors">
                           <span className={`material-symbols-outlined ${item.color}`} style={{ fontVariationSettings: "'FILL' 1" }}>{item.icon}</span>
                         </div>
                         <div>
-                          <h4 className="text-white font-bold text-base leading-tight mb-1">{item.title}</h4>
+                          <h4 className="text-on-surface dark:text-white font-bold text-base leading-tight mb-1">{item.title}</h4>
                           <p className="font-mono text-[11px] text-on-surface-variant/60 uppercase tracking-widest">{item.desc}</p>
                         </div>
                       </div>
-                      <div className="font-mono text-[10px] text-white/30 border border-white/5 px-2 py-1 rounded-full bg-white/5">
+                      <div className="font-mono text-[10px] text-black/40 dark:text-white/30 border border-black/10 dark:border-white/5 px-2 py-1 rounded-full bg-black/5 dark:bg-white/5">
                         0{i + 1}
                       </div>
                     </div>
@@ -192,17 +192,17 @@ function HomeContent() {
             </motion.div>
 
             {/* Continuous Engagement Card */}
-            <motion.div variants={fadeIn} className="md:col-span-4 bg-gradient-to-br from-[#1e1b4b]/60 to-[#020617]/80 backdrop-blur-md rounded-3xl p-8 md:p-10 border border-white/10 hover:border-purple-500/50 relative overflow-hidden flex flex-col group transition-all duration-500 shadow-2xl">
+            <motion.div variants={fadeIn} className="md:col-span-4 bg-gradient-to-br from-purple-50/80 to-purple-100/50 dark:from-[#1e1b4b]/60 dark:to-[#020617]/80 backdrop-blur-md rounded-3xl p-8 md:p-10 border border-black/5 dark:border-white/10 hover:border-purple-500/50 relative overflow-hidden flex flex-col group transition-all duration-500 shadow-xl dark:shadow-2xl">
               <div className="absolute top-0 left-0 w-full h-full bg-purple-500/10 blur-[80px] rounded-full pointer-events-none group-hover:bg-purple-500/20 transition-all duration-700"></div>
-              <div className="relative z-10 w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 mb-6 shadow-[0_0_15px_rgba(168,85,247,0.4)]">
+              <div className="relative z-10 w-10 h-10 rounded-lg bg-black/5 dark:bg-white/5 flex items-center justify-center border border-black/10 dark:border-white/10 mb-6 shadow-[0_0_15px_rgba(168,85,247,0.4)]">
                 <span className="material-symbols-outlined text-purple-400 text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>all_inclusive</span>
               </div>
-              <h3 className="relative z-10 font-headline text-xl font-bold text-white mb-3">Continuous Engagement</h3>
+              <h3 className="relative z-10 font-headline text-xl font-bold text-on-surface dark:text-white mb-3">Continuous Engagement</h3>
               <p className="relative z-10 font-body text-sm text-on-surface-variant/80 mb-8 max-w-sm">Ongoing upgrades, new experiments, internships, and collaborations — not a one-time setup.</p>
               
               <div className="mt-auto flex items-center gap-6">
                 <motion.div 
-                  className="w-14 h-14 rounded-full border border-dashed border-white/20 relative flex items-center justify-center"
+                  className="w-14 h-14 rounded-full border border-dashed border-black/20 dark:border-white/20 relative flex items-center justify-center"
                   animate={{ rotate: 360 }}
                   transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
                 >
@@ -210,7 +210,7 @@ function HomeContent() {
                 </motion.div>
                 <div className="flex flex-col gap-1.5">
                   <div className="font-mono text-[11px] text-on-surface-variant/60">
-                    <span className="text-white/80">v1 &rarr; v2 &rarr; v3</span> upgrades
+                    <span className="text-on-surface dark:text-white/80">v1 &rarr; v2 &rarr; v3</span> upgrades
                   </div>
                   <div className="font-mono text-[11px] text-on-surface-variant/60">new cohorts, quarterly</div>
                 </div>
@@ -218,16 +218,16 @@ function HomeContent() {
             </motion.div>
 
             {/* Hands-On Involvement Card */}
-            <motion.div variants={fadeIn} className="md:col-span-4 bg-gradient-to-br from-[#042f2e]/60 to-[#020617]/80 backdrop-blur-md rounded-3xl p-8 md:p-10 border border-white/10 hover:border-secondary/50 relative overflow-hidden flex flex-col group transition-all duration-500 shadow-2xl">
+            <motion.div variants={fadeIn} className="md:col-span-4 bg-gradient-to-br from-teal-50/80 to-teal-100/50 dark:from-[#042f2e]/60 dark:to-[#020617]/80 backdrop-blur-md rounded-3xl p-8 md:p-10 border border-black/5 dark:border-white/10 hover:border-secondary/50 relative overflow-hidden flex flex-col group transition-all duration-500 shadow-xl dark:shadow-2xl">
               <div className="absolute bottom-[-20%] right-[-20%] w-[120%] h-[120%] bg-secondary/10 blur-[100px] rounded-full pointer-events-none group-hover:bg-secondary/20 transition-all duration-700"></div>
-              <div className="relative z-10 w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 mb-6 shadow-[0_0_15px_rgba(15,118,110,0.4)]">
+              <div className="relative z-10 w-10 h-10 rounded-lg bg-black/5 dark:bg-white/5 flex items-center justify-center border border-black/10 dark:border-white/10 mb-6 shadow-[0_0_15px_rgba(15,118,110,0.4)]">
                 <span className="material-symbols-outlined text-secondary text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>build</span>
               </div>
-              <h3 className="relative z-10 font-headline text-xl font-bold text-white mb-3">Hands-On Involvement</h3>
+              <h3 className="relative z-10 font-headline text-xl font-bold text-on-surface dark:text-white mb-3">Hands-On Involvement</h3>
               <p className="relative z-10 font-body text-sm text-on-surface-variant/80 mb-8 max-w-sm">Students actively connect devices, test them, and see results — not just observe demonstrations.</p>
               
               <div className="mt-auto flex items-center justify-between relative w-full pt-6 px-2">
-                <div className="absolute left-8 right-8 top-[38px] h-[1px] border-b border-dashed border-white/20 z-0"></div>
+                <div className="absolute left-8 right-8 top-[38px] h-[1px] border-b border-dashed border-black/20 dark:border-white/20 z-0"></div>
                 <div className="absolute left-8 right-8 top-[38px] h-[1px] z-0 overflow-hidden">
                   <motion.div 
                     className="absolute top-0 h-full w-[50%] bg-gradient-to-r from-transparent via-[#80d5cb] to-transparent opacity-70"
