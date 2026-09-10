@@ -157,12 +157,29 @@ export async function requestDocumentAccess(email: string, username: string, fil
 
 export async function manualGrantAccess(email: string, filename: string): Promise<{ success: boolean }> {
   try {
-    const response = await fetch(POST_API_URL, {
+    const isGrantAll = 
+      filename.toUpperCase().includes('ALL') || 
+      filename.toLowerCase().includes('everything');
+
+    const targetFilename = isGrantAll ? "ALL" : filename;
+
+    // Step 1: POST to create/ensure the record exists
+    await fetch(POST_API_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, username: email.split('@')[0], filename, status: "APPROVED" })
+      body: JSON.stringify({ email, username: email.split('@')[0], filename: targetFilename, status: "PENDING" })
     });
-    return { success: response.status === 200 || response.status === 201 };
+
+    // Step 2: PATCH to immediately set status to APPROVED
+    // The backend treats POST as creating a PENDING request regardless of status field,
+    // so we must PATCH afterwards to approve it.
+    const patchResponse = await fetch(POST_API_URL, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, filename: targetFilename, status: "APPROVED" })
+    });
+
+    return { success: patchResponse.status === 200 || patchResponse.status === 201 };
   } catch (err) {
     console.error("AdminApiService: Grant Error -", err);
     return { success: false };

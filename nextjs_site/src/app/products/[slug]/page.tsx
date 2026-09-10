@@ -42,9 +42,23 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
         try {
           // fetch all requests for this email to find pending/status
           const requests = await fetchAllRequests(currentUserEmail);
-          // CRITICAL FIX: Ensure request belongs to the current user
+
+          // Check for specific sensor request
           const existing = requests.find(r => r.documentName === datasheetKey && r.userEmail === currentUserEmail);
-          if (existing) setRequestStatus(existing);
+
+          // Check for "Grant ALL" record — a single record granting access to everything
+          const allGrantRecord = requests.find(r => 
+            r.userEmail === currentUserEmail && 
+            r.documentName.toUpperCase() === 'ALL' && 
+            r.status === 'GRANTED'
+          );
+
+          if (allGrantRecord) {
+            // User has universal access — treat this sensor as GRANTED
+            setRequestStatus({ ...allGrantRecord, documentName: datasheetKey });
+          } else if (existing) {
+            setRequestStatus(existing);
+          }
 
           // fetch user-specific access list
           const access = await fetchUserAccess(currentUserId as string);
@@ -56,8 +70,9 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
             userEmail: currentUserEmail,
             datasheetKey: datasheetKey,
             requestStatus: existing?.status,
+            allGrantRecord: allGrantRecord?.status,
             userAccessList: access,
-            hasAccess: access.includes(datasheetKey) || existing?.status === 'GRANTED'
+            hasAccess: access.includes(datasheetKey) || existing?.status === 'GRANTED' || !!allGrantRecord
           });
         } catch (err) {
           console.error(err);
@@ -289,7 +304,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
             Sign in for Code Access
           </Link>
         );
-      } else if (isAdmin || userAccess.includes(datasheetKey) || requestStatus?.status === 'GRANTED') {
+      } else if (isAdmin || userAccess.includes(datasheetKey) || userAccess.includes('ALL') || userAccess.includes('all') || requestStatus?.status === 'GRANTED') {
         codeAccessButton = (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full">
             {availableCode.map(cl => (
