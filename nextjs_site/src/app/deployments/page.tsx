@@ -321,7 +321,7 @@ function DeploymentTextBlock({
   return (
     <div
       ref={ref}
-      className="min-h-[80vh] flex flex-col justify-center py-20 relative group"
+      className={`min-h-[50vh] lg:min-h-[70vh] flex flex-col justify-center py-12 relative group ${index === 0 ? 'mt-[-4rem]' : ''}`}
     >
       <div
         className={`transition-all duration-700 ${isInView ? "opacity-100 scale-100" : "opacity-40 scale-95"}`}
@@ -378,9 +378,9 @@ export default function DeploymentsPage() {
         <div className="absolute top-[30%] right-[10%] w-96 h-96 bg-primary/10 blur-[120px] rounded-full transition-colors duration-1000"></div>
       </div>
 
-      <main className="relative z-10 pt-40 pb-32">
+      <main className="relative z-10 pt-24 pb-16">
         {/* Header Section */}
-        <section className="max-w-7xl mx-auto px-8 mb-20 text-center relative">
+        <section className="max-w-7xl mx-auto px-8 mb-8 text-center relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -433,7 +433,7 @@ export default function DeploymentsPage() {
 
             {/* Right Column: Sticky Image (Desktop Only) */}
             <div className="hidden lg:block w-1/2 relative">
-              <div className="sticky top-40 h-[70vh] w-full flex items-center justify-center p-8 perspective-1000">
+              <div className="sticky top-24 h-[60vh] w-full flex items-center justify-center p-8 perspective-1000">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeIndex}
