@@ -82,7 +82,7 @@ function HomeContent() {
   };
 
   return (
-    <div className="relative flex flex-col min-h-screen bg-surface text-on-surface">
+    <div className="relative flex flex-col min-h-screen text-on-surface">
 
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] ambient-glow-1"></div>
@@ -246,7 +246,7 @@ function HomeContent() {
         </section>
 
         {/* Location Section */}
-        <section className="bg-surface-container-low py-16 border-y border-white/5 shadow-inner">
+        <section className="py-16 border-y border-white/5">
           <div className="max-w-7xl mx-auto px-8 text-center md:text-left">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
               <h2 className="font-headline text-4xl md:text-5xl font-bold text-white mb-4">CPS Labs in Schools and Colleges Across India</h2>
@@ -297,7 +297,7 @@ function HomeContent() {
 
         {/* CTA */}
         <section className="max-w-7xl mx-auto px-8 mb-20">
-          <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-gradient-to-br from-primary-container/20 to-secondary-container/20 rounded-3xl p-12 md:p-16 border border-white/5 relative overflow-hidden text-center shadow-2xl">
+          <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-surface-container rounded-3xl p-12 md:p-16 border border-white/5 relative overflow-hidden text-center shadow-2xl">
             <div className="relative z-10 max-w-3xl mx-auto">
               <h2 className="font-headline text-4xl md:text-5xl font-bold text-white mb-8">Ready to define the future?</h2>
               <p className="font-body text-lg text-on-surface-variant mb-12">We are always looking for passionate researchers, engineers, and collaborators to join our ecosystem at IIT Ropar.</p>
