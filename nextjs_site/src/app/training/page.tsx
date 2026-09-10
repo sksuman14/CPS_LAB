@@ -292,7 +292,7 @@ export default function TrainingAndWorkshopPage() {
 
       <main className="relative z-10 flex-grow pt-20 pb-16">
         {/* Our Impact Section with Animated Counters */}
-        <section className="bg-surface-container-low border-y border-white/5 py-12 mb-16 relative overflow-hidden">
+        <section className="bg-surface-container-low border-y border-white/5 py-12 mb-6 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-full h-[500px] bg-primary/10 rounded-full blur-[150px] -translate-y-1/2 translate-x-1/2"></div>
 
           <div className="max-w-7xl mx-auto px-8 relative z-10">
@@ -352,7 +352,7 @@ export default function TrainingAndWorkshopPage() {
         </section>
 
         {/* Dynamic Draggable Slider for Workshops */}
-        <section className="w-full relative py-10 overflow-hidden">
+        <section className="w-full relative pt-0 pb-10 overflow-hidden">
           <div className="max-w-7xl mx-auto px-8 mb-12">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
