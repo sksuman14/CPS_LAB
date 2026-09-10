@@ -290,9 +290,9 @@ export default function TrainingAndWorkshopPage() {
         <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] ambient-glow-1 opacity-20"></div>
       </div>
 
-      <main className="relative z-10 flex-grow pt-32 pb-32">
+      <main className="relative z-10 flex-grow pt-20 pb-16">
         {/* Our Impact Section with Animated Counters */}
-        <section className="bg-surface-container-low border-y border-white/5 py-24 mb-24 relative overflow-hidden">
+        <section className="bg-surface-container-low border-y border-white/5 py-12 mb-16 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-full h-[500px] bg-primary/10 rounded-full blur-[150px] -translate-y-1/2 translate-x-1/2"></div>
 
           <div className="max-w-7xl mx-auto px-8 relative z-10">
