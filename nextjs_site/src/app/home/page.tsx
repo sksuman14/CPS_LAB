@@ -254,9 +254,9 @@ function HomeContent() {
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
               <h2 className="font-headline text-4xl md:text-5xl font-bold text-white mb-4">CPS Labs in Schools and Colleges Across India</h2>
               <p className="font-body text-lg text-on-surface-variant mb-12">Our network of research centers spans across educational institutions nationwide.</p>
-              <div className="h-[400px] md:h-[600px] w-full rounded-3xl bg-surface-container-lowest border border-white/10 relative overflow-hidden group shadow-2xl">
+              <div className="h-[400px] md:h-[600px] w-full rounded-3xl bg-surface-container-lowest border border-black/10 dark:border-white/10 relative overflow-hidden group shadow-xl dark:shadow-2xl hover:shadow-[0_0_40px_rgba(37,99,235,0.15)] hover:border-primary/40 transition-all duration-500">
                 <IndiaMap />
-                <div className="absolute bottom-6 right-6 z-30 bg-primary/90 backdrop-blur-md text-white px-6 py-4 rounded-2xl shadow-[0_10px_30px_rgba(37,99,235,0.4)] border border-white/20 flex flex-col items-center">
+                <div className="absolute bottom-6 right-6 z-30 bg-primary/90 backdrop-blur-md text-white px-6 py-4 rounded-2xl shadow-[0_10px_30px_rgba(37,99,235,0.4)] border border-white/20 flex flex-col items-center group-hover:scale-110 group-hover:-translate-y-2 group-hover:shadow-[0_15px_40px_rgba(37,99,235,0.6)] transition-all duration-500">
                   <span className="font-headline text-3xl font-black leading-none drop-shadow-md mb-1 text-white">32+</span>
                   <span className="font-label text-[10px] uppercase tracking-widest font-bold opacity-90">Live Locations</span>
                 </div>
@@ -273,8 +273,9 @@ function HomeContent() {
           </motion.div>
           <div className="grid md:grid-cols-3 gap-8">
             {apps.map((app, idx) => (
-              <motion.div key={app.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.2 }} className="bg-surface-container rounded-xl overflow-hidden border border-white/5 group flex flex-col">
-                <div className="h-56 overflow-hidden bg-surface-container-lowest flex items-center justify-center p-4">
+              <motion.div key={app.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.2 }} className="bg-surface-container rounded-2xl overflow-hidden border border-black/5 dark:border-white/5 group flex flex-col hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10 dark:hover:shadow-primary/20 hover:border-primary/30 dark:hover:border-primary/30 transition-all duration-500 relative">
+                <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0"></div>
+                <div className="h-56 overflow-hidden bg-surface-container-lowest flex items-center justify-center p-4 relative z-10">
                   <img src={app.path} alt={app.title} className="max-h-full max-w-full object-contain rounded-md shadow-sm group-hover:scale-105 transition-transform duration-500" />
                 </div>
                 <div className="p-6 flex-grow flex flex-col">
@@ -283,8 +284,8 @@ function HomeContent() {
                     <span className="text-xs bg-primary/20 text-primary px-2 py-1 rounded-full font-mono">{app.platform}</span>
                   </div>
                   <p className="font-body text-sm text-on-surface-variant mb-6">{app.desc}</p>
-                  <Link href={app.downloadLink} download className="mt-auto inline-flex items-center gap-2 bg-primary/20 hover:bg-primary/30 border border-primary/30 text-primary px-4 py-2 rounded-lg transition-all w-full justify-center">
-                    <span className="material-symbols-outlined text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>download</span>
+                  <Link href={app.downloadLink} download className="mt-auto relative z-10 inline-flex items-center gap-2 bg-primary/10 hover:bg-primary border border-primary/30 hover:border-primary text-primary hover:text-white px-4 py-2 rounded-lg transition-all w-full justify-center group/btn shadow-sm hover:shadow-[0_0_15px_rgba(37,99,235,0.4)]">
+                    <span className="material-symbols-outlined text-lg group-hover/btn:-translate-y-1 transition-transform" style={{ fontVariationSettings: "'FILL' 1" }}>download</span>
                     <span className="font-body text-sm font-semibold">Download APK</span>
                   </Link>
                 </div>
@@ -300,18 +301,18 @@ function HomeContent() {
 
         {/* CTA */}
         <section className="max-w-7xl mx-auto px-8 mb-20">
-          <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-surface-container rounded-3xl p-12 md:p-16 border border-white/5 relative overflow-hidden text-center shadow-2xl">
+          <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-surface-container rounded-3xl p-12 md:p-16 border border-black/5 dark:border-white/5 relative overflow-hidden text-center shadow-xl dark:shadow-2xl hover:border-primary/30 hover:shadow-[0_0_50px_rgba(37,99,235,0.15)] transition-all duration-500 group">
             <div className="relative z-10 max-w-3xl mx-auto">
-              <h2 className="font-headline text-4xl md:text-5xl font-bold text-white mb-8">Ready to define the future?</h2>
+              <h2 className="font-headline text-4xl md:text-5xl font-bold text-on-surface dark:text-white mb-8">Ready to define the future?</h2>
               <p className="font-body text-lg text-on-surface-variant mb-12">We are always looking for passionate researchers, engineers, and collaborators to join our ecosystem at IIT Ropar.</p>
               <div className="flex flex-row flex-wrap justify-center gap-4">
-                <Link href="/contact" className="bg-white text-surface px-7 py-4 rounded-full font-headline font-bold text-base hover:bg-gray-200 hover:scale-105 transition-all whitespace-nowrap">Contact Us</Link>
-                <Link href="https://docs.google.com/forms/d/e/1FAIpQLSeDJHnUKcgVFHHAooXa47MoyhKmg_R_xmkoQJWhQ_XND_FA1g/viewform" target="_blank" className="bg-transparent border border-white/20 text-white px-7 py-4 rounded-full font-headline font-bold text-base hover:bg-white/10 hover:scale-105 transition-all whitespace-nowrap">EOI (College)</Link>
-                <Link href="https://docs.google.com/forms/d/17OmpfmPfYMbMlVwMZ0Upej00dqJfq8AvhVCMDrESueM/viewform" target="_blank" className="bg-transparent border border-white/20 text-white px-7 py-4 rounded-full font-headline font-bold text-base hover:bg-white/10 hover:scale-105 transition-all whitespace-nowrap">EOI (School)</Link>
+                <Link href="/contact" className="bg-primary text-white dark:bg-white dark:text-surface px-7 py-4 rounded-full font-headline font-bold text-base hover:bg-primary/90 dark:hover:bg-gray-200 hover:scale-105 transition-all whitespace-nowrap">Contact Us</Link>
+                <Link href="https://docs.google.com/forms/d/e/1FAIpQLSeDJHnUKcgVFHHAooXa47MoyhKmg_R_xmkoQJWhQ_XND_FA1g/viewform" target="_blank" className="bg-transparent border border-black/20 dark:border-white/20 text-on-surface dark:text-white px-7 py-4 rounded-full font-headline font-bold text-base hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition-all whitespace-nowrap">EOI (College)</Link>
+                <Link href="https://docs.google.com/forms/d/17OmpfmPfYMbMlVwMZ0Upej00dqJfq8AvhVCMDrESueM/viewform" target="_blank" className="bg-transparent border border-black/20 dark:border-white/20 text-on-surface dark:text-white px-7 py-4 rounded-full font-headline font-bold text-base hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition-all whitespace-nowrap">EOI (School)</Link>
               </div>
             </div>
-            <div className="absolute top-0 left-0 w-64 h-64 bg-primary/10 blur-[100px] rounded-full"></div>
-            <div className="absolute bottom-0 right-0 w-64 h-64 bg-secondary/10 blur-[100px] rounded-full"></div>
+            <div className="absolute top-0 left-0 w-64 h-64 bg-primary/10 blur-[100px] rounded-full group-hover:scale-150 group-hover:bg-primary/20 transition-all duration-700"></div>
+            <div className="absolute bottom-0 right-0 w-64 h-64 bg-secondary/10 blur-[100px] rounded-full group-hover:scale-150 group-hover:bg-secondary/20 transition-all duration-700"></div>
           </motion.div>
         </section>
       </main>
