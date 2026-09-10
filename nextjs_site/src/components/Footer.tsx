@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { MapPin, Phone, ArrowUp } from "lucide-react";
+import { MapPin, Phone } from "lucide-react";
 
 export default function Footer() {
   const pathname = usePathname();
@@ -18,17 +18,13 @@ export default function Footer() {
 
   if (pathname === "/" || pathname === "/login") return null;
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
     <footer className="bg-black/90 backdrop-blur-md border-t border-white/10 pt-10 md:pt-16 pb-8 mt-8 relative z-10 overflow-hidden">
       {/* Cyber/Tech Glow Top Border */}
       <div className="absolute top-0 left-0 w-full h-[2px] bg-primary shadow-[0_0_15px_rgba(37,99,235,0.5)]" />
 
       <div className="max-w-6xl mx-auto px-6 md:px-8 relative">
-        <div className="flex flex-col md:flex-row items-start justify-between gap-10 md:gap-16 mb-10 w-full">
+        <div className="flex flex-col md:flex-row items-start justify-between gap-10 md:gap-16 w-full">
           {/* LEFT: Branding & Description */}
           <div className="flex flex-col items-start gap-4 md:max-w-sm w-full">
             <div className="flex items-center gap-3">
@@ -103,22 +99,6 @@ export default function Footer() {
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Divider & Copyright */}
-        <div className="w-full h-px bg-white/10 mb-6"></div>
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-6 sm:gap-4">
-          <p className="font-label text-xs text-on-surface-variant/60 uppercase tracking-widest text-center sm:text-left">
-            IIT Ropar – Cyber Physical System Lab
-          </p>
-
-          <button 
-            onClick={scrollToTop}
-            className="group flex items-center justify-center gap-2 px-6 py-2.5 sm:px-4 sm:py-2 rounded-full bg-white/5 border border-white/10 text-on-surface-variant text-xs font-bold uppercase tracking-widest hover:bg-primary/20 hover:text-white hover:border-primary/50 transition-all duration-300 w-full sm:w-auto"
-          >
-            <span>Back to Top</span>
-            <ArrowUp className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-1 group-hover:text-primary" />
-          </button>
         </div>
       </div>
     </footer>
