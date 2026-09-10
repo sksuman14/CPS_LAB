@@ -91,7 +91,7 @@ function HomeContent() {
 
       <main className="relative z-10 pt-20">
         {/* Hero Section */}
-        <section className="relative w-full pt-16 pb-16 mb-10 overflow-hidden flex flex-col items-center justify-center text-center">
+        <section className="relative w-full pt-16 pb-10 mb-8 overflow-hidden flex flex-col items-center justify-center text-center">
           <motion.div variants={staggerContainer} initial="hidden" animate="show" className="max-w-4xl mx-auto px-8 relative z-20">
             <motion.h1 variants={fadeIn} className="font-headline text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] mb-6 tracking-tighter text-white drop-shadow-2xl">
               Cyber Physical<br />System <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent [text-shadow:0_0_1px_rgba(255,255,255,0.3)]">Laboratory</span>
@@ -137,7 +137,7 @@ function HomeContent() {
         </section>
 
         {/* Bento Grid */}
-        <section className="max-w-7xl mx-auto px-8 mb-20">
+        <section className="max-w-7xl mx-auto px-8 mb-12">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12">
             <div className="flex items-center gap-4 mb-4">
               <div className="w-8 h-[2px] bg-secondary"></div>
@@ -249,7 +249,7 @@ function HomeContent() {
         </section>
 
         {/* Location Section */}
-        <section className="py-16 border-y border-white/5">
+        <section className="py-8">
           <div className="max-w-7xl mx-auto px-8 text-center md:text-left">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
               <h2 className="font-headline text-3xl md:text-4xl font-bold text-white mb-3">CPS Labs in Schools and Colleges Across India</h2>
@@ -266,7 +266,7 @@ function HomeContent() {
         </section>
 
         {/* Apps Section */}
-        <section id="apps" className="max-w-7xl mx-auto px-8 py-16 border-b border-white/5">
+        <section id="apps" className="max-w-7xl mx-auto px-8 py-8">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12">
             <h2 className="font-headline text-3xl md:text-4xl font-bold text-white mb-3">Our Applications</h2>
             <p className="font-body text-lg text-on-surface-variant max-w-3xl">Software suites tailored for Cyber Physical interaction.</p>
@@ -300,7 +300,7 @@ function HomeContent() {
 
 
         {/* CTA */}
-        <section className="max-w-7xl mx-auto px-8 mb-20">
+        <section className="max-w-7xl mx-auto px-8 mb-12">
           <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-surface-container rounded-3xl p-12 md:p-16 border border-black/5 dark:border-white/5 relative overflow-hidden text-center shadow-xl dark:shadow-2xl hover:border-primary/30 hover:shadow-[0_0_50px_rgba(37,99,235,0.15)] transition-all duration-500 group">
             <div className="relative z-10 max-w-3xl mx-auto">
               <h2 className="font-headline text-3xl md:text-4xl font-bold text-on-surface dark:text-white mb-6">Ready to define the future?</h2>
