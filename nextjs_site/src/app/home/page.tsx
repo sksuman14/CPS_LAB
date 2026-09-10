@@ -299,20 +299,20 @@ function HomeContent() {
 
 
 
-                {/* CTA */}
+                        {/* CTA */}
         <section className="max-w-7xl mx-auto px-8 mb-12">
-          <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-surface-container dark:bg-transparent dark:bg-gradient-to-br dark:from-blue-900 dark:to-indigo-950 rounded-3xl p-12 md:p-16 border border-black/5 dark:border-blue-500/30 relative overflow-hidden text-center shadow-xl dark:shadow-[0_0_40px_rgba(30,58,138,0.3)] hover:shadow-2xl dark:hover:shadow-[0_0_60px_rgba(30,58,138,0.5)] hover:border-primary/30 transition-all duration-500 group">
+          <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-gradient-to-br from-blue-50/80 to-blue-100/50 dark:from-[#0f172a]/80 dark:to-[#020617]/80 backdrop-blur-md rounded-3xl p-12 md:p-16 border border-black/5 dark:border-white/10 relative overflow-hidden text-center shadow-xl dark:shadow-2xl hover:border-primary/50 transition-all duration-500 group">
             <div className="relative z-10 max-w-3xl mx-auto">
               <h2 className="font-headline text-3xl md:text-4xl font-bold text-on-surface dark:text-white mb-6">Ready to define the future?</h2>
-              <p className="font-body text-base text-on-surface-variant dark:text-blue-100 mb-8">We are always looking for passionate researchers, engineers, and collaborators to join our ecosystem at IIT Ropar.</p>
+              <p className="font-body text-base text-on-surface-variant mb-8">We are always looking for passionate researchers, engineers, and collaborators to join our ecosystem at IIT Ropar.</p>
               <div className="flex flex-row flex-wrap justify-center gap-4">
                 <Link href="/contact" className="bg-primary text-white dark:bg-white dark:text-surface px-6 py-3 rounded-full font-headline font-bold text-sm hover:bg-primary/90 dark:hover:bg-gray-200 hover:scale-105 transition-all whitespace-nowrap">Contact Us</Link>
-                <Link href="https://docs.google.com/forms/d/e/1FAIpQLSeDJHnUKcgVFHHAooXa47MoyhKmg_R_xmkoQJWhQ_XND_FA1g/viewform" target="_blank" className="bg-transparent border border-black/20 dark:border-blue-400/30 text-on-surface dark:text-white px-6 py-3 rounded-full font-headline font-bold text-sm hover:bg-black/5 dark:hover:bg-blue-400/10 hover:scale-105 transition-all whitespace-nowrap">EOI (College)</Link>
-                <Link href="https://docs.google.com/forms/d/17OmpfmPfYMbMlVwMZ0Upej00dqJfq8AvhVCMDrESueM/viewform" target="_blank" className="bg-transparent border border-black/20 dark:border-blue-400/30 text-on-surface dark:text-white px-6 py-3 rounded-full font-headline font-bold text-sm hover:bg-black/5 dark:hover:bg-blue-400/10 hover:scale-105 transition-all whitespace-nowrap">EOI (School)</Link>
+                <Link href="https://docs.google.com/forms/d/e/1FAIpQLSeDJHnUKcgVFHHAooXa47MoyhKmg_R_xmkoQJWhQ_XND_FA1g/viewform" target="_blank" className="bg-transparent border border-black/20 dark:border-white/20 text-on-surface dark:text-white px-6 py-3 rounded-full font-headline font-bold text-sm hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition-all whitespace-nowrap">EOI (College)</Link>
+                <Link href="https://docs.google.com/forms/d/17OmpfmPfYMbMlVwMZ0Upej00dqJfq8AvhVCMDrESueM/viewform" target="_blank" className="bg-transparent border border-black/20 dark:border-white/20 text-on-surface dark:text-white px-6 py-3 rounded-full font-headline font-bold text-sm hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition-all whitespace-nowrap">EOI (School)</Link>
               </div>
             </div>
-            <div className="absolute top-0 left-0 w-64 h-64 bg-primary/10 blur-[100px] rounded-full group-hover:scale-150 group-hover:bg-primary/20 transition-all duration-700"></div>
-            <div className="absolute bottom-0 right-0 w-64 h-64 bg-secondary/10 blur-[100px] rounded-full group-hover:scale-150 group-hover:bg-secondary/20 transition-all duration-700"></div>
+            <div className="absolute top-[-20%] right-[-10%] w-[70%] h-[70%] bg-primary/20 blur-[120px] rounded-full pointer-events-none group-hover:bg-primary/30 transition-all duration-700"></div>
+            <div className="absolute bottom-[-20%] left-[-10%] w-[70%] h-[70%] bg-secondary/20 blur-[120px] rounded-full pointer-events-none group-hover:bg-secondary/30 transition-all duration-700"></div>
           </motion.div>
         </section>
       </main>
