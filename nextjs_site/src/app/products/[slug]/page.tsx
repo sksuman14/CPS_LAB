@@ -283,7 +283,11 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
       { key: 'nreCodeLink', label: 'nRF Code' },
       { key: 'quecCodeLink', label: 'Quec Code' },
       { key: 'nrfUICodeLink', label: 'nRF UI Code' },
-      { key: 'nrfCodeLink', label: 'nRF Code' }
+      { key: 'nrfCodeLink', label: 'nRF Code' },
+      { key: 'arduinoUnoUICodeLink', label: 'Arduino UNO UI' },
+      { key: 'arduinoUnoCodeLink', label: 'Arduino UNO' },
+      { key: 'arduinoMegaUICodeLink', label: 'Arduino MEGA UI' },
+      { key: 'arduinoMegaCodeLink', label: 'Arduino MEGA' }
     ];
 
     const availableCode = codeLinks.filter(cl => (sensor as any)[cl.key]);

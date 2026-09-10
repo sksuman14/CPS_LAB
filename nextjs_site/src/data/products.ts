@@ -117,6 +117,11 @@ export const allSensors = [
       "https://cpslabhub-assets.s3.ap-south-1.amazonaws.com/models/raingauge.glb",
     email: "Vikash.hardwareengineer@ihub-awadh.in",
     datasheetKey: "RainGauge",
+    arduinoUnoCodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20UNO/Rain_Guage",
+    arduinoUnoUICodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20UNO%20UI/Rain_Gauge_UI",
+    arduinoMegaCodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20MEGA/Rain_Guage",
+    arduinoMegaUICodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20MEGA%20UI/RAIN_GUAGE_UI",
+
     nreCodeLink:
       "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/Rain_Gauge_Analog_Read",
     quecCodeLink:
@@ -165,6 +170,11 @@ export const allSensors = [
       "https://cpslabhub-assets.s3.ap-south-1.amazonaws.com/models/radiation_shield.glb",
     email: "Vikash.hardwareengineer@ihub-awadh.in",
     datasheetKey: "ARTH",
+    arduinoUnoCodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20UNO/Weather_Shield",
+    arduinoUnoUICodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20UNO%20UI/Weather_Shield_UI",
+    arduinoMegaCodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20MEGA/Weather_Shield",
+    arduinoMegaUICodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20MEGA%20UI/WEATHER_SHIELD_UI",
+    
     quecCodeLink:
       "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/Weather_Sheild_UI",
     nrfUICodeLink:
@@ -217,6 +227,11 @@ export const allSensors = [
     imagePath: "assets/images/soil.png",
     email: "Vikash.hardwareengineer@ihub-awadh.in",
     datasheetKey: "Soil",
+    arduinoUnoCodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20UNO/Soil_Ardunio",
+    arduinoUnoUICodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20UNO%20UI/SOIL_ARDUINO_UI",
+    arduinoMegaCodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20MEGA/SOIL_SPECTRA_RS485",
+    arduinoMegaUICodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20MEGA%20UI/SOIL_SPECTRA_UI",
+
   },
   {
     title: "Activity/Vibration",
@@ -543,6 +558,11 @@ export const allSensors = [
     imagePath: "assets/images/robotickitrender.png",
     email: "Vikash.hardwareengineer@ihub-awadh.in",
     datasheetKey: "ArduinoRoboticKit",
+    arduinoUnoCodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20UNO/Ultrasonic_RS485",
+    arduinoUnoUICodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20UNO%20UI/Ultrasonic_UI",
+    arduinoMegaCodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20MEGA/Ultrasonic_RS485",
+    arduinoMegaUICodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20MEGA%20UI/ULTRASONIC_RS485_UI",
+
   },
   {
     title: "Flash Tool",
@@ -619,6 +639,11 @@ export const allSensors = [
     imagePath: "assets/images/stts751.png",
     email: "Vikash.hardwareengineer@ihub-awadh.in",
     datasheetKey: "STTS751",
+    arduinoUnoCodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20UNO/STTS751",
+    arduinoUnoUICodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20UNO%20UI/STTS751_UI",
+    arduinoMegaCodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20MEGA/STTS751",
+    arduinoMegaUICodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20MEGA%20UI/STTS751_UI",
+
     nreCodeLink:
       "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/All_Temperature_Sensors/STTS751_Sensor",
     quecCodeLink:
@@ -667,6 +692,11 @@ export const allSensors = [
     imagePath: "assets/images/lis3dh.png",
     email: "Vikash.hardwareengineer@ihub-awadh.in",
     datasheetKey: "LIS3DH",
+    arduinoUnoCodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20UNO/LIS3DH",
+    arduinoUnoUICodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20UNO%20UI/LIS3DH_UI",
+    arduinoMegaCodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20MEGA/LIS3DH",
+    arduinoMegaUICodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20MEGA%20UI/LIS3DH_UI",
+
     nreCodeLink:
       "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/LIS3DH_Sensor/lis3dhSensor",
     quecCodeLink:
@@ -748,6 +778,9 @@ export const allSensors = [
     imagePath: "assets/images/buzzer.png",
     email: "Vikash.hardwareengineer@ihub-awadh.in",
     datasheetKey: "BUZZER",
+    arduinoUnoCodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20UNO/Buzzer",
+    arduinoMegaCodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20MEGA/Buzzer",
+
     nreCodeLink:
       "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/Buzzer",
     nrfUICodeLink:
@@ -787,6 +820,9 @@ export const allSensors = [
     imagePath: "assets/images/relay.png",
     email: "Vikash.hardwareengineer@ihub-awadh.in",
     datasheetKey: "RELAY",
+    arduinoUnoCodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20UNO/1_Channel_Relay",
+    arduinoMegaCodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20MEGA/Relay",
+
     nreCodeLink:
       "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/Relay",
     nrfUICodeLink:
@@ -875,6 +911,11 @@ export const allSensors = [
     imagePath: "assets/images/lux.png",
     email: "Vikash.hardwareengineer@ihub-awadh.in",
     datasheetKey: "LUX",
+    arduinoUnoCodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20UNO/VCNL4040",
+    arduinoUnoUICodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20UNO%20UI/VCNL4040_UI",
+    arduinoMegaCodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20MEGA/VCNL4040",
+    arduinoMegaUICodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20MEGA%20UI/VCNL4040_UI",
+
     nreCodeLink:
       "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/VCNL4040_LuxSensor",
     nrfUICodeLink:
@@ -919,6 +960,11 @@ export const allSensors = [
     imagePath: "assets/images/halleffect.png",
     email: "Vikash.hardwareengineer@ihub-awadh.in",
     datasheetKey: "HALL",
+    arduinoUnoCodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20UNO/Hall_effect_Sensor",
+    arduinoUnoUICodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20UNO%20UI/Hall_effect_Sensor_UI",
+    arduinoMegaCodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20MEGA/HALL_EFFECT",
+    arduinoMegaUICodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20MEGA%20UI/HALL_EFFECT_UI",
+
     nreCodeLink:
       "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/Hall_Effect_Sensor",
     quecCodeLink:
@@ -965,6 +1011,11 @@ export const allSensors = [
     imagePath: "assets/images/ir_sensor.png",
     email: "Vikash.hardwareengineer@ihub-awadh.in",
     datasheetKey: "IR",
+    arduinoUnoCodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20UNO/IR_Sensor",
+    arduinoUnoUICodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20UNO%20UI/IR_UI",
+    arduinoMegaCodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20MEGA/IR",
+    arduinoMegaUICodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20MEGA%20UI/IR_UI",
+
     quecCodeLink:
       "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/IR_UI",
   },
@@ -1058,5 +1109,10 @@ export const allSensors = [
     imagePath: "assets/images/sts30_dis.png",
     email: "Vikash.hardwareengineer@ihub-awadh.in",
     datasheetKey: "STS30DIS",
+    arduinoUnoCodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20UNO/STS30",
+    arduinoUnoUICodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20UNO%20UI/STS30_UI",
+    arduinoMegaCodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20MEGA/STS30",
+    arduinoMegaUICodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20MEGA%20UI/STS30_UI",
+
   },
 ];
