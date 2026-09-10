@@ -23,12 +23,12 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-black/90 backdrop-blur-md border-t border-white/10 pt-12 md:pt-16 pb-8 mt-8 relative z-10 overflow-hidden">
+    <footer className="bg-black/90 backdrop-blur-md border-t border-white/10 pt-10 md:pt-16 pb-8 mt-8 relative z-10 overflow-hidden">
       {/* Cyber/Tech Glow Top Border */}
       <div className="absolute top-0 left-0 w-full h-[2px] bg-primary shadow-[0_0_15px_rgba(37,99,235,0.5)]" />
 
       <div className="max-w-6xl mx-auto px-6 md:px-8 relative">
-        <div className="flex flex-col md:flex-row items-start justify-between gap-8 md:gap-16 mb-10 w-full">
+        <div className="flex flex-col md:flex-row items-start justify-between gap-10 md:gap-16 mb-10 w-full">
           {/* LEFT: Branding & Description */}
           <div className="flex flex-col items-start gap-4 md:max-w-sm w-full">
             <div className="flex items-center gap-3">
@@ -44,26 +44,26 @@ export default function Footer() {
                 <span className="text-primary tracking-widest">LAB</span>
               </h2>
             </div>
-            <p className="font-body text-xs text-on-surface-variant leading-relaxed opacity-80 mt-1">
+            <p className="font-body text-xs text-on-surface-variant leading-relaxed opacity-80 mt-1 max-w-[280px] md:max-w-full">
               Building the future of intelligent systems through rigorous
               research and open innovation.
             </p>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-8 md:gap-16 w-full md:w-auto">
+          <div className="flex flex-col sm:flex-row gap-10 sm:gap-16 w-full md:w-auto">
             {/* MIDDLE: Sitemap Section */}
-            <div className="flex flex-col items-start gap-4">
+            <div className="flex flex-col items-start gap-4 w-full sm:w-auto">
               <h3 className="font-headline text-sm font-bold text-white uppercase tracking-widest">
                 Sitemap
               </h3>
-              <ul className="grid grid-cols-2 gap-x-8 gap-y-2">
+              <ul className="grid grid-cols-2 gap-x-4 sm:gap-x-8 gap-y-3 w-full">
                 {sitemapLinks.map((link) => (
                   <li key={link.name}>
                     <Link
                       href={link.path}
                       className="group flex items-center gap-2 font-body text-xs text-on-surface-variant hover:text-white transition-colors"
                     >
-                      <span className="transition-transform duration-300 group-hover:translate-x-1">
+                      <span className="transition-transform duration-300 group-hover:translate-x-1 leading-tight">
                         {link.name}
                       </span>
                     </Link>
@@ -73,7 +73,7 @@ export default function Footer() {
             </div>
 
             {/* RIGHT: Visit Us Section */}
-            <div className="flex flex-col items-start gap-4">
+            <div className="flex flex-col items-start gap-4 w-full sm:w-auto">
               <h3 className="font-headline text-sm font-bold text-white uppercase tracking-widest">
                 Visit Us
               </h3>
@@ -81,7 +81,7 @@ export default function Footer() {
               <div className="flex flex-col gap-4">
                 {/* Address */}
                 <div className="group flex items-start gap-3">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center mt-0.5">
                     <MapPin className="w-4 h-4 text-blue-300" />
                   </div>
                   <p className="font-body text-xs text-on-surface-variant leading-relaxed">
@@ -92,11 +92,11 @@ export default function Footer() {
                 </div>
 
                 {/* Phone */}
-                <div className="group flex items-start gap-3">
+                <div className="group flex items-center gap-3">
                   <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
                     <Phone className="w-4 h-4 text-blue-300" />
                   </div>
-                  <p className="font-body text-xs text-on-surface-variant leading-relaxed mt-1">
+                  <p className="font-body text-xs text-on-surface-variant leading-relaxed">
                     +91 70870 32853
                   </p>
                 </div>
@@ -106,15 +106,15 @@ export default function Footer() {
         </div>
 
         {/* Divider & Copyright */}
-        <div className="w-full h-px bg-white/10 mb-4"></div>
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="font-label text-xs text-on-surface-variant/60 uppercase tracking-widest text-center md:text-left">
+        <div className="w-full h-px bg-white/10 mb-6"></div>
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-6 sm:gap-4">
+          <p className="font-label text-xs text-on-surface-variant/60 uppercase tracking-widest text-center sm:text-left">
             IIT Ropar – Cyber Physical System Lab
           </p>
 
           <button 
             onClick={scrollToTop}
-            className="group flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-on-surface-variant text-xs font-bold uppercase tracking-widest hover:bg-primary/20 hover:text-white hover:border-primary/50 transition-all duration-300"
+            className="group flex items-center justify-center gap-2 px-6 py-2.5 sm:px-4 sm:py-2 rounded-full bg-white/5 border border-white/10 text-on-surface-variant text-xs font-bold uppercase tracking-widest hover:bg-primary/20 hover:text-white hover:border-primary/50 transition-all duration-300 w-full sm:w-auto"
           >
             <span>Back to Top</span>
             <ArrowUp className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-1 group-hover:text-primary" />
