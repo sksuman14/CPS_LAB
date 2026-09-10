@@ -52,18 +52,27 @@ export default function AdminDashboard() {
     loadData();
   }, []);
 
-  // Filtered requests based on search and status
+  // Filtered requests based on search and status, with PENDING sorted to the top
   const filteredRequests = useMemo(() => {
-    return requests.filter((req) => {
-      const matchesSearch = 
-        req.userEmail.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        req.userName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        req.documentName.toLowerCase().includes(searchQuery.toLowerCase());
-      
-      const matchesStatus = statusFilter === 'ALL' || req.status === statusFilter;
-      
-      return matchesSearch && matchesStatus;
-    });
+    const statusOrder: Record<string, number> = {
+      'PENDING': 0,
+      'GRANTED': 1,
+      'REJECTED': 2,
+      'REVOKED': 3,
+    };
+
+    return requests
+      .filter((req) => {
+        const matchesSearch = 
+          req.userEmail.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          req.userName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          req.documentName.toLowerCase().includes(searchQuery.toLowerCase());
+        
+        const matchesStatus = statusFilter === 'ALL' || req.status === statusFilter;
+        
+        return matchesSearch && matchesStatus;
+      })
+      .sort((a, b) => (statusOrder[a.status] ?? 99) - (statusOrder[b.status] ?? 99));
   }, [requests, searchQuery, statusFilter]);
 
   // Statistics calculation
