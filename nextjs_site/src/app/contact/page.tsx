@@ -57,14 +57,33 @@ export default function ContactPage() {
           <motion.h1 variants={itemVariants} className="font-headline text-4xl md:text-5xl font-black text-white mb-8 tracking-tighter">
             Get in Touch
           </motion.h1>
-          <motion.div variants={itemVariants} className="bg-surface-container border border-white/5 p-6 md:p-8 rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div>
-              <strong className="block mb-1 font-headline not-italic text-white text-base">Innovation Hub for Automation Technology (AWaDH)</strong>
-              <p className="font-body text-on-surface-variant text-xs italic">We're here to collaborate, innovate, and transform ideas into reality.</p>
+          <motion.div variants={itemVariants} className="bg-surface-container border border-white/5 p-6 md:p-8 rounded-2xl">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+              <div>
+                <strong className="block mb-1 font-headline not-italic text-white text-base">IIT Ropar – Technology & Innovation Foundation <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">(iHub-AWaDH)</span></strong>
+              </div>
+              <div className="px-4 py-2 rounded-full border border-primary/30 bg-primary/10 flex items-center gap-2 whitespace-nowrap shrink-0">
+                 <div className="w-1.5 h-1.5 bg-primary rounded-full shadow-[0_0_8px_#b4c5ff]"></div>
+                 <span className="text-primary text-[10px] font-mono">Response within 24h</span>
+              </div>
             </div>
-            <div className="px-4 py-2 rounded-full border border-primary/30 bg-primary/10 flex items-center gap-2 whitespace-nowrap">
-               <div className="w-1.5 h-1.5 bg-primary rounded-full shadow-[0_0_8px_#b4c5ff]"></div>
-               <span className="text-primary text-[10px] font-mono">Response within 24h</span>
+            <p className="font-body text-sm text-on-surface-variant leading-relaxed mb-6">
+              IIT Ropar-Technology and Innovation Foundation (iHub-AWaDH) is one of the <strong className="text-on-surface dark:text-white">25 Technology Innovation Hubs</strong> established under the National Mission on Interdisciplinary Cyber Physical Systems (NM-ICPS) of the Department of Science and Technology, Government of India, and hosted at IIT Ropar. The Foundation works across <span className="text-primary font-semibold">AI, IoT, robotics, drones, embedded systems, data analytics, entrepreneurship</span> and technology commercialisation. Its nationwide ecosystem includes 196+ supported startups, 220+ academic, industry and government partners, and 31 CPS Labs serving as spoke centres for scaled skilling and innovation programmes. More than 8,000+ students, researchers, faculty members, founders, co-founders and professionals have been trained through its capacity building initiatives.
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              {[
+                { value: "196+", label: "Supported Startups" },
+                { value: "220+", label: "Academic, Industry & Govt Partners" },
+                { value: "31", label: "CPS Labs as Spoke Centres" },
+                { value: "8,000+", label: "Professionals Trained" },
+              ].map((stat) => (
+                <div key={stat.label} className="bg-white/5 rounded-xl p-3 border border-white/5 text-center">
+                  <div className="font-headline text-xl md:text-2xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-0.5">
+                    {stat.value}
+                  </div>
+                  <div className="font-body text-[10px] text-on-surface-variant leading-snug">{stat.label}</div>
+                </div>
+              ))}
             </div>
           </motion.div>
         </motion.div>
@@ -200,49 +219,6 @@ export default function ContactPage() {
                  </button>
                </form>
              </motion.div>
-          </div>
-        </motion.div>
-        {/* About iHub-AWaDH Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="mt-12 relative bg-gradient-to-br from-blue-50/80 to-blue-100/50 dark:from-[#0f172a]/80 dark:to-[#020617]/80 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-black/5 dark:border-white/10 overflow-hidden shadow-xl dark:shadow-2xl"
-        >
-          <div className="absolute top-[-20%] right-[-10%] w-[50%] h-[50%] bg-primary/15 blur-[100px] rounded-full pointer-events-none" />
-          <div className="absolute bottom-[-20%] left-[-5%] w-[40%] h-[40%] bg-accent/10 blur-[100px] rounded-full pointer-events-none" />
-
-          <div className="relative z-10">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="w-8 h-[2px] bg-secondary" />
-              <span className="text-secondary font-mono text-sm uppercase tracking-widest font-bold">About</span>
-            </div>
-
-            <h2 className="font-headline text-2xl md:text-3xl font-bold text-on-surface dark:text-white mb-6 leading-tight">
-              IIT Ropar – Technology & Innovation Foundation{" "}
-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">(iHub-AWaDH)</span>
-            </h2>
-
-            <p className="font-body text-base md:text-lg text-on-surface-variant leading-relaxed mb-8 max-w-5xl">
-              IIT Ropar-Technology and Innovation Foundation (iHub-AWaDH) is one of the <strong className="text-on-surface dark:text-white">25 Technology Innovation Hubs</strong> established under the National Mission on Interdisciplinary Cyber Physical Systems (NM-ICPS) of the Department of Science and Technology, Government of India, and hosted at IIT Ropar. The Foundation works across <span className="text-primary font-semibold">AI, IoT, robotics, drones, embedded systems, data analytics, entrepreneurship</span> and technology commercialisation.
-            </p>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-              {[
-                { value: "196+", label: "Supported Startups" },
-                { value: "220+", label: "Academic, Industry & Govt Partners" },
-                { value: "31", label: "CPS Labs as Spoke Centres" },
-                { value: "8,000+", label: "Students, Researchers & Professionals Trained" },
-              ].map((stat) => (
-                <div key={stat.label} className="bg-black/5 dark:bg-white/5 rounded-2xl p-4 md:p-5 border border-black/5 dark:border-white/10 text-center">
-                  <div className="font-headline text-2xl md:text-3xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-1">
-                    {stat.value}
-                  </div>
-                  <div className="font-body text-xs text-on-surface-variant leading-snug">{stat.label}</div>
-                </div>
-              ))}
-            </div>
           </div>
         </motion.div>
       </div>
