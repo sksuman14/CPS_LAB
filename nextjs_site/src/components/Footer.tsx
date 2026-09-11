@@ -27,6 +27,7 @@ export default function Footer() {
     { name: "Live Deployments", path: "/deployments" },
     { name: "Training & Workshops", path: "/training" },
     { name: "Contact Support", path: "/contact" },
+    { name: "FAQ", path: "/faq" },
   ];
 
   const resourceLinks = [
@@ -117,7 +118,7 @@ export default function Footer() {
                 <Globe className="w-4 h-4" />
               </a>
               <a
-                href="mailto:awadhropar@gmail.com"
+                href="mailto:oitc@ihub-awadh.in"
                 aria-label="Email"
                 className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-primary/20 hover:border-primary/40 transition-all"
               >
@@ -252,6 +253,13 @@ export default function Footer() {
                   >
                     oitc@ihub-awadh.in
                   </a>
+  <a
+                    href="mailto:vikash.hardwareengineer@ihub-awadh.in"
+                    className="text-on-surface-variant hover:text-white transition-colors truncate text-[11px]"
+                  >
+                    vikash.hardwareengineer@ihub-awadh.in
+                  </a>
+
                 </div>
               </div>
             </div>
