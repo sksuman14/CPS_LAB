@@ -144,7 +144,7 @@ export default function Navbar() {
         {/* LEFT: Logo */}
         <div className="flex-1 flex items-center justify-start gap-3">
           <Link href="/home" className="group flex items-center gap-3">
-            <div className="relative w-20 h-9 transition-transform duration-300 group-hover:scale-105">
+            <div className="relative w-32 h-12 transition-transform duration-300 group-hover:scale-105">
               <Image
                 src="/images/logo.jpg"
                 alt="Logo"
