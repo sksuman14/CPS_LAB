@@ -145,8 +145,9 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h4 className="font-mono text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Phone</h4>
-                      <p className="text-white font-body text-xs">
-01881 - 232601</p>
+                      <p className="text-white font-body text-xs">01881 - 232601 (HR)</p>
+                       <p className="text-white font-body text-xs">+91 7986006349 (Tech Team)</p>
+                        <p className="text-white font-body text-xs">+91 7267012486 (Tech Team)</p>
                     </div>
                   </div>
 
@@ -155,10 +156,16 @@ export default function ContactPage() {
                       <div className="w-2.5 h-2.5 rounded-sm bg-white/30 group-hover/item:bg-primary transition-colors"></div>
                       <span className="text-on-surface-variant text-[10px] font-medium group-hover/item:text-white truncate">awadhropar@gmail.com</span>
                     </a>
-                    <a href="mailto:project.manager@ihub-awadh.in" className="flex gap-3 items-center group/item cursor-pointer bg-white/5 p-3 rounded-xl border border-white/5 hover:bg-white/10 transition-all">
+                    <a href="mailto:vikash.hardwareengineer@ihub-awadh.in" className="flex gap-3 items-center group/item cursor-pointer bg-white/5 p-3 rounded-xl border border-white/5 hover:bg-white/10 transition-all">
                       <div className="w-2.5 h-2.5 rounded-sm bg-white/30 group-hover/item:bg-primary transition-colors"></div>
-                      <span className="text-on-surface-variant text-[10px] font-medium group-hover/item:text-white truncate">project.manager@ihub-awadh...</span>
+                      <span className="text-on-surface-variant text-[10px] font-medium group-hover/item:text-white truncate">vikash.hardwareengineer@ihub-awadh.in</span>
                     </a>
+
+ <a href="mailto:oitc@ihub-awadh.in" className="flex gap-3 items-center group/item cursor-pointer bg-white/5 p-3 rounded-xl border border-white/5 hover:bg-white/10 transition-all">
+                      <div className="w-2.5 h-2.5 rounded-sm bg-white/30 group-hover/item:bg-primary transition-colors"></div>
+                      <span className="text-on-surface-variant text-[10px] font-medium group-hover/item:text-white truncate">oitc@ihub-awadh.in</span>
+                    </a>
+
                   </div>
 
                   <div className="flex gap-3 mt-4">
