@@ -149,10 +149,11 @@ function HomeContent() {
             <div className="absolute top-[-20%] right-[-10%] w-[50%] h-[50%] bg-primary/15 blur-[100px] rounded-full pointer-events-none" />
             <div className="absolute bottom-[-20%] left-[-5%] w-[40%] h-[40%] bg-accent/10 blur-[100px] rounded-full pointer-events-none" />
 
-            <div className="relative z-10">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-8 h-[2px] bg-secondary" />
+            <div className="relative z-10 flex flex-col items-center text-center">
+              <div className="flex items-center justify-center gap-4 mb-4">
+                <div className="w-8 h-[2px] bg-secondary hidden md:block" />
                 <span className="text-secondary font-mono text-sm uppercase tracking-widest font-bold">About</span>
+                <div className="w-8 h-[2px] bg-secondary hidden md:block" />
               </div>
 
               <h2 className="font-headline text-2xl md:text-3xl font-bold text-on-surface dark:text-white mb-6 leading-tight">
@@ -186,10 +187,11 @@ function HomeContent() {
 
         {/* Bento Grid */}
         <section className="max-w-[1600px] mx-auto px-6 md:px-8 lg:px-12 mb-12">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="w-8 h-[2px] bg-secondary"></div>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12 flex flex-col items-center text-center">
+            <div className="flex items-center justify-center gap-4 mb-4">
+              <div className="w-8 h-[2px] bg-secondary hidden md:block"></div>
               <span className="text-secondary font-mono text-sm uppercase tracking-widest font-bold">What Makes Us Different</span>
+              <div className="w-8 h-[2px] bg-secondary hidden md:block"></div>
             </div>
             <h2 className="font-headline text-2xl md:text-3xl font-bold text-on-surface dark:text-white mb-6 max-w-4xl leading-tight">
               Bridging the gap between theoretical research and real-world application <span className="text-on-surface-variant">through innovation and collaboration.</span>
@@ -298,10 +300,10 @@ function HomeContent() {
 
         {/* Location Section */}
         <section className="py-8">
-          <div className="max-w-[1600px] mx-auto px-6 md:px-8 lg:px-12 text-center md:text-left">
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+          <div className="max-w-[1600px] mx-auto px-6 md:px-8 lg:px-12 text-center">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex flex-col items-center">
               <h2 className="font-headline text-2xl md:text-3xl font-bold text-white mb-3">CPS Labs in Schools and Colleges Across India</h2>
-              <p className="font-body text-base text-on-surface-variant mb-8">Our network of research centers spans across educational institutions nationwide.</p>
+              <p className="font-body text-base text-on-surface-variant mb-8 max-w-3xl">Our network of research centers spans across educational institutions nationwide.</p>
               <div className="h-[400px] md:h-[600px] w-full rounded-3xl bg-surface-container-lowest border border-black/10 dark:border-white/10 relative overflow-hidden group shadow-xl dark:shadow-2xl hover:shadow-[0_0_40px_rgba(37,99,235,0.15)] hover:border-primary/40 transition-all duration-500">
                 <IndiaMap />
                 <div className="absolute bottom-6 right-6 z-30 bg-primary/90 backdrop-blur-md text-white px-5 py-3 rounded-2xl shadow-[0_10px_30px_rgba(37,99,235,0.4)] border border-white/20 flex flex-col items-center group-hover:scale-110 group-hover:-translate-y-2 group-hover:shadow-[0_15px_40px_rgba(37,99,235,0.6)] transition-all duration-500">
@@ -315,7 +317,7 @@ function HomeContent() {
 
         {/* Apps Section */}
         <section id="apps" className="max-w-[1600px] mx-auto px-6 md:px-8 lg:px-12 py-8">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12 flex flex-col items-center text-center">
             <h2 className="font-headline text-2xl md:text-3xl font-bold text-white mb-3">Our Applications</h2>
             <p className="font-body text-lg text-on-surface-variant max-w-3xl">Software suites tailored for Cyber Physical interaction.</p>
           </motion.div>
