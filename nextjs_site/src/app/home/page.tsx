@@ -19,6 +19,55 @@ const IndiaMap = dynamic(() => import('@/components/IndiaMap'), {
 
 import CyberBackground from '@/components/CyberBackground';
 
+type AppEntry = { title: string; desc: string; images: string[]; downloadLink: string; platform: string };
+
+function AppCard({ app, delay }: { app: AppEntry; delay: number }) {
+  const [slideIdx, setSlideIdx] = useState(0);
+  useEffect(() => {
+    if (app.images.length <= 1) return;
+    const t = setInterval(() => setSlideIdx(i => (i + 1) % app.images.length), 2500);
+    return () => clearInterval(t);
+  }, [app.images.length]);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }} transition={{ delay }}
+      className="bg-surface-container rounded-2xl overflow-hidden border border-black/5 dark:border-white/5 group flex flex-col hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10 dark:hover:shadow-primary/20 hover:border-primary/30 dark:hover:border-primary/30 transition-all duration-500 relative"
+    >
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0" />
+      <div className="h-56 overflow-hidden bg-surface-container-lowest relative z-10">
+        {app.images.map((src, i) => (
+          <img
+            key={src} src={src} alt={`${app.title} ${i + 1}`}
+            className={`absolute inset-0 w-full h-full object-contain p-4 transition-opacity duration-700 ${i === slideIdx ? "opacity-100" : "opacity-0"}`}
+          />
+        ))}
+        {app.images.length > 1 && (
+          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
+            {app.images.map((_, i) => (
+              <button key={i} onClick={() => setSlideIdx(i)}
+                className={`h-1.5 rounded-full transition-all duration-300 ${i === slideIdx ? "bg-primary w-4" : "bg-white/40 w-1.5"}`}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+      <div className="p-6 flex-grow flex flex-col">
+        <div className="flex items-start justify-between mb-2">
+          <h3 className="font-headline font-bold text-lg text-white">{app.title}</h3>
+          {app.platform && <span className="text-[10px] bg-primary/20 text-primary px-2 py-0.5 rounded-full font-mono">{app.platform}</span>}
+        </div>
+        <p className="font-body text-xs text-on-surface-variant mb-4">{app.desc}</p>
+        <Link href={app.downloadLink} download className="mt-auto relative z-10 inline-flex items-center gap-2 bg-primary/10 hover:bg-primary border border-primary/30 hover:border-primary text-primary hover:text-white px-3 py-1.5 rounded-lg transition-all w-full justify-center group/btn shadow-sm hover:shadow-[0_0_15px_rgba(37,99,235,0.4)]">
+          <span className="material-symbols-outlined text-lg group-hover/btn:-translate-y-1 transition-transform" style={{ fontVariationSettings: "'FILL' 1" }}>download</span>
+          <span className="font-body text-xs font-semibold">Download APK</span>
+        </Link>
+      </div>
+    </motion.div>
+  );
+}
+
 function HomeContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -51,21 +100,21 @@ function HomeContent() {
     {
       title: "Serial Monitor",
       desc: "Real-time robust data visualization with IoT bounds.",
-      path: "/assets/images/serialmonitor.jpeg",
+      images: ["/assets/images/ui.jpg", "/assets/images/UI2.jpg"],
       downloadLink: "https://iot-serial-communication-app.s3.us-east-1.amazonaws.com/IOT+Serial+Monitor+Setup+1.0.0.exe",
       platform: ".exe"
     },
     {
       title: "BLE Sense",
       desc: "Wireless sensor monitoring app over Bluetooth protocols.",
-      path: "/assets/images/blsesense.jpeg",
+      images: ["/assets/images/blsesense.jpeg"],
       downloadLink: "https://play.google.com/store/apps/details?id=com.blesense.app",
       platform: "Android"
     },
     {
       title: "Cloud Sense",
       desc: "Platform for real-time monitoring of weather and environmental sensor data.",
-      path: "/assets/images/cloudsense.png",
+      images: ["/assets/images/cloudsense.png"],
       downloadLink: "https://play.google.com/store/apps/details?id=com.CloudSenseVis",
       platform: "Android"
     }
@@ -323,23 +372,7 @@ function HomeContent() {
           </motion.div>
           <div className="grid md:grid-cols-3 gap-8">
             {apps.map((app, idx) => (
-              <motion.div key={app.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.2 }} className="bg-surface-container rounded-2xl overflow-hidden border border-black/5 dark:border-white/5 group flex flex-col hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10 dark:hover:shadow-primary/20 hover:border-primary/30 dark:hover:border-primary/30 transition-all duration-500 relative">
-                <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0"></div>
-                <div className="h-56 overflow-hidden bg-surface-container-lowest flex items-center justify-center p-4 relative z-10">
-                  <img src={app.path} alt={app.title} className="max-h-full max-w-full object-contain rounded-md shadow-sm group-hover:scale-105 transition-transform duration-500" />
-                </div>
-                <div className="p-6 flex-grow flex flex-col">
-                  <div className="flex items-start justify-between mb-2">
-                    <h3 className="font-headline font-bold text-lg text-white">{app.title}</h3>
-                    <span className="text-[10px] bg-primary/20 text-primary px-2 py-0.5 rounded-full font-mono">{app.platform}</span>
-                  </div>
-                  <p className="font-body text-xs text-on-surface-variant mb-4">{app.desc}</p>
-                  <Link href={app.downloadLink} download className="mt-auto relative z-10 inline-flex items-center gap-2 bg-primary/10 hover:bg-primary border border-primary/30 hover:border-primary text-primary hover:text-white px-3 py-1.5 rounded-lg transition-all w-full justify-center group/btn shadow-sm hover:shadow-[0_0_15px_rgba(37,99,235,0.4)]">
-                    <span className="material-symbols-outlined text-lg group-hover/btn:-translate-y-1 transition-transform" style={{ fontVariationSettings: "'FILL' 1" }}>download</span>
-                    <span className="font-body text-xs font-semibold">Download APK</span>
-                  </Link>
-                </div>
-              </motion.div>
+              <AppCard key={app.title} app={app} delay={idx * 0.2} />
             ))}
           </div>
           <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="mt-12 text-center">
