@@ -146,7 +146,7 @@ export default function Navbar() {
           <Link href="/home" className="group flex items-center gap-3">
             <div className="relative w-32 h-12 transition-transform duration-300 group-hover:scale-105">
               <Image
-                src="/images/logo.jpg"
+                src="/images/logo.png"
                 alt="Logo"
                 fill
                 className="object-contain"
