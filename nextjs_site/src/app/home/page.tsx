@@ -137,7 +137,7 @@ function HomeContent() {
         </section>
 
         {/* About iHub-AWaDH Section */}
-        <section className="max-w-[1600px] mx-auto px-6 md:px-8 lg:px-12 mb-12">
+        <section className="max-w-[1600px] mx-auto px-6 md:px-8 lg:px-12 mb-20">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
