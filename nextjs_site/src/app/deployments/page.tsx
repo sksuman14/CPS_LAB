@@ -380,7 +380,7 @@ export default function DeploymentsPage() {
 
       <main className="relative z-10 pt-36 pb-16">
         {/* Header Section */}
-        <section className="max-w-7xl mx-auto px-8 mb-8 text-center relative">
+        <section className="max-w-7xl mx-auto px-8 mb-8 text-center relative z-50">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -401,14 +401,20 @@ export default function DeploymentsPage() {
 
             <div className="flex justify-center gap-4 mt-8">
               <button
-                onClick={() => setActiveCategory("college")}
-                className={`px-6 py-3 rounded-full font-bold transition-all duration-300 ${activeCategory === "college" ? "bg-primary text-white shadow-[0_0_20px_rgba(37,99,235,0.5)]" : "bg-surface-container text-on-surface-variant hover:text-white border border-white/10"}`}
+                onClick={() => {
+                  setActiveCategory("college");
+                  setActiveIndex(0);
+                }}
+                className={`px-6 py-3 rounded-full font-bold transition-all duration-300 relative z-50 ${activeCategory === "college" ? "bg-primary text-white shadow-[0_0_20px_rgba(37,99,235,0.5)]" : "bg-surface-container text-on-surface-variant hover:text-white border border-white/10"}`}
               >
                 College Deployments
               </button>
               <button
-                onClick={() => setActiveCategory("school")}
-                className={`px-6 py-3 rounded-full font-bold transition-all duration-300 ${activeCategory === "school" ? "bg-primary text-white shadow-[0_0_20px_rgba(37,99,235,0.5)]" : "bg-surface-container text-on-surface-variant hover:text-white border border-white/10"}`}
+                onClick={() => {
+                  setActiveCategory("school");
+                  setActiveIndex(0);
+                }}
+                className={`px-6 py-3 rounded-full font-bold transition-all duration-300 relative z-50 ${activeCategory === "school" ? "bg-primary text-white shadow-[0_0_20px_rgba(37,99,235,0.5)]" : "bg-surface-container text-on-surface-variant hover:text-white border border-white/10"}`}
               >
                 School Deployments
               </button>
@@ -423,7 +429,7 @@ export default function DeploymentsPage() {
             <div className="w-full lg:w-1/2 relative z-10 pl-4 lg:pl-12 border-l border-white/5">
               {currentDeployments.map((deployment, index) => (
                 <DeploymentTextBlock
-                  key={index}
+                  key={`${activeCategory}-${index}`}
                   data={deployment}
                   index={index}
                   setActiveIndex={setActiveIndex}
@@ -436,7 +442,7 @@ export default function DeploymentsPage() {
               <div className="sticky top-24 h-[60vh] w-full flex items-center justify-center p-8 perspective-1000">
                 <AnimatePresence mode="wait">
                   <motion.div
-                    key={activeIndex}
+                    key={`${activeCategory}-${activeIndex}`}
                     initial={{ opacity: 0, y: 40, rotateX: 10, scale: 0.9 }}
                     animate={{ opacity: 1, y: 0, rotateX: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -40, rotateX: -10, scale: 0.9 }}
