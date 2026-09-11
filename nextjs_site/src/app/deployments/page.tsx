@@ -338,7 +338,7 @@ function DeploymentTextBlock({
         <div className="inline-block px-4 py-1.5 rounded-full bg-primary/20 text-primary border border-primary/30 text-[10px] font-label font-bold mb-6 tracking-widest uppercase">
           {data.title}
         </div>
-        <h3 className="font-headline text-2xl md:text-4xl font-bold text-white mb-6 leading-tight drop-shadow-md">
+        <h3 className="font-headline text-xl md:text-3xl font-bold text-white mb-6 leading-tight drop-shadow-md">
           {data.description}
         </h3>
         <p className="font-body text-base text-on-surface-variant leading-relaxed max-w-2xl bg-surface-container/50 backdrop-blur-sm p-6 rounded-2xl border border-white/5 shadow-xl">

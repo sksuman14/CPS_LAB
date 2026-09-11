@@ -143,7 +143,7 @@ function HomeContent() {
               <div className="w-8 h-[2px] bg-secondary"></div>
               <span className="text-secondary font-mono text-sm uppercase tracking-widest font-bold">What Makes Us Different</span>
             </div>
-            <h2 className="font-headline text-3xl md:text-4xl font-bold text-on-surface dark:text-white mb-6 max-w-4xl leading-tight">
+            <h2 className="font-headline text-2xl md:text-3xl font-bold text-on-surface dark:text-white mb-6 max-w-4xl leading-tight">
               Bridging the gap between theoretical research and real-world application <span className="text-on-surface-variant">through innovation and collaboration.</span>
             </h2>
           </motion.div>
@@ -252,7 +252,7 @@ function HomeContent() {
         <section className="py-8">
           <div className="max-w-7xl mx-auto px-8 text-center md:text-left">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              <h2 className="font-headline text-3xl md:text-4xl font-bold text-white mb-3">CPS Labs in Schools and Colleges Across India</h2>
+              <h2 className="font-headline text-2xl md:text-3xl font-bold text-white mb-3">CPS Labs in Schools and Colleges Across India</h2>
               <p className="font-body text-base text-on-surface-variant mb-8">Our network of research centers spans across educational institutions nationwide.</p>
               <div className="h-[400px] md:h-[600px] w-full rounded-3xl bg-surface-container-lowest border border-black/10 dark:border-white/10 relative overflow-hidden group shadow-xl dark:shadow-2xl hover:shadow-[0_0_40px_rgba(37,99,235,0.15)] hover:border-primary/40 transition-all duration-500">
                 <IndiaMap />
@@ -268,7 +268,7 @@ function HomeContent() {
         {/* Apps Section */}
         <section id="apps" className="max-w-7xl mx-auto px-8 py-8">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12">
-            <h2 className="font-headline text-3xl md:text-4xl font-bold text-white mb-3">Our Applications</h2>
+            <h2 className="font-headline text-2xl md:text-3xl font-bold text-white mb-3">Our Applications</h2>
             <p className="font-body text-lg text-on-surface-variant max-w-3xl">Software suites tailored for Cyber Physical interaction.</p>
           </motion.div>
           <div className="grid md:grid-cols-3 gap-8">
@@ -303,7 +303,7 @@ function HomeContent() {
         <section className="max-w-7xl mx-auto px-8 mb-12">
           <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-gradient-to-br from-blue-50/80 to-blue-100/50 dark:from-[#0f172a]/80 dark:to-[#020617]/80 backdrop-blur-md rounded-3xl p-12 md:p-16 border border-black/5 dark:border-white/10 relative overflow-hidden text-center shadow-xl dark:shadow-2xl hover:border-primary/50 transition-all duration-500 group">
             <div className="relative z-10 max-w-3xl mx-auto">
-              <h2 className="font-headline text-3xl md:text-4xl font-bold text-on-surface dark:text-white mb-6">Ready to define the future?</h2>
+              <h2 className="font-headline text-2xl md:text-3xl font-bold text-on-surface dark:text-white mb-6">Ready to define the future?</h2>
               <p className="font-body text-base text-on-surface-variant mb-8">We are always looking for passionate researchers, engineers, and collaborators to join our ecosystem at IIT Ropar.</p>
               <div className="flex flex-row flex-wrap justify-center gap-4">
                 <Link href="/contact" className="bg-primary text-white dark:bg-white dark:text-surface px-6 py-3 rounded-full font-headline font-bold text-sm hover:bg-primary/90 dark:hover:bg-gray-200 hover:scale-105 transition-all whitespace-nowrap">Contact Us</Link>

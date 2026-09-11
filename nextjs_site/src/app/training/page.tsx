@@ -361,7 +361,7 @@ export default function TrainingAndWorkshopPage() {
               className="flex items-center gap-6 mb-4"
             >
               <div className="w-2 h-12 bg-gradient-to-b from-primary to-accent rounded-full shadow-[0_0_15px_rgba(37,99,235,0.5)]"></div>
-              <h2 className="font-headline text-3xl md:text-4xl font-bold text-white drop-shadow-lg">
+              <h2 className="font-headline text-2xl md:text-3xl font-bold text-white drop-shadow-lg">
                 Workshops & Trainings
               </h2>
             </motion.div>
