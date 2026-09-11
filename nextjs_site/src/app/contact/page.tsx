@@ -60,7 +60,7 @@ export default function ContactPage() {
           <motion.div variants={itemVariants} className="bg-surface-container border border-white/5 p-6 md:p-8 rounded-2xl">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
               <div>
-                <strong className="block mb-1 font-headline not-italic text-white text-base">IIT Ropar – Technology & Innovation Foundation <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">(iHub-AWaDH)</span></strong>
+                <strong className="block mb-1 font-headline not-italic text-white text-base">IIT Ropar – Technology & Innovation Foundation <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent pr-1">(iHub-AWaDH)</span></strong>
               </div>
               <div className="px-4 py-2 rounded-full border border-primary/30 bg-primary/10 flex items-center gap-2 whitespace-nowrap shrink-0">
                  <div className="w-1.5 h-1.5 bg-primary rounded-full shadow-[0_0_8px_#b4c5ff]"></div>
@@ -74,7 +74,7 @@ export default function ContactPage() {
               {[
                 { value: "196+", label: "Supported Startups" },
                 { value: "220+", label: "Academic, Industry & Govt Partners" },
-                { value: "31", label: "CPS Labs as Spoke Centres" },
+                { value: "32", label: "CPS Labs as Spoke Centres" },
                 { value: "8,000+", label: "Professionals Trained" },
               ].map((stat) => (
                 <div key={stat.label} className="bg-white/5 rounded-xl p-3 border border-white/5 text-center">
