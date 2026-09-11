@@ -157,7 +157,7 @@ function HomeContent() {
 
               <h2 className="font-headline text-2xl md:text-3xl font-bold text-on-surface dark:text-white mb-6 leading-tight">
                 IIT Ropar – Technology & Innovation Foundation{" "}
-                <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent pr-1">(iHub-AWaDH)</span>
+                <span className="text-primary">(iHub-AWaDH)</span>
               </h2>
 
               <p className="font-body text-base md:text-lg text-on-surface-variant leading-relaxed mb-8 max-w-5xl">
