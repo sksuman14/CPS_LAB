@@ -137,7 +137,7 @@ function HomeContent() {
         </section>
 
         {/* About iHub-AWaDH Section */}
-        <section className="max-w-7xl mx-auto px-8 mb-12">
+        <section className="max-w-[1600px] mx-auto px-6 md:px-8 lg:px-12 mb-12">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -185,7 +185,7 @@ function HomeContent() {
         </section>
 
         {/* Bento Grid */}
-        <section className="max-w-7xl mx-auto px-8 mb-12">
+        <section className="max-w-[1600px] mx-auto px-6 md:px-8 lg:px-12 mb-12">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12">
             <div className="flex items-center gap-4 mb-4">
               <div className="w-8 h-[2px] bg-secondary"></div>
@@ -298,7 +298,7 @@ function HomeContent() {
 
         {/* Location Section */}
         <section className="py-8">
-          <div className="max-w-7xl mx-auto px-8 text-center md:text-left">
+          <div className="max-w-[1600px] mx-auto px-6 md:px-8 lg:px-12 text-center md:text-left">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
               <h2 className="font-headline text-2xl md:text-3xl font-bold text-white mb-3">CPS Labs in Schools and Colleges Across India</h2>
               <p className="font-body text-base text-on-surface-variant mb-8">Our network of research centers spans across educational institutions nationwide.</p>
@@ -314,7 +314,7 @@ function HomeContent() {
         </section>
 
         {/* Apps Section */}
-        <section id="apps" className="max-w-7xl mx-auto px-8 py-8">
+        <section id="apps" className="max-w-[1600px] mx-auto px-6 md:px-8 lg:px-12 py-8">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12">
             <h2 className="font-headline text-2xl md:text-3xl font-bold text-white mb-3">Our Applications</h2>
             <p className="font-body text-lg text-on-surface-variant max-w-3xl">Software suites tailored for Cyber Physical interaction.</p>
@@ -348,7 +348,7 @@ function HomeContent() {
 
 
                         {/* CTA */}
-        <section className="max-w-7xl mx-auto px-8 mb-12">
+        <section className="max-w-[1600px] mx-auto px-6 md:px-8 lg:px-12 mb-12">
           <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-gradient-to-br from-blue-50/80 to-blue-100/50 dark:from-[#0f172a]/80 dark:to-[#020617]/80 backdrop-blur-md rounded-3xl p-12 md:p-16 border border-black/5 dark:border-white/10 relative overflow-hidden text-center shadow-xl dark:shadow-2xl hover:border-primary/50 transition-all duration-500 group">
             <div className="relative z-10 max-w-3xl mx-auto">
               <h2 className="font-headline text-2xl md:text-3xl font-bold text-on-surface dark:text-white mb-6">Ready to define the future?</h2>
