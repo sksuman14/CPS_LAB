@@ -68,7 +68,7 @@ export default function ContactPage() {
               </div>
             </div>
             <p className="font-body text-sm text-on-surface-variant leading-relaxed mb-6">
-              IIT Ropar-Technology and Innovation Foundation (iHub-AWaDH) is one of the <strong className="text-on-surface dark:text-white">25 Technology Innovation Hubs</strong> established under the National Mission on Interdisciplinary Cyber Physical Systems (NM-ICPS) of the Department of Science and Technology, Government of India, and hosted at IIT Ropar. The Foundation works across <span className="text-primary font-semibold">AI, IoT, robotics, drones, embedded systems, data analytics, entrepreneurship</span> and technology commercialisation. Its nationwide ecosystem includes 196+ supported startups, 220+ academic, industry and government partners, and 31 CPS Labs serving as spoke centres for scaled skilling and innovation programmes. More than 8,000+ students, researchers, faculty members, founders, co-founders and professionals have been trained through its capacity building initiatives.
+              IIT Ropar-Technology and Innovation Foundation (iHub-AWaDH) is one of the <strong className="text-on-surface dark:text-white">25 Technology Innovation Hubs</strong> established under the National Mission on Interdisciplinary Cyber Physical Systems (NM-ICPS) of the Department of Science and Technology, Government of India, and hosted at IIT Ropar. The Foundation works across <span className="text-primary font-semibold">AI, IoT, robotics, drones, embedded systems, data analytics, entrepreneurship</span> and technology commercialisation. Its nationwide ecosystem includes 196+ supported startups, 220+ academic, industry and government partners, and 32 CPS Labs serving as spoke centres for scaled skilling and innovation programmes. More than 8,000+ students, researchers, faculty members, founders, co-founders and professionals have been trained through its capacity building initiatives.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {[
@@ -145,7 +145,8 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h4 className="font-mono text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Phone</h4>
-                      <p className="text-white font-body text-xs">+91 70870 32853</p>
+                      <p className="text-white font-body text-xs">
+01881 - 232601</p>
                     </div>
                   </div>
 

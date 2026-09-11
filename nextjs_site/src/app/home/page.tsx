@@ -107,14 +107,14 @@ function HomeContent() {
     {
       title: "BLE Sense",
       desc: "Wireless sensor monitoring app over Bluetooth protocols.",
-      images: ["/assets/images/blsesense.jpeg"],
+      images: ["/assets/images/ble1.jpeg", "/assets/images/ble2.jpeg"],
       downloadLink: "https://play.google.com/store/apps/details?id=com.blesense.app",
       platform: "Android"
     },
     {
       title: "Cloud Sense",
       desc: "Platform for real-time monitoring of weather and environmental sensor data.",
-      images: ["/assets/images/cloudsense.png"],
+      images: ["/assets/images/cloudsense1.jpeg", "/assets/images/cloudsense2.jpg"],
       downloadLink: "https://play.google.com/store/apps/details?id=com.CloudSenseVis",
       platform: "Android"
     }
@@ -375,9 +375,9 @@ function HomeContent() {
               <AppCard key={app.title} app={app} delay={idx * 0.2} />
             ))}
           </div>
-          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="mt-12 text-center">
+          {/* <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="mt-12 text-center">
             <p className="text-on-surface-variant text-xs">All applications are compatible with Android devices. iOS versions coming soon.</p>
-          </motion.div>
+          </motion.div> */}
         </section>
 
 
