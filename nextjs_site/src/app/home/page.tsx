@@ -136,6 +136,54 @@ function HomeContent() {
           <div className="absolute inset-0 bg-gradient-to-b from-surface via-surface/60 to-surface z-10 pointer-events-none"></div>
         </section>
 
+        {/* About iHub-AWaDH Section */}
+        <section className="max-w-7xl mx-auto px-8 mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="relative bg-gradient-to-br from-blue-50/80 to-blue-100/50 dark:from-[#0f172a]/80 dark:to-[#020617]/80 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-black/5 dark:border-white/10 overflow-hidden shadow-xl dark:shadow-2xl"
+          >
+            {/* Ambient glow */}
+            <div className="absolute top-[-20%] right-[-10%] w-[50%] h-[50%] bg-primary/15 blur-[100px] rounded-full pointer-events-none" />
+            <div className="absolute bottom-[-20%] left-[-5%] w-[40%] h-[40%] bg-accent/10 blur-[100px] rounded-full pointer-events-none" />
+
+            <div className="relative z-10">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-8 h-[2px] bg-secondary" />
+                <span className="text-secondary font-mono text-sm uppercase tracking-widest font-bold">About</span>
+              </div>
+
+              <h2 className="font-headline text-2xl md:text-3xl font-bold text-on-surface dark:text-white mb-6 leading-tight">
+                IIT Ropar – Technology & Innovation Foundation{" "}
+                <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">(iHub-AWaDH)</span>
+              </h2>
+
+              <p className="font-body text-base md:text-lg text-on-surface-variant leading-relaxed mb-8 max-w-5xl">
+                IIT Ropar-Technology and Innovation Foundation (iHub-AWaDH) is one of the <strong className="text-on-surface dark:text-white">25 Technology Innovation Hubs</strong> established under the National Mission on Interdisciplinary Cyber Physical Systems (NM-ICPS) of the Department of Science and Technology, Government of India, and hosted at IIT Ropar. The Foundation works across <span className="text-primary font-semibold">AI, IoT, robotics, drones, embedded systems, data analytics, entrepreneurship</span> and technology commercialisation.
+              </p>
+
+              {/* Stats Row */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                {[
+                  { value: "196+", label: "Supported Startups" },
+                  { value: "220+", label: "Academic, Industry & Govt Partners" },
+                  { value: "31", label: "CPS Labs as Spoke Centres" },
+                  { value: "8,000+", label: "Students, Researchers & Professionals Trained" },
+                ].map((stat) => (
+                  <div key={stat.label} className="bg-black/5 dark:bg-white/5 rounded-2xl p-4 md:p-5 border border-black/5 dark:border-white/10 text-center">
+                    <div className="font-headline text-2xl md:text-3xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-1">
+                      {stat.value}
+                    </div>
+                    <div className="font-body text-xs text-on-surface-variant leading-snug">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </section>
+
         {/* Bento Grid */}
         <section className="max-w-7xl mx-auto px-8 mb-12">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12">
