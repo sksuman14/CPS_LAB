@@ -295,7 +295,7 @@ export default function TrainingAndWorkshopPage() {
         <section className="bg-surface-container-low border-y border-white/5 py-12 mb-6 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-full h-[500px] bg-primary/10 rounded-full blur-[150px] -translate-y-1/2 translate-x-1/2"></div>
 
-          <div className="max-w-7xl mx-auto px-8 relative z-10">
+          <div className="max-w-[1600px] mx-auto px-6 md:px-8 lg:px-12 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -353,7 +353,7 @@ export default function TrainingAndWorkshopPage() {
 
         {/* Dynamic Draggable Slider for Workshops */}
         <section className="w-full relative pt-0 pb-10 overflow-hidden">
-          <div className="max-w-7xl mx-auto px-8 mb-12">
+          <div className="max-w-[1600px] mx-auto px-6 md:px-8 lg:px-12 mb-12">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -376,7 +376,7 @@ export default function TrainingAndWorkshopPage() {
             </motion.p>
           </div>
 
-          <div className="max-w-7xl mx-auto px-8">
+          <div className="max-w-[1600px] mx-auto px-6 md:px-8 lg:px-12">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-10">
               {workshops.map((workshop, i) => (
                 <motion.div

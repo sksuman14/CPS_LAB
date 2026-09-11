@@ -380,7 +380,7 @@ export default function DeploymentsPage() {
 
       <main className="relative z-10 pt-36 pb-16">
         {/* Header Section */}
-        <section className="max-w-7xl mx-auto px-8 mb-8 text-center relative z-50">
+        <section className="max-w-[1600px] mx-auto px-6 md:px-8 lg:px-12 mb-8 text-center relative z-50">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -423,7 +423,7 @@ export default function DeploymentsPage() {
         </section>
 
         {/* Parallax Content Container */}
-        <section className="max-w-7xl mx-auto px-8 relative">
+        <section className="max-w-[1600px] mx-auto px-6 md:px-8 lg:px-12 relative">
           <div className="flex flex-col lg:flex-row gap-16 relative">
             {/* Left Column: Scrolling Text */}
             <div className="w-full lg:w-1/2 relative z-10 pl-4 lg:pl-12 border-l border-white/5">
@@ -479,7 +479,7 @@ export default function DeploymentsPage() {
           ? upcomingSchoolDeployments
           : upcomingCollegeDeployments
         ).length > 0 && (
-          <section className="max-w-7xl mx-auto px-8 mt-20 relative z-20">
+          <section className="max-w-[1600px] mx-auto px-6 md:px-8 lg:px-12 mt-20 relative z-20">
             <h2 className="font-headline text-2xl font-bold text-white mb-12 text-center opacity-80 uppercase tracking-widest text-xs">
               Upcoming Deployments
             </h2>

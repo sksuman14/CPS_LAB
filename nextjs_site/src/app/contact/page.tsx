@@ -47,7 +47,7 @@ export default function ContactPage() {
         <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] ambient-glow-1 opacity-20"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-8 relative z-10">
+      <div className="max-w-[1600px] mx-auto px-6 md:px-8 lg:px-12 relative z-10">
         {/* Header and Banner Section */}
         <motion.div variants={containerVariants} initial="hidden" animate="show" className="mb-12">
           <motion.div variants={itemVariants} className="flex items-center gap-4 mb-4">

@@ -90,7 +90,7 @@ export default function ProductsPage() {
       </div>
 
       <main className="relative z-10 flex-grow pt-40 pb-32">
-        <section className="max-w-7xl mx-auto px-8 mb-20 text-center">
+        <section className="max-w-[1600px] mx-auto px-6 md:px-8 lg:px-12 mb-20 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -123,7 +123,7 @@ export default function ProductsPage() {
           </motion.div>
         </section>
 
-        <section className="max-w-7xl mx-auto px-8">
+        <section className="max-w-[1600px] mx-auto px-6 md:px-8 lg:px-12">
           {filteredItems.length === 0 ? (
             <motion.div
               initial={{ opacity: 0, y: 20 }} 
