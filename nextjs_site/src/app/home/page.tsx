@@ -93,7 +93,7 @@ function HomeContent() {
         {/* Hero Section */}
         <section className="relative w-full pt-16 pb-10 mb-8 overflow-hidden flex flex-col items-center justify-center text-center">
           <motion.div variants={staggerContainer} initial="hidden" animate="show" className="max-w-4xl mx-auto px-8 relative z-20">
-            <motion.h1 variants={fadeIn} className="font-headline text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] mb-6 tracking-tighter text-white drop-shadow-2xl">
+            <motion.h1 variants={fadeIn} className="font-headline text-4xl md:text-5xl lg:text-6xl font-black leading-[1.05] mb-6 tracking-tighter text-white drop-shadow-2xl">
               Cyber Physical<br />System <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent [text-shadow:0_0_1px_rgba(255,255,255,0.3)]">Laboratory</span>
             </motion.h1>
             <motion.p variants={fadeIn} className="font-body text-lg text-on-surface-variant font-medium mb-10 max-w-2xl mx-auto leading-relaxed">

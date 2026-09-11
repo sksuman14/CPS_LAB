@@ -302,7 +302,7 @@ export default function TrainingAndWorkshopPage() {
               transition={{ duration: 0.8 }}
               className="text-center mb-16"
             >
-              <h1 className="font-headline text-4xl md:text-6xl font-bold leading-tight mb-6 tracking-tighter text-white drop-shadow-lg">
+              <h1 className="font-headline text-3xl md:text-5xl font-bold leading-tight mb-6 tracking-tighter text-white drop-shadow-lg">
                 Our{" "}
                 <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent [text-shadow:0_0_1px_rgba(255,255,255,0.3)]">
                   Impact

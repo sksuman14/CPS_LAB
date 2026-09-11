@@ -387,7 +387,7 @@ export default function DeploymentsPage() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="max-w-3xl mx-auto"
           >
-            <h1 className="font-headline text-4xl md:text-6xl lg:text-7xl font-black leading-[1.05] mb-6 tracking-tighter text-white drop-shadow-2xl">
+            <h1 className="font-headline text-3xl md:text-5xl lg:text-6xl font-black leading-[1.05] mb-6 tracking-tighter text-white drop-shadow-2xl">
               Nationwide
               <br />
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent [text-shadow:0_0_1px_rgba(255,255,255,0.3)]">
