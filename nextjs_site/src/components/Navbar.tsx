@@ -142,7 +142,7 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-white/10 shadow-[0_8px_32px_0_rgba(180,197,255,0.06)]">
       <div className="w-full max-w-[1600px] mx-auto px-6 md:px-8 lg:px-12 py-4 flex items-center justify-between">
         {/* LEFT: Logo */}
-        <div className="flex-1 flex items-center justify-start gap-3">
+        <div className="flex items-center justify-start gap-3 mr-auto">
           <Link href="/home" className="group flex items-center gap-3">
             <div className="relative w-32 h-12 transition-transform duration-300 group-hover:scale-105">
               <Image
