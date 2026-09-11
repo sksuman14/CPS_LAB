@@ -143,7 +143,16 @@ export default function Navbar() {
       <div className="w-full max-w-[1600px] mx-auto px-6 md:px-8 lg:px-12 py-4 flex items-center justify-between">
         {/* LEFT: Logo */}
         <div className="flex-1 flex items-center justify-start gap-3">
-          <Link href="/home" className="group flex items-center gap-2">
+          <Link href="/home" className="group flex items-center gap-3">
+            <div className="relative w-20 h-9 transition-transform duration-300 group-hover:scale-105">
+              <Image
+                src="/images/logo.jpg"
+                alt="Logo"
+                fill
+                className="object-contain"
+              />
+            </div>
+            <div className="w-px h-6 bg-white/20 hidden sm:block" />
             <div className="relative w-8 h-8 transition-transform duration-300 group-hover:scale-110">
               <Image
                 src="/images/app_logo.png"
