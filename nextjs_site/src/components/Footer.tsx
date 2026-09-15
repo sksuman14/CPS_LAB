@@ -26,7 +26,8 @@ export default function Footer() {
     { name: "Products & Sensors", path: "/products" },
     { name: "Live Deployments", path: "/deployments" },
     { name: "Training & Workshops", path: "/training" },
-    { name: "Contact Support", path: "/contact" },
+    { name: "Gallery", path: "/gallery" },
+    // { name: "Contact Support", path: "/contact" },
     { name: "FAQ", path: "/faq" },
   ];
 
