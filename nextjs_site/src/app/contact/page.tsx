@@ -154,22 +154,22 @@ export default function ContactPage() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
                     <a href="mailto:awadhropar@gmail.com" className="flex gap-3 items-center group/item cursor-pointer bg-white/5 p-3 rounded-xl border border-white/5 hover:bg-white/10 transition-all">
                       <div className="w-2.5 h-2.5 rounded-sm bg-white/30 group-hover/item:bg-primary transition-colors"></div>
-                      <span className="text-on-surface-variant text-[10px] font-medium group-hover/item:text-white truncate">awadhropar@gmail.com</span>
+                      <span className="text-on-surface-variant text-xs md:text-sm font-medium group-hover/item:text-white truncate">awadhropar@gmail.com</span>
                     </a>
                     <a href="mailto:vikash.hardwareengineer@ihub-awadh.in" className="flex gap-3 items-center group/item cursor-pointer bg-white/5 p-3 rounded-xl border border-white/5 hover:bg-white/10 transition-all">
                       <div className="w-2.5 h-2.5 rounded-sm bg-white/30 group-hover/item:bg-primary transition-colors"></div>
-                      <span className="text-on-surface-variant text-[10px] font-medium group-hover/item:text-white truncate">vikash.hardwareengineer@ihub-awadh.in</span>
+                      <span className="text-on-surface-variant text-xs md:text-sm font-medium group-hover/item:text-white truncate">vikash.hardwareengineer@ihub-awadh.in</span>
                     </a>
 
  <a href="mailto:oitc@ihub-awadh.in" className="flex gap-3 items-center group/item cursor-pointer bg-white/5 p-3 rounded-xl border border-white/5 hover:bg-white/10 transition-all">
                       <div className="w-2.5 h-2.5 rounded-sm bg-white/30 group-hover/item:bg-primary transition-colors"></div>
-                      <span className="text-on-surface-variant text-[10px] font-medium group-hover/item:text-white truncate">oitc@ihub-awadh.in</span>
+                      <span className="text-on-surface-variant text-xs md:text-sm font-medium group-hover/item:text-white truncate">oitc@ihub-awadh.in</span>
                     </a>
 
                   </div>
 
                   <div className="flex gap-3 mt-4">
-                    <a href="https://www.iitrpr.ac.in/awadh" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 hover:bg-primary/20 hover:border-primary/50 transition-all">
+                    <a href="https://ihub-awadh.in/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 hover:bg-primary/20 hover:border-primary/50 transition-all">
                       <span className="material-symbols-outlined text-xs text-white group-hover:text-primary">language</span>
                     </a>
                     <a href="https://www.linkedin.com/company/ihub-awadh/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 hover:bg-primary/20 hover:border-primary/50 transition-all">

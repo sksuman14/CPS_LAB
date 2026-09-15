@@ -109,7 +109,7 @@ export default function Footer() {
                 <Linkedin className="w-4 h-4" />
               </a>
               <a
-                href="https://www.iitrpr.ac.in/awadh"
+                href="https://ihub-awadh.in/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Official Website"

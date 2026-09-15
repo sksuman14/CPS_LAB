@@ -210,7 +210,7 @@ function HomeContent() {
                 <span className="text-primary">(iHub-AWaDH)</span>
               </h2>
 
-              <p className="font-body text-base md:text-lg text-on-surface-variant leading-relaxed mb-8 max-w-5xl">
+              <p className="font-body text-sm md:text-base text-on-surface-variant leading-relaxed mb-8 max-w-5xl">
                 IIT Ropar-Technology and Innovation Foundation (iHub-AWaDH) is one of the <strong className="text-on-surface dark:text-white">25 Technology Innovation Hubs</strong> established under the National Mission on Interdisciplinary Cyber Physical Systems (NM-ICPS) of the Department of Science and Technology, Government of India, and hosted at IIT Ropar. The Foundation works across <span className="text-primary font-semibold">AI, IoT, robotics, drones, embedded systems, data analytics, entrepreneurship</span> and technology commercialisation.
               </p>
 
