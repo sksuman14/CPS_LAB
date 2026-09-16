@@ -55,14 +55,14 @@ export default function GalleryPage() {
   });
 
   return (
-    <div className="min-h-screen bg-surface text-on-surface pt-32 pb-24 relative overflow-hidden">
+    <div className="min-h-screen bg-surface text-on-surface pt-32 pb-24 relative z-30 overflow-hidden">
       {/* Ambient Glow */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/10 rounded-full blur-[120px] opacity-30"></div>
         <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-accent/10 rounded-full blur-[120px] opacity-20"></div>
       </div>
 
-      <div className="max-w-[1600px] mx-auto px-6 md:px-8 lg:px-12 relative z-10">
+      <div className="max-w-[1600px] mx-auto px-6 md:px-8 lg:px-12 relative z-30">
         <div className="flex flex-col items-center text-center mb-16">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-10 h-[2px] bg-primary"></div>
