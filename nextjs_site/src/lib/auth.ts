@@ -173,6 +173,7 @@ export function isUserAdmin(email: string): boolean {
     'awadhropar@gmail.com',
     'ashutoshrj12@gmail.com',
     'sharmasejal2701@gmail.com',
+    'Yamirana123@gmail.com',
     'viku9436@gmail.com'
   ];
   return adminEmails.includes(email.toLowerCase());

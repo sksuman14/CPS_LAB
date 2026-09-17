@@ -7,6 +7,7 @@ import { X } from "lucide-react";
 interface NewsItem {
   src: string;
   title: string;
+  description: string;
   fileName: string;
 }
 
@@ -46,6 +47,14 @@ export default function NewsClient({ items }: { items: NewsItem[] }) {
                 </div>
               </div>
             </div>
+            <div className="mt-4 text-center px-4">
+              <h3 className="text-white font-headline font-bold text-lg group-hover:text-primary transition-colors">
+                {item.title}
+              </h3>
+              <p className="text-sm text-on-surface-variant mt-2 line-clamp-2">
+                {item.description}
+              </p>
+            </div>
           </motion.div>
         ))}
       </div>
@@ -75,8 +84,16 @@ export default function NewsClient({ items }: { items: NewsItem[] }) {
               <img 
                 src={selectedItem.src} 
                 alt={selectedItem.title} 
-                className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl"
+                className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl"
               />
+              <div className="mt-4 flex flex-col items-center text-center max-w-3xl">
+                <div className="bg-surface-container border border-white/10 px-6 py-2 rounded-full flex items-center gap-2 mb-3">
+                  <span className="text-white font-headline font-bold text-lg">{selectedItem.title}</span>
+                </div>
+                <p className="text-on-surface-variant text-base bg-black/40 px-6 py-3 rounded-2xl backdrop-blur-md">
+                  {selectedItem.description}
+                </p>
+              </div>
             </motion.div>
           </motion.div>
         )}

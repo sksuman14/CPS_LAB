@@ -16,14 +16,26 @@ export default function NewsPage() {
   const newsFiles = files.filter(f => f.toLowerCase().includes('news') && f.toLowerCase().match(/\.(jpg|jpeg|png|webp|gif)$/));
   
   const newsItems = newsFiles.map(file => {
-    let name = file.replace(/\.[^/.]+$/, "");
-    // Try to format name nicely if possible
-    name = name.replace(/_/g, " ").trim();
-    name = name.replace(/([a-z])([A-Z])/g, '$1 $2');
+    let title = file.replace(/\.[^/.]+$/, "");
+    let description = "";
+    
+    // Explicitly set titles based on filename
+    if (file.toLowerCase() === 'news.jpg' || file.toLowerCase() === 'news.jpeg' || file.toLowerCase() === 'news.png') {
+      title = "Acropolis Institute";
+      description = "Inauguration of Central India's first Cyber-Physical Systems Lab at Acropolis Institute, Indore.";
+    } else if (file.toLowerCase() === 'news1.jpg' || file.toLowerCase() === 'news1.jpeg' || file.toLowerCase() === 'news1.png') {
+      title = "Sardar Vallabhbhai Patel University";
+      description = "Three-day training program on Sensors, IoT, and Modern Technologies successfully concluded.";
+    } else {
+      title = title.replace(/_/g, " ").trim();
+      title = title.replace(/([a-z])([A-Z])/g, '$1 $2');
+      description = "Latest updates and events from CPS LAB.";
+    }
     
     return {
       src: `/assets/images/${file}`,
-      title: name,
+      title,
+      description,
       fileName: file
     };
   });
