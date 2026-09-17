@@ -27,7 +27,8 @@ export default function Footer() {
     { name: "Live Deployments", path: "/deployments" },
     { name: "Training & Workshops", path: "/training" },
     { name: "Gallery", path: "/gallery" },
-    // { name: "Contact Support", path: "/contact" },
+    { name: "News & Events", path: "/news" },
+    { name: "Contact Support", path: "/contact" },
     { name: "FAQ", path: "/faq" },
   ];
 

@@ -95,9 +95,9 @@ const workshops = [
   },
   {
     title:
-      "Empowering Students through IoT Training at AWaDH CPS Lab, NIT Delhi",
+      "Empowering Students through IoT Training at IIT Ropar CPS Lab, NIT Delhi",
     description:
-      "iHub – AWaDH @ IIT Ropar conducted a hands-on Internet of Things (IoT) training session at the AWaDH CPS Lab in NIT Delhi. Students explored IoT fundamentals and real-time applications.",
+      "iHub – AWaDH @ IIT Ropar conducted a hands-on Internet of Things (IoT) training session at the IIT Ropar CPS Lab in NIT Delhi. Students explored IoT fundamentals and real-time applications.",
     image: `${BASE_URL}/images/NIT_Delhi.png`,
     location: "NIT Delhi",
     date: "Mar 2023",
@@ -105,9 +105,9 @@ const workshops = [
   },
   {
     title:
-      "Empowering Innovation: AI & IoT Workshop at AWaDH CPS Lab, NIT Jalandhar",
+      "Empowering Innovation: AI & IoT Workshop at IIT Ropar CPS Lab, NIT Jalandhar",
     description:
-      "A two-day workshop on AI and IoT conducted under the AWaDH CPS Lab initiative at NIT Jalandhar, empowering students with hands-on learning.",
+      "A two-day workshop on AI and IoT conducted under the IIT Ropar CPS Lab initiative at NIT Jalandhar, empowering students with hands-on learning.",
     image: `${BASE_URL}/images/NIT_jalandhar.png`,
     location: "NIT Jalandhar",
     date: "Feb 2023",
@@ -151,7 +151,7 @@ const workshops = [
     participants: "40 Students",
   },
   {
-    title: "Short-Term Course on IoT at NIT Delhi under AWaDH CPS Lab",
+    title: "Short-Term Course on IoT at NIT Delhi under IIT Ropar CPS Lab",
     description:
       "A short-term course on IoT covering sensors, gateways, and real-world IoT implementations.",
     image: `${BASE_URL}/images/NIT_Delhi_Short.png`,
