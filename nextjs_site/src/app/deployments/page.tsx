@@ -182,7 +182,7 @@ const collegeDeployments = [
     description:
       "IIT Ropar CPS Lab launched at Government Polytechnic College, Batala",
     longDescription:
-      "Indian Institute of Technology, Ropar Expands CPS Lab Network With 23rd Lab Under NMICPS. Officially inaugurated its 23rd Cyber-Physical Systems (CPS) Lab at at Government Polytechnic College Batala Punjab.",
+      "Indian Institute of Technology, Ropar Expands CPS Lab Network With 23rd Lab Under NMICPS. Officially inaugurated its 23rd Cyber-Physical Systems (CPS) Lab at Government Polytechnic College Batala Punjab.",
   },
   {
     image: `${BASE_URL}/images/25.jpeg`,
