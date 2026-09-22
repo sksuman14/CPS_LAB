@@ -8,6 +8,7 @@ import { X } from "lucide-react";
 interface GalleryItem {
   src: string;
   location: string;
+  description?: string;
   fileName: string;
 }
 
@@ -51,8 +52,8 @@ export default function GalleryClient({ items }: { items: GalleryItem[] }) {
                   </div>
                 </div>
               </div>
-              <div className="p-4 text-center bg-surface-container">
-                <p className="text-white font-headline font-bold text-base md:text-lg group-hover:text-primary transition-colors">
+              <div className="p-3 text-center bg-surface-container">
+                <p className="text-white font-headline font-bold text-sm group-hover:text-primary transition-colors">
                   {item.location}
                 </p>
               </div>
@@ -88,9 +89,16 @@ export default function GalleryClient({ items }: { items: GalleryItem[] }) {
                 alt={selectedItem.location} 
                 className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl"
               />
-              <div className="mt-4 bg-surface-container border border-white/10 px-6 py-3 rounded-full flex items-center gap-2">
-                <span className="material-symbols-outlined text-primary text-sm">location_on</span>
-                <span className="text-white font-headline font-bold">{selectedItem.location}</span>
+              <div className="mt-4 flex flex-col items-center text-center max-w-3xl">
+                <div className="bg-surface-container border border-white/10 px-6 py-2 rounded-full flex items-center gap-2 mb-3">
+                  <span className="material-symbols-outlined text-primary text-sm">location_on</span>
+                  <span className="text-white font-headline font-bold text-lg">{selectedItem.location}</span>
+                </div>
+                {selectedItem.description && (
+                  <p className="text-on-surface-variant text-base bg-black/40 px-6 py-3 rounded-2xl backdrop-blur-md">
+                    {selectedItem.description}
+                  </p>
+                )}
               </div>
             </motion.div>
           </motion.div>

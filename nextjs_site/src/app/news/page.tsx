@@ -20,19 +20,24 @@ export default function NewsPage() {
     let description = "";
     
     // Explicitly set titles based on filename
-    if (file.toLowerCase() === 'news.jpg' || file.toLowerCase() === 'news.jpeg' || file.toLowerCase() === 'news.png') {
-      title = "MIT";
-      description = "Inauguration of Central India's first Cyber-Physical Systems Lab at MIET";
-    } else if (file.toLowerCase() === 'news1.jpg' || file.toLowerCase() === 'news1.jpeg' || file.toLowerCase() === 'news1.png') {
+    if (file.toLowerCase() === 'news.jpg' || file.toLowerCase() === 'news.jpeg' || file.toLowerCase() === 'news.png' || 
+        file.toLowerCase() === 'news1.jpg' || file.toLowerCase() === 'news1.jpeg' || file.toLowerCase() === 'news1.png') {
       title = "Model Institute of Engineering and Technology, Jammu";
-      description = "Inauguration of the first Cyber-Physical Systems Lab at MIET, Jammu";
-    } else if (file.toLowerCase().includes('news2')) {
-      title = "MIT";
-      description = "Latest updates and deployment events from MIET";
+      description = "Inauguration of the first Cyber-Physical Systems Lab at Model Institute of Engineering and Technology (MIET), Jammu.";
+    } 
+    else if (file.toLowerCase().includes('acronews')) {
+      title = "Acropolis Institute of Technology and Research, Indore";
+      description = "Inauguration of the first Cyber-Physical Systems Lab at Acropolis Institute of Technology and Research, Indore";
+    } 
+    
+    else if (file.toLowerCase().includes('news2') || file.match(/news([2-9]|[1-9]\d+)\./i)) {
+      title = "Ambala College of Engineering and Applied Research";
+      description = "Media coverage highlighting the inauguration of the 19th Cyber-Physical Systems (CPS) Lab at Ambala College of Engineering and Applied Research.";
     } else {
       title = title.replace(/_/g, " ").trim();
       title = title.replace(/([a-z])([A-Z])/g, '$1 $2');
-      description = "Latest updates and events from CPS LAB";
+      title = title.replace(/([a-zA-Z])(\d+)/g, '$1 $2'); // Add space before numbers
+      description = "Latest updates and events from CPS LAB.";
     }
     
     return {

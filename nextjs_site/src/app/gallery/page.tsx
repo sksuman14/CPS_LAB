@@ -55,9 +55,15 @@ export default function GalleryPage() {
     // Clean up any double spaces resulting from the above
     location = location.replace(/\s+/g, ' ').trim();
     
+    let description = undefined;
+    if (location.toLowerCase().includes('iti ropar')) {
+      description = "Demonstrating the CPS Lab setup to the Honorable MLA at ITI Ropar.";
+    }
+    
     return {
       src: `/assets/images/${file}`,
       location,
+      description,
       fileName: file
     };
   });
