@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import {
   motion,
@@ -20,92 +20,16 @@ const stats = [
 const BASE_URL = "https://cpslabhub-assets.s3.ap-south-1.amazonaws.com";
 
 const workshops = [
-  {
-    title: "Hands-on Cyber-Physical Systems (CPS) Training at Shivalik University",
-    description: "A comprehensive IoT and AI training session at the newly inaugurated IIT Ropar CPS Lab in Shivalik University, Dehradun. Successfully trained 400+ students and faculty.",
-    image: "/images/ShivalikTraining.jpg",
-    location: "Shivalik University",
-    date: "Sep 2026",
-    participants: "400+ Students & Faculty",
-  },
-  {
-    title: "CPS Training at BML Munjal University",
-    description: "Hands-on Cyber-Physical Systems training at BML Munjal University, fostering next-generation innovation.",
-    image: "/images/bml_munjal.jpeg",
-    location: "BML Munjal",
-    date: "Sep 2026",
-    participants: "Students",
-  },
-  {
-    title: "Empowering Northeast Youth: CPS Training for CCCT Sikkim",
-    description: "A month-long hands-on CPS training for 30+ students from CCCT Sikkim hosted at IIT Ropar.",
-    image: "/images/ccct_sikkim.jpeg",
-    location: "CCCT Sikkim",
-    date: "Dec 2022",
-    participants: "30+ Students",
-  },
-  {
-    title:
-      "Advanced CPS Workshop at Acropolis Institute of Technology & Research",
-    description:
-      "A comprehensive workshop on Cyber-Physical Systems conducted at Acropolis Institute of Technology & Research, Indore.",
-    image: "/images/acropolis.jpeg",
-    location: "Acropolis Institute",
-    date: "Sep 2026",
-    participants: "Students",
-  },
+ 
 
-  {
-    title:
-      "Strengthening Punjab’s Innovation Ecosystem Through CPS Lab at ITI Ropar",
-    description:
-      "iHub – AWaDH @ IIT Ropar inaugurated a CPS Lab at Government ITI, Ropar to promote deep-tech skilling, innovation-driven R&D, and entrepreneurship at the grassroots.",
-    image: `${BASE_URL}/images/ITI_Ropar.jpeg`,
-    location: "Government ITI, Ropar",
-    date: "April 2026",
-    participants: "20+ Students ",
-  },
-  {
-    title: "Hands-on Cyber-Physical Systems (CPS) training at GPC KOTKAPURA.",
-    description:
-      "iHub – AWaDH @ IIT Ropar conducted a hands-on Cyber-Physical Systems (CPS) training at GPC KOTKAPURA.",
-    image: `${BASE_URL}/images/gpc.jpeg`,
-    location: "GPC KOTKAPURA",
-    date: "APRIL 10",
-    participants: "",
-  },
-  {
-    title: "Hands-on Cyber-Physical Systems (CPS) training at MIT-WPU PUNE.",
-    description:
-      "iHub – AWaDH @ IIT Ropar conducted a two-day hands-on Cyber-Physical Systems (CPS) training at MIT-WPU PUNE.",
-    image: `${BASE_URL}/images/MIT.jpeg`,
-    location: "MIT-WPU PUNE",
-    date: "",
-    participants: "",
-  },
-  {
-    title: "Hands-on Cyber-Physical Systems (CPS) training at SBPUAT, Meerut.",
-    description:
-      "iHub – AWaDH @ IIT Ropar conducted a hands-on CPS training at Sardar Vallabhbhai Patel University of Agriculture and Technology, Meerut.",
-    image: `${BASE_URL}/images/SBPUAT.jpeg`,
-    location: "SBPUAT, Meerut",
-    date: "",
-    participants: "",
-  },
-  {
-    title: "Workshop Training on BLE & CPS at HRIT University, Ghaziabad.",
-    description:
-      "iHub – AWaDH @ IIT Ropar conducted a two-day hands-on BLE & Cyber-Physical Systems (CPS) training at HRIT University, Ghaziabad.",
-    image: `${BASE_URL}/images/HRIT.jpeg`,
-    location: "HRIT University, Ghaziabad",
-    date: "",
-    participants: "",
-  },
+
+
+  
   {
     title:
       "Empowering Students through IoT Training at IIT Ropar CPS Lab, NIT Delhi",
     description:
-      "iHub – AWaDH @ IIT Ropar conducted a hands-on Internet of Things (IoT) training session at the IIT Ropar CPS Lab in NIT Delhi. Students explored IoT fundamentals and real-time applications.",
+      "iHub - AWaDH @ IIT Ropar conducted a hands-on Internet of Things (IoT) training session at the IIT Ropar CPS Lab in NIT Delhi. Students explored IoT fundamentals and real-time applications.",
     image: `${BASE_URL}/images/NIT_Delhi.png`,
     location: "NIT Delhi",
     date: "Mar 2023",
@@ -121,6 +45,15 @@ const workshops = [
     date: "Feb 2023",
     participants: "60 Students",
   },
+   {
+    title: "Empowering Educators: Faculty Workshop on CPS at Thapar Institute",
+    description:
+      "A faculty development workshop on CPS processes and applications, conducted at Thapar University.",
+    image: `${BASE_URL}/images/Thapar_Institute.png`,
+    location: "Thapar Institute",
+    date: "Oct 2022",
+    participants: "25 Faculty",
+  },
   {
     title: "Hands-On Learning: CPS Workshop at Chitkara University",
     description:
@@ -131,6 +64,89 @@ const workshops = [
     participants: "19 Students",
   },
   {
+    title: "CPS & IoT Workshop at Baba Farid College",
+    description:
+      "A two-day workshop training 55+ students and 5 faculty members.",
+    image: `${BASE_URL}/images/Baba_Farid.png`,
+    location: "Baba Farid College",
+    date: "Jun 2022",
+    participants: "60 Participants",
+  },
+   {
+    title: "Empowering Northeast Youth: CPS Training for CCCT Sikkim",
+    description: "A month-long hands-on CPS training for 30+ students from CCCT Sikkim hosted at IIT Ropar.",
+    image: "/images/ccct_sikkim.jpeg",
+    location: "CCCT Sikkim",
+    date: "Dec 2022",
+    participants: "30+ Students",
+  },
+  {
+    title: "CPS & BLE Training Session at Khalsa College, Amritsar",
+    description:
+      "Training 120+ students on CPS Lab modules, BLE tech, sensor applications, and gateway integration.",
+    image: `${BASE_URL}/images/Ajmer.png`,
+    location: "Khalsa College, Amritsar",
+    date: "Mar 2022",
+    participants: "120+ Students",
+  },
+    {
+    title: "Workshop Training on BLE & 3D Printing at IIIT Una",
+    description:
+      "Training 35+ students in BLE applications, sensors, and rapid prototyping.",
+    image: `${BASE_URL}/images/IIIT_Una.png`,
+    location: "IIIT Una",
+    date: "Apr 2022",
+    participants: "35+ Students",
+  },
+   {
+    title: "Workshop Training on BLE & CPS at HRIT University, Ghaziabad.",
+    description:
+      "iHub - AWaDH @ IIT Ropar conducted a two-day BLE & Cyber-Physical Systems (CPS) workshop and interactive session at HRIT University, Ghaziabad.",
+    image: `${BASE_URL}/images/HRIT.jpeg`,
+    location: "HRIT University, Ghaziabad",
+    date: "",
+    participants: "",
+  },
+    {
+    title: "Cyber-Physical Systems (CPS) Workshop at SBPUAT, Meerut.",
+    description:
+      "iHub - AWaDH @ IIT Ropar conducted a comprehensive CPS workshop and awareness programme at Sardar Vallabhbhai Patel University of Agriculture and Technology, Meerut.",
+    image: `${BASE_URL}/images/SBPUAT.jpeg`,
+    location: "SBPUAT, Meerut",
+    date: "",
+    participants: "",
+  },
+     {
+    title:
+      "Advanced CPS Workshop at Acropolis Institute of Technology & Research",
+    description:
+      "A comprehensive workshop on Cyber-Physical Systems conducted at Acropolis Institute of Technology & Research, Indore.",
+    image: "/images/acropolis.jpeg",
+    location: "Acropolis Institute",
+    date: "Sep 2026",
+    participants: "Students",
+  },
+    {
+    title:
+      "Strengthens CPS Capacity Through Advanced Training at HITS, Chennai",
+    description:
+      "iHub - AWaDH @ IIT Ropar successfully concluded a two-day Cyber-Physical Systems (CPS) training programme at HITS, Chennai.",
+    image: `${BASE_URL}/images/Chennai.jpg`,
+    location: "HITS, Chennai",
+    date: " ",
+    participants: " ",
+  },
+    {
+    title:
+      "Skilling and Applied Innovation in Haryana Through CPS Training Programme.",
+    description:
+      "iHub - AWaDH @ IIT Ropar conducted a two-day CPS skilling and awareness programme at EPIC, Ambala College of Engineering.",
+    image: `${BASE_URL}/images/Haryana.jpg`,
+    location: "EPIC, Ambala College of Engineering",
+    date: " ",
+    participants: "53 Students",
+  },
+  {
     title: "AI Workshop on Sustainable Agriculture (PI-RAHI & iHub AWaDH)",
     description:
       "Workshop conducted at Panjab University focusing on AI for agriculture, health, and ecosystem resilience.",
@@ -139,20 +155,12 @@ const workshops = [
     date: "Nov 2022",
     participants: "50 Participants",
   },
-  {
-    title: "Empowering Educators: Faculty Workshop on CPS at Thapar Institute",
-    description:
-      "A faculty development workshop on CPS processes and applications, conducted at Thapar University.",
-    image: `${BASE_URL}/images/Thapar_Institute.png`,
-    location: "Thapar Institute",
-    date: "Oct 2022",
-    participants: "25 Faculty",
-  },
+ 
   {
     title:
       "CPS Skilling with AI Workshop at Govt. Mahila Engineering College, Ajmer",
     description:
-      "AI workshop conducted by iHub – AWaDH, training students in generative AI and CPS fundamentals.",
+      "AI workshop conducted by iHub - AWaDH, training students in generative AI and CPS fundamentals.",
     image: `${BASE_URL}/images/Ajmer.png`,
     location: "Govt. Mahila Engineering College",
     date: "Sep 2022",
@@ -168,7 +176,7 @@ const workshops = [
     participants: "35 Students",
   },
   {
-    title: "National Science Day – Generative AI Workshop by AWaDH",
+    title: "National Science Day â€“ Generative AI Workshop by AWaDH",
     description:
       "Conducted in collaboration with Terafac and NCSTC, focusing on Generative AI applications.",
     image: `${BASE_URL}/images/National_Science_Day.png`,
@@ -176,15 +184,7 @@ const workshops = [
     date: "Feb 2023",
     participants: "100+ Participants",
   },
-  {
-    title: "CPS & IoT Workshop at Baba Farid College",
-    description:
-      "A two-day workshop training 55+ students and 5 faculty members.",
-    image: `${BASE_URL}/images/Baba_Farid.png`,
-    location: "Baba Farid College",
-    date: "Jun 2022",
-    participants: "60 Participants",
-  },
+
   {
     title: "Hands-on Training at NIT Delhi (BLE & 3D Printing)",
     description:
@@ -194,49 +194,45 @@ const workshops = [
     date: "May 2022",
     participants: "30 Students",
   },
+
+  
+
   {
-    title: "Workshop Training on BLE & 3D Printing at IIIT Una",
+    title: "Cyber-Physical Systems (CPS) Workshop at MIT-WPU PUNE.",
     description:
-      "Training 35+ students in BLE applications, sensors, and rapid prototyping.",
-    image: `${BASE_URL}/images/IIIT_Una.png`,
-    location: "IIIT Una",
-    date: "Apr 2022",
-    participants: "35+ Students",
+      "iHub - AWaDH @ IIT Ropar conducted a two-day Cyber-Physical Systems (CPS) Workshop at MIT-WPU PUNE.",
+    image: `${BASE_URL}/images/MIT.jpeg`,
+    location: "MIT-WPU PUNE",
+    date: "",
+    participants: "",
   },
-  {
-    title: "Hands-on CPS & BLE Training at Khalsa College, Amritsar",
+
+
+   {
+    title: "Cyber-Physical Systems (CPS) Training Session at GPC KOTKAPURA.",
     description:
-      "Training 120+ students on CPS Lab modules, BLE tech, sensor applications, and gateway integration.",
-    image: `${BASE_URL}/images/Ajmer.png`,
-    location: "Khalsa College, Amritsar",
-    date: "Mar 2022",
-    participants: "120+ Students",
+      "iHub - AWaDH @ IIT Ropar conducted a Cyber-Physical Systems (CPS) Training Session at GPC KOTKAPURA.",
+    image: `${BASE_URL}/images/gpc.jpeg`,
+    location: "GPC KOTKAPURA",
+    date: "APRIL 10",
+    participants: "",
   },
+    {
+    title:
+      "Strengthening Punjabâ€™s Innovation Ecosystem Through CPS Lab at ITI Ropar",
+    description:
+      "iHub - AWaDH @ IIT Ropar inaugurated a CPS Lab at Government ITI, Ropar to promote deep-tech skilling, innovation-driven R&D, and entrepreneurship at the grassroots.",
+    image: `${BASE_URL}/images/ITI_Ropar.jpeg`,
+    location: "Government ITI, Ropar",
+    date: "April 2026",
+    participants: "20+ Students ",
+  },
+ 
   {
     title:
-      "Hands-On Skilling and Applied Innovation in Haryana Through CPS Training Programme.",
+      "Cyber-Physical Systems (CPS) Hub at Chandigarh University.",
     description:
-      "iHub – AWaDH @ IIT Ropar conducted a two-day hands-on CPS skilling programme at EPIC, Ambala College of Engineering.",
-    image: `${BASE_URL}/images/Haryana.jpg`,
-    location: "EPIC, Ambala College of Engineering",
-    date: " ",
-    participants: "53 Students",
-  },
-  {
-    title:
-      "Strengthens CPS Capacity Through Advanced Training at HITS, Chennai",
-    description:
-      "iHub – AWaDH @ IIT Ropar conducted a two-day hands-on Cyber-Physical Systems (CPS) training at HITS, Chennai.",
-    image: `${BASE_URL}/images/Chennai.jpg`,
-    location: "HITS, Chennai",
-    date: " ",
-    participants: " ",
-  },
-  {
-    title:
-      "Hands-on Cyber-Physical Systems (CPS) training at Chandigarh University.",
-    description:
-      "iHub - AWaDH established a dynamic hub for innovation and advanced learning to empower students through hands-on Cyber-Physical Systems training.",
+      "iHub - AWaDH established a dynamic hub for innovation and advanced learning to empower students and faculty in Cyber-Physical Systems.",
     image: `${BASE_URL}/images/ChandigarhUniversity.jpeg`,
     location: "Chandigarh University",
     date: " ",
@@ -245,11 +241,27 @@ const workshops = [
   {
     title: "Advanced Cyber-Physical Systems Workshop at SRM IST Chennai",
     description:
-      "Empowering next-generation engineers with practical, hands-on Cyber-Physical Systems training and advanced IoT applications.",
+      "Empowering next-generation engineers with Cyber-Physical Systems training and advanced IoT applications.",
     image: `${BASE_URL}/images/SRM+Training.jpeg`,
     location: "SRM IST Chennai",
     date: " ",
     participants: " ",
+  },
+   {
+    title: "CPS Training at BML Munjal University",
+    description: "Cyber-Physical Systems training at BML Munjal University, fostering next-generation innovation.",
+    image: "/images/bml_munjal.jpeg",
+    location: "BML Munjal",
+    date: "Sep 2026",
+    participants: "Students",
+  },
+   {
+    title: "Cyber-Physical Systems (CPS) Training at Shivalik University",
+    description: "A comprehensive IoT and AI training session at the newly inaugurated IIT Ropar CPS Lab in Shivalik University, Dehradun. Successfully trained 400+ students and faculty.",
+    image: "/images/ShivalikTraining.jpg",
+    location: "Shivalik University",
+    date: "Sep 2026",
+    participants: "400+ Students & Faculty",
   },
 ];
 
