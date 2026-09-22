@@ -22,6 +22,13 @@ export default function GalleryPage() {
     
     let location = name.replace(/_/g, " ").trim();
     
+    // Custom name overrides
+    if (location.toLowerCase().includes('shivalik')) {
+      location = "Shivalik University Dehradun";
+    } else if (location.toLowerCase().includes('shoolini')) {
+      location = "Shoolini University";
+    }
+    
     // Add space between lowercase and uppercase (e.g. ChandigarhUniversity -> Chandigarh University)
     location = location.replace(/([a-z])([A-Z])/g, '$1 $2');
     

@@ -21,15 +21,18 @@ export default function NewsPage() {
     
     // Explicitly set titles based on filename
     if (file.toLowerCase() === 'news.jpg' || file.toLowerCase() === 'news.jpeg' || file.toLowerCase() === 'news.png') {
-      title = "Acropolis Institute";
-      description = "Inauguration of Central India's first Cyber-Physical Systems Lab at Acropolis Institute, Indore.";
+      title = "MIT";
+      description = "Inauguration of Central India's first Cyber-Physical Systems Lab at MIET";
     } else if (file.toLowerCase() === 'news1.jpg' || file.toLowerCase() === 'news1.jpeg' || file.toLowerCase() === 'news1.png') {
-      title = "Sardar Vallabhbhai Patel University";
-      description = "Three-day training program on Sensors, IoT, and Modern Technologies successfully concluded.";
+      title = "Model Institute of Engineering and Technology, Jammu";
+      description = "Inauguration of the first Cyber-Physical Systems Lab at MIET, Jammu";
+    } else if (file.toLowerCase().includes('news2')) {
+      title = "MIT";
+      description = "Latest updates and deployment events from MIET";
     } else {
       title = title.replace(/_/g, " ").trim();
       title = title.replace(/([a-z])([A-Z])/g, '$1 $2');
-      description = "Latest updates and events from CPS LAB.";
+      description = "Latest updates and events from CPS LAB";
     }
     
     return {

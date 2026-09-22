@@ -25,7 +25,7 @@ export default function GalleryClient({ items }: { items: GalleryItem[] }) {
 
   return (
     <>
-      <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6">
+       <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 2xl:columns-5 gap-8 space-y-8">
         {items.map((item, index) => (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -35,19 +35,24 @@ export default function GalleryClient({ items }: { items: GalleryItem[] }) {
             className="break-inside-avoid"
           >
             <div 
-              className="relative group rounded-2xl overflow-hidden bg-surface-container border border-white/10 cursor-pointer"
+              className="relative group flex flex-col rounded-2xl overflow-hidden bg-surface-container border border-white/10 cursor-pointer shadow-lg hover:border-primary/50 transition-colors duration-300"
               onClick={() => setSelectedItem(item)}
             >
-              <div className="relative w-full aspect-auto h-auto">
+              <div className="relative w-full overflow-hidden">
                 <img 
                   src={item.src} 
                   alt={item.location} 
                   className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                 />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                  <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-full w-12 h-12 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-xl">
+                    <span className="material-symbols-outlined text-white">zoom_in</span>
+                  </div>
+                </div>
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                <p className="text-white font-headline font-bold text-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+              <div className="p-4 text-center bg-surface-container">
+                <p className="text-white font-headline font-bold text-base md:text-lg group-hover:text-primary transition-colors">
                   {item.location}
                 </p>
               </div>
