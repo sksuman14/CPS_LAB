@@ -11,15 +11,23 @@ import { useEffect, useRef, useState } from "react";
 
 // Shared data
 const stats = [
-  { icon: "science", count: 32, label: "Established CPS Labs", suffix: "" },
-  { icon: "school", count: 24, label: "CPS Lab Trainings", suffix: "+" },
-  { icon: "groups", count: 400, label: "Faculty Trained", suffix: "+" },
-  { icon: "psychology", count: 800, label: "Students Trained", suffix: "+" },
+  { icon: "science", count: 33, label: "Established CPS Labs", suffix: "" },
+  { icon: "school", count: 25, label: "CPS Lab Trainings", suffix: "+" },
+  { icon: "groups", count: 450, label: "Faculty Trained", suffix: "+" },
+  { icon: "psychology", count: 1200, label: "Students Trained", suffix: "+" },
 ];
 
 const BASE_URL = "https://cpslabhub-assets.s3.ap-south-1.amazonaws.com";
 
 const workshops = [
+  {
+    title: "Hands-on Cyber-Physical Systems (CPS) Training at Shivalik University",
+    description: "A comprehensive IoT and AI training session at the newly inaugurated IIT Ropar CPS Lab in Shivalik University, Dehradun. Successfully trained 400+ students and faculty.",
+    image: "/images/ShivalikTraining.jpg",
+    location: "Shivalik University",
+    date: "Sep 2026",
+    participants: "400+ Students & Faculty",
+  },
   {
     title: "CPS Training at BML Munjal University",
     description: "Hands-on Cyber-Physical Systems training at BML Munjal University, fostering next-generation innovation.",

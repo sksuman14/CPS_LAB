@@ -243,13 +243,20 @@ const collegeDeployments = [
     longDescription:
       "Strengthening India's Deep-Tech Future — Indian Institute of Technology, Ropar (iHub - AWaDH) successfully inaugurated its 31st Cyber-Physical Systems (CPS) Lab, powered by the National Mission on Interdisciplinary Cyber-Physical Systems (NM-ICPS), at Dr. K.N. Modi University. The CPS Lab was inaugurated in the presence of distinguished dignitaries including Prof. (Dr.) D.K. Modi (Chancellor), Dr. P. N Hrisheekesha (Vice Chancellor), Prof. Rajeev Ahuja (Director, IIT Ropar), Dr. Radhika Trikha (CEO, iHub-AWaDH), and Dr. Mukesh Kestwal (CIO, iHub-AWaDH). Following the inauguration, a 2-day Training of Trainers (ToT) program was conducted to enable faculty members to build hands-on expertise in CPS-based learning.",
   },
-  {
-    image: "/images/munjal_lab.jpeg",
-    title: "Deployment 32",
-    description: "IIT Ropar CPS Lab launched at BML Munjal University, Delhi",
-    longDescription:
-      "Indian Institute of Technology, Ropar (iHub - AWaDH) successfully launched its 32nd Cyber-Physical Systems (CPS) Lab at BML Munjal University, Delhi. This deployment strengthens India's deep-tech ecosystem and empowers students with hands-on CPS education.",
-  },
+      {
+      image: "/images/munjal_lab.jpeg",
+      title: "Deployment 32",
+      description: "IIT Ropar CPS Lab launched at BML Munjal University, Delhi",
+      longDescription:
+        "Indian Institute of Technology, Ropar (iHub - AWaDH) successfully launched its 32nd Cyber-Physical Systems (CPS) Lab at BML Munjal University, Delhi. This deployment strengthens India's deep-tech ecosystem and empowers students with hands-on CPS education.",
+    },
+    {
+      image: "/images/ShivalikDeployment.jpeg",
+      title: "Deployment 33",
+      description: "IIT Ropar CPS Lab launched at Shivalik University Dehradun",
+      longDescription:
+        "The IIT Ropar CPS Lab was successfully deployed at Shivalik University in Dehradun. This lab aims to bring cutting-edge deep-tech and hands-on Cyber-Physical Systems education directly to the students, equipping them with essential skills for the future.",
+    },
 ];
 
 const upcomingSchoolDeployments = [
@@ -272,10 +279,7 @@ const upcomingCollegeDeployments = [
     image: "/images/app_logo.png",
     title: "ITI Banswara",
   },
-  {
-    image: "/images/shivalik.jpg",
-    title: "Shivalik, Uttrakhand",
-  },
+  
   {
     image: "/images/amity.jpg",
     title: "Amity Uni, Chandigarh",
