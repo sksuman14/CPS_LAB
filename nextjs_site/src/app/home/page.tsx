@@ -219,7 +219,7 @@ function HomeContent() {
                 {[
                   { value: "196+", label: "Supported Startups" },
                   { value: "220+", label: "Academic, Industry & Govt Partners" },
-                  { value: "32", label: "CPS Labs as Spoke Centres" },
+                  { value: "33", label: "CPS Labs as Spoke Centres" },
                   { value: "8,000+", label: "Students, Researchers & Professionals Trained" },
                 ].map((stat) => (
                   <div key={stat.label} className="bg-black/5 dark:bg-white/5 rounded-2xl p-4 md:p-5 border border-black/5 dark:border-white/10 text-center">
