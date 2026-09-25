@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import {
   motion,
@@ -12,9 +12,9 @@ import { useEffect, useRef, useState } from "react";
 // Shared data
 const stats = [
   { icon: "science", count: 34, label: "Established CPS Labs", suffix: "" },
-  { icon: "school", count: 25, label: "CPS Lab Trainings", suffix: "+" },
-  { icon: "groups", count: 450, label: "Faculty Trained", suffix: "+" },
-  { icon: "psychology", count: 1200, label: "Students Trained", suffix: "+" },
+  { icon: "school", count: 26, label: "CPS Lab Trainings", suffix: "+" },
+  { icon: "groups", count: 470, label: "Faculty Trained", suffix: "+" },
+  { icon: "psychology", count: 1220, label: "Students Trained", suffix: "+" },
 ];
 
 const BASE_URL = "https://cpslabhub-assets.s3.ap-south-1.amazonaws.com";
