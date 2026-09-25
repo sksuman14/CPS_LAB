@@ -68,13 +68,13 @@ export default function ContactPage() {
               </div>
             </div>
             <p className="font-body text-sm text-on-surface-variant leading-relaxed mb-6">
-              IIT Ropar-Technology and Innovation Foundation (iHub-AWaDH) is one of the <strong className="text-on-surface dark:text-white">25 Technology Innovation Hubs</strong> established under the National Mission on Interdisciplinary Cyber Physical Systems (NM-ICPS) of the Department of Science and Technology, Government of India, and hosted at IIT Ropar. The Foundation works across <span className="text-primary font-semibold">AI, IoT, robotics, drones, embedded systems, data analytics, entrepreneurship</span> and technology commercialisation. Its nationwide ecosystem includes 196+ supported startups, 220+ academic, industry and government partners, and 33 CPS Labs serving as spoke centres for scaled skilling and innovation programmes. More than 8,000+ students, researchers, faculty members, founders, co-founders and professionals have been trained through its capacity building initiatives.
+              IIT Ropar-Technology and Innovation Foundation (iHub-AWaDH) is one of the <strong className="text-on-surface dark:text-white">25 Technology Innovation Hubs</strong> established under the National Mission on Interdisciplinary Cyber Physical Systems (NM-ICPS) of the Department of Science and Technology, Government of India, and hosted at IIT Ropar. The Foundation works across <span className="text-primary font-semibold">AI, IoT, robotics, drones, embedded systems, data analytics, entrepreneurship</span> and technology commercialisation. Its nationwide ecosystem includes 196+ supported startups, 220+ academic, industry and government partners, and 34 CPS Labs serving as spoke centres for scaled skilling and innovation programmes. More than 8,000+ students, researchers, faculty members, founders, co-founders and professionals have been trained through its capacity building initiatives.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {[
                 { value: "196+", label: "Supported Startups" },
                 { value: "220+", label: "Academic, Industry & Govt Partners" },
-                { value: "33", label: "CPS Labs as Spoke Centres" },
+                { value: "34", label: "CPS Labs as Spoke Centres" },
                 { value: "8,000+", label: "Professionals Trained" },
               ].map((stat) => (
                 <div key={stat.label} className="bg-white/5 rounded-xl p-3 border border-white/5 text-center">

@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import {
   motion,
@@ -11,7 +11,7 @@ import { useEffect, useRef, useState } from "react";
 
 // Shared data
 const stats = [
-  { icon: "science", count: 33, label: "Established CPS Labs", suffix: "" },
+  { icon: "science", count: 34, label: "Established CPS Labs", suffix: "" },
   { icon: "school", count: 25, label: "CPS Lab Trainings", suffix: "+" },
   { icon: "groups", count: 450, label: "Faculty Trained", suffix: "+" },
   { icon: "psychology", count: 1200, label: "Students Trained", suffix: "+" },
@@ -262,6 +262,14 @@ const workshops = [
     location: "Shivalik University",
     date: "Sep 2026",
     participants: "400+ Students & Faculty",
+  },
+  {
+    title: "Cyber-Physical Systems (CPS) Training at Amity University Mohali",
+    description: "A comprehensive Cyber-Physical Systems training and awareness session following the CPS Lab inauguration at Amity University, Mohali.",
+    image: "/images/AmityTraining.jpeg",
+    location: "Amity University Mohali",
+    date: "Sep 2026",
+    participants: "Students & Faculty",
   },
 ];
 

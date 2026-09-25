@@ -27,6 +27,8 @@ export default function GalleryPage() {
       location = "Shivalik University Dehradun";
     } else if (location.toLowerCase().includes('shoolini')) {
       location = "Shoolini University";
+    } else if (location.toLowerCase().includes('amity')) {
+      location = "Amity University Mohali";
     }
     
     // Add space between lowercase and uppercase (e.g. ChandigarhUniversity -> Chandigarh University)

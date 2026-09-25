@@ -257,6 +257,13 @@ const collegeDeployments = [
       longDescription:
         "The IIT Ropar CPS Lab was successfully deployed at Shivalik University in Dehradun. This lab aims to bring cutting-edge deep-tech and hands-on Cyber-Physical Systems education directly to the students, equipping them with essential skills for the future.",
     },
+    {
+      image: "/images/AmityDeployment.jpeg",
+      title: "Deployment 34",
+      description: "IIT Ropar CPS Lab launched at Amity University Mohali",
+      longDescription:
+        "Indian Institute of Technology, Ropar (iHub - AWaDH) successfully launched its 34th Cyber-Physical Systems (CPS) Lab at Amity University, Mohali. This deployment strengthens India's deep-tech ecosystem and empowers students with advanced CPS education and practical skills.",
+    },
 ];
 
 const upcomingSchoolDeployments = [
