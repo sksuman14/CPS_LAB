@@ -5,11 +5,11 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { 
   Bot, 
-  Cpu, 
-  MessageSquareCode, 
-  Lightbulb, 
-  Gamepad2, 
-  Workflow,
+  Sparkles, 
+  Puzzle, 
+  CarFront, 
+  Rocket, 
+  Sun,
   ChevronRight
 } from "lucide-react";
 
@@ -17,7 +17,7 @@ const PLATFORM_MODULES = [
   {
     title: 'IoT Sensor Lab',
     description: 'Read live environmental data from your sensors using block coding.',
-    icon: <Bot className="w-6 h-6" />,
+    icon: <span className="text-[26px]">{"\uD83E\uDDE9"}</span>,
     gradient: 'from-blue-500 to-cyan-400',
     link: '/learning/iot-lab',
     disabled: false
@@ -25,7 +25,7 @@ const PLATFORM_MODULES = [
   {
     title: 'Build AI Chatbots (n8n)',
     description: 'Learn how to build powerful AI agents and connect them to live CPS lab sensors.',
-    icon: <Workflow className="w-6 h-6" />,
+    icon: <span className="text-[26px]">{"\uD83E\uDD16"}</span>,
     gradient: 'from-primary to-accent',
     link: '/learning/n8n',
     disabled: false
@@ -33,7 +33,7 @@ const PLATFORM_MODULES = [
   {
     title: 'AI Chat Assistant',
     description: 'Type questions and get AI help to build blocks and solve tasks.',
-    icon: <MessageSquareCode className="w-6 h-6" />,
+    icon: <span className="text-[26px]">{"\u2728"}</span>,
     gradient: 'from-violet-500 to-purple-400',
     link: '/learning/ai-chat',
     disabled: false
@@ -41,7 +41,7 @@ const PLATFORM_MODULES = [
   {
     title: 'Coding Adventures',
     description: 'A gamified journey to master logic, loops, and math through interactive challenges.',
-    icon: <Gamepad2 className="w-6 h-6" />,
+    icon: <span className="text-[26px]">{"\uD83D\uDE80"}</span>,
     gradient: 'from-yellow-400 to-orange-500',
     link: '/learning/games',
     disabled: true
@@ -49,7 +49,7 @@ const PLATFORM_MODULES = [
   {
     title: 'Robotic Car Coding',
     description: "Master block coding logic to control and navigate your smart robotic car.",
-    icon: <Cpu className="w-6 h-6" />,
+    icon: <span className="text-[26px]">{"\uD83D\uDE98"}</span>,
     gradient: 'from-emerald-500 to-teal-400',
     link: '/learning/block-coding',
     disabled: true
@@ -57,7 +57,7 @@ const PLATFORM_MODULES = [
   {
     title: 'Smart Sensor Insights',
     description: 'Get kid-friendly AI explanations for live sensor readings (e.g. "Hot as a summer day!").',
-    icon: <Lightbulb className="w-6 h-6" />,
+    icon: <span className="text-[26px]">{"\uD83C\uDF21\uFE0F"}</span>,
     gradient: 'from-orange-500 to-amber-400',
     link: '/learning/sensor-insights',
     disabled: true
@@ -81,7 +81,7 @@ export default function LearningPortal() {
           className="text-center mb-16 space-y-4"
         >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary font-label text-xs uppercase tracking-widest mb-4">
-            <Workflow className="w-4 h-4" />
+            <Sparkles className="w-4 h-4" />
             CPS Learning Portal
           </div>
           <h1 className="font-headline text-4xl md:text-5xl lg:text-6xl font-black mb-6 drop-shadow-lg text-white">
