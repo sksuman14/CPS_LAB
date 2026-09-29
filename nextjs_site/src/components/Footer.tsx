@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -86,13 +86,13 @@ export default function Footer() {
                   <span className="text-primary tracking-widest">LAB</span>
                 </h2>
                 <span className="text-[10px] font-mono uppercase tracking-wider text-secondary font-bold">
-                  iHub-AWaDH â€¢ IIT Ropar
+                  iHub-AWaDH - IIT Ropar
                 </span>
               </div>
             </div>
 
             <p className="font-body text-xs text-on-surface-variant leading-relaxed opacity-90 max-w-md">
-              IIT Ropar â€“ Technology & Innovation Foundation (iHub-AWaDH) is one of the 25 Technology Innovation Hubs established under the National Mission on Interdisciplinary Cyber-Physical Systems (NM-ICPS), DST, Govt. of India.
+              IIT Ropar - Technology & Innovation Foundation (iHub-AWaDH) is one of the 25 Technology Innovation Hubs established under the National Mission on Interdisciplinary Cyber-Physical Systems (NM-ICPS), DST, Govt. of India.
             </p>
 
             {/* Quick Metrics Badge */}
@@ -215,7 +215,7 @@ export default function Footer() {
                 </div>
                 <div className="font-body text-xs text-on-surface-variant leading-relaxed">
                   <strong className="text-white block font-medium">IIT Ropar Campus</strong>
-                  214 / M. Visvesvaraya Block, Rupnagar, Punjab â€“ 140001, India
+                  214 / M. Visvesvaraya Block, Rupnagar, Punjab - 140001, India
                 </div>
               </div>
 

@@ -176,7 +176,7 @@ const workshops = [
     participants: "35 Students",
   },
   {
-    title: "National Science Day â€“ Generative AI Workshop by AWaDH",
+    title: "National Science Day - Generative AI Workshop by AWaDH",
     description:
       "Conducted in collaboration with Terafac and NCSTC, focusing on Generative AI applications.",
     image: `${BASE_URL}/images/National_Science_Day.png`,
@@ -219,7 +219,7 @@ const workshops = [
   },
     {
     title:
-      "Strengthening Punjabâ€™s Innovation Ecosystem Through CPS Lab at ITI Ropar",
+      "Strengthening Punjab's Innovation Ecosystem Through CPS Lab at ITI Ropar",
     description:
       "iHub - AWaDH @ IIT Ropar inaugurated a CPS Lab at Government ITI, Ropar to promote deep-tech skilling, innovation-driven R&D, and entrepreneurship at the grassroots.",
     image: `${BASE_URL}/images/ITI_Ropar.jpeg`,
