@@ -53,7 +53,52 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
 
-  const checkGoogleTokens = () => {
+  const refreshGoogleTokens = async (): Promise<boolean> => {
+    if (typeof window === 'undefined') return false;
+    const refreshToken = localStorage.getItem('cps_refresh_token');
+    if (!refreshToken) {
+      console.log('[AuthContext] No refresh token available');
+      return false;
+    }
+
+    try {
+      console.log('[AuthContext] Attempting token refresh...');
+      const body = new URLSearchParams({
+        grant_type: 'refresh_token',
+        client_id: COGNITO_CLIENT_ID,
+        refresh_token: refreshToken,
+      });
+
+      const response = await fetch(`${COGNITO_DOMAIN}/oauth2/token`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: body.toString(),
+      });
+
+      if (!response.ok) {
+        console.error('[AuthContext] Token refresh failed:', response.status);
+        return false;
+      }
+
+      const tokens = await response.json();
+      localStorage.setItem('cps_access_token', tokens.access_token);
+      localStorage.setItem('cps_id_token', tokens.id_token);
+      // Cognito refresh response doesn't return a new refresh_token, keep the old one
+
+      // Set cookie for 30 days
+      const maxAge = 30 * 24 * 60 * 60; // 30 days
+      document.cookie = `cps_id_token=${tokens.id_token}; path=/; max-age=${maxAge}; SameSite=Lax`;
+      document.cookie = `cps_logged_in=true; path=/; max-age=${maxAge}; SameSite=Lax`;
+
+      console.log('[AuthContext] Token refresh successful');
+      return true;
+    } catch (err) {
+      console.error('[AuthContext] Token refresh error:', err);
+      return false;
+    }
+  };
+
+  const checkGoogleTokens = async () => {
     let idToken = typeof window !== 'undefined' ? localStorage.getItem('cps_id_token') : null;
     
     if (!idToken && typeof document !== 'undefined') {
@@ -80,10 +125,31 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     const now = Math.floor(Date.now() / 1000);
     if (payload.exp && payload.exp < now) {
-      console.warn('[AuthContext] ID token expired');
+      console.warn('[AuthContext] ID token expired, trying refresh...');
+      const refreshed = await refreshGoogleTokens();
+      if (refreshed) {
+        // Re-read the fresh token
+        idToken = localStorage.getItem('cps_id_token');
+        if (!idToken) return false;
+        const newPayload = decodeJwt(idToken);
+        if (!newPayload) return false;
+        const gUser = {
+          email: newPayload.email || '',
+          name: newPayload.name || newPayload.given_name || (newPayload.email ? newPayload.email.split('@')[0] : 'User'),
+          picture: newPayload.picture,
+        };
+        console.log('[AuthContext] Refreshed Google user:', gUser);
+        setGoogleUser(gUser);
+        setIsAdmin(isUserAdmin(gUser.email));
+        return true;
+      }
+      // Refresh failed — clear everything
       if (typeof window !== 'undefined') {
         localStorage.removeItem('cps_id_token');
+        localStorage.removeItem('cps_access_token');
+        localStorage.removeItem('cps_refresh_token');
         document.cookie = "cps_id_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+        document.cookie = "cps_logged_in=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
       }
       return false;
     }
@@ -140,7 +206,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         localStorage.setItem('cps_refresh_token', tokens.refresh_token);
       }
 
-      const maxAge = tokens.expires_in || 3600;
+      const maxAge = 30 * 24 * 60 * 60; // 30 days — keep user logged in
       document.cookie = `cps_id_token=${tokens.id_token}; path=/; max-age=${maxAge}; SameSite=Lax`;
       document.cookie = `cps_logged_in=true; path=/; max-age=${maxAge}; SameSite=Lax`;
 
@@ -176,7 +242,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       console.log('[AuthContext] No Amplify user found, checking for Google tokens...');
     }
 
-    const hasGoogle = checkGoogleTokens();
+    const hasGoogle = await checkGoogleTokens();
     if (!hasGoogle) {
       console.log('[AuthContext] No Google tokens found, clearing auth state');
       setUser(null);

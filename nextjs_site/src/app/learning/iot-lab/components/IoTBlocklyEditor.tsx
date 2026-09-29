@@ -172,6 +172,8 @@ export default function IoTBlocklyEditor({ onCodeChange, onWorkspaceReady, examp
         const Blockly = (window as any).Blockly;
         if (!Blockly) throw new Error('Blockly failed to load');
 
+        if (Blockly.Tooltip) Blockly.Tooltip.HOVER_MS = 50;
+
         registerCustomBlocks(Blockly);
         
         const javascriptGenerator = Blockly.JavaScript || ((window as any).javascript?.javascriptGenerator);
@@ -259,7 +261,8 @@ function registerCustomBlocks(Blockly: any) {
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour(120);
-      this.setTooltip('Runs the blocks inside repeatedly at the specified interval.');
+      this.setTooltip(function() { return 'Timer Block: Runs the blocks inside repeatedly at the specified interval (in seconds).'; });
+      this.setHelpUrl('');
     },
   };
   Blockly.Blocks['iot_restart_device'] = {
@@ -268,7 +271,8 @@ function registerCustomBlocks(Blockly: any) {
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour(0);
-      this.setTooltip('Sends a DTR/RTS reset signal to reboot the Arduino/ESP32.');
+      this.setTooltip(function() { return 'Restart Block: Sends a reset signal to reboot your Arduino/ESP32 sensor device.'; });
+      this.setHelpUrl('');
     },
   };
   Blockly.Blocks['iot_disconnect'] = {
@@ -277,7 +281,8 @@ function registerCustomBlocks(Blockly: any) {
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour(0);
-      this.setTooltip('Disconnects from the USB sensor device.');
+      this.setTooltip(function() { return 'Disconnect Block: Safely closes the USB connection to the sensor device.'; });
+      this.setHelpUrl('');
     },
   };
   Blockly.Blocks['iot_connect'] = {
@@ -286,7 +291,8 @@ function registerCustomBlocks(Blockly: any) {
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour(290);
-      this.setTooltip('Requests connection to the USB sensor device.');
+      this.setTooltip(function() { return 'Connect Block: Opens a USB connection to your sensor device so you can start reading data.'; });
+      this.setHelpUrl('');
     },
   };
   Blockly.Blocks['iot_on_data'] = {
@@ -296,7 +302,8 @@ function registerCustomBlocks(Blockly: any) {
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour(290);
-      this.setTooltip('Runs this code every time the sensor sends new data.');
+      this.setTooltip(function() { return 'Event Block: Runs the blocks inside every time the sensor sends new data.'; });
+      this.setHelpUrl('');
     },
   };
   Blockly.Blocks['iot_animate'] = {
@@ -318,7 +325,8 @@ function registerCustomBlocks(Blockly: any) {
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour(260);
-      this.setTooltip('Renders a visual animation on the dashboard using the sensor value.');
+      this.setTooltip(function() { return 'Renders a visual animation on the dashboard using the sensor value.'; });
+      this.setHelpUrl('');
     },
   };
   Blockly.Blocks['ui_set_height'] = {
@@ -327,6 +335,8 @@ function registerCustomBlocks(Blockly: any) {
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour(330);
+      this.setTooltip(function() { return 'UI Block: Changes the height of the custom UI box on your dashboard (0-100%).'; });
+      this.setHelpUrl('');
     }
   };
   Blockly.Blocks['ui_set_color'] = {
@@ -335,6 +345,8 @@ function registerCustomBlocks(Blockly: any) {
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour(330);
+      this.setTooltip(function() { return 'UI Block: Changes the background color of the custom UI box on your dashboard.'; });
+      this.setHelpUrl('');
     }
   };
   Blockly.Blocks['ui_set_text'] = {
@@ -343,6 +355,8 @@ function registerCustomBlocks(Blockly: any) {
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour(330);
+      this.setTooltip(function() { return 'UI Block: Shows custom text inside the dashboard UI box.'; });
+      this.setHelpUrl('');
     }
   };
 Blockly.Blocks['iot_get_sensor'] = {
@@ -361,7 +375,8 @@ Blockly.Blocks['iot_get_sensor'] = {
           ]), 'SENSOR_TYPE');
       this.setOutput(true, ['Number', 'String']);
       this.setColour(290);
-      this.setTooltip('Get the live value from the sensor data.');
+      this.setTooltip(function() { return 'Sensor Block: Gets the live value from the selected sensor (Temperature, Humidity, etc).'; });
+      this.setHelpUrl('');
     },
   };
 
@@ -371,6 +386,8 @@ Blockly.Blocks['iot_get_sensor'] = {
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour(160);
+      this.setTooltip(function() { return 'Prints text or sensor data to the Live Sensor Data terminal (like a diary!).'; });
+      this.setHelpUrl('');
     },
   };
 
@@ -380,6 +397,8 @@ Blockly.Blocks['iot_get_sensor'] = {
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour(0);
+      this.setTooltip(function() { return 'Triggers a pop-up warning alert on your screen.'; });
+      this.setHelpUrl('');
     },
   };
 }
