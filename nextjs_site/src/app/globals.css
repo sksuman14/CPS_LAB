@@ -149,3 +149,17 @@
     background: radial-gradient(circle at 80% 20%, rgba(0, 112, 104, 0.1), transparent 60%);
   }
 }
+/* Blockly Global Overrides for Dark Mode */
+.dark .blocklyScrollbarHandle {
+  fill: #1e293b !important;
+  opacity: 0.5 !important;
+}
+.dark .blocklyScrollbarBackground {
+  opacity: 0 !important;
+}
+.dark .blocklyToolboxDiv {
+  border-right: 1px solid #1e293b !important;
+}
+.dark .blocklyFlyoutScrollbar {
+  display: none !important;
+}

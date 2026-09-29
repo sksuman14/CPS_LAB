@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic';
+﻿export const dynamic = 'force-dynamic';
 import fs from 'fs';
 import path from 'path';
 import GalleryClient from './GalleryClient';
@@ -88,7 +88,7 @@ export default function GalleryPage() {
             <div className="w-10 h-[2px] bg-primary"></div>
           </div>
           <h1 className="font-headline text-4xl md:text-5xl font-black text-white tracking-tighter mb-4">
-            CPS Labs in Action
+            Our <span className="bg-gradient-to-r from-violet-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">Gallery</span>
           </h1>
           <p className="font-body text-base text-on-surface-variant max-w-2xl">
             Explore the footprint of our Cyber-Physical Systems labs across various schools, colleges, and universities.

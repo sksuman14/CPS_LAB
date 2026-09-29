@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { motion, Variants } from 'framer-motion';
 import { useState } from 'react';
@@ -78,7 +78,7 @@ export default function ContactPage() {
                 { value: "8,000+", label: "Professionals Trained" },
               ].map((stat) => (
                 <div key={stat.label} className="bg-white/5 rounded-xl p-3 border border-white/5 text-center">
-                  <div className="font-headline text-xl md:text-2xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-0.5">
+                  <div className="font-headline text-xl md:text-2xl font-black bg-gradient-to-r from-violet-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent mb-0.5">
                     {stat.value}
                   </div>
                   <div className="font-body text-[10px] text-on-surface-variant leading-snug">{stat.label}</div>

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -61,7 +61,7 @@ export default function FAQPage() {
             <div className="w-10 h-[2px] bg-primary"></div>
           </div>
           <h1 className="font-headline text-4xl md:text-5xl font-black text-white tracking-tighter mb-4">
-            Frequently Asked Questions
+            Frequently Asked <span className="bg-gradient-to-r from-violet-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">Questions</span>
           </h1>
           <p className="font-body text-base text-on-surface-variant max-w-2xl">
             Find answers to common questions about CPS LAB, our products, programs, and how you can get involved.

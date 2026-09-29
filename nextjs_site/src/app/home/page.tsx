@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { motion, Variants } from 'framer-motion';
 import Link from 'next/link';
@@ -143,7 +143,7 @@ function HomeContent() {
         <section className="relative w-full pt-16 pb-10 mb-8 overflow-hidden flex flex-col items-center justify-center text-center">
           <motion.div variants={staggerContainer} initial="hidden" animate="show" className="max-w-4xl mx-auto px-8 relative z-20">
             <motion.h1 variants={fadeIn} className="font-headline text-4xl md:text-5xl lg:text-6xl font-black leading-[1.05] mb-6 tracking-tighter text-white drop-shadow-2xl">
-              Cyber Physical<br />System <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent [text-shadow:0_0_1px_rgba(255,255,255,0.3)]">Laboratory</span>
+              Cyber Physical<br />System <span className="bg-gradient-to-r from-violet-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent [text-shadow:0_0_1px_rgba(255,255,255,0.3)]">Laboratory</span>
             </motion.h1>
             <motion.p variants={fadeIn} className="font-body text-lg text-on-surface-variant font-medium mb-10 max-w-2xl mx-auto leading-relaxed">
               Empowering schools and colleges by advancing research and innovation in Cyber-Physical Systems, IoT, AI, and intelligent automation through cutting-edge industry collaboration.
@@ -223,7 +223,7 @@ function HomeContent() {
                   { value: "8,000+", label: "Students, Researchers & Professionals Trained" },
                 ].map((stat) => (
                   <div key={stat.label} className="bg-black/5 dark:bg-white/5 rounded-2xl p-4 md:p-5 border border-black/5 dark:border-white/10 text-center">
-                    <div className="font-headline text-2xl md:text-3xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-1">
+                    <div className="font-headline text-2xl md:text-3xl font-black bg-gradient-to-r from-violet-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent mb-1">
                       {stat.value}
                     </div>
                     <div className="font-body text-xs text-on-surface-variant leading-snug">{stat.label}</div>

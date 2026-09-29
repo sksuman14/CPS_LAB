@@ -26,6 +26,7 @@ export default function Footer() {
     { name: "Products & Sensors", path: "/products" },
     { name: "Live Deployments", path: "/deployments" },
     { name: "Training & Workshops", path: "/training" },
+    { name: "Learning Portal", path: "/learning" },
     { name: "Gallery", path: "/gallery" },
     { name: "News & Events", path: "/news" },
     { name: "Contact Support", path: "/contact" },
@@ -46,7 +47,15 @@ export default function Footer() {
     { name: "Admin Portal", path: "/admin", external: false },
   ];
 
-  if (pathname === "/" || pathname === "/login") return null;
+  if (
+    pathname === "/" || 
+    pathname === "/login" ||
+    pathname.startsWith('/learning/iot-lab') ||
+    pathname.startsWith('/learning/ai-chat') ||
+    pathname.startsWith('/learning/games') ||
+    pathname.startsWith('/learning/block-coding') ||
+    pathname.startsWith('/learning/n8n')
+  ) return null;
 
   return (
     <footer className="bg-surface-container-lowest/95 backdrop-blur-xl border-t border-white/10 pt-12 md:pt-16 pb-8 relative z-20 overflow-hidden text-on-surface">
@@ -77,13 +86,13 @@ export default function Footer() {
                   <span className="text-primary tracking-widest">LAB</span>
                 </h2>
                 <span className="text-[10px] font-mono uppercase tracking-wider text-secondary font-bold">
-                  iHub-AWaDH • IIT Ropar
+                  iHub-AWaDH â€¢ IIT Ropar
                 </span>
               </div>
             </div>
 
             <p className="font-body text-xs text-on-surface-variant leading-relaxed opacity-90 max-w-md">
-              IIT Ropar – Technology & Innovation Foundation (iHub-AWaDH) is one of the 25 Technology Innovation Hubs established under the National Mission on Interdisciplinary Cyber-Physical Systems (NM-ICPS), DST, Govt. of India.
+              IIT Ropar â€“ Technology & Innovation Foundation (iHub-AWaDH) is one of the 25 Technology Innovation Hubs established under the National Mission on Interdisciplinary Cyber-Physical Systems (NM-ICPS), DST, Govt. of India.
             </p>
 
             {/* Quick Metrics Badge */}
@@ -206,7 +215,7 @@ export default function Footer() {
                 </div>
                 <div className="font-body text-xs text-on-surface-variant leading-relaxed">
                   <strong className="text-white block font-medium">IIT Ropar Campus</strong>
-                  214 / M. Visvesvaraya Block, Rupnagar, Punjab – 140001, India
+                  214 / M. Visvesvaraya Block, Rupnagar, Punjab â€“ 140001, India
                 </div>
               </div>
 

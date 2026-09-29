@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Link from 'next/link';
 import Image from 'next/image';
@@ -132,11 +132,22 @@ export default function Navbar() {
     { name: 'Deployments', path: '/deployments' },
     { name: 'Products', path: '/products' },
     { name: 'Training & Workshop', path: '/training' },
+    { name: 'Learning', path: '/learning' },
     { name: 'Contact', path: '/contact' },
   ];
 
-  // Don't show navbar on login page or root
-  if (pathname === '/' || pathname === '/login') return null;
+  // Don't show navbar on login page, root, or dedicated full-screen learning modules
+  if (
+    pathname === '/' || 
+    pathname === '/login' ||
+    pathname.startsWith('/learning/iot-lab') ||
+    pathname.startsWith('/learning/ai-chat') ||
+    pathname.startsWith('/learning/games') ||
+    pathname.startsWith('/learning/block-coding') ||
+    pathname.startsWith('/learning/n8n')
+  ) {
+    return null;
+  }
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-white/10 shadow-[0_8px_32px_0_rgba(180,197,255,0.06)]">

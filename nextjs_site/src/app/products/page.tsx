@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform, useInView } from 'framer-motion';
 import { useState, useRef, useEffect } from 'react';
@@ -98,7 +98,7 @@ export default function ProductsPage() {
           >
             <h1 className="font-headline text-3xl md:text-5xl lg:text-6xl font-black leading-[1.05] mb-6 tracking-tighter text-white drop-shadow-2xl">
               Cutting-Edge<br />
-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent [text-shadow:0_0_1px_rgba(255,255,255,0.3)]">Products</span>
+              <span className="bg-gradient-to-r from-violet-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent [text-shadow:0_0_1px_rgba(255,255,255,0.3)]">Products</span>
             </h1>
             <p className="font-body text-lg md:text-xl text-on-surface-variant font-medium max-w-2xl mx-auto mb-12">
               Explore our range of high-performance sensors, boards, and development kits designed for robust Cyber Physical Systems.

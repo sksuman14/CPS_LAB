@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
@@ -401,7 +401,7 @@ export default function DeploymentsPage() {
             <h1 className="font-headline text-3xl md:text-5xl lg:text-6xl font-black leading-[1.05] mb-6 tracking-tighter text-white drop-shadow-2xl">
               Nationwide
               <br />
-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent [text-shadow:0_0_1px_rgba(255,255,255,0.3)]">
+              <span className="bg-gradient-to-r from-violet-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent [text-shadow:0_0_1px_rgba(255,255,255,0.3)]">
                 Deployments
               </span>
             </h1>

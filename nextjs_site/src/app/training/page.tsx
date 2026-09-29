@@ -332,7 +332,7 @@ export default function TrainingAndWorkshopPage() {
             >
               <h1 className="font-headline text-3xl md:text-5xl font-bold leading-tight mb-6 tracking-tighter text-white drop-shadow-lg">
                 Our{" "}
-                <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent [text-shadow:0_0_1px_rgba(255,255,255,0.3)]">
+                <span className="bg-gradient-to-r from-violet-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent [text-shadow:0_0_1px_rgba(255,255,255,0.3)]">
                   Impact
                 </span>
               </h1>
@@ -365,7 +365,7 @@ export default function TrainingAndWorkshopPage() {
                           {stat.icon}
                         </span>
                       </div>
-                      <h3 className="font-headline text-3xl md:text-4xl font-black bg-gradient-to-b from-primary to-blue-800 dark:from-white dark:via-blue-100 dark:to-primary bg-clip-text text-transparent mb-2 drop-shadow-lg flex items-center justify-center gap-1">
+                      <h3 className="font-headline text-3xl md:text-4xl font-black bg-gradient-to-b from-violet-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent mb-2 drop-shadow-lg flex items-center justify-center gap-1">
                         <AnimatedCounter to={stat.count} suffix={stat.suffix} />
                       </h3>
                       <p className="font-label text-on-surface-variant uppercase tracking-widest text-xs font-bold group-hover:text-white transition-colors">
@@ -388,7 +388,7 @@ export default function TrainingAndWorkshopPage() {
               viewport={{ once: true }}
               className="flex items-center gap-6 mb-4"
             >
-              <div className="w-2 h-12 bg-gradient-to-b from-primary to-accent rounded-full shadow-[0_0_15px_rgba(37,99,235,0.5)]"></div>
+              <div className="w-2 h-12 bg-gradient-to-b from-violet-400 via-blue-400 to-cyan-400 rounded-full shadow-[0_0_15px_rgba(37,99,235,0.5)]"></div>
               <h2 className="font-headline text-2xl md:text-3xl font-bold text-white drop-shadow-lg">
                 Workshops & Trainings
               </h2>
