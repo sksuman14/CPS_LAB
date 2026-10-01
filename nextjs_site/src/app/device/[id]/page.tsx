@@ -319,7 +319,7 @@ export default function DeviceGraphPage() {
                               const val = payload[0].value;
                               return (
                                 <div className="bg-surface-container-high border border-white/10 p-3 rounded-xl shadow-xl">
-                                  <p className="text-white/50 text-xs mb-1">{new Date(label).toLocaleString()}</p>
+                                  <p className="text-white/50 text-xs mb-1">{label ? new Date(label).toLocaleString() : ''}</p>
                                   <p style={{ color: m.color }} className="font-bold text-sm">
                                     {m.label}: {val !== null ? Number(val).toFixed(2) : '--'} {m.unit}
                                   </p>
