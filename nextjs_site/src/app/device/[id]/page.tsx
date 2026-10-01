@@ -180,7 +180,7 @@ export default function DeviceGraphPage() {
               {latest?.SignalStrength != null && (() => {
                 const sig = getSignalInfo(latest.SignalStrength);
                 return (
-                  <div className="flex items-center gap-1.5" title={`Signal: ${latest.SignalStrength} dBm (${sig.label})`}>
+                  <div className="relative flex items-center group/sig cursor-default" title={`Signal: ${latest.SignalStrength} dBm (${sig.label})`}>
                     {/* Signal bars */}
                     <div className="flex items-end gap-[2px] h-4">
                       {[1,2,3,4].map(b => (
@@ -189,19 +189,22 @@ export default function DeviceGraphPage() {
                           className="w-[3px] rounded-sm transition-all"
                           style={{
                             height: `${b * 25}%`,
-                            backgroundColor: b <= sig.bars ? sig.color : 'rgba(255,255,255,0.15)',
+                            backgroundColor: b <= sig.bars ? sig.color : 'rgba(128,128,128,0.3)',
                           }}
                         />
                       ))}
                     </div>
-                    <span className="text-[10px] font-bold" style={{ color: sig.color }}>{latest.SignalStrength} dBm</span>
+                    {/* Hover tooltip */}
+                    <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] font-bold whitespace-nowrap opacity-0 group-hover/sig:opacity-100 transition-opacity pointer-events-none px-1.5 py-0.5 rounded bg-black/80 text-white" style={{ color: sig.color }}>
+                      {latest.SignalStrength} dBm
+                    </span>
                   </div>
                 );
               })()}
               {latest?.BatteryVoltage != null && (() => {
                 const bat = getBatteryInfo(latest.BatteryVoltage);
                 return (
-                  <div className="flex items-center gap-1.5" title={`Battery: ${latest.BatteryVoltage}V (${bat.pct}%)`}>
+                  <div className="relative flex items-center group/bat cursor-default" title={`Battery: ${latest.BatteryVoltage}V (${bat.pct}%)`}>
                     {/* Battery icon */}
                     <div className="relative flex items-center">
                       <div className="w-6 h-3.5 rounded-[3px] border-2 flex items-center px-[2px]" style={{ borderColor: bat.color }}>
@@ -210,10 +213,12 @@ export default function DeviceGraphPage() {
                           style={{ width: `${bat.pct}%`, backgroundColor: bat.color, maxWidth: '100%' }}
                         />
                       </div>
-                      {/* battery tip nub */}
                       <div className="w-[3px] h-[6px] rounded-r-sm ml-[1px]" style={{ backgroundColor: bat.color }} />
                     </div>
-                    <span className="text-[10px] font-bold" style={{ color: bat.color }}>{bat.pct.toFixed(0)}%</span>
+                    {/* Hover tooltip */}
+                    <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] font-bold whitespace-nowrap opacity-0 group-hover/bat:opacity-100 transition-opacity pointer-events-none px-1.5 py-0.5 rounded bg-black/80 text-white">
+                      {bat.pct.toFixed(0)}% · {latest.BatteryVoltage}V
+                    </span>
                   </div>
                 );
               })()}
