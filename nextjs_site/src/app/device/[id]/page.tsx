@@ -119,7 +119,7 @@ export default function DeviceGraphPage() {
   }, [data]);
 
   return (
-    <div className="min-h-screen bg-background text-white relative overflow-hidden">
+    <div className="min-h-screen bg-background text-on-background relative overflow-hidden">
       
       <div className="relative z-10 max-w-[1600px] mx-auto px-6 md:px-8 lg:px-12 pt-28 pb-10">
         
@@ -128,20 +128,20 @@ export default function DeviceGraphPage() {
           <div className="flex items-center gap-4">
             <button 
               onClick={() => router.back()}
-              className="p-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 text-white/60 hover:text-white transition"
+              className="p-2 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:bg-black/10 dark:hover:bg-white/10 text-slate-600 dark:text-white/60 hover:text-slate-900 dark:hover:text-white transition"
             >
               <ArrowLeft className="w-5 h-5" />
             </button>
             
             <div>
               <div className="flex items-center gap-3">
-                <h1 className="text-3xl font-bold text-white">{deviceId}</h1>
+                <h1 className="text-3xl font-bold text-slate-900 dark:text-white">{deviceId}</h1>
                 {latest?.FirmwareVersion && (
-                  <span className="text-xs text-white/30 font-mono">v{latest.FirmwareVersion}</span>
+                  <span className="text-xs text-slate-400 dark:text-white/30 font-mono">v{latest.FirmwareVersion}</span>
                 )}
               </div>
               
-              <div className="flex items-center gap-4 mt-2 text-sm text-white/50">
+              <div className="flex items-center gap-4 mt-2 text-sm text-slate-500 dark:text-white/50">
                 <div className="flex items-center gap-1.5">
                   <MapPin className="w-4 h-4" />
                   {location}
@@ -152,7 +152,7 @@ export default function DeviceGraphPage() {
           
           <div className="flex flex-col items-end gap-2">
             <div className="flex items-center gap-2">
-              <span className="text-xs text-white/50">Last active: {latest ? new Date(latest.TimeStamp).toLocaleString() : 'N/A'}</span>
+              <span className="text-xs text-slate-500 dark:text-white/50">Last active: {latest ? new Date(latest.TimeStamp).toLocaleString() : 'N/A'}</span>
               <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 text-[10px] font-bold flex items-center gap-1 shadow-[0_0_10px_rgba(16,185,129,0.2)]">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" /> Live
               </span>
@@ -209,12 +209,12 @@ export default function DeviceGraphPage() {
                     <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${m.color}25` }}>
                       <m.icon className="w-4 h-4" style={{ color: m.color }} />
                     </div>
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-white/60">{m.label}</span>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500 dark:text-white/60">{m.label}</span>
                   </div>
                   
                   {/* Main value */}
-                  <p className="text-2xl font-black leading-none mb-1" style={{ color: hasVal ? 'white' : 'rgba(255,255,255,0.3)' }}>
-                    {hasVal ? Number(val).toFixed(2) : '--'}
+                  <p className="text-2xl font-black leading-none mb-1 text-slate-800 dark:text-white">
+                    {hasVal ? Number(val).toFixed(2) : <span className="text-slate-400 dark:text-white/30">--</span>}
                     <span className="text-sm font-semibold ml-1.5" style={{ color: m.color }}>{m.unit}</span>
                   </p>
                   
@@ -227,12 +227,12 @@ export default function DeviceGraphPage() {
                     ) : (
                       <div className="flex items-center gap-3">
                         <div className="flex items-center gap-1">
-                          <ChevronDown className="w-3 h-3 text-sky-400" />
-                          <span className="text-[10px] font-mono text-sky-400">{min !== null ? min.toFixed(2) : '--'}</span>
+                          <ChevronDown className="w-3 h-3 text-sky-500" />
+                          <span className="text-[10px] font-mono text-sky-500">{min !== null ? min.toFixed(2) : '--'}</span>
                         </div>
                         <div className="flex items-center gap-1">
-                          <ChevronUp className="w-3 h-3 text-rose-400" />
-                          <span className="text-[10px] font-mono text-rose-400">{max !== null ? max.toFixed(2) : '--'}</span>
+                          <ChevronUp className="w-3 h-3 text-rose-500" />
+                          <span className="text-[10px] font-mono text-rose-500">{max !== null ? max.toFixed(2) : '--'}</span>
                         </div>
                       </div>
                     )}
@@ -302,10 +302,10 @@ export default function DeviceGraphPage() {
               if (!hasData) return null;
 
               return (
-                <div key={m.key} className="p-6 rounded-2xl bg-surface-container border border-white/10">
+                <div key={m.key} className="p-6 rounded-2xl bg-surface-container border border-black/10 dark:border-white/10">
                   <div className="flex items-center gap-2 mb-6">
                     <m.icon className="w-5 h-5" style={{ color: m.color }} />
-                    <h3 className="text-lg font-bold text-white">{m.label} Trend</h3>
+                    <h3 className="text-lg font-bold text-slate-800 dark:text-white">{m.label} Trend</h3>
                   </div>
                   
                   <div className="h-[250px] w-full">
