@@ -187,36 +187,56 @@ export default function DeviceGraphPage() {
             const max = validData.length > 0 ? Math.max(...validData) : null;
 
             return (
-              <div key={m.key} className="p-4 rounded-2xl bg-surface-container border border-white/10 relative overflow-hidden group hover:border-white/20 transition flex flex-col h-28">
-                <div className="absolute -right-4 -top-4 w-16 h-16 rounded-full opacity-10 blur-xl group-hover:opacity-20 transition" style={{ backgroundColor: m.color }} />
-                
-                <div className="flex items-center gap-2 mb-2">
-                  <m.icon className="w-4 h-4" style={{ color: m.color }} />
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-white/50">{m.label}</span>
-                </div>
-                
-                <p className="text-xl font-black">
-                  {hasVal ? Number(val).toFixed(2) : '--'} <span className="text-xs font-medium text-white/40">{m.unit}</span>
-                </p>
-                
-                {/* Subtext */}
-                <div className="mt-auto">
-                  {m.key === 'WindSpeed' ? (
-                    <span className="text-[11px] text-white/60">{getWindDirectionStr(latest?.WindDirection)}</span>
-                  ) : m.key === 'RainfallHourly' ? (
-                    <span className="text-[11px] text-emerald-400">Total rain: {hasVal ? Number(val).toFixed(2) : '0.00'} mm</span>
-                  ) : (
-                    <div className="flex items-center gap-3">
-                      <div className="flex items-center gap-1">
-                        <ChevronDown className="w-3 h-3 text-blue-400" />
-                        <span className="text-[10px] font-mono text-blue-400">{min !== null ? min.toFixed(2) : '--'}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <ChevronUp className="w-3 h-3 text-red-400" />
-                        <span className="text-[10px] font-mono text-red-400">{max !== null ? max.toFixed(2) : '--'}</span>
-                      </div>
+              <div
+                key={m.key}
+                className="relative rounded-2xl overflow-hidden group cursor-default transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+                style={{ boxShadow: `0 0 0 1px ${m.color}30, 0 4px 24px ${m.color}18` }}
+              >
+                {/* Glowing gradient background */}
+                <div className="absolute inset-0" style={{ background: `linear-gradient(135deg, ${m.color}22 0%, ${m.color}08 60%, transparent 100%)` }} />
+                <div className="absolute inset-0 bg-surface-container" style={{ opacity: 0.85 }} />
+
+                {/* Colored top border */}
+                <div className="absolute top-0 left-0 right-0 h-[3px] rounded-t-2xl" style={{ background: `linear-gradient(90deg, ${m.color}, ${m.color}60)` }} />
+
+                {/* Big glow orb */}
+                <div className="absolute -right-6 -bottom-6 w-24 h-24 rounded-full blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-300" style={{ backgroundColor: m.color }} />
+
+                {/* Content */}
+                <div className="relative z-10 p-5 flex flex-col h-36">
+                  {/* Label row */}
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${m.color}25` }}>
+                      <m.icon className="w-4 h-4" style={{ color: m.color }} />
                     </div>
-                  )}
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-white/60">{m.label}</span>
+                  </div>
+                  
+                  {/* Main value */}
+                  <p className="text-2xl font-black leading-none mb-1" style={{ color: hasVal ? 'white' : 'rgba(255,255,255,0.3)' }}>
+                    {hasVal ? Number(val).toFixed(2) : '--'}
+                    <span className="text-sm font-semibold ml-1.5" style={{ color: m.color }}>{m.unit}</span>
+                  </p>
+                  
+                  {/* Subtext */}
+                  <div className="mt-auto">
+                    {m.key === 'WindSpeed' ? (
+                      <span className="text-[11px] font-semibold" style={{ color: m.color }}>{getWindDirectionStr(latest?.WindDirection)}</span>
+                    ) : m.key === 'RainfallHourly' ? (
+                      <span className="text-[11px] font-semibold" style={{ color: m.color }}>Total: {hasVal ? Number(val).toFixed(2) : '0.00'} mm</span>
+                    ) : (
+                      <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-1">
+                          <ChevronDown className="w-3 h-3 text-sky-400" />
+                          <span className="text-[10px] font-mono text-sky-400">{min !== null ? min.toFixed(2) : '--'}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <ChevronUp className="w-3 h-3 text-rose-400" />
+                          <span className="text-[10px] font-mono text-rose-400">{max !== null ? max.toFixed(2) : '--'}</span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             );
