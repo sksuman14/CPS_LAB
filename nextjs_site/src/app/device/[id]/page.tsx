@@ -24,6 +24,25 @@ function getWindDirectionStr(deg: number) {
   return `${deg}° ${arr[Math.floor((deg / 22.5) + 0.5) % 16]}`;
 }
 
+function voltageToPercent(voltage: number): number {
+  if (voltage <= 0) return 0;
+  return Math.round(((voltage - 2.8) / (4.2 - 2.8)) * 100 * 10) / 10;
+}
+
+function getBatteryInfo(voltage: number): { color: string; label: string; pct: number } {
+  const pct = Math.min(100, Math.max(0, voltageToPercent(voltage)));
+  if (voltage >= 3.8) return { color: '#22c55e', label: 'Good',    pct };
+  if (voltage >= 3.5) return { color: '#f97316', label: 'Low',     pct };
+  return                      { color: '#ef4444', label: 'Critical', pct };
+}
+
+function getSignalInfo(dbm: number): { color: string; bars: number; label: string } {
+  if (dbm > -60) return { color: '#22c55e', bars: 4, label: 'Excellent' };
+  if (dbm > -75) return { color: '#22c55e', bars: 3, label: 'Good'      };
+  if (dbm > -90) return { color: '#f97316', bars: 2, label: 'Fair'      };
+  return                { color: '#ef4444', bars: 1, label: 'Weak'      };
+}
+
 const METRICS = [
   { key: 'CurrentTemperature', label: 'Temperature', unit: '°C', icon: Thermometer, color: '#f97316' },
   { key: 'CurrentHumidity', label: 'Humidity', unit: '%', icon: Droplets, color: '#3b82f6' },
@@ -158,17 +177,47 @@ export default function DeviceGraphPage() {
               </span>
             </div>
             <div className="flex items-center gap-3 mt-1">
-              {latest?.SignalStrength && (
-                <div className="flex items-center gap-1 text-emerald-400" title={`Signal: ${latest.SignalStrength} dBm`}>
-                  <Signal className="w-4 h-4" />
-                </div>
-              )}
-              {latest?.BatteryVoltage && (
-                <div className="flex items-center gap-1 text-red-400" title={`Battery: ${latest.BatteryVoltage} V`}>
-                  <Battery className="w-4 h-4" />
-                </div>
-              )}
-              <button onClick={fetchData} className="text-white/60 hover:text-white transition">
+              {latest?.SignalStrength != null && (() => {
+                const sig = getSignalInfo(latest.SignalStrength);
+                return (
+                  <div className="flex items-center gap-1.5" title={`Signal: ${latest.SignalStrength} dBm (${sig.label})`}>
+                    {/* Signal bars */}
+                    <div className="flex items-end gap-[2px] h-4">
+                      {[1,2,3,4].map(b => (
+                        <div
+                          key={b}
+                          className="w-[3px] rounded-sm transition-all"
+                          style={{
+                            height: `${b * 25}%`,
+                            backgroundColor: b <= sig.bars ? sig.color : 'rgba(255,255,255,0.15)',
+                          }}
+                        />
+                      ))}
+                    </div>
+                    <span className="text-[10px] font-bold" style={{ color: sig.color }}>{latest.SignalStrength} dBm</span>
+                  </div>
+                );
+              })()}
+              {latest?.BatteryVoltage != null && (() => {
+                const bat = getBatteryInfo(latest.BatteryVoltage);
+                return (
+                  <div className="flex items-center gap-1.5" title={`Battery: ${latest.BatteryVoltage}V (${bat.pct}%)`}>
+                    {/* Battery icon */}
+                    <div className="relative flex items-center">
+                      <div className="w-6 h-3.5 rounded-[3px] border-2 flex items-center px-[2px]" style={{ borderColor: bat.color }}>
+                        <div
+                          className="h-[7px] rounded-[1px] transition-all"
+                          style={{ width: `${bat.pct}%`, backgroundColor: bat.color, maxWidth: '100%' }}
+                        />
+                      </div>
+                      {/* battery tip nub */}
+                      <div className="w-[3px] h-[6px] rounded-r-sm ml-[1px]" style={{ backgroundColor: bat.color }} />
+                    </div>
+                    <span className="text-[10px] font-bold" style={{ color: bat.color }}>{bat.pct.toFixed(0)}%</span>
+                  </div>
+                );
+              })()}
+              <button onClick={fetchData} className="text-slate-400 dark:text-white/60 hover:text-slate-900 dark:hover:text-white transition">
                 <RefreshCw className="w-4 h-4" />
               </button>
             </div>
