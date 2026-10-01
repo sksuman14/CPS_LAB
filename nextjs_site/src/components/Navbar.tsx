@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import Link from 'next/link';
 import Image from 'next/image';
@@ -128,7 +128,6 @@ export default function Navbar() {
 
   const navLinks = [
     { name: 'Home', path: '/home' },
-    { name: 'Device', path: '/device' },
     { name: 'Deployments', path: '/deployments' },
     { name: 'Products', path: '/products' },
     { name: 'Training & Workshop', path: '/training' },

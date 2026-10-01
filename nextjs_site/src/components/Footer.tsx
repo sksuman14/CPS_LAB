@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -22,7 +22,7 @@ export default function Footer() {
 
   const quickLinks = [
     { name: "Home", path: "/home" },
-    { name: "Device Management", path: "/device" },
+    { name: "My Devices", path: "/device" },
     { name: "Products & Sensors", path: "/products" },
     { name: "Live Deployments", path: "/deployments" },
     { name: "Training & Workshops", path: "/training" },

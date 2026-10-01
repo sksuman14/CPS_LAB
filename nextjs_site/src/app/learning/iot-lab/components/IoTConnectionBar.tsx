@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import type { SerialState } from '../services/serialService';
 import Link from 'next/link';
 
@@ -117,6 +117,15 @@ export default function IoTConnectionBar({
           <span className="material-symbols-outlined text-sm">delete</span>
           Clear
         </button>
+        <Link
+          href="/docs/iot_lab_tutorial.html"
+          target="_blank"
+          className="flex items-center gap-1 text-slate-500 dark:text-white/50 hover:text-primary text-xs font-bold px-3 py-1.5 rounded-lg hover:bg-primary/10 transition-colors border border-transparent hover:border-primary/30"
+          title="Open Step-by-Step Document"
+        >
+          <span className="material-symbols-outlined text-sm">menu_book</span>
+          Tutorial
+        </Link>
       </div>
 
     </div>

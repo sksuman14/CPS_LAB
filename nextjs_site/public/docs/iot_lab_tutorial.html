@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT Sensor Lab - Step-by-Step Tutorial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #0f172a; }
+        h1, h2, h3, .font-space { font-family: 'Space Grotesk', sans-serif; }
+        .step-card { page-break-inside: avoid; }
+        @media print {
+            body { background-color: white; }
+            .no-print { display: none; }
+            .shadow-lg { box-shadow: none !important; border: 1px solid #e2e8f0; }
+        }
+    </style>
+</head>
+<body class="antialiased pb-20">
+
+    <!-- Header -->
+    <div class="bg-blue-600 text-white py-12 px-6 shadow-md">
+        <div class="max-w-4xl mx-auto flex items-center justify-between">
+            <div>
+                <h1 class="text-4xl font-bold mb-2">IoT Sensor Lab</h1>
+                <p class="text-blue-100 text-lg">Step-by-Step User Guide</p>
+            </div>
+            <span class="material-symbols-outlined text-6xl opacity-80">sensors</span>
+        </div>
+    </div>
+
+    <!-- Toolbar (No print) -->
+    <div class="max-w-4xl mx-auto px-6 py-4 flex justify-end no-print">
+        <button onclick="window.print()" class="flex items-center gap-2 bg-slate-800 text-white px-4 py-2 rounded-lg hover:bg-slate-700 transition font-bold shadow">
+            <span class="material-symbols-outlined text-sm">print</span>
+            Save as PDF / Print
+        </button>
+    </div>
+
+    <!-- Content -->
+    <div class="max-w-4xl mx-auto px-6 mt-4 space-y-10">
+        
+        <!-- Intro -->
+        <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-100">
+            <h2 class="text-2xl font-bold mb-4 font-space text-slate-800">Welcome to the Lab!</h2>
+            <p class="text-slate-600 leading-relaxed mb-4">
+                The IoT Sensor Lab allows you to connect physical hardware sensors to your browser, write custom logic using visual blocks, and see live data in real-time. Follow the steps below to run your first sensor experiment.
+            </p>
+        </div>
+
+        <!-- STEP 1 -->
+        <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-100 step-card relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-2 h-full bg-blue-500"></div>
+            <div class="flex items-start gap-4">
+                <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">1</div>
+                <div>
+                    <h3 class="text-xl font-bold mb-2">Connect Your Hardware</h3>
+                    <p class="text-slate-600 mb-4">Plug your sensor kit into your computer using a USB cable. Make sure the device is powered on.</p>
+                    
+                    <ul class="list-disc ml-5 text-slate-600 space-y-2 mb-6">
+                        <li>Click the <strong>Connect</strong> button (if prompted) or rely on the auto-connection feature.</li>
+                        <li>Your browser will ask for permission to connect to a Serial Port.</li>
+                        <li>Select your device (often labeled as <em>USB Serial CH340</em> or <em>CP210x</em>) and click <strong>Connect</strong>.</li>
+                    </ul>
+
+                    <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 flex items-center justify-center h-48 relative border-dashed">
+                        <span class="text-slate-400 font-medium">[Screenshot: Browser popup showing "USB Serial Device" selection]</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-100 step-card relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-2 h-full bg-indigo-500"></div>
+            <div class="flex items-start gap-4">
+                <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">2</div>
+                <div class="w-full">
+                    <h3 class="text-xl font-bold mb-2">Select Your Sensor from the Kit</h3>
+                    <p class="text-slate-600 mb-4">In the <strong>"Your Sensor Kit"</strong> panel, click on the specific sensor you have connected (e.g., AHT20, Soil Spectra, Rain Gauge).</p>
+                    
+                    <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 flex items-center justify-center h-40 relative border-dashed">
+                        <span class="text-slate-400 font-medium">[Screenshot: The horizontal list of sensors with one highlighted in blue]</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-100 step-card relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-2 h-full bg-emerald-500"></div>
+            <div class="flex items-start gap-4">
+                <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">3</div>
+                <div class="w-full">
+                    <h3 class="text-xl font-bold mb-2">Write Logic or Load a Template</h3>
+                    <p class="text-slate-600 mb-4">Use the <strong>Blockly Editor</strong> on the left side of the screen to drag and drop logic blocks.</p>
+                    <ul class="list-disc ml-5 text-slate-600 space-y-2 mb-6">
+                        <li>You can build custom logic (e.g., <em>"If temperature > 30, trigger alert"</em>).</li>
+                        <li>Alternatively, use the <strong>Load Template...</strong> dropdown in the top right toolbar to load a pre-built example for your specific sensor.</li>
+                    </ul>
+
+                    <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 flex items-center justify-center h-64 relative border-dashed">
+                        <span class="text-slate-400 font-medium">[Screenshot: Blockly canvas showing a simple "On Sensor Data" block]</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 4 -->
+        <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-100 step-card relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-2 h-full bg-amber-500"></div>
+            <div class="flex items-start gap-4">
+                <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">4</div>
+                <div class="w-full">
+                    <h3 class="text-xl font-bold mb-2">Run the Experiment</h3>
+                    <p class="text-slate-600 mb-4">Once your blocks are ready, click the green <strong>Play (Run)</strong> button in the top toolbar.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                        <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 text-sm text-slate-700">
+                            <strong class="block text-slate-900 mb-2">1. Live Sensor Data:</strong>
+                            Watch the black terminal window on the bottom right. You will see raw data streaming directly from your physical sensor in real-time.
+                        </div>
+                        <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 text-sm text-slate-700">
+                            <strong class="block text-slate-900 mb-2">2. Visual Feedback:</strong>
+                            If your blocks include animations or custom UI widgets, they will appear dynamically in the dashboard panel above the terminal!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 5 -->
+        <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-100 step-card relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-2 h-full bg-red-500"></div>
+            <div class="flex items-start gap-4">
+                <div class="w-12 h-12 bg-red-100 text-red-600 rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">5</div>
+                <div class="w-full">
+                    <h3 class="text-xl font-bold mb-2">Stop and Disconnect</h3>
+                    <p class="text-slate-600 mb-4">When you are finished observing the data:</p>
+                    <ul class="list-disc ml-5 text-slate-600 space-y-2">
+                        <li>Click the red <strong>Stop</strong> button to halt your logic.</li>
+                        <li>Click the <strong>Unplug</strong> button (or simply unplug your USB cable) to safely disconnect the hardware.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
