@@ -20,6 +20,7 @@ export interface LevelConfig {
   id: string;
   title: string;
   icon: string;
+  simEntity?: string;
   color: string;
   simBg: string;
   

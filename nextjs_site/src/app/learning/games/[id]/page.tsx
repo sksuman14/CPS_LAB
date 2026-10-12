@@ -189,7 +189,7 @@ export default function GenericGamePage() {
       console.log = (...args) => { logs.push(args.join(' ')); };
 
       // Helper to wait for animation
-      const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
+      const delay = (ms: number): Promise<void> => new Promise<void>(res => setTimeout(res, ms));
 
       // Engine API
       const mockContext: any = {
@@ -373,8 +373,10 @@ export default function GenericGamePage() {
         let message = '';
         let stars = 3;
         
+        const blockCount = workspaceRef.current ? workspaceRef.current.getAllBlocks(false).length : 0;
+        
         if (newLevel && newLevel.check) {
-          const res = newLevel.check(engineStateRef.current);
+          const res = newLevel.check(engineStateRef.current, blockCount);
           passed = res.passed;
           message = res.message;
           stars = res.stars;
@@ -556,7 +558,7 @@ export default function GenericGamePage() {
         style={{ transform: `translate(${simState.x}px, ${simState.y}px) rotate(${simState.rotation}deg) scale(${simState.scale})` }}
       >
         <div className={`p-5 rounded-full ${game.color} shadow-xl border-4 border-slate-300 dark:border-white/10 relative`}>
-          <span className="material-symbols-outlined text-6xl text-white drop-shadow-md">{game.simEntity}</span>
+          <span className="material-symbols-outlined text-6xl text-white drop-shadow-md">{(game as any).simEntity || game.icon}</span>
           
           {simState.text && (
             <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-white text-slate-800 px-4 py-2 rounded-2xl font-black shadow-xl whitespace-nowrap animate-bounce border-2 border-slate-200 text-sm">

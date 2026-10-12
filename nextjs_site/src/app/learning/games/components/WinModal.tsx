@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion, type Variants } from 'framer-motion';
 import confetti from 'canvas-confetti';
 
 interface WinModalProps {
@@ -62,14 +62,14 @@ export default function WinModal({
     }
   }, [isOpen, xpEarned, prefersReducedMotion]);
 
-  const starVariants = {
+  const starVariants: Variants = {
     hidden: { scale: 0, opacity: 0 },
     visible: (i: number) => ({
       scale: 1,
       opacity: 1,
       transition: {
         delay: i * 0.3,
-        type: 'spring',
+        type: 'spring' as const,
         stiffness: 260,
         damping: 20
       }
@@ -102,7 +102,7 @@ export default function WinModal({
                   <motion.div
                     key={star}
                     custom={i}
-                    variants={prefersReducedMotion ? {} : starVariants}
+                    variants={prefersReducedMotion ? undefined : starVariants}
                     initial="hidden"
                     animate="visible"
                     className="relative w-16 h-16 flex items-center justify-center"
