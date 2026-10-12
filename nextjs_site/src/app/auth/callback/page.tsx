@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { getPostLoginRedirect, clearPostLoginRedirect } from '@/lib/auth';
 
 const COGNITO_DOMAIN = process.env.NEXT_PUBLIC_COGNITO_DOMAIN || 'https://auth.cpslabhub.com';
 const COGNITO_CLIENT_ID = process.env.NEXT_PUBLIC_COGNITO_CLIENT_ID || '1mrpdo856s8ilqavv7kkn8vm97';
@@ -86,7 +87,9 @@ export default function AuthCallback() {
 
         // Small delay before redirect
         setTimeout(() => {
-          router.push('/home');
+          const destination = getPostLoginRedirect('/home');
+          clearPostLoginRedirect();
+          router.push(destination);
         }, 500);
       } catch (err: any) {
         console.error('🔴 [OAuth Callback] Error:', err.message);

@@ -243,7 +243,10 @@ export default function BlocklyEditor({
         const pythonGenerator = Blockly.Python || ((window as any).python?.pythonGenerator);
         
         if (!generatorsRegistered.current) {
-          if (javascriptGenerator) registerJavascriptGenerators(javascriptGenerator);
+          if (javascriptGenerator) {
+            javascriptGenerator.STATEMENT_PREFIX = 'await highlightBlock(%1);\n';
+            registerJavascriptGenerators(javascriptGenerator);
+          }
           if (pythonGenerator) registerPythonGenerators(pythonGenerator);
           generatorsRegistered.current = true;
         }
@@ -488,7 +491,7 @@ export default function BlocklyEditor({
 function registerJavascriptGenerators(generator: any) {
   generator.forBlock['game_action'] = function(block: any) {
     const action = block.getFieldValue('ACTION');
-    return action + '();\n';
+    return 'await ' + action + '();\n';
   };
   generator.forBlock['game_condition'] = function(block: any) {
     const cond = block.getFieldValue('CONDITION');
@@ -496,15 +499,15 @@ function registerJavascriptGenerators(generator: any) {
   };
   generator.forBlock['game_move'] = function(block: any) {
     const dist = block.getFieldValue('DIST');
-    return 'moveForward(' + dist + ');\n';
+    return 'await moveForward(' + dist + ');\n';
   };
   generator.forBlock['game_turn'] = function(block: any) {
     const deg = block.getFieldValue('DEG');
-    return 'turnRight(' + deg + ');\n';
+    return 'await turnRight(' + deg + ');\n';
   };
   generator.forBlock['game_play_note'] = function(block: any) {
     const note = block.getFieldValue('NOTE');
-    return 'playNote("' + note + '");\n';
+    return 'await playNote("' + note + '");\n';
   };
 
   const dirs: Record<string, string> = { F: 'Forward', B: 'Backward', L: 'Left', R: 'Right' };

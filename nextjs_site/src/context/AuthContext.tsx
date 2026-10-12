@@ -210,9 +210,44 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       document.cookie = `cps_id_token=${tokens.id_token}; path=/; max-age=${maxAge}; SameSite=Lax`;
       document.cookie = `cps_logged_in=true; path=/; max-age=${maxAge}; SameSite=Lax`;
 
-      // Clean URL
-      window.history.replaceState({}, '', window.location.pathname);
       console.log('[AuthContext] OAuth exchange successful');
+      
+      // Handle post-login redirect immediately to avoid React state race conditions
+      try {
+        const fromSession = sessionStorage.getItem('post_login_redirect');
+        const fromLocal = localStorage.getItem('post_login_redirect');
+        let fromCookie: string | null = null;
+        const match = document.cookie.match(/(?:^|; )post_login_redirect=([^;]*)/);
+        if (match) {
+          fromCookie = decodeURIComponent(match[1]);
+        }
+        
+        // Also check state param
+        let decodedState = '';
+        const stateParam = params.get('state');
+        if (stateParam) {
+          try {
+            decodedState = decodeURIComponent(stateParam);
+          } catch (e) {}
+        }
+        
+        const target = (decodedState && decodedState.startsWith('/')) ? decodedState : (fromSession || fromLocal || fromCookie);
+        
+        if (target && target.startsWith('/') && target !== '/login' && target !== '/home') {
+          sessionStorage.removeItem('post_login_redirect');
+          localStorage.removeItem('post_login_redirect');
+          document.cookie = 'post_login_redirect=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=Lax';
+          
+          window.location.href = target;
+          // Don't replace state or return true yet, let the browser navigate away
+          return new Promise(() => {}); // hang to prevent further rendering
+        }
+      } catch (e) {
+        console.error('Error during post-login redirect', e);
+      }
+
+      // Clean URL if no redirect
+      window.history.replaceState({}, '', window.location.pathname);
       return true;
     } catch (err) {
       console.error('[AuthContext] OAuth exchange error:', err);

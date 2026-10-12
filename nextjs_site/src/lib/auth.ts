@@ -178,3 +178,51 @@ export function isUserAdmin(email: string): boolean {
   ];
   return adminEmails.includes(email.toLowerCase());
 }
+
+/**
+ * Post-login redirect helpers
+ * Stores and retrieves intended destination so games or protected routes open immediately after login
+ */
+export function setPostLoginRedirect(path: string) {
+  if (typeof window === 'undefined' || !path || !path.startsWith('/') || path === '/login') return;
+  try {
+    sessionStorage.setItem('post_login_redirect', path);
+    localStorage.setItem('post_login_redirect', path);
+    document.cookie = `post_login_redirect=${encodeURIComponent(path)}; path=/; max-age=1800; SameSite=Lax`;
+  } catch (e) {
+    console.error('Error saving post login redirect', e);
+  }
+}
+
+export function getPostLoginRedirect(defaultPath: string = '/home'): string {
+  if (typeof window === 'undefined') return defaultPath;
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const fromQuery = params.get('redirect');
+    const fromSession = sessionStorage.getItem('post_login_redirect');
+    const fromLocal = localStorage.getItem('post_login_redirect');
+    let fromCookie: string | null = null;
+    const match = document.cookie.match(/(?:^|; )post_login_redirect=([^;]*)/);
+    if (match) {
+      fromCookie = decodeURIComponent(match[1]);
+    }
+    const target = fromQuery || fromSession || fromLocal || fromCookie;
+    if (target && target.startsWith('/') && target !== '/login') {
+      return target;
+    }
+  } catch (e) {
+    console.error('Error reading post login redirect', e);
+  }
+  return defaultPath;
+}
+
+export function clearPostLoginRedirect() {
+  if (typeof window === 'undefined') return;
+  try {
+    sessionStorage.removeItem('post_login_redirect');
+    localStorage.removeItem('post_login_redirect');
+    document.cookie = 'post_login_redirect=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=Lax';
+  } catch (e) {
+    console.error('Error clearing post login redirect', e);
+  }
+}

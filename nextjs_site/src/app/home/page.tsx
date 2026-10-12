@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { motion, Variants } from 'framer-motion';
 import Link from 'next/link';
@@ -6,6 +6,7 @@ import { useState, useEffect, useRef, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import dynamic from 'next/dynamic';
 import { useAuth } from '@/context/AuthContext';
+import { getPostLoginRedirect, clearPostLoginRedirect } from '@/lib/auth';
 
 const IndiaMap = dynamic(() => import('@/components/IndiaMap'), {
   ssr: false,

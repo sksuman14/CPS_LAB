@@ -4,6 +4,13 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import BlocklyEditor from '../../block-coding/components/BlocklyEditor';
 import Link from 'next/link';
+import { GameRunner } from '../engine/runner';
+import { LEVEL_REGISTRY } from '../levels';
+import { saveLevel } from '../engine/progression';
+import WinModal from '../components/WinModal';
+import FailModal from '../components/FailModal';
+import { useAuth } from '@/context/AuthContext';
+import { setPostLoginRedirect } from '@/lib/auth';
 
 const GAMES_DATA = {
   'robot-puzzle': { 
@@ -15,7 +22,7 @@ const GAMES_DATA = {
     toolbox: { kind: 'categoryToolbox', contents: [{ kind: 'category', name: 'Logic', colour: '210', contents: [{ kind: 'block', type: 'controls_if' }, { kind: 'block', type: 'game_condition' }] }, { kind: 'category', name: 'Action', colour: '290', contents: [{ kind: 'block', type: 'game_action' }] }] }
   },
   'drone': { 
-    title: 'Drone Navigation', icon: 'flight_takeoff', color: 'bg-sky-500', simBg: 'bg-sky-900', simEntity: 'flight_takeoff',
+    title: 'Drone Navigation', icon: 'flight_takeoff', color: 'bg-yellow-500', simBg: 'bg-sky-900', simEntity: 'flight_takeoff',
     question: "Program the drone's flight path! Set the correct angle heading, and use an IF/ELSE block to fly high over obstacles.",
     startXml: '<xml><block type="game_turn" x="40" y="40"><field name="DEG">90</field></block></xml>',
     solutionXml: '<xml><block type="game_turn" x="40" y="40"><field name="DEG">45</field><next><block type="controls_if"><mutation else="1"></mutation><value name="IF0"><block type="game_condition"><field name="CONDITION">obstacleDetected</field></block></value><statement name="DO0"><block type="game_action"><field name="ACTION">flyHigh</field></block></statement><statement name="ELSE"><block type="game_action"><field name="ACTION">flyLow</field></block></statement></block></next></block></xml>',
@@ -35,18 +42,7 @@ const GAMES_DATA = {
     question: "Launch the rocket! Use a repeat loop to trigger the 'Engage Thrust' action 5 times to escape gravity!",
     startXml: '<xml><block type="controls_repeat_ext" x="40" y="40"><value name="TIMES"><shadow type="math_number"><field name="NUM">5</field></shadow></value></block></xml>',
     solutionXml: '<xml><block type="controls_repeat_ext" x="40" y="40"><value name="TIMES"><shadow type="math_number"><field name="NUM">5</field></shadow></value><statement name="DO"><block type="game_action"><field name="ACTION">thrust</field></block></statement></block></xml>',
-    solutions: { javascript: `for (let count = 0; count < 5; count++) {
-  thrust();
-  await wait(500);
-}`, python: `for count in range(5):
-    thrust()
-    wait(500)`, java: `for (int count = 0; count < 5; count++) {
-    thrust();
-    wait(500);
-}`, cpp: `for (int count = 0; count < 5; count++) {
-    thrust();
-    wait(500);
-}` },
+    solutions: { javascript: `for (let count = 0; count < 5; count++) {\n  thrust();\n  await wait(500);\n}`, python: `for count in range(5):\n    thrust()\n    wait(500)`, java: `for (int count = 0; count < 5; count++) {\n    thrust();\n    wait(500);\n}`, cpp: `for (int count = 0; count < 5; count++) {\n    thrust();\n    wait(500);\n}` },
     toolbox: { kind: 'categoryToolbox', contents: [{ kind: 'category', name: 'Action', colour: '290', contents: [{ kind: 'block', type: 'game_action' }] }, { kind: 'category', name: 'Loops', colour: '120', contents: [{ kind: 'block', type: 'controls_repeat_ext' }] }, { kind: 'category', name: 'Math', colour: '230', contents: [{ kind: 'block', type: 'math_number' }] }] }
   },
   'traffic-light': { 
@@ -63,7 +59,8 @@ const GAMES_DATA = {
     startXml: '<xml><block type="controls_if" x="40" y="40"></block></xml>',
     solutionXml: '<xml><block type="controls_if" x="40" y="40"><value name="IF0"><block type="game_condition"><field name="CONDITION">shield &lt; 20</field></block></value><statement name="DO0"><block type="game_action"><field name="ACTION">recharge</field></block></statement></block></xml>',
     solutions: { javascript: `if (shield < 20) {\n  recharge();\n}`, python: `if shield < 20:\n    recharge()`, java: `if (shield < 20) {\n    recharge();\n}`, cpp: `if (shield < 20) {\n    recharge();\n}` },
-    toolbox: { kind: 'categoryToolbox', contents: [{ kind: 'category', name: 'Logic', colour: '210', contents: [{ kind: 'block', type: 'controls_if' }, { kind: 'block', type: 'game_condition' }] }, { kind: 'category', name: 'Action', colour: '290', contents: [{ kind: 'block', type: 'game_action' }] }] }    },
+    toolbox: { kind: 'categoryToolbox', contents: [{ kind: 'category', name: 'Logic', colour: '210', contents: [{ kind: 'block', type: 'controls_if' }, { kind: 'block', type: 'game_condition' }] }, { kind: 'category', name: 'Action', colour: '290', contents: [{ kind: 'block', type: 'game_action' }] }] }
+  },
     'maze': {
       title: 'Rover Escape', icon: 'explore', color: 'bg-blue-500', simBg: 'bg-[#1a1a24]', simEntity: 'car',
       question: 'Navigate the smart rover through the grid to reach the checkered flag without hitting any obstacles! (Target: Top Right)',
@@ -85,6 +82,14 @@ car.move("Right", 2);` },
       toolbox: { kind: 'categoryToolbox', contents: [{ kind: 'category', name: 'Car Movement', colour: '230', contents: [{ kind: 'block', type: 'car_move' }, { kind: 'block', type: 'car_stop' }, { kind: 'block', type: 'car_set_speed' }, { kind: 'block', type: 'car_custom_command' }] }, { kind: 'category', name: 'Timing', colour: '120', contents: [{ kind: 'block', type: 'car_wait' }] }, { kind: 'category', name: 'Loops', colour: '120', contents: [{ kind: 'block', type: 'controls_repeat_ext' }] }, { kind: 'category', name: 'Math', colour: '230', contents: [{ kind: 'block', type: 'math_number' }] }] },
       startX: 0,
       startY: 4,
+    },
+    'geometry-artist': {
+      title: 'Geometry Artist', icon: 'draw', color: 'bg-cyan-600', simBg: 'bg-slate-950', simEntity: 'draw',
+      question: 'Draw a triangle using loops! Repeat 3 times: Move the pen forward, then turn right by 120 degrees.',
+      startXml: '<xml><block type="controls_repeat_ext" x="40" y="40"><value name="TIMES"><shadow type="math_number"><field name="NUM">3</field></shadow></value></block></xml>',
+      solutionXml: '<xml><block type="controls_repeat_ext" x="40" y="40"><value name="TIMES"><shadow type="math_number"><field name="NUM">3</field></shadow></value><statement name="DO"><block type="game_move"><field name="DIST">50</field><next><block type="game_turn"><field name="DEG">120</field></block></next></block></statement></block></xml>',
+      solutions: { javascript: `for (let count = 0; count < 3; count++) {\n  moveForward(50);\n  turnRight(120);\n}`, python: `for count in range(3):\n    moveForward(50)\n    turnRight(120)`, java: `for (int count = 0; count < 3; count++) {\n    moveForward(50);\n    turnRight(120);\n}`, cpp: `for (int count = 0; count < 3; count++) {\n    moveForward(50);\n    turnRight(120);\n}` },
+      toolbox: { kind: 'categoryToolbox', contents: [{ kind: 'category', name: 'Movement', colour: '160', contents: [{ kind: 'block', type: 'game_move' }, { kind: 'block', type: 'game_turn' }] }, { kind: 'category', name: 'Loops', colour: '120', contents: [{ kind: 'block', type: 'controls_repeat_ext' }] }, { kind: 'category', name: 'Math', colour: '230', contents: [{ kind: 'block', type: 'math_number' }] }] }
     }
   };
 
@@ -93,21 +98,39 @@ car.move("Right", 2);` },
 const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 export default function GenericGamePage() {
+  const { user, googleUser, isLoading } = useAuth();
+  const isLoggedIn = !!user || !!googleUser;
+
   const [terminalLog, setTerminalLog] = useState<string[]>(['> System initialized. Waiting for program...']);
   const [showSolution, setShowSolution] = useState(false);
   const [isSimulating, setIsSimulating] = useState(false);
+  const workspaceRef = React.useRef<any>(null);
+  const engineStateRef = React.useRef({ x: 0, y: 0, rotation: 0, scale: 1, text: '', active: false });
   
   // Real-time Visualizer State
   const [simState, setSimState] = useState({ x: 0, y: 0, rotation: 0, scale: 1, text: '', active: false });
   const [currentXml, setCurrentXml] = useState<string | null>(null);
   const [solLang, setSolLang] = useState<'javascript'|'python'|'java'|'cpp'>('javascript');
   const [refreshKey, setRefreshKey] = useState(0);
+  const [modalState, setModalState] = useState<{ type: 'win'|'fail'|null, message: string, stars: number, xpEarned: number, newBadges: string[], jsCode: string, pyCode: string, hint: string }>({ type: null, message: '', stars: 0, xpEarned: 0, newBadges: [], jsCode: '', pyCode: '', hint: '' });
   
   const router = useRouter();
   const params = useParams();
   
-  const gameId = params?.id as keyof typeof GAMES_DATA;
-  const game = gameId ? GAMES_DATA[gameId] : null;
+  const gameIdStr = Array.isArray(params?.id) ? params?.id[0] : params?.id;
+
+  useEffect(() => {
+    if (!isLoading && !isLoggedIn && gameIdStr) {
+      const target = `/learning/games/${gameIdStr}`;
+      setPostLoginRedirect(target);
+      router.push('/login?redirect=' + encodeURIComponent(target));
+    }
+  }, [isLoading, isLoggedIn, router, gameIdStr]);
+  
+  // Try new registry first, fallback to legacy
+  const newLevel = LEVEL_REGISTRY[gameIdStr || ''];
+  const legacyLevel = (GAMES_DATA as any)[gameIdStr || ''];
+  const game = newLevel || legacyLevel;
 
   useEffect(() => {
     if (game) {
@@ -115,10 +138,18 @@ export default function GenericGamePage() {
     }
   }, [game]);
 
+  if (isLoading || !isLoggedIn) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-[#09090b]">
+        <div className="w-16 h-16 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    );
+  }
+
   if (!game) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-[#09090b] text-slate-900 dark:text-white flex-col gap-4">
-        <h2>Game Not Found: {gameId}</h2>
+        <h2>Game Not Found: {gameIdStr}</h2>
         <button onClick={() => router.push('/learning/games')} className="px-6 py-3 bg-indigo-500 rounded-xl font-bold">Return to Map</button>
       </div>
     );
@@ -146,7 +177,9 @@ export default function GenericGamePage() {
     if (isSimulating) return;
     setIsSimulating(true);
     // Reset simulator state before running
-    setSimState({ x: (game as any).startX || 0, y: (game as any).startY || 0, rotation: 0, scale: 1, text: '', active: false });
+    const initialState = { x: (game as any).startX || 0, y: (game as any).startY || 0, rotation: 0, scale: 1, text: '', active: false };
+    engineStateRef.current = { ...initialState };
+    setSimState(initialState);
     setTerminalLog(['> Running program...']);
     
     
@@ -155,125 +188,246 @@ export default function GenericGamePage() {
       const originalConsoleLog = console.log;
       console.log = (...args) => { logs.push(args.join(' ')); };
 
+      // Helper to wait for animation
+      const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
+
       // Engine API
       const mockContext: any = {
-        activateRobot: () => {
+        activateRobot: async () => {
           console.log("Robot AI activated!");
-          setSimState(s => ({ ...s, scale: 1.2, text: 'ðŸ¤– ONLINE' }));
+          engineStateRef.current.text = '🤖 ONLINE';
+          engineStateRef.current.scale = 1.2;
+          setSimState({ ...engineStateRef.current });
+          await delay(800);
         },
-        explode: () => { console.log("Self-destruct sequence initiated!"); setSimState(s => ({ ...s, text: 'ðŸ’¥ BOOM' })); },
-        playMusic: () => { console.log("Playing music..."); setSimState(s => ({ ...s, text: 'ðŸŽµ MUSIC' })); },
+        explode: async () => {
+          console.log("Self-destruct sequence initiated!");
+          engineStateRef.current.text = '💥 BOOM';
+          setSimState({ ...engineStateRef.current });
+          await delay(800);
+        },
+        playMusic: async () => {
+          console.log("Playing music...");
+          engineStateRef.current.text = '🎵 MUSIC';
+          setSimState({ ...engineStateRef.current });
+          await delay(800);
+        },
         partsConnected: true,
         lowBattery: false,
         obstacleDetected: true,
-        flyHigh: () => {
+        flyHigh: async () => {
           console.log("Drone flying HIGH to avoid obstacle!");
-          setSimState(s => ({ ...s, y: -120, scale: 1.5, text: 'Altitude: HIGH' }));
+          engineStateRef.current.y = -120;
+          engineStateRef.current.scale = 1.5;
+          engineStateRef.current.text = 'Altitude: HIGH';
+          setSimState({ ...engineStateRef.current });
+          await delay(800);
         },
-        flyLow: () => {
+        flyLow: async () => {
           console.log("Drone flying LOW.");
-          setSimState(s => ({ ...s, y: 50, scale: 0.8, text: 'Altitude: LOW' }));
+          engineStateRef.current.y = 50;
+          engineStateRef.current.scale = 0.8;
+          engineStateRef.current.text = 'Altitude: LOW';
+          setSimState({ ...engineStateRef.current });
+          await delay(800);
         },
-        moveForward: (dist: number) => {
+        moveForward: async (dist: number) => {
           console.log(`Plotter moved forward by ${dist}mm`);
-          setSimState(s => ({ ...s, x: s.x + (dist/2) }));
+          engineStateRef.current.x += (dist/2);
+          setSimState({ ...engineStateRef.current });
+          await delay(600);
         },
-        turnRight: (deg: number) => {
-          console.log(`Plotter turned right by ${deg}Â°`);
-          setSimState(s => ({ ...s, rotation: s.rotation + deg }));
+        turnRight: async (deg: number) => {
+          console.log(`Plotter turned right by ${deg}°`);
+          engineStateRef.current.rotation += deg;
+          setSimState({ ...engineStateRef.current });
+          await delay(600);
         },
-        lightGreen: () => {
+        lightGreen: async () => {
           console.log("Traffic Light changed to GREEN.");
-          setSimState(s => ({ ...s, scale: 1.1, text: 'ðŸŸ¢ GO', active: true }));
+          engineStateRef.current.scale = 1.1;
+          engineStateRef.current.text = '🟢 GO';
+          engineStateRef.current.active = true;
+          setSimState({ ...engineStateRef.current });
+          await delay(800);
         },
-        lightRed: () => { console.log("Traffic Light changed to RED."); setSimState(s => ({ ...s, text: 'ðŸ”´ STOP', active: false })); },
-        lightYellow: () => { console.log("Traffic Light changed to YELLOW."); setSimState(s => ({ ...s, text: 'ðŸŸ¡ SLOW', active: false })); },
+        lightRed: async () => {
+          console.log("Traffic Light changed to RED.");
+          engineStateRef.current.text = '🔴 STOP';
+          engineStateRef.current.active = false;
+          setSimState({ ...engineStateRef.current });
+          await delay(800);
+        },
+        lightYellow: async () => {
+          console.log("Traffic Light changed to YELLOW.");
+          engineStateRef.current.text = '🟡 SLOW';
+          engineStateRef.current.active = false;
+          setSimState({ ...engineStateRef.current });
+          await delay(800);
+        },
         timer: 10,
         pedestrian: false,
-        recharge: () => {
+        shield: 15,
+        setHeading: async (deg: number) => {
+          console.log(`Heading set to ${deg}°`);
+          engineStateRef.current.rotation = deg;
+          setSimState({ ...engineStateRef.current });
+          await delay(600);
+        },
+        recharge: async () => {
             console.log("Shield recharge activated!");
-            setSimState(s => ({ ...s, scale: 1.2, text: 'SHIELDS UP', active: true }));
+            engineStateRef.current.scale = 1.2;
+            engineStateRef.current.text = 'SHIELDS UP';
+            engineStateRef.current.active = true;
+            setSimState({ ...engineStateRef.current });
+            await delay(800);
           },
-          fireLasers: () => { console.log("Lasers fired!"); },
-          openHatch: () => { console.log("Hatch opened!"); },
-          thrust: () => {
+          fireLasers: async () => { console.log("Lasers fired!"); await delay(800); },
+          openHatch: async () => { console.log("Hatch opened!"); await delay(800); },
+          thrust: async () => {
             console.log("Rocket thrust engaged!");
-            setSimState(s => ({ ...s, y: s.y - 40, scale: 1.1, text: 'THRUST' }));
+            engineStateRef.current.y -= 40;
+            engineStateRef.current.scale = 1.1;
+            engineStateRef.current.text = 'THRUST';
+            setSimState({ ...engineStateRef.current });
+            await delay(600);
           },
           car: {
             move: async (dir: string, duration: number) => {
               let steps = Math.max(1, Math.round(duration));
               for (let i = 0; i < steps; i++) {
-                await wait(300);
-                let hasCrashed = false;
-                setSimState(s => {
-                   if (s.text.includes('CRASH') || s.text.includes('WIN')) { hasCrashed = true; return s; }
-                   let nx = s.x; let ny = s.y;
-                   if (dir === 'Forward') ny -= 1;
-                   if (dir === 'Backward') ny += 1;
-                   if (dir === 'Left') nx -= 1;
-                   if (dir === 'Right') nx += 1;
-                   
-                   if (nx < 0 || nx >= 5 || ny < 0 || ny >= 5) {
-                     console.log("CRASH! Rover hit the boundary.");
-                     hasCrashed = true;
-                     return { ...s, text: 'CRASH', active: false };
-                   }
-                   const WALLS = [ { x: 1, y: 4 }, { x: 1, y: 3 }, { x: 3, y: 1 }, { x: 3, y: 0 }, { x: 2, y: 2 } ];
-                   if (WALLS.some(w => w.x === nx && w.y === ny)) {
-                     console.log("CRASH! Rover hit a wall.");
-                     hasCrashed = true;
-                     return { ...s, text: 'CRASH', active: false };
-                   }
-                   if (nx === 4 && ny === 0) {
-                     console.log("SUCCESS! Reached target!");
-                     hasCrashed = true;
-                     return { ...s, x: nx, y: ny, text: 'WIN', active: true, scale: 1.2 };
-                   }
-                   console.log(`Rover moved ${dir} to [${nx}, ${ny}]`);
-                   return { ...s, x: nx, y: ny, active: true };
-                });
-                if (hasCrashed) break;
+                await delay(300);
+                let state = engineStateRef.current;
+                if (state.text.includes('CRASH') || state.text.includes('WIN')) break;
+                
+                let nx = state.x; let ny = state.y;
+                if (dir === 'Forward') ny -= 1;
+                if (dir === 'Backward') ny += 1;
+                if (dir === 'Left') nx -= 1;
+                if (dir === 'Right') nx += 1;
+                
+                state.x = nx; state.y = ny;
+                
+                if (nx < 0 || nx >= 5 || ny < 0 || ny >= 5) {
+                  state.text = 'CRASH';
+                  state.active = false;
+                  console.log(`CRASH! Rover hit the boundary at [${nx}, ${ny}].`);
+                } else {
+                  const WALLS = [
+                    {x:0,y:0}, {x:0,y:1}, 
+                    {x:1,y:0}, {x:1,y:1}, {x:1,y:3}, {x:1,y:4},
+                    {x:2,y:3}, {x:2,y:4},
+                    {x:3,y:1}, {x:3,y:2}, {x:3,y:3}, {x:3,y:4},
+                    {x:4,y:1}, {x:4,y:2}, {x:4,y:3}, {x:4,y:4}
+                  ];
+                  if (WALLS.some(w => w.x === nx && w.y === ny)) {
+                    state.text = 'CRASH';
+                    state.active = false;
+                    console.log(`CRASH! Rover hit a wall at [${nx}, ${ny}].`);
+                  } else if (nx === 4 && ny === 0) {
+                    state.text = 'WIN';
+                    state.active = true;
+                    state.scale = 1.2;
+                    console.log("SUCCESS! Reached target!");
+                  } else {
+                    state.active = true;
+                    console.log(`Rover moved ${dir} to [${nx}, ${ny}]`);
+                  }
+                }
+                setSimState({ ...state });
+                if (state.text) break;
               }
             },
             stop: async () => { console.log("Rover stopped."); },
             setSpeed: async (s: number) => { console.log(`Rover speed set to ${s}.`); },
-            wait: async (s: number) => { await wait(s * 1000); },
+            wait: async (s: number) => { await delay(s * 1000); },
             connect: async () => { console.log("Rover BLE connected."); },
             disconnect: async () => { console.log("Rover BLE disconnected."); },
             sendCommand: async (cmd: string) => { console.log(`Rover command: ${cmd}`); },
           }
         };
 
-        // Inject wait into loops for visualization
+        if (newLevel) {
+          const apiMethods = newLevel.api(
+            () => engineStateRef.current,
+            (partial) => {
+              engineStateRef.current = { ...engineStateRef.current, ...partial } as any;
+              setSimState({ ...engineStateRef.current });
+            },
+            delay
+          );
+          Object.assign(mockContext, apiMethods);
+        }
+
+        // Safe execution using our sandboxed engine runner
         let jsCode = (window as any)._latestJsCode || '';
         
-        // Super unsafe but fun evaluation for the educational simulator
-        const AsyncFunction = Object.getPrototypeOf(async function(){}).constructor;
-      const executable = new AsyncFunction('mockContext', 'wait', `
-        with (mockContext) {
-          try {
-             ${jsCode}
-          } catch(e) {
-             console.log("Error: " + e.message);
+        const runner = new GameRunner(workspaceRef.current, 600);
+        await runner.run(jsCode, mockContext);
+
+        console.log = originalConsoleLog;
+        setTerminalLog(prev => [...prev, ...logs.map(l => `> ${l}`), '> Program executed successfully.']);
+
+        // --- WIN/FAIL CHECKING ---
+        let passed = false;
+        let message = '';
+        let stars = 3;
+        
+        if (newLevel && newLevel.check) {
+          const res = newLevel.check(engineStateRef.current);
+          passed = res.passed;
+          message = res.message;
+          stars = res.stars;
+        } else {
+          // Legacy fallback
+          if (engineStateRef.current.text === 'CRASH') {
+            passed = false;
+            message = "Oops! You crashed or hit a boundary.";
+          } else if (gameIdStr === 'maze' && engineStateRef.current.text !== 'WIN') {
+            passed = false;
+            message = "You didn't reach the target flag!";
+          } else if (gameIdStr === 'robot-puzzle' && engineStateRef.current.text !== '🤖 ONLINE') {
+            passed = false;
+            message = "The robot was not activated.";
+          } else if (gameIdStr === 'traffic-light' && !engineStateRef.current.active) {
+             passed = false;
+             message = "The traffic light didn't turn green.";
+          } else if (gameIdStr === 'space-rescue' && !engineStateRef.current.active) {
+             passed = false;
+             message = "The shields were not recharged.";
+          } else {
+            passed = true;
+            message = "Great job! You completed the mission.";
           }
         }
-      `);
 
-      await executable(mockContext, wait);
+        if (passed) {
+           let uKey = 'local';
+           if (user?.userId) uKey = user.userId;
+           else if (googleUser?.email) uKey = googleUser.email;
+           
+           const { xpEarned, newBadges } = saveLevel(uKey, gameIdStr || '', stars, 0);
+           setModalState({ type: 'win', message, stars, xpEarned, newBadges, jsCode, pyCode: '', hint: '' });
+        } else {
+           setModalState({ type: 'fail', message, stars: 0, xpEarned: 0, newBadges: [], jsCode: '', pyCode: '', hint: game?.hints?.[0] || 'Check your logic carefully!' });
+        }
 
-      console.log = originalConsoleLog;
-      setTerminalLog(prev => [...prev, ...logs.map(l => `> ${l}`), '> Program executed successfully.']);
-    } catch (err: any) {
-      setTerminalLog(prev => [...prev, `> Error: ${err.message}`]);
-    }
+      } catch (err: any) {
+        setTerminalLog(prev => [...prev, `> Error: ${err.message}`]);
+        setModalState({ type: 'fail', message: err.message, stars: 0, xpEarned: 0, newBadges: [], jsCode: '', pyCode: '', hint: 'Fix the error in your code!' });
+      }
     
     setTimeout(() => setIsSimulating(false), 500);
   };
 
   // Custom Scene Renderer
   const renderScene = () => {
-    if (gameId === 'robot-puzzle') {
+    if (newLevel?.Scene) {
+      const Scene = newLevel.Scene;
+      return <Scene state={simState} />;
+    }
+
+    if (gameIdStr === 'robot-puzzle') {
       return (
         <div className="relative w-full h-full flex flex-col items-center justify-center">
            <div className={`transition-all duration-700 p-4 rounded-xl bg-slate-200 dark:bg-slate-800 border-2 border-slate-300 dark:border-slate-700 flex flex-col items-center shadow-xl ${simState.active ? 'bg-emerald-900 border-emerald-500 scale-110' : 'translate-y-8'}`}>
@@ -285,7 +439,7 @@ export default function GenericGamePage() {
       );
     }
     
-    if (gameId === 'traffic-light') {
+    if (gameIdStr === 'traffic-light') {
       return (
         <div className="relative w-full h-full flex flex-col items-center justify-center">
            <div className="w-16 h-32 bg-slate-200 dark:bg-slate-800 border-4 border-slate-300 dark:border-slate-700 rounded-2xl flex flex-col items-center justify-between p-2">
@@ -298,7 +452,7 @@ export default function GenericGamePage() {
       );
     }
     
-    if (gameId === 'space-rescue') {
+    if (gameIdStr === 'space-rescue') {
       return (
         <div className="relative w-full h-full flex flex-col items-center justify-center">
            <div className={`transition-all duration-500 rounded-full p-4 ${simState.active ? 'bg-blue-500/20 shadow-[0_0_40px_#3b82f6] border-4 border-blue-400' : 'border-4 border-transparent'}`}>
@@ -311,7 +465,7 @@ export default function GenericGamePage() {
       );
     }
     
-    if (gameId === 'rocket-anim') {
+    if (gameIdStr === 'rocket-anim') {
       return (
         <div className="relative w-full h-full flex flex-col items-center justify-end pb-4">
            {/* Launch Pad */}
@@ -334,10 +488,16 @@ export default function GenericGamePage() {
       );
     }
     
-    if (gameId === 'maze') {
+    if (gameIdStr === 'maze') {
       const MAZE_SIZE = 5;
       const TARGET_POS = { x: 4, y: 0 };
-      const WALLS = [ { x: 1, y: 4 }, { x: 1, y: 3 }, { x: 3, y: 1 }, { x: 3, y: 0 }, { x: 2, y: 2 } ];
+      const WALLS = [
+        {x:0,y:0}, {x:0,y:1}, 
+        {x:1,y:0}, {x:1,y:1}, {x:1,y:3}, {x:1,y:4},
+        {x:2,y:3}, {x:2,y:4},
+        {x:3,y:1}, {x:3,y:2}, {x:3,y:3}, {x:3,y:4},
+        {x:4,y:1}, {x:4,y:2}, {x:4,y:3}, {x:4,y:4}
+      ];
       return (
         <div className="relative w-full max-w-[300px] aspect-square bg-[#0f0f16] rounded-2xl shadow-lg border border-slate-300 dark:border-white/10 overflow-hidden p-2 mx-auto">
           <div className="absolute inset-0 grid grid-cols-5 grid-rows-5 pointer-events-none opacity-10">
@@ -370,7 +530,7 @@ export default function GenericGamePage() {
       );
     }
 
-    if (gameId === 'drone') {
+    if (gameIdStr === 'drone') {
       return (
          <div className="relative w-full h-full flex flex-col items-center justify-center overflow-hidden">
             <div className="absolute top-10 right-20 w-24 h-24 rounded-full border-2 border-dashed border-sky-400/50 animate-[spin_10s_linear_infinite]"></div>
@@ -412,6 +572,29 @@ export default function GenericGamePage() {
   return (
     <div className="h-screen bg-slate-50 dark:bg-[#09090b] flex flex-col font-sans overflow-hidden">
       
+      {/* Modals */}
+      <WinModal 
+        isOpen={modalState.type === 'win'} 
+        onClose={() => setModalState(s => ({ ...s, type: null }))}
+        onNextLevel={() => router.push('/learning/games')}
+        onRetry={() => { setModalState(s => ({ ...s, type: null })); setIsSimulating(false); }}
+        stars={modalState.stars}
+        message={modalState.message}
+        levelTitle={game.title}
+        xpEarned={modalState.xpEarned}
+        newBadges={modalState.newBadges}
+        equivalentCode={{ javascript: modalState.jsCode, python: modalState.pyCode }}
+      />
+      
+      <FailModal 
+        isOpen={modalState.type === 'fail'}
+        onClose={() => setModalState(s => ({ ...s, type: null }))}
+        onRetry={() => { setModalState(s => ({ ...s, type: null })); setIsSimulating(false); }}
+        message={modalState.message}
+        levelTitle={game.title}
+        hint={modalState.hint}
+      />
+
       {/* Header */}
       <header className="h-16 border-b border-slate-300 dark:border-white/10 flex items-center justify-between px-6 bg-slate-50/80 dark:bg-[#09090b]/80 backdrop-blur-xl z-50">
         <div className="flex items-center gap-4">
@@ -519,9 +702,10 @@ export default function GenericGamePage() {
           
           <BlocklyEditor 
             key={(currentXml || 'default') + refreshKey}
-            gameId={gameId as string}
+            gameId={gameIdStr as string}
             toolbox={game.toolbox}
             exampleXml={currentXml}
+            onWorkspaceReady={(ws) => { workspaceRef.current = ws; }}
             onCodeChange={(code) => {
               (window as any)._latestJsCode = code.javascript;
               handleCodeChange(code);

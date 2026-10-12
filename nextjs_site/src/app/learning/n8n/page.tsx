@@ -139,6 +139,16 @@ export default function LearnN8nPage() {
             </div>
           </div>
         </div>
+        
+        <a
+          href="/docs/n8n_guide.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-primary/10 hover:bg-primary/20 text-primary px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 transition-colors border border-primary/20 shadow-sm"
+        >
+          <span className="material-symbols-outlined text-[18px]">menu_book</span>
+          n8n Learning Guide
+        </a>
       </header>
 
       {/* Scrollable content area */}

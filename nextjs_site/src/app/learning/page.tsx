@@ -44,7 +44,7 @@ const PLATFORM_MODULES = [
     icon: <span className="text-[26px]">{"\uD83D\uDE80"}</span>,
     gradient: 'from-yellow-400 to-orange-500',
     link: '/learning/games',
-    disabled: true
+    disabled: false
   },
   {
     title: 'Robotic Car Coding',

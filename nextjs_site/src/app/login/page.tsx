@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import {
@@ -10,7 +10,10 @@ import {
   handleConfirmSignUp,
   handleResendSignUpCode,
   handleForgotPassword,
-  handleConfirmForgotPassword
+  handleConfirmForgotPassword,
+  setPostLoginRedirect,
+  getPostLoginRedirect,
+  clearPostLoginRedirect
 } from '@/lib/auth';
 
 const COGNITO_DOMAIN = process.env.NEXT_PUBLIC_COGNITO_DOMAIN || 'https://auth.cpslabhub.com';
@@ -48,10 +51,26 @@ export default function LoginPage() {
   const { user, googleUser, isLoading: authLoading, checkUserSession } = useAuth();
 
   useEffect(() => {
-    if (!authLoading && (user || googleUser)) {
-      router.push('/home');
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const redirect = params.get('redirect');
+      if (redirect && redirect.startsWith('/')) {
+        setPostLoginRedirect(redirect);
+      }
     }
-  }, [user, googleUser, authLoading, router]);
+  }, []);
+
+  const navigateToDestination = useCallback(() => {
+    const target = getPostLoginRedirect('/home');
+    clearPostLoginRedirect();
+    window.location.href = target;
+  }, []);
+
+  useEffect(() => {
+    if (!authLoading && (user || googleUser)) {
+      navigateToDestination();
+    }
+  }, [user, googleUser, authLoading, navigateToDestination]);
 
   if (authLoading) {
     return (
@@ -78,14 +97,14 @@ export default function LoginPage() {
 
         if (nextStep.signInStep === 'DONE') {
           await checkUserSession();
-          router.push('/home');
+          navigateToDestination();
         } else if (nextStep.signInStep === 'CONFIRM_SIGN_UP') {
           setAuthStep('CONFIRM_SIGNUP');
         } else if (nextStep.signInStep === 'CONFIRM_SIGN_IN_WITH_NEW_PASSWORD_REQUIRED') {
           setError('A new password is required. Please use the "Forgot Password?" flow to reset it.');
         } else {
           await checkUserSession();
-          router.push('/home');
+          navigateToDestination();
         }
       } else {
         // Sign Up
@@ -123,7 +142,7 @@ export default function LoginPage() {
       await handleConfirmSignUp({ username, confirmationCode });
       setIsLogin(true);
       setAuthStep('LOGIN_SIGNUP');
-      router.push('/home');
+      navigateToDestination();
     } catch (err: any) {
       setError(err.message || 'Verification failed.');
     } finally {
@@ -170,11 +189,14 @@ export default function LoginPage() {
     if (typeof window !== 'undefined') {
       sessionStorage.setItem('guestMode', 'true');
     }
-    router.push('/home');
+    navigateToDestination();
   };
 
   const handleGoogleLogin = () => {
     try {
+      const redirectTarget = getPostLoginRedirect('/home');
+      setPostLoginRedirect(redirectTarget);
+
       const params = new URLSearchParams({
         identity_provider: 'Google',
         client_id: COGNITO_CLIENT_ID,
@@ -182,6 +204,7 @@ export default function LoginPage() {
         scope: SCOPES,
         redirect_uri: REDIRECT_URI,
         prompt: 'select_account',
+        state: encodeURIComponent(redirectTarget),
       });
 
       const authUrl = `${COGNITO_DOMAIN}/oauth2/authorize?${params.toString()}`;
@@ -403,18 +426,6 @@ export default function LoginPage() {
                       <span>Continue with Google</span>
                     </button>
 
-                    <div className="w-full flex items-center gap-4 opacity-50">
-                      <div className="h-px bg-white/20 flex-grow"></div>
-                      <span className="font-label text-[10px] uppercase text-white tracking-widest">OR</span>
-                      <div className="h-px bg-white/20 flex-grow"></div>
-                    </div>
-
-                    <button
-                      onClick={handleGuest}
-                      className="w-full bg-white/5 hover:bg-white/10 text-white font-headline font-semibold py-4 rounded-2xl border border-white/10 transition-all"
-                    >
-                      Continue as Guest
-                    </button>
                   </div>
                 </>
               )}

@@ -84,6 +84,15 @@ const config: Config = {
         "xl": "0.5rem", 
         "full": "0.75rem"
       },
+      keyframes: {
+        dash: {
+          '0%': { strokeDashoffset: '100' },
+          '100%': { strokeDashoffset: '0' },
+        }
+      },
+      animation: {
+        dash: 'dash 40s linear infinite',
+      }
     },
   },
   plugins: [],
