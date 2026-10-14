@@ -143,7 +143,8 @@ export default function Navbar() {
     pathname.startsWith('/learning/ai-chat') ||
     pathname.startsWith('/learning/games') ||
     pathname.startsWith('/learning/block-coding') ||
-    pathname.startsWith('/learning/n8n')
+    pathname.startsWith('/learning/n8n') ||
+    pathname.startsWith('/learning/circuit-simulator')
   ) {
     return null;
   }

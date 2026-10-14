@@ -71,18 +71,18 @@ export default function CodePreview({ code }: CodePreviewProps) {
   const activeCode = code[activeLang];
 
   return (
-    <div className="w-full h-full flex flex-col bg-slate-50 dark:bg-[#0a0a10] border border-slate-300 dark:border-white/10 rounded-xl overflow-hidden shadow-2xl">
+    <div className="w-full h-full flex flex-col bg-[#ffffff] dark:bg-[#0a0a10] border border-slate-200 dark:border-white/10 rounded-xl overflow-hidden shadow-sm">
       
       {/* Tabs */}
-      <div className="flex items-center bg-white dark:bg-[#13131a] border-b border-slate-200 dark:border-white/5 overflow-x-auto hide-scrollbar">
+      <div className="flex items-center bg-[#f8fafc] dark:bg-[#13131a] border-b border-slate-200 dark:border-white/5 overflow-x-auto hide-scrollbar">
         {(['javascript', 'python', 'cpp', 'java'] as Language[]).map((lang) => (
           <button
             key={lang}
             onClick={() => setActiveLang(lang)}
             className={`px-4 py-3 text-xs font-bold font-space tracking-wide whitespace-nowrap transition-colors border-b-2 ${
               activeLang === lang
-                ? 'border-blue-500 text-blue-400 bg-blue-500/5'
-                : 'border-transparent text-slate-500 hover:text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:bg-white/5'
+                ? 'border-blue-500 text-blue-600 dark:text-blue-400 bg-blue-500/10'
+                : 'border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-white/5'
             }`}
           >
             {getLanguageLabel(lang)}
@@ -102,7 +102,7 @@ export default function CodePreview({ code }: CodePreviewProps) {
           )}
           <button
             onClick={() => navigator.clipboard.writeText(activeCode)}
-            className="text-slate-700 dark:text-slate-300 dark:text-white/30 hover:text-slate-900 dark:text-white transition-colors p-2"
+            className="text-slate-600 dark:text-white/40 hover:text-slate-900 dark:hover:text-white transition-colors p-2"
             title="Copy code"
           >
             <span className="material-symbols-outlined text-sm">content_copy</span>
@@ -111,12 +111,12 @@ export default function CodePreview({ code }: CodePreviewProps) {
       </div>
 
       {/* Code Area */}
-      <div className="flex-1 overflow-auto p-5 bg-slate-50 dark:bg-[#0a0a10]">
-        <pre className="font-mono text-[13px] leading-loose text-slate-700 dark:text-slate-300">
+      <div className="flex-1 overflow-auto p-5 bg-[#ffffff] dark:bg-[#0a0a10]">
+        <pre className="font-mono text-[13px] leading-loose text-slate-800 dark:text-slate-200">
           <code dangerouslySetInnerHTML={{ __html: highlightCode(activeCode, activeLang) }} />
         </pre>
         {!activeCode && (
-          <div className="h-full flex flex-col items-center justify-center text-slate-700 dark:text-slate-300 dark:text-white/20 text-sm font-space gap-2">
+          <div className="h-full flex flex-col items-center justify-center text-slate-400 dark:text-white/20 text-sm font-space gap-2">
             <span className="material-symbols-outlined text-3xl">code_blocks</span>
             Drag blocks to generate code...
           </div>

@@ -165,7 +165,12 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
     setDownloadingKey(key);
     try {
       const filename = `${sensor.datasheetKey}_${filenameSuffix.replace(/\s+/g, '_')}`;
-      await downloadFileFromUrl(url, filename);
+      const res = await downloadFileFromUrl(url, filename);
+      if (res && res.success === false) {
+        window.open(url, '_blank');
+      }
+    } catch {
+      window.open(url, '_blank');
     } finally {
       setDownloadingKey(null);
     }
@@ -280,6 +285,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
 
     // 4. Code Access Button
     const codeLinks = [
+      { key: 'roboticCodeLink', label: 'Robotic Kit Code' },
       { key: 'nreCodeLink', label: 'nRF Code' },
       { key: 'quecCodeLink', label: 'Quec Code' },
       { key: 'nrfUICodeLink', label: 'nRF UI Code' },
@@ -287,7 +293,8 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
       { key: 'arduinoUnoUICodeLink', label: 'Arduino UNO UI' },
       { key: 'arduinoUnoCodeLink', label: 'Arduino UNO' },
       { key: 'arduinoMegaUICodeLink', label: 'Arduino MEGA UI' },
-      { key: 'arduinoMegaCodeLink', label: 'Arduino MEGA' }
+      { key: 'arduinoMegaCodeLink', label: 'Arduino MEGA' },
+      { key: 'codeLink', label: 'Source Code' }
     ];
 
     const availableCode = codeLinks.filter(cl => (sensor as any)[cl.key]);

@@ -11,7 +11,7 @@ export function IoTAnimationWidget({ type, value }: AnimationWidgetProps) {
     return Math.min(100, Math.max(0, ((val - min) / (max - min)) * 100));
   };
 
-  const containerClass = "flex flex-col items-center justify-center p-4 h-56 w-full max-w-xs mx-auto bg-white dark:bg-[#13131a] rounded-xl relative overflow-hidden shadow-sm border border-slate-200 dark:border-white/5";
+  const containerClass = "flex flex-col items-center justify-center p-4 h-56 w-full max-w-xs mx-auto bg-[#ffffff] dark:bg-[#13131a] rounded-xl relative overflow-hidden shadow-xs border border-slate-200 dark:border-white/5";
 
   if (type === 'heat') {
     const height = getPercentage(value, 0, 50);
@@ -27,7 +27,7 @@ export function IoTAnimationWidget({ type, value }: AnimationWidgetProps) {
           />
         </div>
         
-        <div className="w-12 h-12 bg-gradient-to-br from-red-400 to-red-600 rounded-full -mt-4 border-4 border-white dark:border-[#13131a] z-10 shadow-lg flex items-center justify-center text-white">
+        <div className="w-12 h-12 bg-gradient-to-br from-red-400 to-red-600 rounded-full -mt-4 border-4 border-[#ffffff] dark:border-[#13131a] z-10 shadow-lg flex items-center justify-center text-white">
           <span className="material-symbols-outlined text-lg">device_thermostat</span>
         </div>
       </div>
@@ -115,7 +115,7 @@ export function IoTAnimationWidget({ type, value }: AnimationWidgetProps) {
   }
 
   return (
-    <div className="flex items-center justify-center p-8 bg-slate-100 dark:bg-white/5 rounded-xl border border-slate-200 dark:border-white/10 text-slate-500 font-space text-sm">
+    <div className="flex items-center justify-center p-8 bg-[#f8fafc] dark:bg-white/5 rounded-xl border border-slate-200 dark:border-white/10 text-slate-500 font-space text-sm">
       <span className="material-symbols-outlined mr-2 animate-pulse">query_stats</span>
       Waiting for visualization data...
     </div>

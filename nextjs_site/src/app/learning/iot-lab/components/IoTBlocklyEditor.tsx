@@ -248,7 +248,7 @@ export default function IoTBlocklyEditor({ onCodeChange, onWorkspaceReady, examp
   return (
     <div className="relative w-full h-full">
       <div ref={blocklyDiv} className="w-full h-full" />
-      {!isReady && <div className="absolute inset-0 flex items-center justify-center bg-slate-50 bg-slate-50 dark:bg-[#0a0a10] text-slate-600 dark:text-slate-400">Loading IoT Editor...</div>}
+      {!isReady && <div className="absolute inset-0 flex items-center justify-center bg-[#f8fafc] dark:bg-[#0a0a10] text-slate-600 dark:text-slate-400 font-space text-sm">Loading IoT Editor...</div>}
     </div>
   );
 }

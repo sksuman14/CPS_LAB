@@ -39,7 +39,7 @@ export default function LearnN8nPage() {
     {
       "parameters": {
         "promptType": "define",
-        "text": "=You are the CPS Lab Assistant. The user just asked a question. Here is the live sensor data from the lab: {{ $json.data }}\n\nPlease answer their question based on the sensor data."
+        "text": "=You are the CPS Lab Assistant. The user just asked a question. Here is the live sensor data from the lab: {{ $json.data }}\\n\\nPlease answer their question based on the sensor data."
       },
       "id": "analyze-sensor",
       "name": "Analyze Sensor Data",
@@ -72,29 +72,29 @@ export default function LearnN8nPage() {
       title: "Step 1: Start n8n (Choose a Method)",
       desc: (
         <div className="space-y-4">
-          <div className="bg-white/5 p-4 rounded-xl border border-white/10">
+          <div className="bg-[#f8fafc] dark:bg-white/5 p-4 rounded-xl border border-slate-200 dark:border-white/10">
             <span className="text-primary font-bold block mb-2">Option A: n8n Cloud (Easiest, No Install)</span>
-            <ol className="list-decimal ml-5 space-y-1.5 text-xs text-white/80">
+            <ol className="list-decimal ml-5 space-y-1.5 text-xs text-slate-700 dark:text-white/80">
               <li>Click the link below to go to the n8n website.</li>
               <li>Sign up for a free account using your Google account or email.</li>
-              <li>Once you reach the dashboard, click <span className="font-bold text-white">"Add Workflow"</span>.</li>
+              <li>Once you reach the dashboard, click <span className="font-bold text-slate-900 dark:text-white">&quot;Add Workflow&quot;</span>.</li>
             </ol>
-            <div className="mt-3 bg-black/50 border border-white/5 rounded-lg p-3 font-mono text-xs text-primary flex items-center gap-2">
-              <ChevronRight className="w-4 h-4 text-white/50" />
-              <a href="https://app.n8n.cloud" target="_blank" rel="noopener noreferrer" className="hover:underline hover:text-white transition-colors">
+            <div className="mt-3 bg-slate-100 dark:bg-black/50 border border-slate-200 dark:border-white/5 rounded-lg p-3 font-mono text-xs text-primary flex items-center gap-2">
+              <ChevronRight className="w-4 h-4 text-slate-400 dark:text-white/50" />
+              <a href="https://app.n8n.cloud" target="_blank" rel="noopener noreferrer" className="hover:underline hover:text-primary transition-colors">
                 https://app.n8n.cloud
               </a>
             </div>
           </div>
 
-          <div className="bg-white/5 p-4 rounded-xl border border-white/10">
+          <div className="bg-[#f8fafc] dark:bg-white/5 p-4 rounded-xl border border-slate-200 dark:border-white/10">
             <span className="text-primary font-bold block mb-2">Option B: Local Terminal (Advanced)</span>
-            <ol className="list-decimal ml-5 space-y-1.5 text-xs text-white/80">
+            <ol className="list-decimal ml-5 space-y-1.5 text-xs text-slate-700 dark:text-white/80">
               <li>Open your computer&apos;s terminal (Command Prompt).</li>
-              <li>Type <code className="text-primary bg-black/50 px-1 rounded">npm install -g n8n</code> and press Enter.</li>
+              <li>Type <code className="text-primary bg-slate-200 dark:bg-black/50 px-1.5 py-0.5 rounded font-mono text-xs font-semibold">npm install -g n8n</code> and press Enter.</li>
               <li>Wait for the download to finish.</li>
-              <li>Type <code className="text-primary bg-black/50 px-1 rounded">n8n</code> and press Enter to start the server.</li>
-              <li>Open <a href="http://localhost:5678" target="_blank" className="text-primary hover:underline">http://localhost:5678</a> in your browser.</li>
+              <li>Type <code className="text-primary bg-slate-200 dark:bg-black/50 px-1.5 py-0.5 rounded font-mono text-xs font-semibold">n8n</code> and press Enter to start the server.</li>
+              <li>Open <a href="http://localhost:5678" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">http://localhost:5678</a> in your browser.</li>
             </ol>
           </div>
         </div>
@@ -118,14 +118,14 @@ export default function LearnN8nPage() {
   ];
 
   return (
-    <div className="h-screen bg-slate-50 dark:bg-[#09090b] flex flex-col font-sans overflow-hidden">
+    <div className="h-screen bg-[#f8fafc] dark:bg-[#09090b] flex flex-col font-sans overflow-hidden">
 
-      {/* Header — exactly matching AI Chat / Games style */}
-      <header className="h-16 border-b border-slate-300 dark:border-white/10 flex items-center justify-between px-6 bg-slate-50 dark:bg-[#09090b]/80 backdrop-blur-xl z-50 flex-shrink-0">
+      {/* Header — matching learning pages style */}
+      <header className="h-16 border-b border-slate-200 dark:border-white/10 flex items-center justify-between px-6 bg-[#ffffff] dark:bg-[#09090b]/80 backdrop-blur-xl z-50 flex-shrink-0 shadow-xs">
         <div className="flex items-center gap-4">
           <Link
             href="/learning"
-            className="w-10 h-10 rounded-xl bg-slate-200 dark:bg-white/5 hover:bg-slate-300 dark:hover:bg-white/10 text-slate-700 dark:text-white flex items-center justify-center transition-colors border border-slate-300 dark:border-white/10"
+            className="w-10 h-10 rounded-xl bg-[#f8fafc] dark:bg-white/5 hover:bg-slate-100 dark:hover:bg-white/10 text-slate-700 dark:text-white flex items-center justify-center transition-colors border border-slate-200 dark:border-white/10"
           >
             <span className="material-symbols-outlined">arrow_back</span>
           </Link>
@@ -140,15 +140,17 @@ export default function LearnN8nPage() {
           </div>
         </div>
         
-        <a
-          href="/docs/n8n_guide.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-primary/10 hover:bg-primary/20 text-primary px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 transition-colors border border-primary/20 shadow-sm"
-        >
-          <span className="material-symbols-outlined text-[18px]">menu_book</span>
-          n8n Learning Guide
-        </a>
+        <div className="flex items-center gap-3">
+          <a
+            href="/docs/n8n_guide.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-primary/10 hover:bg-primary/20 text-primary px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 transition-colors border border-primary/20 shadow-xs"
+          >
+            <span className="material-symbols-outlined text-[18px]">menu_book</span>
+            n8n Learning Guide
+          </a>
+        </div>
       </header>
 
       {/* Scrollable content area */}
@@ -159,30 +161,30 @@ export default function LearnN8nPage() {
           <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] ambient-glow-1 opacity-20"></div>
         </div>
 
-        <div className="max-w-[1200px] mx-auto px-6 md:px-8 relative z-10 w-full py-16 pb-20">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-8 relative z-10 w-full py-12 pb-20">
 
           {/* Instructions Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 items-stretch">
             {steps.map((step: any, idx) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.1 }}
-                className={`bg-white dark:bg-white/5 backdrop-blur-md border border-slate-200 dark:border-white/10 rounded-2xl p-6 hover:border-primary/40 transition-colors ${idx === 0 ? 'md:col-span-3' : 'md:col-span-1'}`}
+                className={`bg-[#ffffff] dark:bg-[#13131a] border border-slate-200 dark:border-white/10 rounded-2xl p-6 shadow-sm hover:border-primary/40 transition-colors ${idx === 0 ? 'md:col-span-3' : 'md:col-span-1'}`}
               >
                 <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4">
                   {step.icon}
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{step.title}</h3>
-                <div className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                <div className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
                   {step.desc}
                 </div>
                 {step.code && (
-                  <div className="bg-black/50 border border-white/5 rounded-lg p-3 font-mono text-sm text-primary flex items-center gap-2">
+                  <div className="bg-slate-100 dark:bg-black/50 border border-slate-200 dark:border-white/5 rounded-lg p-3 font-mono text-sm text-primary flex items-center gap-2">
                     <ChevronRight className="w-4 h-4 text-slate-400" />
                     {step.code.startsWith('http') ? (
-                      <a href={step.code} target="_blank" rel="noopener noreferrer" className="hover:underline hover:text-white transition-colors">
+                      <a href={step.code} target="_blank" rel="noopener noreferrer" className="hover:underline hover:text-primary transition-colors">
                         {step.code}
                       </a>
                     ) : (
@@ -191,7 +193,7 @@ export default function LearnN8nPage() {
                   </div>
                 )}
                 {step.note && (
-                  <p className="text-xs text-slate-500 dark:text-slate-500 mt-3 italic">{step.note}</p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-3 italic">{step.note}</p>
                 )}
               </motion.div>
             ))}
@@ -202,29 +204,29 @@ export default function LearnN8nPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-3xl overflow-hidden shadow-2xl relative"
+            className="bg-[#ffffff] dark:bg-[#13131a] border border-slate-200 dark:border-white/10 rounded-3xl overflow-hidden shadow-sm relative"
           >
-            <div className="bg-slate-100 dark:bg-black/40 border-b border-slate-200 dark:border-white/10 px-6 py-4 flex items-center justify-between">
+            <div className="bg-[#f8fafc] dark:bg-black/40 border-b border-slate-200 dark:border-white/10 px-6 py-4 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="flex gap-1.5">
                   <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
                   <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
                   <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
                 </div>
-                <span className="font-mono text-sm text-slate-500 dark:text-slate-400 ml-2">cps-sensor-bot-template.json</span>
+                <span className="font-mono text-sm text-slate-600 dark:text-slate-400 ml-2">cps-sensor-bot-template.json</span>
               </div>
               <button
                 onClick={handleCopy}
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition-all ${
-                  copied ? 'bg-green-500/20 text-green-400' : 'bg-primary/20 text-primary hover:bg-primary/30'
+                  copied ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20' : 'bg-primary/10 text-primary hover:bg-primary/20 border border-primary/20'
                 }`}
               >
                 {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
                 {copied ? "Copied to Clipboard!" : "Copy Demo Code"}
               </button>
             </div>
-            <div className="p-6 overflow-x-auto">
-              <pre className="font-mono text-xs text-slate-700 dark:text-slate-400 leading-relaxed">
+            <div className="p-6 overflow-x-auto bg-[#ffffff] dark:bg-[#0a0a10]">
+              <pre className="font-mono text-xs text-slate-800 dark:text-slate-300 leading-relaxed">
                 <code>{n8nTemplate}</code>
               </pre>
             </div>

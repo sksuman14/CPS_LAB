@@ -10,6 +10,7 @@ interface Message {
 }
 
 export default function AIChatPage() {
+
   const [messages, setMessages] = useState<Message[]>([{
     id: '1',
     role: 'model',
@@ -54,7 +55,7 @@ export default function AIChatPage() {
       const modelMsg: Message = { id: (Date.now() + 1).toString(), role: 'model', content: data.reply };
       setMessages(prev => [...prev, modelMsg]);
     } catch (err: any) {
-      const errorMsg: Message = { id: (Date.now() + 1).toString(), role: 'model', content: `Oops! âŒ ${err.message}` };
+      const errorMsg: Message = { id: (Date.now() + 1).toString(), role: 'model', content: `Oops! ❌ ${err.message}` };
       setMessages(prev => [...prev, errorMsg]);
     } finally {
       setIsTyping(false);
@@ -63,11 +64,11 @@ export default function AIChatPage() {
 
   return (
     <AccessGate accessKey="AI_CHAT" moduleName="AI Chat Assistant" gradient="from-violet-500 to-purple-400" icon="smart_toy">
-    <div className="h-screen bg-slate-50 dark:bg-[#09090b] flex flex-col font-sans overflow-hidden">
+    <div className="h-screen bg-[#f8fafc] dark:bg-[#09090b] flex flex-col font-sans overflow-hidden">
       {/* Header */}
-      <header className="h-16 border-b border-slate-300 dark:border-white/10 flex items-center justify-between px-6 bg-slate-50 dark:bg-[#09090b]/80 backdrop-blur-xl z-50 flex-shrink-0">
+      <header className="h-16 border-b border-slate-200 dark:border-white/10 flex items-center justify-between px-6 bg-[#ffffff] dark:bg-[#09090b]/80 backdrop-blur-xl z-50 flex-shrink-0 shadow-xs">
         <div className="flex items-center gap-4">
-          <Link href="/learning" className="w-10 h-10 rounded-xl bg-slate-200 dark:bg-white/5 hover:bg-slate-300 dark:hover:bg-white/10 text-slate-700 dark:text-white flex items-center justify-center transition-colors border border-slate-300 dark:border-white/10">
+          <Link href="/learning" className="w-10 h-10 rounded-xl bg-[#f8fafc] dark:bg-white/5 hover:bg-slate-100 dark:hover:bg-white/10 text-slate-700 dark:text-white flex items-center justify-center transition-colors border border-slate-200 dark:border-white/10">
             <span className="material-symbols-outlined">arrow_back</span>
           </Link>
           <div className="flex items-center gap-3">
@@ -76,21 +77,23 @@ export default function AIChatPage() {
             </div>
             <div>
               <h1 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-wider leading-tight">AI Chat Assistant</h1>
-              <p className="text-[10px] font-bold text-violet-500 dark:text-violet-400 uppercase tracking-widest">Smart AI Assistant</p>
+              <p className="text-[10px] font-bold text-violet-600 dark:text-violet-400 uppercase tracking-widest">Smart AI Assistant</p>
             </div>
           </div>
+        </div>
 
+        <div className="flex items-center gap-3">
           {/* Language Toggle */}
           <div className="flex bg-slate-100 dark:bg-slate-800 rounded-full p-1 border border-slate-200 dark:border-white/10">
             <button
               onClick={() => setLang('en')}
-              className={lang === 'en' ? 'px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-violet-500 text-white shadow' : 'px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-white transition-colors'}
+              className={lang === 'en' ? 'px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-violet-600 text-white shadow-xs' : 'px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors'}
             >
               EN
             </button>
             <button
               onClick={() => setLang('hi')}
-              className={lang === 'hi' ? 'px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-orange-500 text-white shadow' : 'px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-white transition-colors'}
+              className={lang === 'hi' ? 'px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-orange-500 text-white shadow-xs' : 'px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors'}
             >
               {'\u0939\u093F\u0902'}
             </button>
@@ -107,7 +110,7 @@ export default function AIChatPage() {
               {/* Avatar */}
               <div className="flex-shrink-0 mt-1">
                 {msg.role === 'user' ? (
-                  <div className="w-10 h-10 rounded-full bg-slate-300 dark:bg-slate-800 flex items-center justify-center border border-slate-400 dark:border-slate-700 text-slate-600 dark:text-slate-300">
+                  <div className="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300">
                     <span className="material-symbols-outlined text-xl">person</span>
                   </div>
                 ) : (
@@ -120,8 +123,8 @@ export default function AIChatPage() {
               {/* Bubble */}
               <div className={`p-4 rounded-3xl ${
                 msg.role === 'user' 
-                  ? 'bg-blue-500 text-white rounded-tr-sm shadow-md' 
-                  : 'bg-white dark:bg-[#13131a] text-slate-800 dark:text-slate-200 rounded-tl-sm border border-slate-200 dark:border-white/10 shadow-lg'
+                  ? 'bg-blue-600 text-white rounded-tr-sm shadow-md' 
+                  : 'bg-[#ffffff] dark:bg-[#13131a] text-slate-800 dark:text-slate-200 rounded-tl-sm border border-slate-200 dark:border-white/10 shadow-sm'
               }`}>
                 {msg.role === 'user' ? (
                   <p className="text-[15px] font-medium whitespace-pre-wrap">{msg.content}</p>
@@ -148,7 +151,7 @@ export default function AIChatPage() {
                   <span className="material-symbols-outlined text-xl animate-pulse">auto_awesome</span>
                 </div>
               </div>
-              <div className="p-4 rounded-3xl bg-white dark:bg-[#13131a] rounded-tl-sm border border-slate-200 dark:border-white/10 shadow-lg flex items-center gap-2">
+              <div className="p-4 rounded-3xl bg-[#ffffff] dark:bg-[#13131a] rounded-tl-sm border border-slate-200 dark:border-white/10 shadow-sm flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-violet-400 animate-bounce" style={{ animationDelay: '0ms' }} />
                 <div className="w-2 h-2 rounded-full bg-violet-400 animate-bounce" style={{ animationDelay: '150ms' }} />
                 <div className="w-2 h-2 rounded-full bg-violet-400 animate-bounce" style={{ animationDelay: '300ms' }} />
@@ -160,7 +163,7 @@ export default function AIChatPage() {
       </div>
 
       {/* Input Area */}
-      <div className="bg-white dark:bg-[#13131a] border-t border-slate-200 dark:border-white/10 p-4 z-10 flex-shrink-0">
+      <div className="bg-[#ffffff] dark:bg-[#13131a] border-t border-slate-200 dark:border-white/10 p-4 z-10 flex-shrink-0 shadow-sm">
         <form onSubmit={handleSend} className="max-w-4xl mx-auto relative flex items-center">
           <input 
             type="text" 
@@ -168,12 +171,12 @@ export default function AIChatPage() {
             onChange={(e) => setInput(e.target.value)}
             disabled={isTyping}
             placeholder={lang === 'hi' ? '\u0905\u092a\u0928\u093e \u0938\u0935\u093e\u0932 \u092a\u0942\u091b\u0947\u0902...' : 'Ask a question about sensors or code...'}
-            className="w-full bg-slate-100 dark:bg-[#09090b] text-slate-900 dark:text-white border border-slate-300 dark:border-white/10 rounded-full px-6 py-4 pr-16 focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all placeholder:text-slate-500 disabled:opacity-50"
+            className="w-full bg-[#f8fafc] dark:bg-[#09090b] text-slate-900 dark:text-white border border-slate-200 dark:border-white/10 rounded-full px-6 py-4 pr-16 focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all placeholder:text-slate-400 disabled:opacity-50"
           />
           <button 
             type="submit"
             disabled={!input.trim() || isTyping}
-            className="absolute right-2 w-10 h-10 bg-violet-500 hover:bg-violet-600 disabled:bg-slate-400 disabled:dark:bg-slate-700 text-white rounded-full flex items-center justify-center transition-all shadow-md active:scale-95"
+            className="absolute right-2 w-10 h-10 bg-violet-500 hover:bg-violet-600 disabled:bg-slate-300 disabled:dark:bg-slate-700 text-white rounded-full flex items-center justify-center transition-all shadow-md active:scale-95"
           >
             <span className="material-symbols-outlined text-lg ml-0.5">send</span>
           </button>

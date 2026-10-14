@@ -522,6 +522,8 @@ export const allSensors = [
     imagePath: "assets/images/nrf52832_robotickit.png",
     email: "Vikash.hardwareengineer@ihub-awadh.in",
     datasheetKey: "nRF52832RoboticKit",
+    roboticCodeLink:
+      "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/ROBOTIC_Kit_Code",
   },
   {
     title: "Arduino Based ",
@@ -558,11 +560,8 @@ export const allSensors = [
     imagePath: "assets/images/robotickitrender.png",
     email: "Vikash.hardwareengineer@ihub-awadh.in",
     datasheetKey: "ArduinoRoboticKit",
-    arduinoUnoCodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20UNO/Ultrasonic_RS485",
-    arduinoUnoUICodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20UNO%20UI/Ultrasonic_UI",
-    arduinoMegaCodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20MEGA/Ultrasonic_RS485",
-    arduinoMegaUICodeLink: "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/Arduino%20MEGA%20UI/ULTRASONIC_RS485_UI",
-
+    roboticCodeLink:
+      "https://github.com/sksuman14/CPS_Tinkering_Lab_All_Codes/tree/main/ROBOTIC_Kit_Code",
   },
   {
     title: "Flash Tool",

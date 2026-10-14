@@ -25,13 +25,16 @@ export default function IoTConnectionBar({
   onStop,
   onClear,
   onSelectExample,
-    examples,
+  examples,
 }: IoTConnectionBarProps) {
   return (
-    <div className="flex items-center justify-between px-6 py-3 bg-white bg-white dark:bg-[#13131a] border-b border-slate-200 dark:border-white/5 shadow-md z-10">
+    <div className="flex items-center justify-between px-6 py-3 bg-[#ffffff] dark:bg-[#13131a] border-b border-slate-200 dark:border-white/5 shadow-xs z-10">
       
       <div className="flex items-center gap-6">
-        <Link href="/learning" className="flex items-center justify-center w-8 h-8 rounded-lg bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:bg-white/10 text-slate-600 dark:text-white/70 hover:text-slate-900 dark:text-white transition-colors border border-slate-300 dark:border-white/10">
+        <Link 
+          href="/learning" 
+          className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#f8fafc] dark:bg-white/5 hover:bg-slate-100 dark:hover:bg-white/10 text-slate-700 dark:text-white/70 hover:text-slate-900 dark:hover:text-white transition-colors border border-slate-200 dark:border-white/10"
+        >
           <span className="material-symbols-outlined text-sm">arrow_back</span>
         </Link>
         
@@ -51,19 +54,17 @@ export default function IoTConnectionBar({
       </div>
 
       {!isSupported ? (
-        <div className="text-red-400 text-xs font-bold flex items-center gap-1 bg-red-500/10 px-3 py-1.5 rounded-full border border-red-500/20">
+        <div className="text-red-500 dark:text-red-400 text-xs font-bold flex items-center gap-1 bg-red-500/10 px-3 py-1.5 rounded-full border border-red-500/20">
           <span className="material-symbols-outlined text-sm">warning</span>
           Web Serial not supported
         </div>
       ) : (
         <div className="flex items-center gap-2">
-
-
           {!isRunning ? (
             <button
               onClick={onRun}
               title="Run"
-              className="flex items-center justify-center w-8 h-8 rounded-full transition-all bg-emerald-500 hover:bg-emerald-400 text-slate-900 dark:text-white shadow-[0_0_15px_-3px_rgba(16,185,129,0.4)]"
+              className="flex items-center justify-center w-8 h-8 rounded-full transition-all bg-emerald-500 hover:bg-emerald-400 text-white shadow-[0_0_15px_-3px_rgba(16,185,129,0.4)]"
             >
               <span className="material-symbols-outlined text-lg">play_arrow</span>
             </button>
@@ -71,7 +72,7 @@ export default function IoTConnectionBar({
             <button
               onClick={onStop}
               title="Stop"
-              className="flex items-center justify-center w-8 h-8 bg-red-500 hover:bg-red-400 text-slate-900 dark:text-white rounded-full transition-all shadow-[0_0_15px_-3px_rgba(239,68,68,0.4)] animate-pulse"
+              className="flex items-center justify-center w-8 h-8 bg-red-500 hover:bg-red-400 text-white rounded-full transition-all shadow-[0_0_15px_-3px_rgba(239,68,68,0.4)] animate-pulse"
             >
               <span className="material-symbols-outlined text-lg">stop</span>
             </button>
@@ -81,7 +82,7 @@ export default function IoTConnectionBar({
 
       <div className="flex items-center gap-2">
         <select
-          className="bg-slate-100 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-700 dark:text-slate-300 text-xs font-bold rounded-lg px-3 py-1.5 outline-none hover:bg-slate-200 dark:bg-white/10 transition-all cursor-pointer appearance-none"
+          className="bg-[#f8fafc] dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 text-xs font-bold rounded-lg px-3 py-1.5 outline-none hover:bg-slate-100 dark:hover:bg-white/10 transition-all cursor-pointer appearance-none"
           onChange={(e) => {
             if (e.target.value && onSelectExample) {
               onSelectExample(e.target.value);
@@ -90,11 +91,11 @@ export default function IoTConnectionBar({
           }}
           defaultValue=""
         >
-          <option value="" disabled className="bg-white bg-white dark:bg-[#13131a]">
+          <option value="" disabled className="bg-[#ffffff] dark:bg-[#13131a] text-slate-900 dark:text-white">
             Load Template...
           </option>
           {examples.map((ex) => (
-            <option key={ex.id} value={ex.xml} className="bg-white bg-white dark:bg-[#13131a]">
+            <option key={ex.id} value={ex.xml} className="bg-[#ffffff] dark:bg-[#13131a] text-slate-900 dark:text-white">
               {ex.name}
             </option>
           ))}
@@ -104,7 +105,7 @@ export default function IoTConnectionBar({
           <button
             onClick={onDisconnect}
             title="Force Disconnect Hardware"
-            className="flex items-center gap-1 text-orange-500 dark:text-orange-400/70 hover:text-orange-400 text-xs font-bold px-3 py-1.5 rounded-lg hover:bg-orange-500/10 transition-colors"
+            className="flex items-center gap-1 text-orange-500 dark:text-orange-400/70 hover:text-orange-600 text-xs font-bold px-3 py-1.5 rounded-lg hover:bg-orange-500/10 transition-colors"
           >
             <span className="material-symbols-outlined text-sm">usb_off</span>
             Unplug
@@ -112,7 +113,7 @@ export default function IoTConnectionBar({
         )}
         <button
           onClick={onClear}
-          className="flex items-center gap-1 text-slate-500 dark:text-white/50 hover:text-red-400 text-xs font-bold px-3 py-1.5 rounded-lg hover:bg-red-500/10 transition-colors"
+          className="flex items-center gap-1 text-slate-600 dark:text-white/50 hover:text-red-500 text-xs font-bold px-3 py-1.5 rounded-lg hover:bg-red-500/10 transition-colors"
         >
           <span className="material-symbols-outlined text-sm">delete</span>
           Clear
@@ -120,7 +121,7 @@ export default function IoTConnectionBar({
         <Link
           href="/docs/iot_lab_tutorial.html"
           target="_blank"
-          className="flex items-center gap-1 text-slate-500 dark:text-white/50 hover:text-primary text-xs font-bold px-3 py-1.5 rounded-lg hover:bg-primary/10 transition-colors border border-transparent hover:border-primary/30"
+          className="flex items-center gap-1 text-slate-600 dark:text-white/50 hover:text-indigo-600 dark:hover:text-primary text-xs font-bold px-3 py-1.5 rounded-lg hover:bg-indigo-50 dark:hover:bg-primary/10 transition-colors border border-transparent hover:border-indigo-200 dark:hover:border-primary/30"
           title="Open Step-by-Step Document"
         >
           <span className="material-symbols-outlined text-sm">menu_book</span>

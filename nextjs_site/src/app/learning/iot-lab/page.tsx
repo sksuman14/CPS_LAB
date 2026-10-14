@@ -176,7 +176,7 @@ export default function IoTLabPage() {
 
   return (
     <AccessGate accessKey="IOT_LAB" moduleName="IoT Sensor Lab" gradient="from-blue-500 to-cyan-400" icon="sensors">
-    <div className="flex flex-col h-screen overflow-hidden">
+    <div className="flex flex-col h-screen overflow-hidden bg-[#f8fafc] dark:bg-[#09090b]">
       <IoTConnectionBar
         examples={dynamicExamples}
         serialState={serialState}
@@ -191,7 +191,7 @@ export default function IoTLabPage() {
       />
 
       
-        <div className="flex-none bg-white dark:bg-[#13131a] border-b border-slate-200 dark:border-white/5 shadow-sm p-4 overflow-x-auto">
+        <div className="flex-none bg-[#ffffff] dark:bg-[#13131a] border-b border-slate-200 dark:border-white/5 shadow-xs p-4 overflow-x-auto">
           <div className="flex items-center gap-2 mb-3">
             <span className="material-symbols-outlined text-indigo-500">inventory_2</span>
             <h2 className="text-sm font-bold text-slate-800 dark:text-white uppercase font-space tracking-wider">Your Sensor Kit</h2>
@@ -201,9 +201,9 @@ export default function IoTLabPage() {
               <button
                 key={s.name}
                 onClick={() => setSelectedSensor(s)}
-                className={`flex-none flex items-center gap-3 px-4 py-2 rounded-xl border transition-all ${selectedSensor.name === s.name ? 'bg-indigo-50 dark:bg-indigo-500/10 border-indigo-200 dark:border-indigo-500/30 text-indigo-700 dark:text-indigo-400 shadow-sm' : 'bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/10'}`}
+                className={`flex-none flex items-center gap-3 px-4 py-2 rounded-xl border transition-all ${selectedSensor.name === s.name ? 'bg-indigo-50 dark:bg-indigo-500/10 border-indigo-200 dark:border-indigo-500/30 text-indigo-700 dark:text-indigo-400 shadow-sm' : 'bg-[#ffffff] dark:bg-white/5 border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-white/10'}`}
               >
-                <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${selectedSensor.name === s.name ? 'bg-indigo-100 dark:bg-indigo-500/20' : 'bg-slate-200 dark:bg-white/10'}`}>
+                <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${selectedSensor.name === s.name ? 'bg-indigo-100 dark:bg-indigo-500/20 text-indigo-700 dark:text-indigo-300' : 'bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-400'}`}>
                   <span className="material-symbols-outlined text-sm">{s.icon}</span>
                 </div>
                 <div className="text-left">
@@ -228,8 +228,8 @@ export default function IoTLabPage() {
             <CodePreview code={code} />
           </div>
 
-                    {Object.keys(animations).length > 0 && (
-            <div className="flex-none p-4 bg-slate-50 dark:bg-[#0a0a10] border border-slate-300 dark:border-white/10 rounded-xl overflow-hidden shadow-2xl">
+          {Object.keys(animations).length > 0 && (
+            <div className="flex-none p-4 bg-[#ffffff] dark:bg-[#0a0a10] border border-slate-200 dark:border-white/10 rounded-xl overflow-hidden shadow-sm">
               <div className="grid grid-cols-2 gap-4">
                 {Object.entries(animations).map(([type, value]) => (
                   <IoTAnimationWidget key={type} type={type} value={value} />
@@ -239,8 +239,8 @@ export default function IoTLabPage() {
           )}
 
           {customUI.active && (
-            <div className="flex-none p-4 bg-slate-50 dark:bg-[#0a0a10] border border-slate-300 dark:border-white/10 rounded-xl overflow-hidden shadow-2xl mt-4">
-              <div className="flex flex-col items-center justify-center p-4 h-48 w-full bg-slate-100 dark:bg-[#13131a] rounded-xl relative overflow-hidden border border-slate-200 dark:border-white/5">
+            <div className="flex-none p-4 bg-[#ffffff] dark:bg-[#0a0a10] border border-slate-200 dark:border-white/10 rounded-xl overflow-hidden shadow-sm mt-4">
+              <div className="flex flex-col items-center justify-center p-4 h-48 w-full bg-[#f8fafc] dark:bg-[#13131a] rounded-xl relative overflow-hidden border border-slate-200 dark:border-white/5">
                 <div className="absolute top-2 left-4 text-xs font-bold text-slate-500 font-space tracking-wider uppercase z-20">Student UI Builder</div>
                 <div className="z-20 text-3xl font-black text-slate-800 dark:text-white drop-shadow-md">{customUI.text}</div>
                 <div 
@@ -250,24 +250,24 @@ export default function IoTLabPage() {
               </div>
             </div>
           )}
-          <div className="flex-[50] flex flex-col bg-slate-50 dark:bg-[#0a0a10] border border-slate-300 dark:border-white/10 rounded-xl overflow-hidden shadow-2xl">
-            <div className="flex items-center justify-between px-4 py-3 bg-white bg-white dark:bg-[#13131a] border-b border-slate-200 dark:border-white/5">
+          <div className="flex-[50] flex flex-col bg-[#ffffff] dark:bg-[#0a0a10] border border-slate-200 dark:border-white/10 rounded-xl overflow-hidden shadow-sm">
+            <div className="flex items-center justify-between px-4 py-3 bg-[#f8fafc] dark:bg-[#13131a] border-b border-slate-200 dark:border-white/5">
               <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-green-400 text-sm">terminal</span>
+                <span className="material-symbols-outlined text-emerald-500 text-sm">terminal</span>
                 <span className="text-slate-900 dark:text-white text-xs font-bold font-space uppercase tracking-wider">Live Sensor Data</span>
               </div>
-              <button onClick={() => setConsoleOutput([])} className="text-slate-600 dark:text-slate-400 dark:text-white/40 hover:text-slate-900 dark:text-white transition-colors">
+              <button onClick={() => setConsoleOutput([])} className="text-slate-500 dark:text-white/40 hover:text-slate-800 dark:hover:text-white transition-colors">
                 <span className="material-symbols-outlined text-sm">close</span>
               </button>
             </div>
-            <div className="flex-1 overflow-auto p-4 font-mono text-[11px] leading-relaxed bg-slate-50 bg-slate-50 dark:bg-[#0a0a10]">
+            <div className="flex-1 overflow-auto p-4 font-mono text-[11px] leading-relaxed bg-[#ffffff] dark:bg-[#0a0a10]">
               {consoleOutput.length === 0 && (
-                <div className="text-slate-700 dark:text-slate-300 dark:text-white/20 h-full flex items-center justify-center font-space">
+                <div className="text-slate-400 dark:text-white/20 h-full flex items-center justify-center font-space">
                   Awaiting connection...
                 </div>
               )}
               {consoleOutput.map((line, i) => (
-                <div key={i} className={`${line.includes('❌') ? 'text-red-400' : line.includes('⚠️') ? 'text-amber-400 font-bold' : line.includes('📝') ? 'text-blue-400' : 'text-emerald-400/70'}`}>
+                <div key={i} className={`${line.includes('❌') ? 'text-red-500 dark:text-red-400' : line.includes('⚠️') ? 'text-amber-500 dark:text-amber-400 font-bold' : line.includes('📝') ? 'text-blue-500 dark:text-blue-400' : 'text-emerald-600 dark:text-emerald-400/80 font-medium'}`}>
                   {line}
                 </div>
               ))}
