@@ -54,6 +54,7 @@ const PLATFORM_MODULES = [
     link: '/learning/games',
     disabled: false
   },
+  /*
   {
     title: 'Robotic Car Coding',
     description: "Master block coding logic to control and navigate your smart robotic car.",
@@ -62,6 +63,7 @@ const PLATFORM_MODULES = [
     link: '/learning/block-coding',
     disabled: true
   },
+  */
   {
     title: 'Smart Sensor Insights',
     description: 'Get kid-friendly AI explanations for live sensor readings (e.g. "Hot as a summer day!").',
