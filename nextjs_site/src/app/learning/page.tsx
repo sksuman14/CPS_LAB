@@ -14,14 +14,14 @@ import {
 } from "lucide-react";
 
 const PLATFORM_MODULES = [
-  {
-    title: 'Virtual Circuit Simulator',
-    description: 'Design, wire, and simulate your CPS Lab sensors with Arduino Uno in a Cirkit-style interactive IDE.',
-    icon: <span className="text-[26px]">{"\u26A1"}</span>,
-    gradient: 'from-cyan-500 to-blue-500',
-    link: '/learning/circuit-simulator',
-    disabled: false
-  },
+  // {
+  //   title: 'Virtual Circuit Simulator',
+  //   description: 'Design, wire, and simulate your CPS Lab sensors with Arduino Uno in a Cirkit-style interactive IDE.',
+  //   icon: <span className="text-[26px]">{"\u26A1"}</span>,
+  //   gradient: 'from-cyan-500 to-blue-500',
+  //   link: '/learning/circuit-simulator',
+  //   disabled: false
+  // },
   {
     title: 'IoT Sensor Lab',
     description: 'Read live environmental data from your sensors using block coding.',
