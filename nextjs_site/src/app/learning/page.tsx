@@ -64,14 +64,14 @@ const PLATFORM_MODULES = [
     disabled: true
   },
   */
-  {
-    title: 'Smart Sensor Insights',
-    description: 'Get kid-friendly AI explanations for live sensor readings (e.g. "Hot as a summer day!").',
-    icon: <span className="text-[26px]">{"\uD83C\uDF21\uFE0F"}</span>,
-    gradient: 'from-orange-500 to-amber-400',
-    link: '/learning/sensor-insights',
-    disabled: true
-  },
+  // {
+  //   title: 'Smart Sensor Insights',
+  //   description: 'Get kid-friendly AI explanations for live sensor readings (e.g. "Hot as a summer day!").',
+  //   icon: <span className="text-[26px]">{"\uD83C\uDF21\uFE0F"}</span>,
+  //   gradient: 'from-orange-500 to-amber-400',
+  //   link: '/learning/sensor-insights',
+  //   disabled: true
+  // },
 ];
 
 export default function LearningPortal() {

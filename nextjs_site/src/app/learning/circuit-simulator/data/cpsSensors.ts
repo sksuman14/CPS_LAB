@@ -40,64 +40,12 @@ export interface CPSSensorDefinition {
 
 export const CPS_PRODUCTS_SENSORS: CPSSensorDefinition[] = [
   {
-    id: 'soil-spectra',
-    title: 'Soil Spectra',
-    subtitle: 'Smart soil sensing for precision agriculture',
-    category: 'Agriculture',
-    icon: 'emoji_nature',
-    imagePath: 'assets/images/blegateway.png',
-    productSlug: 'soil-spectra',
-    datasheetKey: 'SoilSensor',
-    pins: [
-      { id: 'vcc', name: 'VCC (5V)', type: 'power', defaultWireColor: '#ef4444', suggestedMcuPin: '5V', x: 20, y: 100 },
-      { id: 'gnd', name: 'GND', type: 'ground', defaultWireColor: '#1e293b', suggestedMcuPin: 'GND', x: 40, y: 100 },
-      { id: 'sig', name: 'SIG (Moisture)', type: 'analog', defaultWireColor: '#22c55e', suggestedMcuPin: 'A0', x: 60, y: 100 },
-      { id: 'temp', name: 'TEMP', type: 'analog', defaultWireColor: '#eab308', suggestedMcuPin: 'A1', x: 80, y: 100 },
-    ],
-    defaultValues: { moisture: 45, temperature: 24.5, ec: 420 },
-    controls: [
-      { key: 'moisture', label: 'Soil Moisture', type: 'slider', min: 0, max: 100, step: 1, unit: '%' },
-      { key: 'temperature', label: 'Soil Temp', type: 'slider', min: 0, max: 50, step: 0.5, unit: '°C' },
-      { key: 'ec', label: 'Conductivity (EC)', type: 'slider', min: 0, max: 2000, step: 10, unit: 'µS/cm' },
-    ],
-    readFormula: (vals) => ({
-      analogVal: Math.round((vals.moisture / 100) * 1023),
-      serialString: `[Soil Spectra] Moisture: ${vals.moisture}% | Temp: ${vals.temperature}°C | EC: ${vals.ec} uS/cm`
-    }),
-    sampleCode: `// CPS Lab - Soil Spectra Sensor Reader
-const int SOIL_PIN = A0;
-const int TEMP_PIN = A1;
-
-void setup() {
-  Serial.begin(9600);
-  pinMode(SOIL_PIN, INPUT);
-  pinMode(TEMP_PIN, INPUT);
-  Serial.println("Soil Spectra Sensor Initialized.");
-}
-
-void loop() {
-  int rawMoisture = analogRead(SOIL_PIN);
-  float moisturePct = map(rawMoisture, 0, 1023, 0, 100);
-  
-  int rawTemp = analogRead(TEMP_PIN);
-  float tempC = (rawTemp * 5.0 / 1024.0) * 10.0;
-
-  Serial.print("Soil Moisture: ");
-  Serial.print(moisturePct);
-  Serial.print("% | Temp: ");
-  Serial.print(tempC);
-  Serial.println(" C");
-
-  delay(1000);
-}`
-  },
-  {
     id: 'bme680',
     title: 'BME680 Sensor',
     subtitle: 'Environmental Temp, Humidity, Pressure & Gas',
     category: 'Environmental',
     icon: 'thermostat',
-    imagePath: 'assets/images/blegateway.png',
+    imagePath: 'assets/images/bme680.png',
     productSlug: 'bme680-temperature-humidity-pressure-and-gas-sensor',
     datasheetKey: 'BME680',
     pins: [
@@ -227,7 +175,7 @@ void loop() {
     subtitle: 'High precision ambient light intensity sensor',
     category: 'Environmental',
     icon: 'lightbulb',
-    imagePath: 'assets/images/blegateway.png',
+    imagePath: 'assets/images/lux.png',
     productSlug: 'lux-sensor',
     datasheetKey: 'LuxSensor',
     pins: [
@@ -256,7 +204,8 @@ void loop() {
   // Read simulated I2C lux level
   Serial.println("Measuring ambient light intensity...");
   delay(1000);
-}`
+}
+`
   },
   {
     id: 'lis3dh',
@@ -264,7 +213,7 @@ void loop() {
     subtitle: '3-axis ultra low power linear accelerometer',
     category: 'Motion & Proximity',
     icon: '3d_rotation',
-    imagePath: 'assets/images/blegateway.png',
+    imagePath: 'assets/images/lis3dh.png',
     productSlug: 'lis3dh-motion-sensor',
     datasheetKey: 'LIS3DH',
     pins: [
@@ -294,7 +243,8 @@ void setup() {
 void loop() {
   Serial.println("Polling 3-Axis acceleration vector...");
   delay(500);
-}`
+}
+`
   },
   {
     id: 'ir-sensor',
@@ -302,7 +252,7 @@ void loop() {
     subtitle: 'Digital obstacle detection and line tracking sensor',
     category: 'Motion & Proximity',
     icon: 'sensors',
-    imagePath: 'assets/images/blegateway.png',
+    imagePath: 'assets/images/ir_sensor.png',
     productSlug: 'infrared-sensor',
     datasheetKey: 'IRSensor',
     pins: [
@@ -339,7 +289,8 @@ void loop() {
     digitalWrite(LED_PIN, LOW);
   }
   delay(300);
-}`
+}
+`
   },
   {
     id: 'hall-sensor',
@@ -347,7 +298,7 @@ void loop() {
     subtitle: 'Linear magnetic field detection for motors and switches',
     category: 'Motion & Proximity',
     icon: 'explore',
-    imagePath: 'assets/images/blegateway.png',
+    imagePath: 'assets/images/halleffect.png',
     productSlug: 'linear-magnetic-hall-sensor',
     datasheetKey: 'HallSensor',
     pins: [
@@ -383,7 +334,8 @@ void loop() {
   Serial.print(magneticField);
   Serial.println(" units");
   delay(500);
-}`
+}
+`
   },
   {
     id: 'relay-module',
@@ -391,7 +343,7 @@ void loop() {
     subtitle: 'Electromagnetically operated automation power switch',
     category: 'Actuators',
     icon: 'toggle_on',
-    imagePath: 'assets/images/blegateway.png',
+    imagePath: 'assets/images/relay.png',
     productSlug: 'relay-electrical-switch',
     datasheetKey: 'Relay',
     pins: [
@@ -423,7 +375,8 @@ void loop() {
   Serial.println("Deactivating Relay (Switch OFF)...");
   digitalWrite(RELAY_PIN, LOW);
   delay(2000);
-}`
+}
+`
   },
   {
     id: 'buzzer-module',
@@ -431,7 +384,7 @@ void loop() {
     subtitle: 'Compact audio and alarm signaling device',
     category: 'Actuators',
     icon: 'volume_up',
-    imagePath: 'assets/images/blegateway.png',
+    imagePath: 'assets/images/buzzer.png',
     productSlug: 'buzzer-signaling-device',
     datasheetKey: 'Buzzer',
     pins: [
